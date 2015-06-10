@@ -1,0 +1,26 @@
+{
+  "name": "ui-toolkit",
+  "version": "0.0.1",
+  "description": "ui toolkit for the GIG developer",
+  "main": "Gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Objectway/ui-toolkit.git"
+  },
+  "author": "Objectway",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Objectway/ui-toolkit/issues"
+  },
+  "homepage": "https://github.com/Objectway/ui-toolkit#readme",
+  "devDependencies": {
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-jade": "^1.0.1",
+    "gulp-sass": "^2.0.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-typescript": "^2.7.6"
+  }
+}
