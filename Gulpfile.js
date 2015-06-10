@@ -10,54 +10,54 @@ var filter = require('gulp-filter');
 var del = require('del');
 
 // compile CoffeeScript
-gulp.task('coffee', function() {
-    gulp.src('./coffeescript/*.coffee')
-    .pipe(sourcemaps.init())
-    .pipe($.changed('./coffeescript/*.coffee'))
-    .pipe($.coffee({bare: true})).on('error', $.util.log)
-    .pipe($.concat('app.js'))
-    .pipe(sourcemaps.write('../maps'))
-    .pipe(gulp.dest('./js/'))
-    .pipe(browserSync.reload({stream:true}));
-});
+// gulp.task('coffee', function() {
+//     gulp.src('./coffeescript#<{(|.coffee')
+//     .pipe(sourcemaps.init())
+//     .pipe($.changed('./coffeescript#<{(|.coffee'))
+//     .pipe($.coffee({bare: true})).on('error', $.util.log)
+//     .pipe($.concat('app.js'))
+//     .pipe(sourcemaps.write('../maps'))
+//     .pipe(gulp.dest('./js/'))
+//     .pipe(browserSync.reload({stream:true}));
+// });
 
 
 // compile Angular relative CoffeeScript
-gulp.task('controllers', function() {
-    gulp.src('./coffeescript/controllers/*.coffee')
-    .pipe(sourcemaps.init())
-    .pipe($.changed('./coffeescript/controllers/*.coffee'))
-    .pipe($.coffee({bare: true})).on('error', $.util.log)
-    .pipe($.concat('controllers.js'))
-    .pipe(sourcemaps.write('../maps'))
-    .pipe(gulp.dest('./js/'))
-    .pipe(browserSync.reload({stream:true}));
-});
+// gulp.task('controllers', function() {
+//     gulp.src('./coffeescript/controllers#<{(|.coffee')
+//     .pipe(sourcemaps.init())
+//     .pipe($.changed('./coffeescript/controllers#<{(|.coffee'))
+//     .pipe($.coffee({bare: true})).on('error', $.util.log)
+//     .pipe($.concat('controllers.js'))
+//     .pipe(sourcemaps.write('../maps'))
+//     .pipe(gulp.dest('./js/'))
+//     .pipe(browserSync.reload({stream:true}));
+// });
 
 // compile your custom plugins in CoffeeScript
-gulp.task('coffee-plugins', function() {
-    gulp.src('./p_coffeescript/*.coffee')
-    .pipe(sourcemaps.init())
-    .pipe($.changed('./p_coffeescript/*.coffee'))
-    .pipe($.coffee({bare: true})).on('error', $.util.log)
-    .pipe(sourcemaps.write('../../maps'))
-    .pipe(gulp.dest('./js/plugins/'))
-    .pipe(browserSync.reload({stream:true}));
-});
+// gulp.task('coffee-plugins', function() {
+//     gulp.src('./p_coffeescript#<{(|.coffee')
+//     .pipe(sourcemaps.init())
+//     .pipe($.changed('./p_coffeescript#<{(|.coffee'))
+//     .pipe($.coffee({bare: true})).on('error', $.util.log)
+//     .pipe(sourcemaps.write('../../maps'))
+//     .pipe(gulp.dest('./js/plugins/'))
+//     .pipe(browserSync.reload({stream:true}));
+// });
 
 // Compile your less files
-gulp.task('less', function() {
-    gulp.src('./less/global.less')
-    .pipe(sourcemaps.init())
-    .pipe($.changed('./less/**/*.*'))
-    .pipe($.less()).on('error', $.util.log)
-    .pipe($.autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7", { cascade: true }))
-    .pipe($.rename('app.css'))
-    .pipe(sourcemaps.write('../maps'))
-    .pipe(gulp.dest('./css/'))
-    .pipe(filter('**/*.css'))
-    .pipe(browserSync.reload({stream:true}))
-});
+// gulp.task('less', function() {
+//     gulp.src('./less/global.less')
+//     .pipe(sourcemaps.init())
+//     .pipe($.changed('./less#<{(||)}>#*.*'))
+//     .pipe($.less()).on('error', $.util.log)
+//     .pipe($.autoprefixer("last 1 version", "> 1%", "ie 8", "ie 7", { cascade: true }))
+//     .pipe($.rename('app.css'))
+//     .pipe(sourcemaps.write('../maps'))
+//     .pipe(gulp.dest('./css/'))
+//     .pipe(filter('*|)}>#*.css'))
+//     .pipe(browserSync.reload({stream:true}))
+// });
 
 // Clean the dist folder
 gulp.task('clean', function(cb) {
@@ -112,10 +112,10 @@ gulp.task('pre-prepare', function() {
 });
 
 // Copy fonts folder to the root project folder
-gulp.task('font-prepare', function() {
-  gulp.src(['./bower_components/bootstrap/fonts/**/*.*/'], {base: './bower_components/bootstrap/fonts'})
-  .pipe(gulp.dest('fonts'));
-});
+// gulp.task('font-prepare', function() {
+//   gulp.src(['./bower_components/bootstrap/fonts#<{(||)}>#*.|)}>#'], {base: './bower_components/bootstrap/fonts'})
+//   .pipe(gulp.dest('fonts'));
+// });
 
 // Delete the tests folder from js
 // and start pre-prepare/font-prepare tasks
