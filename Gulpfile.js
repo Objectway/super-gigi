@@ -20,15 +20,14 @@ gulp.task('sass', function() {
     .pipe(browserSync.reload({stream:true}));
 });
 
-
 // Compile Jade
 gulp.task('jade', function() {
   gulp.src('./src/assets/jade/*.jade')
+  .pipe($.changed('./src/assets/jade/**/*.jade'))
   .pipe($.jade({ pretty: true }))
   .pipe(gulp.dest('./development/'))
   .pipe(browserSync.reload({stream: true}))
 });
-
 
 // Typescript
 gulp.task('typescript', function () {
@@ -62,9 +61,10 @@ gulp.task('minify', ['move'], function() {
 
 // Move the needed files and folders into a dist folder which can be deployed to the webserver
 gulp.task('move', ['clean'], function() {
-  gulp.src(['./development/**/*.*'], { base: './development' })
+  gulp.src(['./development/**/*.*', '!./development/sourcemaps/**/*'], { base: './development' })
   .pipe(gulp.dest('./dist'));
 });
+
 
 // browser-sync serve the work to
 // your browser of choice
@@ -87,4 +87,5 @@ gulp.task('dist', ['minify']);
 
 gulp.task('default', ['browser-sync'], function() {
   gulp.watch('./src/assets/sass/**/*.sass', ['sass']);
+  gulp.watch('./src/assets/jade/**/*.jade', ['jade']);
 });
