@@ -6,20 +6,18 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync');
-var filter = require('gulp-filter');
 var del = require('del');
 
-// compile CoffeeScript
-// gulp.task('coffee', function() {
-//     gulp.src('./coffeescript#<{(|.coffee')
-//     .pipe(sourcemaps.init())
-//     .pipe($.changed('./coffeescript#<{(|.coffee'))
-//     .pipe($.coffee({bare: true})).on('error', $.util.log)
-//     .pipe($.concat('app.js'))
-//     .pipe(sourcemaps.write('../maps'))
-//     .pipe(gulp.dest('./js/'))
-//     .pipe(browserSync.reload({stream:true}));
-// });
+// compile Sass and create the relative sourcemap
+gulp.task('sass', function() {
+    gulp.src('./src/assets/sass/main.sass')
+    .pipe(sourcemaps.init())
+    .pipe($.changed('./src/assets/sass/**/*.sass'))
+    .pipe($.sass()).on('error', $.util.log)
+    .pipe(sourcemaps.write('../sourcemaps'))
+    .pipe(gulp.dest('./development/css'))
+    .pipe(browserSync.reload({stream:true}));
+});
 
 
 // compile Angular relative CoffeeScript
@@ -66,15 +64,12 @@ gulp.task('clean', function(cb) {
 
 // Minify and Uglify
 gulp.task('minify', ['move'], function() {
-  gulp.src('./css/app.css')
+  gulp.src('./development/css/main.css')
   .pipe($.minifyCss())
   .pipe(gulp.dest('./dist/css'));
-  gulp.src('./js/app.js')
-  .pipe($.uglify())
-  .pipe(gulp.dest('./dist/js/'))
-  gulp.src('./js/controllers.js')
-  .pipe($.uglify())
-  .pipe(gulp.dest('./dist/js/'))
+  // gulp.src('./js/app.js')
+  // .pipe($.uglify())
+  // .pipe(gulp.dest('./dist/js/'))
 });
 
 // Move the needed files and folders into a dist folder which can be deployed to the webserver
