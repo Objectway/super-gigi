@@ -54,15 +54,15 @@ gulp.task('clean', function(cb) {
 gulp.task('minify', ['move'], function() {
   gulp.src('./development/css/main.css')
   .pipe($.minifyCss())
-  .pipe(gulp.dest('./dist/css'))
-  // gulp.src('./js/app.js')
-  // .pipe($.uglify())
-  // .pipe(gulp.dest('./dist/js/'))
+  .pipe(gulp.dest('./development/css/'));
+  gulp.src('./development/js/main.js')
+  .pipe($.uglify())
+  .pipe(gulp.dest('./development/js/'))
 });
 
 // Move the needed files and folders into a dist folder which can be deployed to the webserver
 gulp.task('move', ['clean'], function() {
-  gulp.src(['./src/assets/**/*.*'], { base: './src/' })
+  gulp.src(['./development/**/*.*'], { base: './development' })
   .pipe(gulp.dest('./dist'));
 });
 
