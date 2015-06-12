@@ -13,7 +13,7 @@ gulp.task('sass', function() {
     gulp.src('./src/assets/sass/main.sass')
     .pipe(sourcemaps.init())
     .pipe($.changed('./src/assets/sass/**/*.sass'))
-    .pipe($.sass()).on('error', $.util.log)
+    .pipe($.sass().on('error', $.sass.logError))
     .pipe($.autoprefixer('> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', { cascade: true }))
     .pipe(sourcemaps.write('../sourcemaps'))
     .pipe(gulp.dest('./development/css'))
@@ -44,6 +44,15 @@ gulp.task('typescript', function () {
   return tsResult.js.pipe(gulp.dest('./development/js'));
 });
 
+
+// Fonts task with "fontgen"
+gulp.task('fontgen', function () {
+  gulp.src('./src/assets/fonts/*.*')
+    .pipe($.fontgen({
+      dest: './src/assets/fonts/'
+    }))
+});
+
 // Clean the dist folder
 gulp.task('clean', function(cb) {
    return del(['./dist/*'], cb);
@@ -52,8 +61,8 @@ gulp.task('clean', function(cb) {
 // Minify and Uglify the dist folder files
 gulp.task('minify', ['move'], function() {
   gulp.src('./dist/css/main.css')
-  .pipe($.minifyCss())
-  .pipe(gulp.dest('./dist/css/'));
+    .pipe($.minifyCss())
+    .pipe(gulp.dest('./dist/css/'));
   gulp.src('./dist/js/main.js')
   .pipe($.uglify())
   .pipe(gulp.dest('./dist/js/'))
@@ -70,6 +79,7 @@ gulp.task('move', ['clean'], function() {
 // your browser of choice
 gulp.task('browser-sync', ['sass', 'jade'], function() {
   browserSync.init(['./src/jade/**/*.jade'], {
+    open: false,
     server: {
       baseDir: "./development"
     },
@@ -90,7 +100,7 @@ gulp.task('browser-sync', ['sass', 'jade'], function() {
 
 gulp.task('dist', ['minify']);
 
-gulp.task('default', ['browser-sync'], function() {
+gulp.task('default', ['browser-sync'], function () {
   gulp.watch('./src/assets/sass/**/*.sass', ['sass']);
   gulp.watch('./src/assets/jade/**/*.jade', ['jade']);
   gulp.watch('./src/assets/ts/**/*.ts', ['typescript']);
