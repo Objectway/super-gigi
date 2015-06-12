@@ -66,7 +66,6 @@ gulp.task('move', ['clean'], function() {
   .pipe(gulp.dest('./dist'));
 });
 
-
 // browser-sync serve the work to
 // your browser of choice
 gulp.task('browser-sync', ['sass', 'jade'], function() {
