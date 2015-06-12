@@ -1,6 +1,6 @@
-//-----------------
-// GULPFILE EXAMPLE
-//-----------------
+//***********
+// GULPFILE *
+//***********
 
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
@@ -49,19 +49,20 @@ gulp.task('clean', function(cb) {
    return del(['./dist/*'], cb);
 });
 
-// Minify and Uglify
+// Minify and Uglify the dist folder files
 gulp.task('minify', ['move'], function() {
-  gulp.src('./development/css/main.css')
+  gulp.src('./dist/css/main.css')
   .pipe($.minifyCss())
-  .pipe(gulp.dest('./development/css/'));
-  gulp.src('./development/js/main.js')
+  .pipe(gulp.dest('./dist/css/'));
+  gulp.src('./dist/js/main.js')
   .pipe($.uglify())
-  .pipe(gulp.dest('./development/js/'))
+  .pipe(gulp.dest('./dist/js/'))
 });
 
-// Move the needed files and folders into a dist folder which can be deployed to the webserver
+// Move the needed files and folders
+// into a dist folder which can be deployed
 gulp.task('move', ['clean'], function() {
-  gulp.src(['./development/**/*.*', '!./development/sourcemaps/**/*'], { base: './development' })
+  gulp.src(['./development/**/*', '!./development/sourcemaps/**/*'], { base: './development' })
   .pipe(gulp.dest('./dist'));
 });
 
@@ -82,10 +83,16 @@ gulp.task('browser-sync', ['sass', 'jade'], function() {
   });
 });
 
-// FINAL TASKS
+
+
+//**************
+// FINAL TASKS *
+//**************
+
 gulp.task('dist', ['minify']);
 
 gulp.task('default', ['browser-sync'], function() {
   gulp.watch('./src/assets/sass/**/*.sass', ['sass']);
   gulp.watch('./src/assets/jade/**/*.jade', ['jade']);
+  gulp.watch('./src/assets/ts/**/*.ts', ['typescript']);
 });
