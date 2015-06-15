@@ -29,4 +29,5 @@ gulp.task('fontgen', require('./gulptasks/fontgen.js'));
 gulp.task('clean', require('./gulptasks/clean.js'));
 gulp.task('dist', require('./gulptasks/minify.js'));
 gulp.task('move', require('./gulptasks/move.js'));
+// gulp.task('browser-sync', require('./gulptasks/browser-sync.js'));
 gulp.task('default', require('./gulptasks/default.js'));
