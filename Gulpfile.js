@@ -8,6 +8,9 @@ var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync');
 var del = require('del');
 
+var sprity = require('sprity');
+var gulpif = require('gulp-if');
+
 // Compile Sass and create the relative sourcemap
 gulp.task('sass', function() {
     gulp.src('./src/assets/sass/main.sass')
@@ -27,6 +30,16 @@ gulp.task('jade', function() {
   .pipe($.jade({ pretty: true }))
   .pipe(gulp.dest('./development/'))
   .pipe(browserSync.reload({stream: true}))
+});
+
+// Sprites
+gulp.task('sprites', function () {
+  return sprity.src({
+    src: './src/assets/sprites/**/*.{png,jpg}',
+    style: './sprite.css',
+    processor: 'sass',
+  })
+  .pipe(gulpif('*.png', gulp.dest('./development/sprites/'), gulp.dest('./dist/css/')))
 });
 
 // Typescript
