@@ -19,6 +19,12 @@ gulp.task('browser-sync', ['sass', 'jade'], function() {
   });
 });
 
+gulp.task('default', ['browser-sync'], function () {
+  gulp.watch('./src/assets/sass/**/*.sass', ['sass']);
+  gulp.watch('./src/assets/jade/**/*.jade', ['jade']);
+  gulp.watch('./src/assets/ts/**/*.ts', ['typescript']);
+});
+
 // SPLITTED TASKS
 gulp.task('dist', ['minify']);
 gulp.task('sass', require('./gulptasks/sass.js'));
@@ -30,4 +36,4 @@ gulp.task('clean', require('./gulptasks/clean.js'));
 gulp.task('dist', require('./gulptasks/minify.js'));
 gulp.task('move', require('./gulptasks/move.js'));
 // gulp.task('browser-sync', require('./gulptasks/browser-sync.js'));
-gulp.task('default', require('./gulptasks/default.js'));
+// gulp.task('default', require('./gulptasks/default.js'));
