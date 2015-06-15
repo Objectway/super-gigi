@@ -1,14 +1,14 @@
 // UI-TOOLKIT GULPFILE
-
-var gulp = require('gulp');
-var browserSync = require('browser-sync');
+var env         = require('./gulp/env.js'),
+    browserSync = require('browser-sync'),
+    gulp        = require('gulp');
 
 // BROWSER SYNC MAIN TASK
-gulp.task('browser-sync', ['sass', 'jade'], function() {
-  browserSync.init(['./src/jade/**/*.jade'], {
+gulp.task('browser-sync', ['style', 'view'], function() {
+  browserSync.init({
     open: false,
     server: {
-      baseDir: "./development"
+      baseDir: env.devDir
     },
     ghostMode: {
       clicks: false,
@@ -20,20 +20,24 @@ gulp.task('browser-sync', ['sass', 'jade'], function() {
 });
 
 gulp.task('default', ['browser-sync'], function () {
-  gulp.watch('./src/assets/sass/**/*.sass', ['sass']);
-  gulp.watch('./src/assets/jade/**/*.jade', ['jade']);
-  gulp.watch('./src/assets/ts/**/*.ts', ['typescript']);
+  gulp.watch(env.srcDir + 'sass/**/*.sass', ['sass']);
+  gulp.watch(env.srcDir + 'jade/**/*.jade', ['jade']);
+  gulp.watch(env.srcDir + 'ts/**/*.ts', ['typescript']);
 });
 
 // SPLITTED TASKS
-gulp.task('dist', ['minify']);
-gulp.task('sass', require('./gulptasks/sass.js'));
-gulp.task('jade', require('./gulptasks/jade.js'));
-gulp.task('sprites', require('./gulptasks/sprites.js'));
-gulp.task('typescript', require('./gulptasks/typescript.js'));
-gulp.task('fontgen', require('./gulptasks/fontgen.js'));
-gulp.task('clean', require('./gulptasks/clean.js'));
-gulp.task('dist', require('./gulptasks/minify.js'));
-gulp.task('move', require('./gulptasks/move.js'));
+gulp.task('style', require(env.tasksDir + '/sass.js'));
+gulp.task('view', require(env.tasksDir + '/jade.js'));
+gulp.task('sprite', require(env.tasksDir + '/sprites.js'));
+gulp.task('script', require(env.tasksDir + '/typescript.js'));
+gulp.task('font', require(env.tasksDir + '/fontgen.js'));
+gulp.task('iconfont', require(env.tasksDir + '/iconfont.js'));
+
+gulp.task('clean', require(env.tasksDir + '/clean.js'));
+gulp.task('dist', require(env.tasksDir + '/minify.js'));
+gulp.task('move', require(env.tasksDir + '/move.js'));
+
+
+
 // gulp.task('browser-sync', require('./gulptasks/browser-sync.js'));
 // gulp.task('default', require('./gulptasks/default.js'));
