@@ -1,8 +1,10 @@
 module.exports =  {
-  devDir:       './development',
-  srcDir:       './src/assets',
-  distDir:      './dist',
-  tasksDir:     './gulp/tasks',
+  folder: {
+    dev: './development',
+    src: './src/assets',
+    dist: './dist',
+    tasks: './gulp/tasks'
+  },
   namespaceCSS: 'toolkit',
-  prefixerOn:   true
+  compatibility: ['> 1%', 'last 3 versions', 'Firefox ESR', 'Opera 12.1'],
 };

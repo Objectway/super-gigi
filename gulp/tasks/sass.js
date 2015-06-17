@@ -1,23 +1,29 @@
-var env          = require('../env.js'),
-    gulp         = require('gulp'),
-    browserSync  = require('browser-sync'),
-    sourcemaps   = require('gulp-sourcemaps'),
-    changed      = require('gulp-changed'),
-    autoprefixer = require('gulp-autoprefixer'),
-    cssPrefix    = require('gulp-css-prefix'),
-    gulpif       = require('gulp-if'),
-    sass         = require('gulp-sass');
+var env = require('../env.js');
+var gulp = require('gulp');
+var browserSync = require('browser-sync');
+var sourcemaps = require('gulp-sourcemaps');
+var changed = require('gulp-changed');
+var autoprefixer = require('gulp-autoprefixer');
+var cssPrefix = require('gulp-css-prefix');
+var gulpif = require('gulp-if');
+var sass = require('gulp-sass');
 
-var prefixer = env.prefixerOn;
+
 
 module.exports = function() {
-  return gulp.src(env.srcDir + '/styles/main.sass')
+  return gulp.src(env.folder.src + '/styles/main.sass')
     .pipe(sourcemaps.init())
-    .pipe(changed(env.srcDir + '/styles/**/*.sass'))
+    .pipe(changed(env.folder.src + '/styles/**/*.sass'))
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulpif(prefixer, cssPrefix({'parentClass': env.namespaceCSS})))
-    .pipe(autoprefixer('> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', { cascade: true }))
+    .pipe(gulpif(
+      env.namespaceCSS,
+      cssPrefix({'parentClass': env.namespaceCSS})
+    ))
+    .pipe(autoprefixer({
+      browsers: env.compatibility,
+      cascade: true
+    }))
     .pipe(sourcemaps.write('../sourcemaps'))
-    .pipe(gulp.dest(env.devDir + '/styles/'))
+    .pipe(gulp.dest(env.folder.dev + '/styles/'))
     .pipe(browserSync.reload({stream:true}));
 };

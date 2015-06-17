@@ -1,14 +1,18 @@
-var env         = require('../env.js'),
-    gulp        = require('gulp'),
-    browserSync = require('browser-sync'),
-    sourcemaps  = require('gulp-sourcemaps'),
-    changed     = require('gulp-changed'),
-    typescript  = require('gulp-typescript');
+var env = require('../env.js');
+var gulp = require('gulp');
+var browserSync = require('browser-sync');
+var sourcemaps = require('gulp-sourcemaps');
+var changed = require('gulp-changed');
+var typescript = require('gulp-typescript');
+
+
 
 module.exports = function() {
-  return gulp.src(env.srcDir + '/scripts/**/*.ts')
+  var sources = env.folder.src + '/scripts/**/*.ts';
+
+  return gulp.src(sources)
     .pipe(sourcemaps.init())
-    .pipe(changed(env.srcDir + '/scripts/**/*.ts'))
+    .pipe(changed(sources))
     .pipe(typescript({
       module: 'amd',
       verbose: false,
@@ -18,6 +22,6 @@ module.exports = function() {
       allowImportModule : true,
       out: 'main.js'
     }))
-    .js.pipe(gulp.dest(env.devDir + '/scripts/'))
+    .js.pipe(gulp.dest(env.folder.dev + '/scripts/'))
     .pipe(browserSync.reload({stream:true}));
 };

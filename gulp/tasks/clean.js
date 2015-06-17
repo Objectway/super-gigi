@@ -1,8 +1,10 @@
-var env     = require('../env.js'),
-    gulp    = require('gulp'),
-    del     = require('del');
+var env = require('../env.js');
+var gulp = require('gulp');
+var del = require('del');
+
+
 
 module.exports = function() {
-   return del([env.distDir]);
+   return del([env.folder.dist]);
 };
 

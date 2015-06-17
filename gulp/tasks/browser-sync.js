@@ -1,12 +1,14 @@
-var env         = require('../env.js'),
-    gulp        = require('gulp'),
-    browserSync = require('browser-sync').create();
+var env = require('../env.js');
+var gulp = require('gulp');
+var browserSync = require('browser-sync').create();
+
+
 
 module.exports = function() {
   browserSync.init({
     open: false,
     server: {
-      baseDir: env.devDir
+      baseDir: env.folder.dev
     },
     ghostMode: {
       clicks: false,

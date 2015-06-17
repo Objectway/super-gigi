@@ -1,13 +1,16 @@
-var env       = require('../env.js'),
-    gulp      = require('gulp'),
-    minifyCss = require('gulp-minify-css'),
-    uglify    = require('gulp-uglify');
+var env = require('../env.js');
+var gulp = require('gulp');
+var minifyCss = require('gulp-minify-css');
+var uglify = require('gulp-uglify');
+
+
 
 module.exports = function() {
-  gulp.src(env.distDir + '/styles/main.css')
+  gulp.src(env.folder.dist + '/styles/main.css')
     .pipe(minifyCss())
-    .pipe(gulp.dest(env.distDir + '/styles/'));
-  gulp.src(env.distDir + '/scripts/main.js')
+    .pipe(gulp.dest(env.folder.dist + '/styles/'));
+
+  gulp.src(env.folder.dist + '/scripts/main.js')
     .pipe(uglify())
-    .pipe(gulp.dest(env.distDir + '/scripts/'));
+    .pipe(gulp.dest(env.folder.dist + '/scripts/'));
 };

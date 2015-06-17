@@ -1,10 +1,12 @@
-var env         = require('../env.js'),
-    gulp        = require('gulp'),
-    fontgen     = require('gulp-fontgen');
+var env = require('../env.js');
+var gulp = require('gulp');
+var fontgen = require('gulp-fontgen');
+
+
 
 module.exports = function () {
-  return gulp.src(env.srcDir + '/styles/fonts/*.{otf,ttf}')
+  return gulp.src(env.folder.src + '/styles/fonts/*.{otf,ttf}')
     .pipe(fontgen({
-      dest: env.srcDir + '/styles/fonts/'
-    }))
+      dest: env.folder.src + '/styles/fonts/'
+    }));
 };

@@ -1,8 +1,10 @@
-var gulp = require('gulp'),
-    env  = require('../env.js');
+var env = require('../env.js');
+var gulp = require('gulp');
+
+
 
 module.exports = function () {
-  gulp.watch(env.srcDir + '/styles/**/*.sass', ['style']);
-  gulp.watch(env.srcDir + '/views/**/*.jade', ['view']);
-  gulp.watch(env.srcDir + '/scripts/**/*.ts', ['script']);
+  gulp.watch(env.folder.src + '/styles/**/*.sass', ['style']);
+  gulp.watch(env.folder.src + '/views/**/*.jade', ['view']);
+  gulp.watch(env.folder.src + '/scripts/**/*.ts', ['script']);
 };

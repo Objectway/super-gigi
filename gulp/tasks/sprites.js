@@ -1,23 +1,30 @@
-var env         = require('../env.js'),
-    gulp        = require('gulp'),
-    sprite      = require('gulp.spritesmith'),
-    gulpif      = require('gulp-if');
+var env = require('../env.js');
+var gulp = require('gulp');
+var sprite = require('gulp.spritesmith');
+var gulpif = require('gulp-if');
+
+
 
 module.exports = function () {
-  spriteData = gulp.src([env.srcDir + '/images/**/*.png', '!' + env.srcDir + '/images/sprites/*.png'])
+  var sources = [
+    env.folder.src + '/images/**/*.png',
+    '!' + env.folder.src + '/images/sprites/*.png'
+  ];
+
+  return gulp.src(sources)
     .pipe(sprite({
       imgName: 'sprite.png',
       cssName: 'sprites.sass',
       algorithm: 'binary-tree',
-      algorithmOpts: {
-        sort: false
-      },
+      algorithmOpts: { sort: false },
       cssSpritesheetName: 'images',
-
       // Retina images
-      retinaSrcFilter: env.srcDir + '/images/**/*2x.png',
+      retinaSrcFilter: env.folder.src + '/images/**/*2x.png',
       retinaImgName: 'sprite@2x.png'
-    })
-  )
-    .pipe(gulpif('*.png', gulp.dest(env.srcDir + '/images/sprites/'), gulp.dest(env.srcDir + '/sass/sprites/')));
+    }))
+    .pipe(gulpif(
+      '*.png',
+      gulp.dest(env.folder.src + '/images/sprites/'),
+      gulp.dest(env.folder.src + '/sass/sprites/'))
+    );
 };
