@@ -14,6 +14,9 @@ module.exports = function() {
   return gulp.src(env.folder.src + '/styles/main.sass')
     .pipe(sourcemaps.init())
     .pipe(changed(env.folder.src + '/styles/**/*.sass'))
+    .pipe(sass({
+      includePaths: ['./node_modules/']
+    }).on('error', sass.logError))
     .pipe(sass().on('error', sass.logError))
     .pipe(gulpif(
       env.namespaceCSS,
