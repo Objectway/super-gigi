@@ -4,7 +4,10 @@
   "description": "ui toolkit for the GIG developer",
   "main": "Gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "gulp serve",
+    "compile": "gulp compile",
+    "dist": "gulp dist",
+    "default": "gulp"
   },
   "repository": {
     "type": "git",
