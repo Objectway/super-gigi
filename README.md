@@ -1,5 +1,5 @@
-UI-TOOLKIT
-==========
+OW-STARTERKIT
+=============
 
 ### USEFUL TASKS
 `$ gulp dist` -> Compile the distribution folder
