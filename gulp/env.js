@@ -3,5 +3,6 @@ module.exports =  {
   srcDir:       './src/assets',
   distDir:      './dist',
   tasksDir:     './gulp/tasks',
-  namespaceCSS: 'toolkit-'
+  namespaceCSS: 'toolkit',
+  prefixerOn:   true
 };
