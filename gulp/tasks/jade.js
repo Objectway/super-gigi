@@ -7,7 +7,10 @@ var env         = require('../env.js'),
 module.exports = function() {
   return gulp.src(env.srcDir + '/views/*.jade')
   .pipe(changed(env.srcDir + '/views/**/*.jade'))
-  .pipe(jade({ pretty: true }))
+  .pipe(jade({
+    basedir: 'node_modules/',
+    pretty: true
+  }))
   .pipe(gulp.dest(env.devDir))
   .pipe(browserSync.reload({stream: true}));
 };
