@@ -4,10 +4,9 @@
   "description": "ui toolkit for the GIG developer",
   "main": "Gulpfile.js",
   "scripts": {
-    "serve": "gulp serve",
     "compile": "gulp compile",
-    "dist": "gulp dist",
-    "default": "gulp"
+    "build": "gulp dist",
+    "dev": "gulp"
   },
   "repository": {
     "type": "git",
