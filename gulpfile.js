@@ -20,8 +20,8 @@ gulp.task('font', require(env.tasksDir + '/fontgen.js'));
 gulp.task('iconfont', require(env.tasksDir + '/iconfont.js'));
 gulp.task('srcWatch', require(env.tasksDir + '/src-watch.js'));
 gulp.task('clean', require(env.tasksDir + '/clean.js'));
-gulp.task('move', require(env.tasksDir + '/move.js'));
 gulp.task('minify', ['move'], require(env.tasksDir + '/minify.js'));
+gulp.task('move', require(env.tasksDir + '/move.js'));
 
 
 // USEFUL TASKS
