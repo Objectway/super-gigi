@@ -18,7 +18,6 @@ module.exports = function() {
       for(i = 0; i < glyphs.length; i++){
         glyphs[i].codepoint = 0xEA01 + i;
       }
-      // console.log(glyphs, options)
       gulp.src([env.srcDir + '/styles/icons/template/iconsViewer.html'])
         .pipe(consolidate('lodash', {
           glyphs: glyphs,
