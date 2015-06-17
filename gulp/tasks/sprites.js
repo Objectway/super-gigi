@@ -14,7 +14,7 @@ module.exports = function () {
   return gulp.src(sources)
     .pipe(sprite({
       imgName: 'sprite.png',
-      cssName: 'sprites.sass',
+      cssName: '_sprites.sass',
       algorithm: 'binary-tree',
       algorithmOpts: { sort: false },
       cssSpritesheetName: 'images',
@@ -25,6 +25,6 @@ module.exports = function () {
     .pipe(gulpif(
       '*.png',
       gulp.dest(env.folder.src + '/images/sprites/'),
-      gulp.dest(env.folder.src + '/sass/sprites/'))
+      gulp.dest(env.folder.src + '/styles/sprites/'))
     );
 };

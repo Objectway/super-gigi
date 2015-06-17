@@ -1,0 +1,28 @@
+// - REMOVE THE UNIT FROM A VALUE. BASED ON ZURB FOUNDATION
+@function remove-unit($value)
+  @return $value / ($value * 0 + 1)
+
+// - TRANSFORM AN ARRAY OF PX VALUES (with or without px value) in rem unit - //
+
+// - EXAMPLES
+
+  // width: rem-calc(16 8 16 8)
+  // will return
+  // width: 1rem 0.5rem 1rem 0.5rem
+
+  // width: rem-calc(8)
+  // will return
+  // width: 1rem
+
+
+$rem-base: 16px !default
+
+@function rem-calc($values, $base-value: $rem-base)
+  @if length($values) == 1
+    @return remove-unit($values) / remove-unit($base-value) * 1rem
+  @else
+    // empty array that we will return
+    $remValues: ()
+    @for $i from 1 through length($values)
+      $remValues: append($remValues, remove-unit($value) / remove-unit($base-value) * 1rem)
+    @return $remValues
