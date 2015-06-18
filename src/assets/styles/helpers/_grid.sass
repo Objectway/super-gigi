@@ -1,5 +1,113 @@
+// - MEDIAQUERY MIXINS - //
+
+// - Generate Media Query
+=media-query($query: xxsmall, $only: false)
+  @if $only
+    [data-eq-state="#{$query}"] &
+      @content
+  @else
+    [data-eq-state$="#{$query}"] &
+      @content
+    @each $current-query-name in $dwx-breakpoint-name
+      @if index($dwx-breakpoint-name, $query) < index($dwx-breakpoint-name, $current-query-name)
+        @at-root
+          [data-eq-state$="#{$current-query-name}"]
+            @extend [data-eq-state$="#{$query}"] &
+
+// Mixin to generate eqjs grid
+=eq-pts($states)
+  &:before
+    display: none
+    content: '#{str-slice(inspect($states), 1, -1)}'
+
+
 // - CONFIGURATION - //
+$min-unit: em-calc(1)
+
+
+
+// - MEDIAQUERIES SETTINGS
+// Screens
+$screen: "only screen" !default
+$landscape: "#{$screen} and (orientation: landscape)" !default
+$portrait: "#{$screen} and (orientation: portrait)" !default
+
+// Widths
+$xxsmall: 0em !default
+$xsmall:  em-calc(321) !default
+$small:   em-calc(481) !default
+$medium:  em-calc(721) !default
+$large:   em-calc(1025) !default
+$xlarge:  em-calc(1281) !default
+$xxlarge: em-calc(1441) !default
+
+// Used Media Queries (the arrays must have same length)
+$breakpoint-names: xxsmall xsmall small medium large xlarge xxlarge !default
+$breakpoint-values: $xxsmall, $xsmall, $small, $medium, $large, $xlarge, $xxlarge !default
+@if length($breakpoint-names) != length($breakpoint-values)
+  @warn "$breakpoint-names and $breakpoint-values MUST have same length"
+
+
+// Mediaqueries
+$xxsmall-up: $screen !default
+$xxsmall-only: "#{$screen} and (max-width: #{$xsmall - $min-unit})" !default
+
+$xsmall-up: "#{$screen} and (min-width:#{$xsmall})" !default
+$xsmall-only: "#{$screen} and (min-width:#{$xsmall}) and (max-width:#{$small - $min-unit})" !default
+
+$small-up: "#{$screen} and (min-width:#{$small})" !default
+$small-only: "#{$screen} and (min-width:#{$small}) and (max-width:#{$medium - $min-unit})" !default
+
+$medium-up: "#{$screen} and (min-width:#{$medium})" !default
+$medium-only: "#{$screen} and (min-width:#{$medium}) and (max-width:#{$large - $min-unit})" !default
+
+$large-up: "#{$screen} and (min-width:#{$large})" !default
+$large-only: "#{$screen} and (min-width:#{$large}) and (max-width:#{$xlarge - $min-unit})" !default
+
+$xlarge-up: "#{$screen} and (min-width:#{$xlarge})" !default
+$xlarge-only: "#{$screen} and (min-width:#{$xlarge}) and (max-width:#{$xxlarge - $min-unit})" !default
+
+$xxlarge-up: "#{$screen} and (min-width:#{$xxlarge})" !default
+$xxlarge-only: "#{$screen} and (min-width:#{$xxlarge}) and (max-width: 99999999em)" !default
+
+$breakpoint-names: xxsmall xsmall small medium large xlarge xxlarge !default
+$breakpoint-queries: unquote($xxsmall-up), unquote($xsmall-up), unquote($small-up), unquote($medium-up), unquote($large-up), unquote($xlarge-up), unquote($xxlarge-up) !default
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Element Query Setting String
+$eq-setting-string: ""
+@for $i from 1 through length($breakpoint-names)
+  $eq-setting-value: remove-unit(px-calc(nth($breakpoint-values, $i)))
+
+  @if $i == 1
+    $eq-setting-string: #{nth($breakpoint-names, $i)}
+  @else
+    $eq-setting-string: str-insert($eq-setting-string, #{nth($breakpoint-names, $i)}, str-length($eq-setting-string)+1)
+  $eq-setting-string: str-insert($eq-setting-string, #{unquote(": ")}, str-length($eq-setting-string))
+  $eq-setting-string: str-insert($eq-setting-string, #{$eq-setting-value}, str-length($eq-setting-string))
+  @if $i != length($breakpoint-names)
+    $eq-setting-string: str-insert($eq-setting-string, #{unquote(", ")}, str-length($eq-setting-string))
+
+// The element on we'll add eqjs javascript
+.widget
+  +eq-pts(("small: 0, medium: 550, medium-landscape: 700, large: 800"))
+html:before
+  display: none
+  content: '.widget, .widgets'
+
 body
-  width: rem-calc(40)
+  pippo: quote($eq-setting-string)
+
 
 //Grid mixin
