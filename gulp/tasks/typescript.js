@@ -4,6 +4,7 @@ var browserSync = require('browser-sync');
 var sourcemaps = require('gulp-sourcemaps');
 var changed = require('gulp-changed');
 var typescript = require('gulp-typescript');
+var util = require('gulp-util');
 
 
 
@@ -22,6 +23,10 @@ module.exports = function() {
       allowImportModule : true,
       out: 'main.js'
     }))
+    .on('error', function (err) {
+      util.log(err.message);
+      this.emit('end');
+    })
     .js.pipe(gulp.dest(env.folder.dev + '/scripts/'))
     .pipe(browserSync.reload({stream:true}));
 };
