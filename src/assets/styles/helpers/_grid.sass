@@ -1,8 +1,13 @@
 // - CONFIGURATION - //
 
 // Global
-$min-unit: em-calc(1)
-$eq-grid: true !default
+$min-unit: em-calc(1) !default
+$eq-grid: false !default
+$row-width: rem-calc(1920) !default
+$column-gutter: rem-calc(30) !default
+$grid-columns: 12 !default
+$use-classes: false !default
+$use-placeholder: false !default
 
 // - MEDIAQUERIES SETTINGS
 // Screens
@@ -64,7 +69,52 @@ $eq-setting-string: ()
       @media #{$screen} and (min-width: #{$current-break-point})
         @content
 
+// Row Mixin
+=grid-row($nested: false)
+  @if $nested
+    width: 100%
+    margin: 0 -$column-gutter / 2
+  @else
+    width: $row-width
+    display: flex
+    flex-wrap: wrap
 
+// Row Placeholder and class
+@if $use-placeholder
+  %row
+    +grid-row
+  %row-nested
+    +grid-row(true)
+
+@if $use-classes
+  .row
+    +grid-row
+    .row
+      +grid-row(true)
+
+// Column Mixin
+=grid-column($width: 'auto', $collapse: false)
+  display: flex
+  @if $collapse == false
+    padding: 0 $column-gutter / 2
+
+
+  @if $width == 'auto'
+    width: auto
+    flex-grow: 1
+
+  @else if length($width) == 1
+    width: unquote((nth($width, 1) / $grid-columns * 100) + '%')
+
+  @else if length($width) == 3 and nth($width, 2) == "of"
+    width: unquote((nth($width, 1) / nth($width, 3) * 100) + '%')
+
+  @else
+    $keys: map-keys($width)
+    $values: map-values($width)
+    @for $i from 1 through length($width)
+      +media-query(nth($keys, $i))
+        width: unquote((nth($values, $i) / $grid-columns * 100) + '%')
 
 
 
@@ -72,7 +122,7 @@ $eq-setting-string: ()
 .widget
   &:before
     display: none
-    content: '#{inspect($states)}'
+    content: '#{inspect($eq-setting-string)}'
 html:before
   display: none
   content: '.widget, .widgets'
