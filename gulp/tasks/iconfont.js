@@ -43,7 +43,7 @@ module.exports = function() {
           glyphs: glyphs,
           fontName: fontName,
           className: className,
-          fontPath: '../fonts/'
+          fontPath: 'icons/fonts/'
         }))
         .pipe(gulp.dest(env.folder.src + '/styles/icons/dev/'));
     })
