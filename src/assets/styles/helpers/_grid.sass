@@ -71,13 +71,15 @@ $eq-setting-string: ()
 
 // Row Mixin
 =grid-row($nested: false)
+  display: flex
+  flex-wrap: wrap
+  flex-grow: 1
+  margin: 0 auto
   @if $nested
     width: 100%
-    margin: 0 -$column-gutter / 2
+    margin: 0 (-$column-gutter / 2)
   @else
     max-width: $row-width
-    display: flex
-    flex-wrap: wrap
 
 // Row Placeholder and class
 @if $use-placeholder
@@ -95,9 +97,9 @@ $eq-setting-string: ()
 // Column Mixin
 =grid-column($width: 'auto', $collapse: false)
   display: flex
+
   @if $collapse == false
     padding: 0 $column-gutter / 2
-
 
   @if $width == 'auto'
     width: auto
@@ -110,11 +112,13 @@ $eq-setting-string: ()
     width: unquote((nth($width, 1) / nth($width, 3) * 100) + '%')
 
   @else
-    $keys: map-keys($width)
-    $values: map-values($width)
-    @for $i from 1 through length($width)
-      +media-query(nth($keys, $i))
-        width: unquote((nth($values, $i) / $grid-columns * 100) + '%')
+    @each $query, $value in $width
+      +media-query($query)
+        @if $value == auto
+          width: auto
+          flex-grow: 1
+        @else
+          width: unquote(($value / $grid-columns * 100) + '%')
 
 
 
