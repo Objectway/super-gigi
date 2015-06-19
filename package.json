@@ -44,6 +44,7 @@
     "gulp-typescript": "^2.7.6",
     "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.5",
+    "gulp-watch": "^4.2.4",
     "gulp.spritesmith": "^3.8.2",
     "lodash": "^3.9.3",
     "sprity-sass": "^1.0.4",
