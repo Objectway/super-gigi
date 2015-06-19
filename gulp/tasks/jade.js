@@ -2,7 +2,6 @@ var env = require('../env.js');
 var gulp = require('gulp');
 var jade = require('gulp-jade');
 var changed = require('gulp-changed');
-var browserSync = require('browser-sync');
 var util = require('gulp-util');
 
 
@@ -18,6 +17,5 @@ module.exports = function() {
       util.log(err.message);
       this.emit('end');
     })
-    .pipe(gulp.dest(env.folder.dev))
-    .pipe(browserSync.reload({stream: true}));
+    .pipe(gulp.dest(env.folder.dev));
 };

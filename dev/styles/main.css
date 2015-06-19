@@ -1,0 +1,8 @@
+.gul-sass-anti-buster {
+  content: "this is for gulp-sass-bug on empty files"; }
+
+body {
+  color: red;
+  border: 1px solid #000; }
+
+/*# sourceMappingURL=../sourcemaps/main.css.map */

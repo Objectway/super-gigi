@@ -1,6 +1,5 @@
 var env = require('../env.js');
 var gulp = require('gulp');
-var browserSync = require('browser-sync');
 var sourcemaps = require('gulp-sourcemaps');
 var changed = require('gulp-changed');
 var typescript = require('gulp-typescript');
@@ -27,6 +26,5 @@ module.exports = function() {
       util.log(err.message);
       this.emit('end');
     })
-    .js.pipe(gulp.dest(env.folder.dev + '/scripts/'))
-    .pipe(browserSync.reload({stream:true}));
+    .js.pipe(gulp.dest(env.folder.dev + '/scripts/'));
 };

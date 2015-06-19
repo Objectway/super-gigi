@@ -1,6 +1,5 @@
 var env = require('../env.js');
 var gulp = require('gulp');
-var browserSync = require('browser-sync');
 var sourcemaps = require('gulp-sourcemaps');
 var changed = require('gulp-changed');
 var autoprefixer = require('gulp-autoprefixer');
@@ -31,6 +30,5 @@ module.exports = function() {
       cascade: true
     }))
     .pipe(sourcemaps.write('../sourcemaps'))
-    .pipe(gulp.dest(env.folder.dev + '/styles/'))
-    .pipe(browserSync.reload({stream:true}));
+    .pipe(gulp.dest(env.folder.dev + '/styles/'));
 };

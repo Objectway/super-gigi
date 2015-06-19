@@ -28,4 +28,4 @@ gulp.task('move', env.loadTask('move'));
 gulp.task('dist', ['clean', 'minify']);
 gulp.task('compile', ['style', 'view', 'script']);
 gulp.task('default', ['compile', 'srcWatch'], env.loadTask('browser-sync'));
-gulp.task('serve', env.loadTask('browser-sync'));
+gulp.task('serve', ['srcWatch'], env.loadTask('browser-sync'));
