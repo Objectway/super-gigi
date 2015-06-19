@@ -1,11 +1,11 @@
 var env = require('../env.js');
 var gulp = require('gulp');
-var browserSync = require('browser-sync').create();
+var bs = require('browser-sync').create();
 
 
 
 module.exports = function() {
-  browserSync.init({
+  bs.init({
     open: false,
     notify: false,
     server: {
@@ -19,13 +19,7 @@ module.exports = function() {
     }
   });
 
-  gulp
-    .watch(env.folder.dev + "/styles/main.css")
-    .on('change', browserSync.reload);
-  gulp
-    .watch(env.folder.dev + "/scripts/main.js")
-    .on('change', browserSync.reload);
-  gulp
-    .watch(env.folder.dev + "/**/*.html")
-    .on('change', browserSync.reload);
+  bs.watch(env.folder.dev + "/styles/main.css").on("change", bs.reload);
+  bs.watch(env.folder.dev + "/scripts/main.js").on('change', bs.reload);
+  bs.watch(env.folder.dev + "/**/*.html").on('change', bs.reload);
 };
