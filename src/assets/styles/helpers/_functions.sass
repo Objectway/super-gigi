@@ -35,7 +35,7 @@ $rem-base: 16px !default
   @else
     // empty array that we will return
     $emValues: ()
-    @for $i from 1 through length($values)
+    @each $value in $values
       $emValues: append($emValues, remove-unit($value) / remove-unit($base-value) * 1em)
     @return $emValues
 
@@ -46,6 +46,6 @@ $rem-base: 16px !default
   @else
     // empty array that we will return
     $pxValues: ()
-    @for $i from 1 through length($values)
+    @each $value in $values
       $pxValues: append($rpxValues, remove-unit($value) * remove-unit($base-value) * 1px)
     @return $pxValues
