@@ -22,6 +22,7 @@ gulp.task('srcWatch', env.loadTask('src-watch'));
 gulp.task('clean', env.loadTask('clean'));
 gulp.task('minify', ['move'], env.loadTask('minify'));
 gulp.task('move', env.loadTask('move'));
+gulp.task('compress', env.loadTask('compress'));
 
 
 // USEFUL TASKS
