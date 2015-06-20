@@ -32,28 +32,36 @@ $grid-end: right
 
 =grid-space($property: width, $attr: 'auto')
   @if $attr == 'auto'
-    $attr: auto
-    flex-grow: 1
-  @else if length($property) == 1
-    $attr: unquote((nth($property, 1) / $grid-columns * 100) + '%')
+    #{$property}: auto
 
-  @else if length($property) == 3 and nth($property, 2) == "of"
-    $attr: unquote((nth($property, 1) / nth($property, 3) * 100) + '%')
+  @else if length($attr) == 1
+    #{$property}: unquote((nth($attr, 1) / $grid-columns * 100) + '%')
+
+  @else if length($attr) == 3 and nth($attr, 2) == "of"
+    #{$property}: unquote((nth($attr, 1) / nth($attr, 3) * 100) + '%')
 
   @else
-    @each $query, $value in $property
+    @each $query, $value in $attr
       +media-query($query)
         @if $value == auto
-          $attr: auto
-          flex-grow: 1
+          #{$property}: auto
         @else
-          $attr: unquote(($value / $grid-columns * 100) + '%')
+          #{$property}: unquote(($value / $grid-columns * 100) + '%')
 
 // Column Mixin
-=grid-column($width: 'auto', $collapse: null, $push: null, $pull: null)
+=grid-column($width: 'auto', $collapse: null, $global: true, $push: null, $pull: null)
 
-  @if $width != false
+  @if $global != null 
     display: flex
+    flex-grow: 1
+
+  @if $width != null
+    +grid-space(width, $width)
+
+  @if $push != null
+    position: relative
+    #{$grid-end}: auto
+    +grid-space($grid-start, $push)
 
 
 
@@ -138,13 +146,11 @@ $grid-end: right
       width: auto
       flex: 1
 
-    // @for $i from 0 through $grid-columns
-    //   &#{$class-prefix}#{$i}
-    //     width: unquote(($i / $grid-columns * 100) + '%')
-    //   &#{$class-prefix}push-#{$i}
-    //     #{$grid-start}: unquote(($i / $grid-columns * 100) + '%')
-    //     #{$grid-end}: auto
-    //     position: relative
+    @for $i from 0 through $grid-columns
+      &#{$class-prefix}#{$i}
+        +grid-column($width: ($i of $grid-columns), $global: null)
+      &#{$class-prefix}push-#{$i}
+        +grid-column($push: ($i of $grid-columns), $global: null, $width: null)
 
 
 
@@ -197,5 +203,4 @@ $grid-end: right
   html:before
     display: none
     content: '.widget, .widgets'
-
 
