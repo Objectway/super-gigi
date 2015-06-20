@@ -1,53 +1,183 @@
+// With OW-grid you have three choises of use
+// You can use mixins (preferred ways)
+// You can use placeholder (the dry way, less weight if you don't use gzip)
+// YOu can use precompiled classes, like foundation or bootstrap.
+
+// Settings
+$row-width: rem-calc(1920) !default
+$column-gutter: rem-calc(30) !default
+$grid-columns: 12 !default
+$use-classes: true !default
+$use-placeholder: true !default
+$row-name: row !default
+$column-name: column !default
+$grid-start: left
+$grid-end: right
+
 // Row Mixin
-=grid-row($nested: false)
+=grid-row($nested: false, $vertical: false)
   display: flex
   flex-wrap: wrap
   flex-grow: 1
   margin: 0 auto
+  @if $vertical
+    flex-direction: column
   @if $nested
     width: auto
     margin: 0 (-$column-gutter / 2)
   @else
     max-width: $row-width
 
-// Row Placeholder and class
-@if $use-placeholder
-  %row
-    +grid-row
-  %row-nested
-    +grid-row(true)
+// Grid space calculator
 
-@if $use-classes
-  .row
-    +grid-row
-    .row
-      +grid-row(true)
+=grid-space($property: width, $attr: 'auto')
+  @if $attr == 'auto'
+    $attr: auto
+    flex-grow: 1
+  @else if length($property) == 1
+    $attr: unquote((nth($property, 1) / $grid-columns * 100) + '%')
+
+  @else if length($property) == 3 and nth($property, 2) == "of"
+    $attr: unquote((nth($property, 1) / nth($property, 3) * 100) + '%')
+
+  @else
+    @each $query, $value in $property
+      +media-query($query)
+        @if $value == auto
+          $attr: auto
+          flex-grow: 1
+        @else
+          $attr: unquote(($value / $grid-columns * 100) + '%')
 
 // Column Mixin
-=grid-column($width: 'auto', $collapse: false)
-  display: flex
+=grid-column($width: 'auto', $collapse: null, $push: null, $pull: null)
+
+  @if $width != false
+    display: flex
+
+
+
 
   @if $collapse == false
     padding: 0 $column-gutter / 2
 
-  @if $width == 'auto'
-    width: auto
-    flex-grow: 1
 
-  @else if length($width) == 1
-    width: unquote((nth($width, 1) / $grid-columns * 100) + '%')
+// We will generate static css classes.
+// We would prefer the mixins version, but not in every project
+// you can have precompilers...
 
-  @else if length($width) == 3 and nth($width, 2) == "of"
-    width: unquote((nth($width, 1) / nth($width, 3) * 100) + '%')
+// If you prefer you can use sass placeholder,
+// .class
+//   @extend %row
+//   @extend %row%top
 
+@if $use-classes or $use-placeholder
+  @if $use-classes
+    $type: "."
   @else
-    @each $query, $value in $width
-      +media-query($query)
-        @if $value == auto
-          width: auto
-          flex-grow: 1
-        @else
-          width: unquote(($value / $grid-columns * 100) + '%')
+    $type: "%"
+
+  // Row classes generator
+  =row-generate-classes($class-prefix: "")
+    /* #{$class-prefix} Breakpoint */
+    $class-prefix: str-insert($class-prefix, $type, 1)
+
+    // row modificators
+    &#{$class-prefix}top
+      align-items: flex-start
+    &#{$class-prefix}middle
+      align-items: center
+    &#{$class-prefix}bottom
+      align-items: flex-end
+    &#{$class-prefix}baseline
+      align-items: baseline
+    &#{$class-prefix}stretch
+      align-items: stretch
+
+    &#{$class-prefix}start
+      justify-content: flex-start
+    &#{$class-prefix}center
+      justify-content: center
+    &#{$class-prefix}end
+      justify-content: flex-end
+    &#{$class-prefix}around
+      justify-content: space-around
+    &#{$class-prefix}between
+      justify-content: space-between
+
+    &#{$class-prefix}horizontal
+      flex-direction: row
+    &#{$class-prefix}horizontal-reverse
+      flex-direction: row-reverse
+    &#{$class-prefix}vertical
+      flex-direction: column
+    &#{$class-prefix}vertical-reverse
+      flex-direction: column-reverse
+
+    &#{$class-prefix}single-line
+      flex-flow: nowrap
+
+  // Column classes generator
+  =column-generate-classes($class-prefix: "")
+    $class-prefix: str-insert($class-prefix, $type, 1)
+
+    //column modificators
+    &#{$class-prefix}collapse
+      padding: 0
+    &#{$class-prefix}top
+      align-self: flex-start
+    &#{$class-prefix}middle
+      align-self: center
+    &#{$class-prefix}bottom
+      align-self: flex-end
+    &#{$class-prefix}baseline
+      align-self: baseline
+    &#{$class-prefix}stretch
+      align-self: stretch
+    &#{$class-prefix}auto
+      width: auto
+      flex: 1
+
+    // @for $i from 0 through $grid-columns
+    //   &#{$class-prefix}#{$i}
+    //     width: unquote(($i / $grid-columns * 100) + '%')
+    //   &#{$class-prefix}push-#{$i}
+    //     #{$grid-start}: unquote(($i / $grid-columns * 100) + '%')
+    //     #{$grid-end}: auto
+    //     position: relative
+
+
+
+
+  // ROW GENERATOR
+  #{$type}#{$row-name}
+    +grid-row
+    #{$type}#{$row-name}
+      width: auto
+      margin: 0 (-$column-gutter / 2)
+    @each $query, $breakpoint in $breakpoints
+      @if index(map-keys($breakpoints), $query) == 1
+        +row-generate-classes
+      @else
+        +media-query($query)
+          +row-generate-classes(#{$query}-)
+
+  // COLUMN GENERATOR
+  #{$type}#{$column-name}
+    +grid-column
+    @each $query, $breakpoint in $breakpoints
+      @if index(map-keys($breakpoints), $query) == 1
+        +column-generate-classes
+      @else
+        +media-query($query)
+          +column-generate-classes($class-prefix: #{$query}-)
+
+
+
+
+
+
+
 
 // FOR INFO ABOUT EQJS https://github.com/Snugug/eq.js
 @if $eq-grid
@@ -67,4 +197,5 @@
   html:before
     display: none
     content: '.widget, .widgets'
+
 
