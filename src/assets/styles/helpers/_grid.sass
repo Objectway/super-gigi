@@ -1,74 +1,3 @@
-// - CONFIGURATION - //
-
-// Global
-$min-unit: em-calc(1) !default
-$eq-grid: false !default
-$row-width: rem-calc(1920) !default
-$column-gutter: rem-calc(30) !default
-$grid-columns: 12 !default
-$use-classes: false !default
-$use-placeholder: false !default
-
-// - MEDIAQUERIES SETTINGS
-// Screens
-$screen: "only screen" !default
-$landscape: "#{$screen} and (orientation: landscape)" !default
-$portrait: "#{$screen} and (orientation: portrait)" !default
-
-// Widths
-$xxsmall: 0em !default
-$xsmall:  em-calc(321) !default
-$small:   em-calc(481) !default
-$medium:  em-calc(721) !default
-$large:   em-calc(1025) !default
-$xlarge:  em-calc(1281) !default
-$xxlarge: em-calc(1441) !default
-
-// Used Media Queries (the arrays must have same length)
-$breakpoint-names: xxsmall xsmall small medium large xlarge xxlarge !default
-$breakpoint-values: $xxsmall, $xsmall, $small, $medium, $large, $xlarge, $xxlarge !default
-@if length($breakpoint-names) != length($breakpoint-values)
-  @warn "$breakpoint-names and $breakpoint-values MUST have same length"
-
-// Element Query Setting String
-$eq-setting-string: ()
-@for $i from 1 through length($breakpoint-names)
-  $eq-setting-value: remove-unit(px-calc(nth($breakpoint-values, $i)))
-  $eq-active-string: #{nth($breakpoint-names, $i)}
-  $eq-active-string: str-insert($eq-active-string, #{unquote(": ")}, str-length($eq-active-string)+1)
-  $eq-active-string: str-insert($eq-active-string, #{$eq-setting-value}, str-length($eq-active-string)+1)
-  $eq-setting-string: append($eq-setting-string, $eq-active-string, comma)
-
-
-// - MEDIAQUERY MIXINS - //
-// - Generate Media Query
-=media-query($query: xxsmall, $only: false, $eq-grid: $eq-grid)
-  @if $eq-grid
-    @if $only
-      [data-eq-state="#{$query}"] &
-        @content
-    @else
-      [data-eq-state$="#{$query}"] &
-        @content
-      @each $current-query-name in $breakpoint-names
-        @if index($breakpoint-names, $query) < index($breakpoint-names, $current-query-name)
-          @at-root
-            [data-eq-state$="#{$current-query-name}"]
-              @extend [data-eq-state$="#{$query}"] &
-  @else
-    $current-break-point: nth($breakpoint-values, index($breakpoint-names, $query))
-    @if $only
-      @if index($breakpoint-names, $query) == length($breakpoint-values)
-        $next-break-point: 99999999em
-      @else
-        $next-break-point: nth($breakpoint-values, index($breakpoint-names, $query)+1)-$min-unit
-      @media #{$screen} and (min-width: #{$current-break-point}) and (max-width: #{$next-break-point})
-        @content
-
-    @else
-      @media #{$screen} and (min-width: #{$current-break-point})
-        @content
-
 // Row Mixin
 =grid-row($nested: false)
   display: flex
@@ -120,13 +49,22 @@ $eq-setting-string: ()
         @else
           width: unquote(($value / $grid-columns * 100) + '%')
 
+// FOR INFO ABOUT EQJS https://github.com/Snugug/eq.js
+@if $eq-grid
+  // Element Query Setting String
+  $eq-setting-string: ()
+  @each $eq-name, $eq-value in $breakpoints
+    $tmp: $eq-name
+    $tmp: str-insert($tmp, #{unquote(": ")}, str-length($tmp)+1)
+    $tmp: str-insert($tmp, #{remove-unit($eq-value)}, str-length($tmp)+1)
+    $eq-setting-string: append($eq-setting-string, $tmp, comma)
 
-
-// The element on we'll add eqjs javascript
-.widget
-  &:before
+  // The element on we'll add eqjs javascript
+  .widget
+    &:before
+      display: none
+      content: '#{inspect($eq-setting-string)}'
+  html:before
     display: none
-    content: '#{inspect($eq-setting-string)}'
-html:before
-  display: none
-  content: '.widget, .widgets'
+    content: '.widget, .widgets'
+
