@@ -7,29 +7,47 @@
 $row-width: rem-calc(1920) !default
 $column-gutter: rem-calc(30) !default
 $grid-columns: 12 !default
-$use-classes: true !default
-$use-placeholder: true !default
+$use-classes: false !default
+$use-placeholder: false !default
 $row-name: row !default
 $column-name: column !default
 $grid-start: left
 $grid-end: right
 
-// Row Mixin
-=grid-row($nested: false, $vertical: false)
-  display: flex
-  flex-wrap: wrap
-  flex-grow: 1
-  margin: 0 auto
-  @if $vertical
-    flex-direction: column
-  @if $nested
-    width: auto
-    margin: 0 (-$column-gutter / 2)
+// DRY MIXIN!!! What is that? Is simple, we will creat now some mixin
+// that will define our column. For example i want to use:
+// .column-4
+//   +grid-column(4 of 12)
+// it will generate some css. But it will generate ths css everytime.
+// Yes I may use place holder, but placeholder are too difficult to 
+// manage for big project. The idea is, why not generate placeholder 
+// on fly? We are trying to do exactly this here.
+// You can read a great article here about that:
+// http://alistapart.com/article/dry-ing-out-your-sass-mixins
+
+// OUR big variable
+$placeholders: ()
+
+// Our mixin that will generate placeholder
+=dry-it($id)
+  $placeholder: map-get($placeholders, $id)
+
+  @if $placeholder == null
+    $unique-id: unique-id()
+    $placeholder-name: $unique-id
+    $placeholders: map-merge($placeholders, ($id: $unique-id)) !global
+    // * is here for a libsass bug: 
+    // https://github.com/sass/libsass/issues/1210
+    @at-root *
+      %#{$unique-id}
+        @content
+    @extend %#{$unique-id}
   @else
-    max-width: $row-width
+    @extend %#{$placeholder}
+
 
 // Grid space calculator
-
+// take a css property and an array as args
 =grid-space($property: width, $attr: 'auto')
   @if $attr == 'auto'
     #{$property}: auto
@@ -48,24 +66,46 @@ $grid-end: right
         @else
           #{$property}: unquote(($value / $grid-columns * 100) + '%')
 
-// Column Mixin
-=grid-column($width: 'auto', $collapse: null, $global: true, $push: null, $pull: null)
 
-  @if $global != null 
+// Row Mixin
+=grid-row($nested: false, $vertical: false)
+  +dry-it("row#{$nested$vertical}")
+    display: flex
+    flex-wrap: wrap
+    flex-grow: 1
+    margin: 0 auto
+    @if $vertical
+      flex-direction: column
+    @if $nested
+      width: auto
+      margin: 0 (-$column-gutter / 2)
+    @else
+      max-width: $row-width
+
+// Column Mixin
+=grid-column($width: 'auto', $collapse: null, $push: null, $pull: null, $query: null)
+  +dry-it("clGl#{$query}")
     display: flex
     flex-grow: 1
+    padding: 0 $column-gutter / 2
 
-  @if $width != null
-    +grid-space(width, $width)
+  @if $width != null 
+    @if type-of($width) == map
+      +dry-it("clWd#{$width$query}")
+        +grid-space(width, $width)
+    @else 
+      +grid-space(width, $width)
 
   @if $push != null
-    position: relative
-    #{$grid-end}: auto
-    +grid-space($grid-start, $push)
+    @if type-of($push) == map
+      +dry-it("clPs#{$push$query}")
+        position: relative
+        #{$grid-end}: auto
+        +grid-space($grid-start, $push)
+    @else
+      +grid-space($grid-start, $push)
 
-
-
-
+  
   @if $collapse == false
     padding: 0 $column-gutter / 2
 
@@ -86,97 +126,93 @@ $grid-end: right
     $type: "%"
 
   // Row classes generator
-  =row-generate-classes($class-prefix: "")
-    /* #{$class-prefix} Breakpoint */
-    $class-prefix: str-insert($class-prefix, $type, 1)
+  =row-generate-classes($query, $separator: "-")
+    /* #{$query} Breakpoint */
+    $class-prefix: str-insert($query, $type, 1)
 
     // row modificators
-    &#{$class-prefix}top
+    &#{$class-prefix}#{$separator}top
       align-items: flex-start
-    &#{$class-prefix}middle
+    &#{$class-prefix}#{$separator}middle
       align-items: center
-    &#{$class-prefix}bottom
+    &#{$class-prefix}#{$separator}bottom
       align-items: flex-end
-    &#{$class-prefix}baseline
+    &#{$class-prefix}#{$separator}baseline
       align-items: baseline
-    &#{$class-prefix}stretch
+    &#{$class-prefix}#{$separator}stretch
       align-items: stretch
 
-    &#{$class-prefix}start
+    &#{$class-prefix}#{$separator}start
       justify-content: flex-start
-    &#{$class-prefix}center
+    &#{$class-prefix}#{$separator}center
       justify-content: center
-    &#{$class-prefix}end
+    &#{$class-prefix}#{$separator}end
       justify-content: flex-end
-    &#{$class-prefix}around
+    &#{$class-prefix}#{$separator}around
       justify-content: space-around
-    &#{$class-prefix}between
+    &#{$class-prefix}#{$separator}between
       justify-content: space-between
 
-    &#{$class-prefix}horizontal
+    &#{$class-prefix}#{$separator}horizontal
       flex-direction: row
-    &#{$class-prefix}horizontal-reverse
+    &#{$class-prefix}#{$separator}horizontal-reverse
       flex-direction: row-reverse
-    &#{$class-prefix}vertical
+    &#{$class-prefix}#{$separator}vertical
       flex-direction: column
-    &#{$class-prefix}vertical-reverse
+    &#{$class-prefix}#{$separator}vertical-reverse
       flex-direction: column-reverse
 
-    &#{$class-prefix}single-line
+    &#{$class-prefix}#{$separator}single-line
       flex-flow: nowrap
 
   // Column classes generator
-  =column-generate-classes($class-prefix: "")
-    $class-prefix: str-insert($class-prefix, $type, 1)
+  =column-generate-classes($query)
+    $class-prefix: str-insert($query, $type, 1)
 
     //column modificators
-    &#{$class-prefix}collapse
+    &#{$class-prefix}-collapse
       padding: 0
-    &#{$class-prefix}top
+    &#{$class-prefix}-top
       align-self: flex-start
-    &#{$class-prefix}middle
+    &#{$class-prefix}-middle
       align-self: center
-    &#{$class-prefix}bottom
+    &#{$class-prefix}-bottom
       align-self: flex-end
-    &#{$class-prefix}baseline
+    &#{$class-prefix}-baseline
       align-self: baseline
-    &#{$class-prefix}stretch
+    &#{$class-prefix}-stretch
       align-self: stretch
-    &#{$class-prefix}auto
+    &#{$class-prefix}-auto
       width: auto
       flex: 1
 
     @for $i from 0 through $grid-columns
-      &#{$class-prefix}#{$i}
-        +grid-column($width: ($i of $grid-columns), $global: null)
-      &#{$class-prefix}push-#{$i}
-        +grid-column($push: ($i of $grid-columns), $global: null, $width: null)
-
-
+      &#{$class-prefix}-#{$i}
+        +grid-column($width: ($i of $grid-columns), $query: $query)
+      &#{$class-prefix}-push-#{$i}
+        +grid-column($push: ($i of $grid-columns), $width: null, $query: $query)
 
 
   // ROW GENERATOR
   #{$type}#{$row-name}
     +grid-row
+    
     #{$type}#{$row-name}
       width: auto
       margin: 0 (-$column-gutter / 2)
+
+    +row-generate-classes("", "")
+    
     @each $query, $breakpoint in $breakpoints
-      @if index(map-keys($breakpoints), $query) == 1
-        +row-generate-classes
-      @else
-        +media-query($query)
-          +row-generate-classes(#{$query}-)
+      +media-query($query)
+        +row-generate-classes(#{$query})
 
   // COLUMN GENERATOR
   #{$type}#{$column-name}
     +grid-column
     @each $query, $breakpoint in $breakpoints
-      @if index(map-keys($breakpoints), $query) == 1
-        +column-generate-classes
-      @else
-        +media-query($query)
-          +column-generate-classes($class-prefix: #{$query}-)
+      +media-query($query)
+        +column-generate-classes(#{$query})
 
 
 
@@ -204,3 +240,24 @@ $grid-end: right
     display: none
     content: '.widget, .widgets'
 
+// sample
+.column 
+  +grid-column(1 of 2)
+.column2
+  +grid-column(1 of 2)
+.column3
+  +grid-column((small: 12, medium: 3))
+.column4
+  +grid-column((small: 12, medium: 3))
+.column5
+  +grid-column($width: (small: 12, medium: 5), $push: (small: 2, medium: 3))
+.column6
+  +grid-column($width: (small: 12, medium: 3), $push: (small: 2, medium: 3))
+.column7
+  +grid-column(1 of 3)
+.column8
+  +media-query(small)
+    +grid-column(1 of 2)
+.column9
+  +media-query(large)
+    +grid-column(1 of 2)
