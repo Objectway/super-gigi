@@ -34,10 +34,9 @@
     "gulp-iconfont-css": "0.0.9",
     "gulp-if": "^1.2.5",
     "gulp-jade": "^1.0.1",
-    "gulp-load-plugins": "^1.0.0-rc.1",
+    "gulp-load-plugins": "^0.10.0",
     "gulp-minify-css": "^1.1.6",
     "gulp-rename": "^1.2.2",
-    "gulp-rev": "^4.0.0",
     "gulp-sass": "^2.0.1",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-tar": "^1.4.0",
@@ -47,7 +46,6 @@
     "gulp-watch": "^4.2.4",
     "gulp.spritesmith": "^3.8.2",
     "lodash": "^3.9.3",
-    "sprity-sass": "^1.0.4",
-    "swig": "^1.4.2"
+    "sprity-sass": "^1.0.4"
   }
 }
