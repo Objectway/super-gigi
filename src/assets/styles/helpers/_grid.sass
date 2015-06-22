@@ -14,19 +14,23 @@ $column-name: column !default
 $grid-start: left
 $grid-end: right
 
+
+
 // DRY MIXIN!!! What is that? Is simple, we will creat now some mixin
 // that will define our column. For example i want to use:
 // .column-4
 //   +grid-column(4 of 12)
 // it will generate some css. But it will generate ths css everytime.
-// Yes I may use place holder, but placeholder are too difficult to 
-// manage for big project. The idea is, why not generate placeholder 
+// Yes I may use place holder, but placeholder are too difficult to
+// manage for big project. The idea is, why not generate placeholder
 // on fly? We are trying to do exactly this here.
 // You can read a great article here about that:
 // http://alistapart.com/article/dry-ing-out-your-sass-mixins
 
+
 // OUR big variable
 $placeholders: ()
+
 
 // Our mixin that will generate placeholder
 =dry-it($id)
@@ -36,7 +40,7 @@ $placeholders: ()
     $unique-id: unique-id()
     $placeholder-name: $unique-id
     $placeholders: map-merge($placeholders, ($id: $unique-id)) !global
-    // * is here for a libsass bug: 
+    // * is here for a libsass bug:
     // https://github.com/sass/libsass/issues/1210
     @at-root *
       %#{$unique-id}
@@ -82,6 +86,7 @@ $placeholders: ()
     @else
       max-width: $row-width
 
+
 // Column Mixin
 =grid-column($width: 'auto', $collapse: null, $push: null, $pull: null, $query: null)
   +dry-it("clGl#{$query}")
@@ -89,11 +94,11 @@ $placeholders: ()
     flex-grow: 1
     padding: 0 $column-gutter / 2
 
-  @if $width != null 
+  @if $width != null
     @if type-of($width) == map
       +dry-it("clWd#{$width$query}")
         +grid-space(width, $width)
-    @else 
+    @else
       +grid-space(width, $width)
 
   @if $push != null
@@ -105,9 +110,18 @@ $placeholders: ()
     @else
       +grid-space($grid-start, $push)
 
-  
+  @if $pull != null
+    @if type-of($pull) == map
+      +dry-it("clPs#{$pull$query}")
+        position: relative
+        #{$grid-end}: auto
+        +grid-space($grid-end, $pull)
+    @else
+      +grid-space($grid-end, $pull)
+
   @if $collapse == false
     padding: 0 $column-gutter / 2
+
 
 
 // We will generate static css classes.
@@ -193,19 +207,22 @@ $placeholders: ()
         +grid-column($push: ($i of $grid-columns), $width: null, $query: $query)
 
 
+
   // ROW GENERATOR
   #{$type}#{$row-name}
     +grid-row
-    
+
     #{$type}#{$row-name}
       width: auto
       margin: 0 (-$column-gutter / 2)
 
     +row-generate-classes("", "")
-    
+
     @each $query, $breakpoint in $breakpoints
       +media-query($query)
         +row-generate-classes(#{$query})
+
+
 
   // COLUMN GENERATOR
   #{$type}#{$column-name}
@@ -213,11 +230,6 @@ $placeholders: ()
     @each $query, $breakpoint in $breakpoints
       +media-query($query)
         +column-generate-classes(#{$query})
-
-
-
-
-
 
 
 
@@ -240,24 +252,28 @@ $placeholders: ()
     display: none
     content: '.widget, .widgets'
 
-// sample
-.column 
-  +grid-column(1 of 2)
-.column2
-  +grid-column(1 of 2)
-.column3
-  +grid-column((small: 12, medium: 3))
-.column4
-  +grid-column((small: 12, medium: 3))
+
+
+
+
+// SAMPLE
+// .column
+//   +grid-column(1 of 2)
+// .column2
+//   +grid-column(1 of 2)
+// .column3
+//   +grid-column((small: 12, medium: 3))
+// .column4
+//   +grid-column((small: 12, medium: 3))
 .column5
-  +grid-column($width: (small: 12, medium: 5), $push: (small: 2, medium: 3))
-.column6
-  +grid-column($width: (small: 12, medium: 3), $push: (small: 2, medium: 3))
-.column7
-  +grid-column(1 of 3)
-.column8
-  +media-query(small)
-    +grid-column(1 of 2)
-.column9
-  +media-query(large)
-    +grid-column(1 of 2)
+  +grid-column($width: (small: 12, medium: 5), $pull: (small: 2, medium: 3))
+// .column6
+//   +grid-column($width: (small: 12, medium: 3), $push: (small: 4, medium: 4))
+// .column7
+//   +grid-column(1 of 3)
+// .column8
+//   +media-query(small)
+//     +grid-column(1 of 2)
+// .column9
+//   +media-query(large)
+//     +grid-column(1 of 2)
