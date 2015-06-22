@@ -3,7 +3,9 @@
 // You can use placeholder (the dry way, less weight if you don't use gzip)
 // YOu can use precompiled classes, like foundation or bootstrap.
 
-// Settings
+// --------
+// SETTINGS
+// --------
 $row-width: rem-calc(1920) !default
 $column-gutter: rem-calc(30) !default
 $grid-columns: 12 !default
@@ -16,6 +18,7 @@ $grid-end: right
 
 
 
+// ------------------------------------------------------------------
 // DRY MIXIN!!! What is that? Is simple, we will creat now some mixin
 // that will define our column. For example i want to use:
 // .column-4
@@ -26,13 +29,18 @@ $grid-end: right
 // on fly? We are trying to do exactly this here.
 // You can read a great article here about that:
 // http://alistapart.com/article/dry-ing-out-your-sass-mixins
+// ------------------------------------------------------------------
 
 
-// OUR big variable
+// ----------------
+// OUR BIG VARIABLE
+// ----------------
 $placeholders: ()
 
 
-// Our mixin that will generate placeholder
+// ----------------------------------------
+// OUR MIXIN THAT WILL GENERATE PLACEHOLDER
+// ----------------------------------------
 =dry-it($id)
   $placeholder: map-get($placeholders, $id)
 
@@ -50,8 +58,11 @@ $placeholders: ()
     @extend %#{$placeholder}
 
 
-// Grid space calculator
+
+// ----------------------------------------
+// GRID SPACE CALCULATOR
 // take a css property and an array as args
+// ----------------------------------------
 =grid-space($property: width, $attr: 'auto')
   @if $attr == 'auto'
     #{$property}: auto
@@ -71,7 +82,9 @@ $placeholders: ()
           #{$property}: unquote(($value / $grid-columns * 100) + '%')
 
 
-// Row Mixin
+// ---------
+// ROW MIXIN
+// ---------
 =grid-row($nested: false, $vertical: false)
   +dry-it("row#{$nested$vertical}")
     display: flex
@@ -87,13 +100,16 @@ $placeholders: ()
       max-width: $row-width
 
 
-// Column Mixin
-=grid-column($width: 'auto', $collapse: null, $push: null, $pull: null, $query: null)
+// ------------
+// COLUMN MIXIN
+// ------------
+=grid-column($width: 'auto', $collapse: null, $push: null, $pull: null, $query: null, $order: null)
   +dry-it("clGl#{$query}")
     display: flex
     flex-grow: 1
     padding: 0 $column-gutter / 2
 
+  // Width -------------
   @if $width != null
     @if type-of($width) == map
       +dry-it("clWd#{$width$query}")
@@ -101,6 +117,7 @@ $placeholders: ()
     @else
       +grid-space(width, $width)
 
+  // Push -------------
   @if $push != null
     @if type-of($push) == map
       +dry-it("clPs#{$push$query}")
@@ -110,6 +127,7 @@ $placeholders: ()
     @else
       +grid-space($grid-start, $push)
 
+  // Pull -------------
   @if $pull != null
     @if type-of($pull) == map
       +dry-it("clPs#{$pull$query}")
@@ -119,19 +137,26 @@ $placeholders: ()
     @else
       +grid-space($grid-end, $pull)
 
+  // Collapse -------------
   @if $collapse == false
     padding: 0 $column-gutter / 2
 
+  // Order -------------
+  @if $order
+    order: $order
 
 
-// We will generate static css classes.
-// We would prefer the mixins version, but not in every project
-// you can have precompilers...
 
+// ------------------------------------------------------------
+// WE WILL GENERATE STATIC CSS CLASSES.
+// WE WOULD PREFER THE MIXINS VERSION, BUT NOT IN EVERY PROJECT
+// YOU CAN HAVE PRECOMPILERS...
+// ------------------------------------------------------------
 // If you prefer you can use sass placeholder,
 // .class
 //   @extend %row
 //   @extend %row%top
+// ------------------------------------------------------------
 
 @if $use-classes or $use-placeholder
   @if $use-classes
@@ -208,7 +233,9 @@ $placeholders: ()
 
 
 
+  // -------------
   // ROW GENERATOR
+  // -------------
   #{$type}#{$row-name}
     +grid-row
 
@@ -224,7 +251,9 @@ $placeholders: ()
 
 
 
+  // ----------------
   // COLUMN GENERATOR
+  // ----------------
   #{$type}#{$column-name}
     +grid-column
     @each $query, $breakpoint in $breakpoints
@@ -235,7 +264,7 @@ $placeholders: ()
 
 // FOR INFO ABOUT EQJS https://github.com/Snugug/eq.js
 @if $eq-grid
-  // Element Query Setting String
+  // Element Query Setting String ---------
   $eq-setting-string: ()
   @each $eq-name, $eq-value in $breakpoints
     $tmp: $eq-name
@@ -243,7 +272,7 @@ $placeholders: ()
     $tmp: str-insert($tmp, #{remove-unit($eq-value)}, str-length($tmp)+1)
     $eq-setting-string: append($eq-setting-string, $tmp, comma)
 
-  // The element on we'll add eqjs javascript
+  // The element on we'll add eqjs javascript ---------
   .widget
     &:before
       display: none
@@ -265,8 +294,8 @@ $placeholders: ()
 //   +grid-column((small: 12, medium: 3))
 // .column4
 //   +grid-column((small: 12, medium: 3))
-.column5
-  +grid-column($width: (small: 12, medium: 5), $pull: (small: 2, medium: 3))
+// .column5
+//   +grid-column($width: (small: 12, medium: 5), $pull: (small: 2, medium: 3))
 // .column6
 //   +grid-column($width: (small: 12, medium: 3), $push: (small: 4, medium: 4))
 // .column7
