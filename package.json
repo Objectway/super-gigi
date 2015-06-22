@@ -6,6 +6,7 @@
   "scripts": {
     "compile": "gulp compile",
     "build": "gulp dist",
+    "regression": "bash scripts/backstop.sh",
     "dev": "gulp"
   },
   "repository": {
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/Objectway/ui-toolkit#readme",
   "devDependencies": {
+    "backstopjs": "^0.5.1",
     "browser-sync": "^2.7.7",
     "dateformat": "^1.0.11",
     "del": "^1.2.0",
