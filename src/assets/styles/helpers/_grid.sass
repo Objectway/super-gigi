@@ -7,7 +7,7 @@
 $row-width: rem-calc(1920) !default
 $column-gutter: rem-calc(30) !default
 $grid-columns: 12 !default
-$use-classes: false !default
+$use-classes: true !default
 $use-placeholder: false !default
 $row-name: row !default
 $column-name: column !default
@@ -19,8 +19,8 @@ $grid-end: right
 // .column-4
 //   +grid-column(4 of 12)
 // it will generate some css. But it will generate ths css everytime.
-// Yes I may use place holder, but placeholder are too difficult to 
-// manage for big project. The idea is, why not generate placeholder 
+// Yes I may use place holder, but placeholder are too difficult to
+// manage for big project. The idea is, why not generate placeholder
 // on fly? We are trying to do exactly this here.
 // You can read a great article here about that:
 // http://alistapart.com/article/dry-ing-out-your-sass-mixins
@@ -30,13 +30,14 @@ $placeholders: ()
 
 // Our mixin that will generate placeholder
 =dry-it($id)
+  @content
   $placeholder: map-get($placeholders, $id)
 
   @if $placeholder == null
     $unique-id: unique-id()
     $placeholder-name: $unique-id
     $placeholders: map-merge($placeholders, ($id: $unique-id)) !global
-    // * is here for a libsass bug: 
+    // * is here for a libsass bug:
     // https://github.com/sass/libsass/issues/1210
     @at-root *
       %#{$unique-id}
@@ -89,23 +90,24 @@ $placeholders: ()
     flex-grow: 1
     padding: 0 $column-gutter / 2
 
-  @if $width != null 
+  @if $width != null
     @if type-of($width) == map
       +dry-it("clWd#{$width$query}")
         +grid-space(width, $width)
-    @else 
+    @else
       +grid-space(width, $width)
 
   @if $push != null
+    +dry-it("clPs")
+      position: relative
+      #{$grid-end}: auto
     @if type-of($push) == map
       +dry-it("clPs#{$push$query}")
-        position: relative
-        #{$grid-end}: auto
         +grid-space($grid-start, $push)
     @else
-      +grid-space($grid-start, $push)
+        +grid-space($grid-start, $push)
 
-  
+
   @if $collapse == false
     padding: 0 $column-gutter / 2
 
@@ -196,13 +198,13 @@ $placeholders: ()
   // ROW GENERATOR
   #{$type}#{$row-name}
     +grid-row
-    
+
     #{$type}#{$row-name}
       width: auto
       margin: 0 (-$column-gutter / 2)
 
     +row-generate-classes("", "")
-    
+
     @each $query, $breakpoint in $breakpoints
       +media-query($query)
         +row-generate-classes(#{$query})
@@ -241,8 +243,8 @@ $placeholders: ()
     content: '.widget, .widgets'
 
 // sample
-.column 
-  +grid-column(1 of 2)
+.column
+  +grid-column(1 of 5)
 .column2
   +grid-column(1 of 2)
 .column3
