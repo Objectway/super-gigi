@@ -1,0 +1,25 @@
+// Kitchensink
+
+.KitchenSinc {
+  @include grid-row;
+  &__title {
+    font-size: 30px;
+    @include media-query(medium) {
+      @include grid-column(1 of 2);
+    }
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    @include media-query(medium) {
+      @include grid-column($width: (1 of 2), $order: 0);
+    }
+  }
+}
+
+.accazzo {
+  @include grid-column($order: (small: 0, medium: -1));
+}
+.accazzo2 {
+  @include grid-column($order: (small: 0, medium: -1), $width: (3 of 2));
+}

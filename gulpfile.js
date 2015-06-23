@@ -22,11 +22,12 @@ gulp.task('srcWatch', env.loadTask('src-watch'));
 gulp.task('clean', env.loadTask('clean'));
 gulp.task('minify', ['move'], env.loadTask('minify'));
 gulp.task('move', env.loadTask('move'));
-gulp.task('compress', env.loadTask('compress'));
+gulp.task('copy', env.loadTask('copy-assets'));
+gulp.task('compress', ['minify'], env.loadTask('compress'));
 
 
 // USEFUL TASKS
-gulp.task('dist', ['clean', 'minify']);
+gulp.task('dist', ['clean', 'compress']);
 gulp.task('compile', ['style', 'view', 'script']);
-gulp.task('default', ['compile', 'srcWatch'], env.loadTask('browser-sync'));
+gulp.task('default', ['compile', 'srcWatch', 'copy'], env.loadTask('browser-sync'));
 gulp.task('serve', ['srcWatch'], env.loadTask('browser-sync'));

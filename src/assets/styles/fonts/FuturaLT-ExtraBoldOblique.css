@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "FuturaLT";
+    src: url("fonts/FuturaLT-ExtraBoldOblique.eot");
+    src: url("fonts/FuturaLT-ExtraBoldOblique.eot?#iefix") format("embedded-opentype"),
+         url("fonts/FuturaLT-ExtraBoldOblique.woff") format("woff"),
+         url("fonts/FuturaLT-ExtraBoldOblique.ttf") format("truetype"),
+         url("fonts/FuturaLT-ExtraBoldOblique.svg#FuturaLT") format("svg");
+    font-weight: 900;
+    font-style: italic;
+}

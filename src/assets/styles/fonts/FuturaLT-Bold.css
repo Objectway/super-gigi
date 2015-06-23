@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "FuturaLT";
+    src: url("fonts/FuturaLT-Bold.eot");
+    src: url("fonts/FuturaLT-Bold.eot?#iefix") format("embedded-opentype"),
+         url("fonts/FuturaLT-Bold.woff") format("woff"),
+         url("fonts/FuturaLT-Bold.ttf") format("truetype"),
+         url("fonts/FuturaLT-Bold.svg#FuturaLT") format("svg");
+    font-weight: 600;
+    font-style: normal;
+}

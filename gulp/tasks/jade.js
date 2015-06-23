@@ -8,7 +8,7 @@ var util = require('gulp-util');
 
 module.exports = function() {
   return gulp.src(env.folder.src + '/views/*.jade')
-    .pipe(changed(env.folder.src + '/views/**/*.jade'))
+    .pipe(changed(env.folder.dev))
     .pipe(jade({
       basedir: 'node_modules/',
       pretty: true
