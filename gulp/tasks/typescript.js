@@ -12,7 +12,7 @@ module.exports = function() {
 
   return gulp.src(sources)
     .pipe(sourcemaps.init())
-    .pipe(changed(sources))
+    .pipe(changed(env.folder.dev + '/scripts/'))
     .pipe(typescript({
       module: 'amd',
       verbose: false,
