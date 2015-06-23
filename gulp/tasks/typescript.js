@@ -8,11 +8,11 @@ var util = require('gulp-util');
 
 
 module.exports = function() {
-  var sources = env.folder.src + '/scripts/**/*.ts';
+  var sources = env.folder.dev + '/scripts/';
 
   return gulp.src(sources)
     .pipe(sourcemaps.init())
-    .pipe(changed(sources))
+    .pipe(changed(env.folder.dev + '/scripts/'))
     .pipe(typescript({
       module: 'amd',
       verbose: false,
