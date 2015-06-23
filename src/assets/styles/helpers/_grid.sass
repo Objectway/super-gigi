@@ -104,12 +104,13 @@ $placeholders: ()
 // ------------
 // COLUMN MIXIN
 // ------------
-=grid-column($width: 'auto', $collapse: null, $push: null, $pull: null, $query: null, $order: null)
-  +dry-it("clGl#{$query}")
-    display: flex
-    box-sizing: border-box;
-    flex-grow: 1
-    padding: 0 $column-gutter / 2
+=grid-column($width: 'auto', $collapse: null, $push: null, $pull: null, $query: null, $order: null, $global: true)
+  @if $global
+    +dry-it("clGl#{$query}")
+      display: flex
+      box-sizing: border-box;
+      flex-grow: 1
+      padding: 0 $column-gutter / 2
 
   // Width -------------
   @if $width != null
@@ -235,11 +236,11 @@ $placeholders: ()
 
     @for $i from 0 through $grid-columns
       &#{$class-prefix}-#{$i}
-        +grid-column($width: ($i of $grid-columns), $query: $query)
+        +grid-column($width: ($i of $grid-columns), $query: $query, $global: null)
       &#{$class-prefix}-push-#{$i}
-        +grid-column($push: ($i of $grid-columns), $width: null, $query: $query)
+        +grid-column($push: ($i of $grid-columns), $width: null, $query: $query, $global: null)
       &#{$class-prefix}-order-#{$i}
-        +grid-column($order: ($i), $width: null, $query: $query)
+        +grid-column($order: ($i), $width: null, $query: $query, $global: null)
 
 
 
@@ -290,9 +291,6 @@ $placeholders: ()
   html:before
     display: none
     content: '.widget, .widgets'
-
-
-
 
 
 // SAMPLE
