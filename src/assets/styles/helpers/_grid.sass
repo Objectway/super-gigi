@@ -9,7 +9,7 @@
 $row-width: rem-calc(1920) !default
 $column-gutter: rem-calc(30) !default
 $grid-columns: 12 !default
-$use-classes: false !default
+$use-classes: true !default
 $use-placeholder: false !default
 $row-name: row !default
 $column-name: column !default
@@ -88,6 +88,7 @@ $placeholders: ()
 =grid-row($nested: false, $vertical: false)
   +dry-it("row#{$nested$vertical}")
     display: flex
+    box-sizing: border-box;
     flex-wrap: wrap
     flex-grow: 1
     margin: 0 auto
@@ -106,6 +107,7 @@ $placeholders: ()
 =grid-column($width: 'auto', $collapse: null, $push: null, $pull: null, $query: null, $order: null)
   +dry-it("clGl#{$query}")
     display: flex
+    box-sizing: border-box;
     flex-grow: 1
     padding: 0 $column-gutter / 2
 
@@ -142,8 +144,14 @@ $placeholders: ()
     padding: 0 $column-gutter / 2
 
   // Order -------------
-  @if $order
-    order: $order
+  @if $order != null
+    @if type-of($order) == map
+      +dry-it("clOr#{$order}")
+        @each $query, $value in $order
+          +media-query($query)
+            order: $value
+    @else
+      order: $order
 
 
 
@@ -230,6 +238,8 @@ $placeholders: ()
         +grid-column($width: ($i of $grid-columns), $query: $query)
       &#{$class-prefix}-push-#{$i}
         +grid-column($push: ($i of $grid-columns), $width: null, $query: $query)
+      &#{$class-prefix}-order-#{$i}
+        +grid-column($order: ($i), $width: null, $query: $query)
 
 
 
