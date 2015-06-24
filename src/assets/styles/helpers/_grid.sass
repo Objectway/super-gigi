@@ -13,8 +13,9 @@ $use-classes: true !default
 $use-placeholder: false !default
 $row-name: row !default
 $column-name: column !default
-$grid-start: left
-$grid-end: right
+$grid-start: left !default
+$grid-end: right !default
+$debug: true !default
 
 
 
@@ -90,7 +91,7 @@ $placeholders: ()
     display: flex
     box-sizing: border-box;
     flex-wrap: wrap
-    flex-grow: 1
+    flex: 1 1 0%
     margin: 0 auto
     @if $vertical
       flex-direction: column
@@ -99,6 +100,8 @@ $placeholders: ()
       margin: 0 (-$column-gutter / 2)
     @else
       max-width: $row-width
+    @if $debug
+      content: "ROW nested: #{$nested}, vertical #{$vertical}"
 
 
 // ------------
@@ -109,7 +112,7 @@ $placeholders: ()
     +dry-it("clGl#{$query}")
       display: flex
       box-sizing: border-box;
-      flex-grow: 1
+      flex: 1 1 0%
       padding: 0 $column-gutter / 2
 
   // Width -------------
@@ -153,6 +156,9 @@ $placeholders: ()
             order: $value
     @else
       order: $order
+
+  @if $debug
+    content: "COLUMN - width: #{$width}, collapse: #{$collapse}, push: #{$push}, pull: #{$pull}, query: #{$query}, order: #{$order}, global: #{$global}"
 
 
 
