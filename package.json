@@ -1,7 +1,7 @@
 {
-  "name": "OW-Starterkit",
+  "name": "ow-starterkit",
   "version": "0.0.1",
-  "description": "OW-Starterkit",
+  "description": "ow-starterkit",
   "main": "Gulpfile.js",
   "scripts": {
     "compile": "gulp compile",
