@@ -10,6 +10,264 @@ html
     //- blocks/_grid.jade
     include blocks/_grid.jade
 
-  .row
-    .pippo pippo
-    .pappo pappo
+    .row
+      .column.small-12
+        h1.no-margin-bottom.margin-top-50 The Kitchen Sink
+        h5.subheader.margin-bottom-30 This page includes the most important elements so that we can make sure things work together smoothly.
+        //- GRID
+        .panel.no-padding
+          #grid.panel-head The grid
+          .panel-body
+            .row
+              .column.auto
+                .box auto
+              .column.auto
+                .box auto
+              .column.auto.show-for-large-only
+                .box auto show-for-large-only
+            .row
+              .column.small-10.medium-8.medium-landscape-6.large-4
+                .box
+                  span.show-for-large-up large-4
+                  span.show-for-medium-landscape-only medium-landscape-6
+                  span.show-for-medium-only medium-8
+                  span.show-for-small-only small-10
+              .column.small-2.medium-4.medium-landscape-6.large-8
+                .box
+                  span.show-for-large-up large-8
+                  span.show-for-medium-landscape-only medium-landscape-6
+                  span.show-for-medium-only medium-4
+                  span.show-for-small-only small-2
+
+              .column.small-3.medium-6.medium-landscape-2.large-9
+                .box
+                  span.show-for-large-up large-9
+                  span.show-for-medium-landscape-only medium-landscape-2
+                  span.show-for-medium-only medium-6
+                  span.show-for-small-only small-3
+              .column.small-5.medium-3.medium-landscape-8.large-2
+                .box
+                  span.show-for-large-up large-2
+                  span.show-for-medium-landscape-only medium-landscape-8
+                  span.show-for-medium-only medium-3
+                  span.show-for-small-only small-5
+              .column.small-4.medium-3.medium-landscape-2.large-1
+                .box
+                  span.show-for-large-up large-1
+                  span.show-for-medium-landscape-only medium-landscape-2
+                  span.show-for-medium-only medium-3
+                  span.show-for-small-only small-4
+
+              .column.small-12.medium-6.medium-landscape-4.large-3
+                .box
+                  span.show-for-large-up large-3
+                  span.show-for-medium-landscape-only medium-landscape-4
+                  span.show-for-medium-only medium-6
+                  span.show-for-small-only small-12
+              .column.hide-for-small-only.medium-6.medium-landscape-4.large-3
+                .box
+                  span.show-for-large-up large-3
+                  span.show-for-medium-landscape-only medium-landscape-4
+                  span.show-for-medium-only medium-6
+              .column.hide-for-small-up.show-for-medium-landscape-up.medium-landscape-4.large-3
+                .box
+                  span.show-for-large-up large-3
+                  span.show-for-medium-landscape-only medium-landscape-4
+              .column.hide-for-small-up.show-for-large-up.large-3
+                .box
+                  span.show-for-large-up large-3
+        //- VISIBILITY CLASSES
+        #visibility.panel.no-padding
+          .panel-head Visibility classes
+          .panel-body
+            .row
+              .column.small-12
+                h3 <strong>Show</strong> by screen size
+              .column.small-12.show-for-small-only
+                .box <strong>show-for-small-only</strong> "This text is shown only on a small screen."
+              .column.small-12.show-for-medium-up
+                .box <strong>show-for-medium-up</strong> "This text is shown on medium screens and up."
+              .column.small-12.show-for-medium-only
+                .box <strong>show-for-medium-only</strong> "This text is shown only on a medium screen."
+              .column.small-12.show-for-medium-landscape-up
+                .box <strong>show-for-medium-landscape-up</strong> "This text is shown on medium-landscape screens and up."
+              .column.small-12.show-for-medium-landscape-only
+                .box <strong>show-for-medium-landscape-only</strong> "This text is shown only on a medium-landscape screen."
+              .column.small-12.show-for-large-up
+                .box <strong>show-for-large-up</strong> "This text is shown on large screens and up."
+              .column.small-12.show-for-large-only
+                .box <strong>show-for-large-only</strong> "This text is shown only on a large screen."
+              .column.small-12.show-for-xlarge-up
+                .box <strong>show-for-xlarge-up</strong> "This text is shown on xlarge screens and up."
+              .column.small-12.show-for-xlarge-only
+                .box <strong>show-for-xlarge-only</strong> "This text is shown only on an xlarge screen."
+              .column.small-12.show-for-xxlarge-up
+                .box <strong>show-for-xxlarge-up</strong> "This text is shown on xxlarge screens and up."
+              .column.small-12
+                hr
+                h3 <strong>Hide</strong> by screen size
+              .column.small-12.hide-for-small-only
+                .box <strong>hide-for-small-only</strong> "You are <em>not</em> on a small screen."
+              .column.small-12.hide-for-medium-up
+                .box <strong>hide-for-medium-up</strong> "You are <em>not</em> on a medium, medium-landscape, large, xlarge, or xxlarge screen."
+              .column.small-12.hide-for-medium-only
+                .box <strong>hide-for-medium-only</strong> "You are <em>not</em> on a medium screen."
+              .column.small-12.hide-for-medium-landscape-up
+                .box <strong>hide-for-medium-landscape-up</strong> "You are <em>not</em> on a medium-landscape, large, xlarge, or xxlarge screen."
+              .column.small-12.hide-for-medium-landscape-only
+                .box <strong>hide-for-medium-landscape-only</strong> "You are <em>not</em> on a medium-landscape screen."
+              .column.small-12.hide-for-large-up
+                .box <strong>hide-for-large-up</strong> "You are <em>not</em> on a large, xlarge, or xxlarge screen."
+              .column.small-12.hide-for-large-only
+                .box <strong>hide-for-large-only</strong> "You are <em>not</em> on a large screen."
+              .column.small-12.hide-for-xlarge-up
+                .box <strong>hide-for-xlarge-up</strong> "You are <em>not</em> on an xlarge screen and up."
+              .column.small-12.hide-for-xlarge-only
+                .box <strong>hide-for-xlarge-only</strong> "You are <em>not</em> on an xlarge screen."
+              .column.small-12.hide-for-xxlarge-up
+                .box <strong>hide-for-xxlarge-up</strong> "You are <em>not</em> on an xxlarge screen."
+        //- ROW DIRECTION
+        #row-direction.panel.no-padding
+          .panel-head Row Direction
+          .panel-body
+            .row
+              .column.small-12
+                h5 row horizontal
+                .row.box-row-container.horizontal
+                  .column.auto
+                    .box 1
+                  .column.auto
+                    .box 2
+                  .column.auto
+                    .box 3
+                  .column.auto
+                    .box 4
+                h5 row horizontal reverse
+                .row.box-row-container.horizontal-reverse
+                  .column.auto
+                    .box 1
+                  .column.auto
+                    .box 2
+                  .column.auto
+                    .box 3
+                  .column.auto
+                    .box 4
+                h5 row vertical
+                .row.box-row-container.vertical
+                  .column.auto
+                    .box 1
+                  .column.auto
+                    .box 2
+                  .column.auto
+                    .box 3
+                  .column.auto
+                    .box 4
+                h5 row vertical reverse
+                .row.box-row-container.vertical-reverse
+                  .column.auto
+                    .box 1
+                  .column.auto
+                    .box 2
+                  .column.auto
+                    .box 3
+                  .column.auto
+                    .box 4
+        //- ROW HORIZZONTAL ALIGNMENT
+        #row-horizontal-alignment.panel.no-padding
+          .panel-head Row horizontal alignment
+          .panel-body
+            .row
+              .column.small-12
+                h5 row query-start
+                .row.box-row-container.start
+                  .column.small-6
+                    .box small-6
+                h5 row query-center
+                .row.box-row-container.center
+                  .column.small-6
+                    .box small-6
+                h5 row query-end
+                .row.box-row-container.end
+                  .column.small-6
+                    .box small-6
+                h5 query-around
+                .row.box-row-container.around
+                  .column.small-4
+                    .box small-4
+                  .column.small-4
+                    .box small-4
+                h5 query-between
+                .row.box-row-container.between
+                  .column.small-3
+                    .box small-3
+                  .column.small-3
+                    .box small-3
+        //- ROW VERTICAL ALIGNMENT
+        #row-vertical-alignment.panel.no-padding
+          .panel-head Row vertical alignment
+          .panel-body
+            .row
+              .column.small-12
+                h5 query-top
+                .row.box-row-container.top
+                  .column.small-6
+                    .box.tall h100px small-6
+                  .column.small-6
+                    .box small-6
+                h5 query-middle
+                .row.box-row-container.middle
+                  .column.small-6
+                    .box.tall h100px small-6
+                  .column.small-6
+                    .box small-6
+                h5 query-bottom
+                .row.box-row-container.bottom
+                  .column.small-6
+                    .box.tall h100px small-6
+                  .column.small-6
+                    .box small-6
+                h5 query-baseline
+                .row.box-row-container.baseline
+                  .column.small-6
+                    .box.tall h100px small-6<br>il testo dei 2 box parte dallo stesso punto
+                  .column.small-6
+                    .box small-6
+                h5 query-stretch
+                .row.box-row-container.stretch
+                  .column.small-6
+                    .box.tall small-6
+                  .column.small-6
+                    .box small-6
+         //- ALIGNMENT COLUMNS
+        #column-alignment.panel.no-padding
+          .panel-head Column Alignment
+          .panel-body
+            .row
+              .column.small-2
+                .box.tall h100px<br>small-2
+              .column.small-2.top
+                .box <em>query</em>-top
+              .column.small-2.middle
+                .box <em>query</em>-middle
+              .column.small-2.bottom
+                .box <em>query</em>-bottom
+              .column.small-2.baseline
+                .box <em>query</em>-baseline
+              .column.small-2.stretch
+                .box <em>query</em>-stretch
+        //- OFFSETTING COLUMNS
+        #offset.panel.no-padding
+          .panel-head Offsetting columns
+          .panel-body
+            .row.box-row-container
+              .column.offset-8.small-4
+                .box query-offset-8 small-4
+            .row.box-row-container
+              .column.offset-3.small-6
+                .box query-offset-3 small-6
+            .row.box-row-container
+              .column.small-4
+                .box small-4
+            .row.box-row-container
+              .column.offset-4.small-4
+                .box query-offset-4 small-4
