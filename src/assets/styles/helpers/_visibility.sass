@@ -60,6 +60,23 @@
         +media-query($query, only)
           display: none
 
+
+@if $use-classes or $use-placeholder
+  @if $use-classes
+    $type: "."
+  @else
+    $type: "%"
+
+  @each $query, $breakpoint in $breakpoints
+    #{$type}show-for-#{$query}-up
+      +show-from($query)
+    #{$type}hide-for-#{$query}-up
+      +hide-from($query)
+    #{$type}show-for-#{$query}-only
+      +show-for($query)
+    #{$type}hide-for-#{$query}-only
+      +hide-for($query)
+
 // sample
 // .show-for-medium-up
 //   +show-from(medium)
