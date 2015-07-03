@@ -25,7 +25,7 @@
 // ---------
 // ROW MIXIN
 // ---------
-=grid-row($nested: false, $vertical: false)
+=grid-row($nested: true, $vertical: false)
   +dry-it("row#{$nested$vertical}")
     margin: 0 auto
     @if $vertical and $use-flex
@@ -55,41 +55,35 @@
       padding: 0 $column-gutter / 2
       @if $use-flex
         display: flex
-        flex: 1 1 0%
+        flex-direction: column
       @else
         float: $grid-start
 
   // Width -------------
   @if $width != null
     @if type-of($width) == map
-      @each $query, $value in $width
-        $set: ($query: $value)
-        +dry-it("clWd#{$set}")
-          +grid-space(width, $set)
+      +dry-it("clWd#{$width$query}")
+        +grid-space(width, $width)
     @else
       +grid-space(width, $width)
 
   // Push -------------
   @if $push != null
     @if type-of($push) == map
-      @each $query, $value in $push
-        $set: ($query: $value)
-        +dry-it("clPs#{$set}")
-          position: relative
-          #{$grid-end}: auto
-          +grid-space($grid-start, $set)
+      +dry-it("clPs#{$push$query}")
+        position: relative
+        #{$grid-end}: auto
+        +grid-space($grid-start, $push)
     @else
       +grid-space($grid-start, $push)
 
   // Pull -------------
   @if $pull != null
     @if type-of($pull) == map
-      @each $query, $value in $pull
-        $set: ($query: $value)
-        +dry-it("clPs#{$set}")
-          position: relative
-          #{$grid-end}: auto
-          +grid-space($grid-end, $set)
+      +dry-it("clPs#{$pull$query}")
+        position: relative
+        #{$grid-end}: auto
+        +grid-space($grid-end, $pull)
     @else
       +grid-space($grid-end, $pull)
 
@@ -100,18 +94,24 @@
   // Order -------------
   @if $order != null
     @if type-of($order) == map
-      @each $query, $value in $width
-        $set: ($query: $value)
-        +dry-it("clOr#{$set}")
-          @each $setQuery, $setValue in $set
-            +media-query($setQuery)
-              order: $setValue
+      +dry-it("clOr#{$order}")
+        @each $query, $value in $order
+          +media-query($query)
+            order: $value
     @else
       order: $order
 
   @if $debug
-    content: "COLUMN - width: #{$width}, collapse: #{$collapse}, push: #{$push}, pull: #{$pull}, query: #{$query}, order: #{$order}, global: #{$global}"
+    $column-setting: "COLUMN: "
+    $column-setting: $column-setting + if($width, #{width":" $width"| "}, '')
+    $column-setting: $column-setting + if($collapse, #{collapse":" $collapse"| "}, '')
+    $column-setting: $column-setting + if($push, #{push":" $push"| "}, '')
+    $column-setting: $column-setting + if($pull, #{pull":" $pull"| "}, '')
+    $column-setting: $column-setting + if($query, #{query":" $query"| "}, '')
+    $column-setting: $column-setting + if($order, #{order":" $order"| "}, '')
+    $column-setting: $column-setting + if($global, #{global":" $global}, '')
 
+    content: $column-setting
 
 
 // ------------------------------------------------------------
@@ -174,35 +174,40 @@
 
   // Column classes generator
   =column-generate-classes($query)
-    $class-prefix: str-insert($query, $type, 1)
+    @if $query == nth(map-keys($breakpoints), 1)
+      $class-prefix: "."
+    @else
+      $class-prefix: #{str-insert($query, $type, 1)}-
 
     //column modificators
     @if $use-flex
-      &#{$class-prefix}-collapse
+      &#{$class-prefix}collapse
         padding: 0
-      &#{$class-prefix}-top
+      &#{$class-prefix}top
         align-self: flex-start
-      &#{$class-prefix}-middle
+      &#{$class-prefix}middle
         align-self: center
-      &#{$class-prefix}-bottom
+      &#{$class-prefix}bottom
         align-self: flex-end
-      &#{$class-prefix}-baseline
+      &#{$class-prefix}baseline
         align-self: baseline
-      &#{$class-prefix}-stretch
+      &#{$class-prefix}stretch
         align-self: stretch
-      &#{$class-prefix}-auto
+      &#{$class-prefix}auto
         width: auto
         flex: 1
+      &#{$class-prefix}auto-reset
+        flex: 0 0 auto
 
     @for $i from 0 through $grid-columns
-      &#{$class-prefix}-#{$i}
+      &#{if($class-prefix == ".", ".width" ,$class-prefix)}#{$i}
         +grid-column($width: ($i of $grid-columns), $query: $query, $global: null)
-      &#{$class-prefix}-push-#{$i}
+      &#{$class-prefix}push-#{$i}
         +grid-column($push: ($i of $grid-columns), $width: null, $query: $query, $global: null)
-      &#{$class-prefix}-pull-#{$i}
+      &#{$class-prefix}pull-#{$i}
         +grid-column($pull: ($i of $grid-columns), $width: null, $query: $query, $global: null)
       @if $use-flex
-        &#{$class-prefix}-order-#{$i}
+        &#{$class-prefix}order-#{$i}
           +grid-column($order: ($i), $width: null, $query: $query, $global: null)
 
 
@@ -211,7 +216,7 @@
   // ROW GENERATOR
   // -------------
   #{$type}#{$row-name}
-    +grid-row
+    +grid-row(false)
 
     #{$type}#{$row-name}
       width: auto
