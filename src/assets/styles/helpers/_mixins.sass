@@ -1,0 +1,41 @@
+// -----------------------------------------------------------------------------
+// DRY MIXIN!!! What is that? Is simple, we will creat now some mixin
+// that will define our column. For example i want to use:
+// .column-4
+//   +grid-column((small: 12, large: 6))
+// it will generate some css. But it will generate this css everytime.
+// Yes we may use place holder, but placeholder are too difficult to
+// manage for big project. The idea is, why not generate placeholder
+// on fly? We are trying to do exactly this here.
+// You can read a great article about that here:
+// http://alistapart.com/article/dry-ing-out-your-sass-mixins
+// -----------------------------------------------------------------------------
+
+
+// ----------------
+// OUR BIG VARIABLE
+// ----------------
+$placeholders: ()
+
+
+// ----------------------------------------
+// OUR MIXIN THAT WILL GENERATE PLACEHOLDER
+// ----------------------------------------
+=dry-it($id)
+  @if $use-dry
+    $placeholder: map-get($placeholders, $id)
+
+    @if $placeholder == null
+      $unique-id: unique-id()
+      $placeholder-name: $unique-id
+      $placeholders: map-merge($placeholders, ($id: $unique-id)) !global
+      // * is here for a libsass bug:
+      // https://github.com/sass/libsass/issues/1210
+      @at-root *
+        &%#{$unique-id}
+          @content
+      @extend %#{$unique-id}
+    @else
+      @extend %#{$placeholder}
+  @else
+    @content

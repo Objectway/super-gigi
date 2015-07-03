@@ -1,18 +1,27 @@
-// // Kitchensink
+// Kitchensink
 
-// .KitchenSinc {
-//   @include grid-row;
-//   &__title {
-//     font-size: 30px;
-//     @include media-query(medium) {
-//       @include grid-column(1 of 2);
-//     }
-//   }
+.KitchenSinc {
+  @include grid-row;
+  &__title {
+    font-size: 30px;
+    @include media-query(medium) {
+      @include grid-column(1 of 2);
+    }
+  }
 
-//   &__subtitle {
-//     font-size: 20px;
-//     @include media-query(medium) {
-//       @include grid-column($width: (1 of 2), $order: 0);
-//     }
-//   }
-// }
+  &__subtitle {
+    font-size: 20px;
+    @include media-query(medium) {
+      @include grid-column($width: (1 of 2), $order: 0);
+    }
+  }
+}
+
+.pippo{
+  background: red;
+  @include grid-column((small: 2))
+}
+.pappo{
+  background: gray;
+  @include grid-column((xsmall: 11, small: 2))
+}
