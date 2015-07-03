@@ -1,7 +1,7 @@
 {
-  "name": "ui-toolkit",
+  "name": "ow-starterkit",
   "version": "0.0.1",
-  "description": "ui toolkit for the GIG developer",
+  "description": "ow-starterkit",
   "main": "Gulpfile.js",
   "scripts": {
     "compile": "gulp compile",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Objectway/ui-toolkit.git"
+    "url": "git+https://github.com/Objectway/ui-starterkit.git"
   },
   "author": "Objectway",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Objectway/ui-toolkit/issues"
+    "url": "https://github.com/Objectway/ui-starterkit/issues"
   },
-  "homepage": "https://github.com/Objectway/ui-toolkit#readme",
+  "homepage": "https://github.com/Objectway/ui-starterkit#readme",
   "devDependencies": {
     "backstopjs": "^0.5.1",
     "browser-sync": "^2.7.7",
