@@ -175,39 +175,39 @@
   // Column classes generator
   =column-generate-classes($query)
     @if $query == nth(map-keys($breakpoints), 1)
-      $class-prefix: "."
+      $class-prefix: #{str-insert("", $type, 1)}
     @else
       $class-prefix: #{str-insert($query, $type, 1)}-
 
     //column modificators
     @if $use-flex
-      &#{$class-prefix}collapse
+      #{$class-prefix}collapse
         padding: 0
-      &#{$class-prefix}top
+      #{$class-prefix}top
         align-self: flex-start
-      &#{$class-prefix}middle
+      #{$class-prefix}middle
         align-self: center
-      &#{$class-prefix}bottom
+      #{$class-prefix}bottom
         align-self: flex-end
-      &#{$class-prefix}baseline
+      #{$class-prefix}baseline
         align-self: baseline
-      &#{$class-prefix}stretch
+      #{$class-prefix}stretch
         align-self: stretch
-      &#{$class-prefix}auto
+      #{$class-prefix}auto
         width: auto
         flex: 1
-      &#{$class-prefix}auto-reset
+      #{$class-prefix}auto-reset
         flex: 0 0 auto
 
     @for $i from 0 through $grid-columns
-      &#{if($class-prefix == ".", ".width" ,$class-prefix)}#{$i}
+      #{if($query == nth(map-keys($breakpoints), 1), "#{$type}width-" ,$class-prefix)}#{$i}
         +grid-column($width: ($i of $grid-columns), $query: $query, $global: null)
-      &#{$class-prefix}push-#{$i}
+      #{$class-prefix}push-#{$i}
         +grid-column($push: ($i of $grid-columns), $width: null, $query: $query, $global: null)
-      &#{$class-prefix}pull-#{$i}
+      #{$class-prefix}pull-#{$i}
         +grid-column($pull: ($i of $grid-columns), $width: null, $query: $query, $global: null)
       @if $use-flex
-        &#{$class-prefix}order-#{$i}
+        #{$class-prefix}order-#{$i}
           +grid-column($order: ($i), $width: null, $query: $query, $global: null)
 
 
@@ -235,9 +235,9 @@
   // ----------------
   #{$type}#{$column-name}
     +grid-column
-    @each $query, $breakpoint in $breakpoints
-      +media-query($query)
-        +column-generate-classes(#{$query})
+  @each $query, $breakpoint in $breakpoints
+    +media-query($query)
+      +column-generate-classes(#{$query})
 
 
 
@@ -263,6 +263,12 @@
 
 
 // SAMPLE
+.pippo
+  background: red
+  +grid-column((small: 3, large: 4))
+.pappo
+  background: yellow
+  +grid-column((small: 3, large: 5))
 // .column
 //   +grid-column(1 of 2)
 // .column2
