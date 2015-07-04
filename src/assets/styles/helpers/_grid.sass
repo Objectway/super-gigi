@@ -48,9 +48,9 @@
 // ------------
 // COLUMN MIXIN
 // ------------
-=grid-column($width: 'auto', $collapse: null, $push: null, $pull: null, $query: null, $order: null, $global: true)
+=grid-column($width: 'auto', $collapse: null, $push: null, $pull: null, $order: null, $global: true)
   @if $global
-    +dry-it("clGl#{$query}")
+    +dry-it("clGl")
       box-sizing: border-box
       padding: 0 $column-gutter / 2
       @if $use-flex
@@ -59,31 +59,38 @@
       @else
         float: $grid-start
 
+
   // Width -------------
   @if $width != null
     @if type-of($width) == map
-      +dry-it("clWd#{$width$query}")
-        +grid-space(width, $width)
+      @each $query, $value in $width
+        $set: ($query: $value)
+        +dry-it("clWd#{$set}")
+          +grid-space(width, $set)
     @else
       +grid-space(width, $width)
 
   // Push -------------
   @if $push != null
     @if type-of($push) == map
-      +dry-it("clPs#{$push$query}")
-        position: relative
-        #{$grid-end}: auto
-        +grid-space($grid-start, $push)
+      @each $query, $value in $push
+        $set: ($query: $value)
+        +dry-it("clPs#{$set}")
+          position: relative
+          #{$grid-end}: auto
+          +grid-space($grid-start, $set)
     @else
       +grid-space($grid-start, $push)
 
   // Pull -------------
   @if $pull != null
     @if type-of($pull) == map
-      +dry-it("clPs#{$pull$query}")
-        position: relative
-        #{$grid-end}: auto
-        +grid-space($grid-end, $pull)
+      @each $query, $value in $pull
+        $set: ($query: $value)
+        +dry-it("clPs#{$set}")
+          position: relative
+          #{$grid-end}: auto
+          +grid-space($grid-end, $set)
     @else
       +grid-space($grid-end, $pull)
 
@@ -94,10 +101,12 @@
   // Order -------------
   @if $order != null
     @if type-of($order) == map
-      +dry-it("clOr#{$order}")
-        @each $query, $value in $order
-          +media-query($query)
-            order: $value
+      @each $query, $value in $width
+        $set: ($query: $value)
+        +dry-it("clOr#{$set}")
+          @each $setQuery, $setValue in $set
+            +media-query($setQuery)
+              order: $setValue
     @else
       order: $order
 
@@ -107,137 +116,147 @@
     $column-setting: $column-setting + if($collapse, #{collapse":" $collapse"| "}, '')
     $column-setting: $column-setting + if($push, #{push":" $push"| "}, '')
     $column-setting: $column-setting + if($pull, #{pull":" $pull"| "}, '')
-    $column-setting: $column-setting + if($query, #{query":" $query"| "}, '')
     $column-setting: $column-setting + if($order, #{order":" $order"| "}, '')
     $column-setting: $column-setting + if($global, #{global":" $global}, '')
 
     content: $column-setting
 
 
-// ------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // WE WILL GENERATE STATIC CSS CLASSES.
 // WE WOULD PREFER THE MIXINS VERSION, BUT NOT IN EVERY PROJECT
 // YOU CAN HAVE PRECOMPILERS...
-// ------------------------------------------------------------
-// If you prefer you can use sass placeholder,
+// -----------------------------------------------------------------------------
+// If you don't want to use classes we will generate placeholders
+// that you can use like that:
 // .class
 //   @extend %row
 //   @extend %row%top
-// ------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// Wait a moment. Why will we generate the placeholder if we don't use classes?
+// The issue is that the mediaqueries don't add specificity to a selector.
+// In that way if i have something like that:
+// .foo
+//   +grid-column((small: 3, large: 4))
+// .bar
+//   +grid-column((xsmall: 11, small: 3))
+// The xsmall rule will be override the small rule, because it's first written.
+// Doing a big cycle with all the options with placeholder, allow us to take
+// all at the correct place.
+// -----------------------------------------------------------------------------
 
-@if $use-classes or $use-placeholder
-  @if $use-classes
-    $type: "."
+@if $use-classes
+  $type: "."
+@else
+  $type: "%"
+
+// Row classes generator
+=row-generate-classes($query, $separator: "-")
+  /* #{$query} Breakpoint */
+  $class-prefix: str-insert($query, $type, 1)
+
+  @if $use-flex
+    // row modificators
+    &#{$class-prefix}#{$separator}top
+      align-items: flex-start
+    &#{$class-prefix}#{$separator}middle
+      align-items: center
+    &#{$class-prefix}#{$separator}bottom
+      align-items: flex-end
+    &#{$class-prefix}#{$separator}baseline
+      align-items: baseline
+    &#{$class-prefix}#{$separator}stretch
+      align-items: stretch
+
+    &#{$class-prefix}#{$separator}start
+      justify-content: flex-start
+    &#{$class-prefix}#{$separator}center
+      justify-content: center
+    &#{$class-prefix}#{$separator}end
+      justify-content: flex-end
+    &#{$class-prefix}#{$separator}around
+      justify-content: space-around
+    &#{$class-prefix}#{$separator}between
+      justify-content: space-between
+
+    &#{$class-prefix}#{$separator}horizontal
+      flex-direction: row
+    &#{$class-prefix}#{$separator}horizontal-reverse
+      flex-direction: row-reverse
+    &#{$class-prefix}#{$separator}vertical
+      flex-direction: column
+    &#{$class-prefix}#{$separator}vertical-reverse
+      flex-direction: column-reverse
+
+    &#{$class-prefix}#{$separator}single-line
+      flex-flow: nowrap
+
+// Column classes generator
+=column-generate-classes($query)
+  @if $query == nth(map-keys($breakpoints), 1)
+    $class-prefix: #{str-insert("", $type, 1)}
   @else
-    $type: "%"
+    $class-prefix: #{str-insert($query, $type, 1)}-
 
-  // Row classes generator
-  =row-generate-classes($query, $separator: "-")
-    /* #{$query} Breakpoint */
-    $class-prefix: str-insert($query, $type, 1)
-
-    @if $use-flex
-      // row modificators
-      &#{$class-prefix}#{$separator}top
-        align-items: flex-start
-      &#{$class-prefix}#{$separator}middle
-        align-items: center
-      &#{$class-prefix}#{$separator}bottom
-        align-items: flex-end
-      &#{$class-prefix}#{$separator}baseline
-        align-items: baseline
-      &#{$class-prefix}#{$separator}stretch
-        align-items: stretch
-
-      &#{$class-prefix}#{$separator}start
-        justify-content: flex-start
-      &#{$class-prefix}#{$separator}center
-        justify-content: center
-      &#{$class-prefix}#{$separator}end
-        justify-content: flex-end
-      &#{$class-prefix}#{$separator}around
-        justify-content: space-around
-      &#{$class-prefix}#{$separator}between
-        justify-content: space-between
-
-      &#{$class-prefix}#{$separator}horizontal
-        flex-direction: row
-      &#{$class-prefix}#{$separator}horizontal-reverse
-        flex-direction: row-reverse
-      &#{$class-prefix}#{$separator}vertical
-        flex-direction: column
-      &#{$class-prefix}#{$separator}vertical-reverse
-        flex-direction: column-reverse
-
-      &#{$class-prefix}#{$separator}single-line
-        flex-flow: nowrap
-
-  // Column classes generator
-  =column-generate-classes($query)
-    @if $query == nth(map-keys($breakpoints), 1)
-      $class-prefix: #{str-insert("", $type, 1)}
-    @else
-      $class-prefix: #{str-insert($query, $type, 1)}-
-
-    //column modificators
-    @if $use-flex
-      #{$class-prefix}collapse
-        padding: 0
-      #{$class-prefix}top
-        align-self: flex-start
-      #{$class-prefix}middle
-        align-self: center
-      #{$class-prefix}bottom
-        align-self: flex-end
-      #{$class-prefix}baseline
-        align-self: baseline
-      #{$class-prefix}stretch
-        align-self: stretch
-      #{$class-prefix}auto
-        width: auto
-        flex: 1
-      #{$class-prefix}auto-reset
-        flex: 0 0 auto
-
-    @for $i from 0 through $grid-columns
-      #{if($query == nth(map-keys($breakpoints), 1), "#{$type}width-" ,$class-prefix)}#{$i}
-        +grid-column($width: ($i of $grid-columns), $query: $query, $global: null)
-      #{$class-prefix}push-#{$i}
-        +grid-column($push: ($i of $grid-columns), $width: null, $query: $query, $global: null)
-      #{$class-prefix}pull-#{$i}
-        +grid-column($pull: ($i of $grid-columns), $width: null, $query: $query, $global: null)
-      @if $use-flex
-        #{$class-prefix}order-#{$i}
-          +grid-column($order: ($i), $width: null, $query: $query, $global: null)
-
-
-
-  // -------------
-  // ROW GENERATOR
-  // -------------
-  #{$type}#{$row-name}
-    +grid-row(false)
-
-    #{$type}#{$row-name}
+  //column modificators
+  @if $use-flex
+    #{$class-prefix}collapse
+      padding: 0
+    #{$class-prefix}top
+      align-self: flex-start
+    #{$class-prefix}middle
+      align-self: center
+    #{$class-prefix}bottom
+      align-self: flex-end
+    #{$class-prefix}baseline
+      align-self: baseline
+    #{$class-prefix}stretch
+      align-self: stretch
+    #{$class-prefix}auto
       width: auto
-      margin: 0 (-$column-gutter / 2)
+      flex: 1
+    #{$class-prefix}auto-reset
+      flex: 0 0 auto
 
-    +row-generate-classes("", "")
+  @for $i from 0 through $grid-columns
+    #{if($query == nth(map-keys($breakpoints), 1), "#{$type}width-" ,$class-prefix)}#{$i}
+      +grid-column($width: ($query: $i), $global: null)
+    #{$class-prefix}push-#{$i}
+      +grid-column($push: ($query: $i), $width: null, $global: null)
+    #{$class-prefix}pull-#{$i}
+      +grid-column($pull: ($query: $i), $width: null, $global: null)
+    @if $use-flex
+      #{$class-prefix}order-#{$i}
+        +grid-column($order: ($i), $width: null, $global: null)
 
-    @each $query, $breakpoint in $breakpoints
-      +media-query($query)
-        +row-generate-classes(#{$query})
 
 
+// -------------
+// ROW GENERATOR
+// -------------
+#{$type}#{$row-name}
+  +grid-row(false)
 
-  // ----------------
-  // COLUMN GENERATOR
-  // ----------------
-  #{$type}#{$column-name}
-    +grid-column
+  #{$type}#{$row-name}
+    width: auto
+    margin: 0 (-$column-gutter / 2)
+
+  +row-generate-classes("", "")
+
   @each $query, $breakpoint in $breakpoints
     +media-query($query)
-      +column-generate-classes(#{$query})
+      +row-generate-classes(#{$query})
+
+
+
+// ----------------
+// COLUMN GENERATOR
+// ----------------
+#{$type}#{$column-name}
+  +grid-column
+@each $query, $breakpoint in $breakpoints
+  +media-query($query)
+    +column-generate-classes(#{$query})
 
 
 
@@ -263,12 +282,6 @@
 
 
 // SAMPLE
-.pippo
-  background: red
-  +grid-column((small: 3, large: 4))
-.pappo
-  background: yellow
-  +grid-column((small: 3, large: 5))
 // .column
 //   +grid-column(1 of 2)
 // .column2
