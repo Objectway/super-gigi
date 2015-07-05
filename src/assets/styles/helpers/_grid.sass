@@ -15,11 +15,10 @@
 
   @else
     @each $query, $value in $attr
-      +media-query($query)
-        @if $value == auto
-          #{$property}: auto
-        @else
-          #{$property}: unquote(($value / $grid-columns * 100) + '%')
+      @if $value == auto
+        #{$property}: auto
+      @else
+        #{$property}: unquote(($value / $grid-columns * 100) + '%')
 
 
 // ---------
@@ -74,22 +73,26 @@
 
   // Push -------------
   @if $push != null
+    +dry-it("clPsPl")
+      position: relative
+      #{$grid-end}: auto
     @if type-of($push) == map
       @each $query, $value in $push
         $set: ($query: $value)
         +dry-it("clPs#{$set}")
-          position: relative
-          #{$grid-end}: auto
           +grid-space($grid-start, $set)
     @else
       +grid-space($grid-start, $push)
 
   // Pull -------------
   @if $pull != null
+    +dry-it("clPsPl")
+      position: relative
+      #{$grid-end}: auto
     @if type-of($pull) == map
       @each $query, $value in $pull
         $set: ($query: $value)
-        +dry-it("clPs#{$set}")
+        +dry-it("clPl#{$set}")
           position: relative
           #{$grid-end}: auto
           +grid-space($grid-end, $set)
