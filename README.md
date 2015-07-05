@@ -5,10 +5,12 @@
 <br/>
 
 ## Installation
+***
 For now you can pull the repo or download it via GitHub options. NPM and Bower options will come soon.
 
 <br/>
 ## Options
+***
 If you are using the SASS version you can personalize those variables, simply changing the value before importing our `main.sass`.
 
 ### $use-flex
@@ -148,7 +150,23 @@ In the same way you have to change how you refer to breakpoints in all our mixin
 ```
 <br/>
 
+## Mixins
+***
+TODO
+
+<br/>
+
+## Functions
+***
+We love [Foundation](http://foundation.zurb.com) and we used it a lot. Those function are based on our preferred Foundation functions that we want to continue to use in our projects.
+
+TODO
+
+<br/>
+
+
 ## Run it
+***
 You can simply import `main.sass` in your project, or you can run our tasks to deploy your custom css file. You can use:
 
 
@@ -161,6 +179,7 @@ You can simply import `main.sass` in your project, or you can run our tasks to d
 <br/>
 
 ## DISTRIBUTED UNDER THE MIT LICENSE
+***
 
 The MIT License (MIT)
 
