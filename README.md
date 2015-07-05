@@ -61,7 +61,7 @@ default: `column` - type: `string`
 This option will change the name of the row object classes or placeholder. 
 Remember that if you change this value you have to use this as base for row placeholder:
 
-```scss
+```
 $row-name: bar;
 .column {
 	@extend %bar
@@ -84,7 +84,7 @@ With big applications and semantic BEM selectors, is difficult to understand wha
 
 **Example:**
 
-```css
+```
 .fooColumn {
   font-size: 30px; }
   @media only screen and (min-width: 45em) {
@@ -99,6 +99,53 @@ With big applications and semantic BEM selectors, is difficult to understand wha
       content: "COLUMN: width : (xxsmall: 6, large: 6) | push : 1 | pull : 1 | order : 0 | global : true"; } }
 ```
 
+### $eq-grid
+default: `false` - type: `boolean` 
+
+**OW GRID** support [EQJS](https://github.com/Snugug/eq.js). Turn this option `true` to use element queries css instead of classical mediaquery. If you want to use both, you can: see the **media query mixin**. 
+
+### $breakpoints
+default: `(xxsmall: 0em, xsmall: em-calc(480), small: em-calc(640), medium: em-calc(720), large: em-calc(1024), xlarge: em-calc(1280), xxlarge: em-calc(1440))` - type: `map`
+
+Ok, this is a little complicated :) but we want to have this settings in only one place. This is a [SASS map](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps) and we use it to define all our mediaqueries.
+The **keys** are used to define the name of our breakpoints and will be passed to our classes generator or to our mixins. For example if you use the classes and youchange this object like this: 
+
+```
+$breakpoints: (sml: 0em, mdm: 40em, lrg: 60em);
+```
+
+you will generate this kind of css:
+
+```
+@media (min-width: 40em) {
+  .mdm-3 {
+    width: 25%; } }
+@media (min-width: 40em) {
+  .lrg-3 {
+    width: 25%; }}
+    
+```
+In the same way you have to change how you refer to breakpoints in all our mixins:
+
+```
+.foo {
+  @include grid-row(false);
+  &__bar {
+    @include grid-column(
+      $width: (sml:6, lrg: 6),
+      $collapse: false,
+      $push: (mdm:6, lrg: 12),
+      $pull: 1,
+      $order: 0
+    );
+  }
+  &foo {
+  	@media-query(lrg){
+  	  background: red
+  	}
+  }
+  
+```
 <br/>
 
 ## Run it
