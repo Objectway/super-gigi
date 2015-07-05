@@ -60,7 +60,7 @@ default: `column` - type: `string`
 This option will change the name of the row object classes or placeholder. 
 Remember that if you change this value you have to use this as base for row placeholder:
 
-```
+```scss
 $row-name: bar;
 .column {
 	@extend %bar
@@ -83,7 +83,7 @@ With big applications and semantic BEM selectors, is difficult to understand wha
 
 **Example:**
 
-```
+```css
 .fooColumn {
   font-size: 30px; }
   @media only screen and (min-width: 45em) {
@@ -109,13 +109,13 @@ default: `(xxsmall: 0em, xsmall: em-calc(480), small: em-calc(640), medium: em-c
 Ok, this is a little complicated :) but we want to have this settings in only one place. This is a [SASS map](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps) and we use it to define all our mediaqueries.
 The **keys** are used to define the name of our breakpoints and will be passed to our classes generator or to our mixins. For example if you use the classes and youchange this object like this: 
 
-```
+```scss
 $breakpoints: (sml: 0em, mdm: 40em, lrg: 60em);
 ```
 
 you will generate this kind of css:
 
-```
+```css
 @media (min-width: 40em) {
   .mdm-3 {
     width: 25%; } }
@@ -126,7 +126,7 @@ you will generate this kind of css:
 ```
 In the same way you have to change how you refer to breakpoints in all our mixins:
 
-```
+```scss
 .foo {
   @include grid-row(false);
   &__bar {
@@ -155,7 +155,77 @@ TODO
 ## Functions
 We love [Foundation](http://foundation.zurb.com) and we used it a lot. Those function are based on our preferred Foundation functions that we want to continue to use in our projects.
 
-TODO
+##remove-unit($value)
+remove the unit from a value
+**Example**
+```scss
+$foo: remove-unit(10px); //will return 10
+```
+
+##rem-calc($values, $base-value: $rem-base)
+$values: `array`
+$base-value: `unit` // $rem-base is a **OW GRID** default variable, you can find it in variables section.
+
+Transform an array of pixel values (with or without `px`) in rem unit, based on the optional `$base-value` passed to the function.
+
+**Example**
+```scss
+.foo{
+  margin: rem-calc(16 8 16 8);
+  padding: rem-calc(8px);
+}
+```
+will return:
+```css
+.foo{
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  padding: 0.5rem;
+}
+``
+
+
+##em-calc($values, $base-value: $rem-base)
+$values: `array`
+$base-value: `unit` // $rem-base is a **OW GRID** default variable, you can find it in variables section.
+
+Transform an array of pixel values (with or without `px` value) in em unit, based on the optional `$base-value` passed to the function.
+
+**Example**
+```scss
+.foo{
+  margin: em-calc(16 8 16 8);
+  padding: em-calc(8, 8);
+}
+```
+will return:
+```css
+.foo{
+  margin: 1em 0.5em 1em 0.5em;
+  padding: 0.5em;
+}
+```
+
+##px-calc($values, $base-value: $rem-base)
+$values: `array`
+$base-value: `unit` // $rem-base is a **OW GRID** default variable, you can find it in variables section.
+
+Transform an array of ems or rems values (with or without `em/rem`) in pixel unit, based on the optional `$base-value` passed to the function.
+
+**Example**
+```scss
+.foo{
+  margin: px-calc(1em 0.5em 1em 0.5em);
+  padding: px-calc(1rem);
+}
+```
+will return:
+
+```css
+.foo{
+  margin: 16px 8px 16px 8px;
+  padding: 16px;
+}
+```
 
 <br/>
 
