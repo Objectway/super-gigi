@@ -28,6 +28,8 @@
 =grid-row($nested: true, $vertical: false)
   +dry-it("row#{$nested$vertical}")
     margin: 0 auto
+    @if $grid-start != left and $use-flex
+      flex-direction: row-reverse
     @if $vertical and $use-flex
       flex-direction: column
     @if $nested
@@ -131,7 +133,6 @@
 // that you can use like that:
 // .class
 //   @extend %row
-//   @extend %row%top
 // -----------------------------------------------------------------------------
 // Wait a moment. Why will we generate the placeholder if we don't use classes?
 // The issue is that the mediaqueries don't add specificity to a selector.
@@ -180,9 +181,9 @@
       justify-content: space-between
 
     &#{$class-prefix}#{$separator}horizontal
-      flex-direction: row
+      flex-direction: if($grid-start == left, row, row-reverse)
     &#{$class-prefix}#{$separator}horizontal-reverse
-      flex-direction: row-reverse
+      flex-direction: if($grid-start == left, row-reverse, row)
     &#{$class-prefix}#{$separator}vertical
       flex-direction: column
     &#{$class-prefix}#{$separator}vertical-reverse

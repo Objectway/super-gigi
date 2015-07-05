@@ -15,8 +15,6 @@
   // width: 1rem
 
 
-$rem-base: 16px !default
-
 @function rem-calc($values, $base-value: $rem-base)
   @if length($values) == 1
     @return remove-unit($values) / remove-unit($base-value) * 1rem
