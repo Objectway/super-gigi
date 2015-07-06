@@ -15,7 +15,7 @@ $portrait: "#{$screen} and (orientation: portrait)" !default
 =media-query($query: xxsmall, $only: false, $eq-grid: $eq-grid)
   @if $eq-grid
     @if $only
-      [data-eq-state="#{$query}"] &
+      [data-eq-state$="#{$query}"] &
         @content
     @else
       [data-eq-state~="#{$query}"] &
