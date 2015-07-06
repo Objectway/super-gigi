@@ -426,22 +426,205 @@ will compile (... is the common css
   display: flex;
   flex-direction: column;
 ```
+<br />
 
+###show-from()
+arguments: `$query`
+- **$query**
+  - required
+  - default: `null`
+  - type: `string`
+This is the first of our visibility mixin. It simple take a `$query` argument and set the element to `display: none;` until the passed `$query`, where the element will take the property: `display: inherit`. Example
+```scss
+.foo {
+  @include show-from(small);
+}
+```
+and magically:
+```css
+.foo {
+  display: none; 
+}
+@media only screen and (min-width: 40em) {
+  .foo {
+    display: inherit; 
+  } 
+}
+ ```
+<br/>
 
+###hide-from()
+arguments: `$query`
+- **$query**
+  - required
+  - default: `null`
+  - type: `string`
+Like `show-from()`. It simple take a `$query` argument and set the element to `display: inherit;` until the passed `$query`, where the element will take the property: `display: none`. Example:
+```scss
+.foo {
+  @include hide-from(small);
+}
+```
+will generate:
+```css
+.foo {
+  display: inherit; 
+}
+@media only screen and (min-width: 40em) {
+  .foo {
+    display: none; 
+  } 
+}
+ ```
+<br/>
+
+###show-for()
+arguments: `$query`
+- **$query**
+  - required
+  - default: `null`
+  - type: `string`
+
+In this case the element is hided by  `display: none;` and will have the property: `display: inherit` only for the selected media query range. Example:
+
+```scss
+.foo {
+  @include show-for(small);
+}
+```
+will generate:
+```css
+.foo {
+  display: none; 
+}
+@media only screen and (min-width: 40em) and (max-width: 44.9375em) {
+  .foo {
+    display: inherit; 
+  } 
+}
+ ```
+<br/>
+
+###hide-for()
+arguments: `$query`
+- **$query**
+  - required
+  - default: `null`
+  - type: `string`
+
+The last of our visibility mixins. We will hide the element with  `display: none;` only for the selected media query range. Example:
+
+```scss
+.foo {
+  @include hide-for(small);
+}
+```
+will generate:
+```css
+.foo {
+  display: inherit; 
+}
+@media only screen and (min-width: 40em) and (max-width: 44.9375em) {
+  .foo {
+    display: none; 
+  } 
+}
+ ```
+<br/>
+
+###dry-it()
+arguments: `$id`
+- **$id**
+  - required
+  - type: `string`
+
+One of the bad thing that we have in developing a grid without a default classes schema is that our result css code will be semantic... but not dry... You can serve the css with gzip, but you know that we will have a lot of redundant code...
+**Example:**
+```scss
+.foo {
+  @include grid-column((small: 12, large: 6));
+}
+.bar {
+  @include grid-column((small: 12, large: 6));
+}
+```
+will generate this css:
+```css
+.foo {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (min-width: 40em) {
+  .foo {
+    width: 100%; } }
+@media only screen and (min-width: 64em) {
+  .foo {
+    width: 50%; } }
+
+.bar {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (min-width: 40em) {
+  .bar {
+    width: 100%; 
+  } 
+}
+@media only screen and (min-width: 64em) {
+  .bar {
+    width: 50%; 
+  } 
+}
+```
+The same code for two identical classes. 
+SASS come in our help with placeholders, but we must extend too many selector to have a dry behavior. What if we can generate placeholders on fly? That is exactly what `dry-it()` does. You don't have to use it, this is already in all our mixins seen before. For use it you must only set to `true` the [`$use-dry`](#use-dry) variable. And that is what will happen:
+```scss
+.foo {
+  @include grid-column((small: 12, large: 6));
+}
+.bar {
+  @include grid-column((small: 12, large: 6));
+}
+```
+will generate this css:
+```css
+*.foo, *.bar {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column; 
+}
+
+@media only screen and (min-width: 40em) {
+  *.foo, *.bar {
+    width: 100%; 
+  } 
+}
+
+@media only screen and (min-width: 64em) {
+  *.foo, *.bar {
+    width: 50%; 
+  } 
+}
+```
 
 <br/>
 
 ## Functions
 We love [Foundation](http://foundation.zurb.com) and we used it a lot. Those function are based on our preferred Foundation functions that we want to continue to use in our projects.
 
-##remove-unit($value)
+###remove-unit($value)
 remove the unit from a value
 **Example**
 ```scss
 $foo: remove-unit(10px); //will return 10
 ```
 
-##rem-calc($values, $base-value: $rem-base)
+###rem-calc($values, $base-value: $rem-base)
 $values: `array`
 $base-value: `unit` // $rem-base is a **OW GRID** default variable, you can find it in variables section.
 
@@ -476,7 +659,7 @@ will return:
 }
 ```
 
-##px-calc($values, $base-value: $rem-base)
+###px-calc($values, $base-value: $rem-base)
 $values: `array`
 $base-value: `unit` // $rem-base is a **OW GRID** default variable, you can find it in variables section.
 
