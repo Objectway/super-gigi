@@ -15,10 +15,17 @@
 
   @else
     @each $query, $value in $attr
-      @if $value == auto
-        #{$property}: auto
-      @else
-        #{$property}: unquote(($value / $grid-columns * 100) + '%')
+      @if $use-dry
+        @if $value == auto
+          #{$property}: auto
+        @else
+          #{$property}: unquote(($value / $grid-columns * 100) + '%')
+      @else    
+        +media-query($query)
+          @if $value == auto
+            #{$property}: auto
+          @else
+            #{$property}: unquote(($value / $grid-columns * 100) + '%')
 
 
 // ---------
