@@ -114,7 +114,7 @@
   // Order -------------
   @if $order != null
     @if type-of($order) == map
-      @each $query, $value in $width
+      @each $query, $value in $order
         $set: ($query: $value)
         +dry-it("clOr#{$set}")
           @each $setQuery, $setValue in $set
