@@ -139,7 +139,7 @@ In the same way you have to change how you refer to breakpoints in all our mixin
     );
   }
   &foo {
-  	@media-query(lrg){
+  	@include media-query(lrg){
   	  background: red
   	}
   }
@@ -148,6 +148,78 @@ In the same way you have to change how you refer to breakpoints in all our mixin
 <br/>
 
 ## Mixins
+###media-query()
+arguments: `$query`, `$only`, `$eq-grid`
+- **`$query`**
+  - optional
+  - default: `xxsmall`
+  - type: `string`
+- **`$only`**
+  - optional
+  - default: `false`
+  - type: `boolean`
+- **`$eq-grid`**
+  - optional
+  - default: `false`
+  - type: `boolean`
+
+As you can guess, this is the mixin that generate our media or element query. 
+The `$query` argument must be one of the `key` values defined in the [`$breakpoints`](#breakpoints) variable. 
+**OW GRID** is developed mobile first, so if you write `@include mediaquery(small){...}` you will target all the queries from `small` to the last query specified in `$breakpoints` map. If you want to target only a specified mediaquery you will set the `$query` argument to `true`. 
+You can choose between classical <a href="http://www.w3.org/TR/css3-mediaqueries/" target="_blank">media query</a> or to use <a href="https://github.com/snugug/eq.js" target="_blank">element query</a>. You don't have to specify this setting everytime, we provided a [global $eq-grid](#eq-grid), but sometime is useful to mix media end element query.
+
+###grid-space()
+arguments: `$property`, `$attr`
+- **`$property`**
+  - optional
+  - default: `width`
+  - type: `string`
+- **$attr**
+  - optional
+  - default: `auto`
+  -type: `list`
+
+When you are writing css in a grid, it's difficult to menage the measures sometime.
+`grid-space()` come to help us in this ungrateful task! You can set the property you want to set, for example: `width`, `left`, `margin-left` changing the `$property` argument. After that you can pass how many column of the grid you want to take. For example assuming that we have `12` [`$grid-columns`](#grid-columns):
+```scss
+.foo {
+  @include grid-space(margin-left, 5)
+}
+```
+will return
+```css
+.foo {
+  margin-left: 41.6667%
+}
+```
+You can also express the number of column you want to use for your calculation, passing to `$attr` a sass list composed like that: `$column` **`of`** `$columns`. For example:
+ 
+```scss
+.foo {
+  @include grid-space(margin-left, 1 of 2)
+}
+```
+will return
+```css
+.foo {
+  margin-left: 50%
+}
+```
+
+###grid-row()
+arguments: `$nested`, `$vertical`
+- **`$nested`**
+  - optional
+  - default: `true`
+  - type: `boolean`
+- **$vertical**
+  - optional
+  - default: `false`
+  -type: `boolean`
+
+This mixin will generate the **row element** of the grid. It's real simple, you may specify if the row is nested in another row (to reset the padding). The other option `$vertical` will simply add the CSS3 `flex-direction: row-reverse` property to the element.
+
+###grid-row()
 TODO
 
 <br/>
@@ -168,7 +240,7 @@ $base-value: `unit` // $rem-base is a **OW GRID** default variable, you can find
 
 Transform an array of pixel values (with or without `px`) in rem unit, based on the optional `$base-value` passed to the function.
 
-**Example**
+**Examples**
 ```scss
 .foo{
   margin: rem-calc(16 8 16 8);
@@ -181,16 +253,8 @@ will return:
   margin: 1rem 0.5rem 1rem 0.5rem;
   padding: 0.5rem;
 }
-``
+```
 
-
-##em-calc($values, $base-value: $rem-base)
-$values: `array`
-$base-value: `unit` // $rem-base is a **OW GRID** default variable, you can find it in variables section.
-
-Transform an array of pixel values (with or without `px` value) in em unit, based on the optional `$base-value` passed to the function.
-
-**Example**
 ```scss
 .foo{
   margin: em-calc(16 8 16 8);
