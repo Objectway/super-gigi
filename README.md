@@ -220,7 +220,7 @@ arguments: `$nested`, `$vertical`
 This mixin will generate the **row element** of the grid. It's real simple, you may specify if the row is nested in another row (to reset the padding). The other option `$vertical` will simply add the CSS3 `flex-direction: row-reverse` property to the element.
 
 ###grid-column()
-arguments: `$width`, `$collapse`, `$push`, `$pull`, `$order`, `$global`
+arguments: `$width`, `$push`, `$pull`, `$order`, `$collapse`, `$global`
 - **$width**
   - optional
   - default: `auto`
@@ -266,7 +266,7 @@ will generate:
   position: relative;
   right: auto;
   position: relative;
-  right: auto;
+  left: auto;
   right: 8.33333%;
   padding: 0 0.9375rem;
   order: 0;
@@ -279,15 +279,137 @@ will generate:
 }
 @media only screen and (min-width: 64em) {
   .foo {
-    width: 50%;
-    left: 100%; 
+    width: 50%; 
+    left: 100%;
   } 
 }
 **note:** you can see repeted rules, because we set pull and push for the same element. 
  
 ```
-`$width`, `$push`, `$pull` and `$order` have similar behaviors. They can be used in three different way.
-**Passing an integer**
+`$width`, `$push` and `$pull` have similar behaviors. They can be used in three different way.
+
+**1 - Passing an integer**
+```scss
+.foo {
+  @include grid-column($width: 1);
+}
+```
+will return:
+```css
+.foo {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  width: 8.33333%;
+}
+```
+The first four properties are the common behaviour of the column object, the relevant part is `width: 8.33333%`. This is calculated via [`grid-space() mixin`](#grid-space)
+
+
+**2 - Passing a semantic list**
+```scss
+.foo {
+  @include grid-column($width: 1 of 3);
+}
+```
+will return:
+```css
+.foo {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  width: 33.33333%;
+}
+```
+As before, the first four properties are the common rules of our column, the relevant part is `width: 33.33333%`. This is calculated via [`grid-space() mixin`](#grid-space)
+
+
+**3 - Passing a queries map**
+```scss
+.foo {
+  @include grid-column($width: (small: 6, medium: 4, large: 3));
+}
+```
+will generate:
+
+```css
+.foo {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (min-width: 40em) {
+  .foo {
+    width: 50%; 
+  } 
+}
+@media only screen and (min-width: 45em) {
+  .foo {
+    width: 33.33333%; 
+  } 
+}
+@media only screen and (min-width: 64em) {
+  .foo {
+    width: 25%; 
+  } 
+}
+```
+As before, the first four properties are the common rules of our column, the relevant part are those in the media query. How you can see we have the widths of the column set in a responsive way.
+
+**$order** is similar, you can set it only in two ways, via `integer` or via `map`.
+It will set the css3 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order" target="_blank">`order`</a>. Let see an example:
+```scss
+.foo {
+  @include grid-column($order: 3)
+}
+.bar {
+  @include grid-column($order: (small: 6, medium: 4, large: 3))
+}
+```
+will compile (... is the common css 
+```css
+ .foo {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  order: 3;
+}
+
+.bar {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+@media only screen and (min-width: 40em) {
+  .bar {
+    order: 6; 
+  } 
+}
+@media only screen and (min-width: 45em) {
+  .bar {
+    order: 4; 
+  } 
+}
+@media only screen and (min-width: 64em) {
+  .bar {
+    order: 3; 
+  } 
+}
+```
+`$collapse` and `$global` are very simple. The first one if true will generate the padding of our column `padding: 0 0.9375rem;`, the second one will generate this css:
+```css
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+```
+
 
 
 <br/>
