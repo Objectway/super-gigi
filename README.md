@@ -150,15 +150,15 @@ In the same way you have to change how you refer to breakpoints in all our mixin
 ## Mixins
 ###media-query()
 arguments: `$query`, `$only`, `$eq-grid`
-- **`$query`**
+- **$query**
   - optional
   - default: `xxsmall`
   - type: `string`
-- **`$only`**
+- **$onl`**
   - optional
   - default: `false`
   - type: `boolean`
-- **`$eq-grid`**
+- **$eq-grid**
   - optional
   - default: `false`
   - type: `boolean`
@@ -170,7 +170,7 @@ You can choose between classical <a href="http://www.w3.org/TR/css3-mediaqueries
 
 ###grid-space()
 arguments: `$property`, `$attr`
-- **`$property`**
+- **$property**
   - optional
   - default: `width`
   - type: `string`
@@ -208,7 +208,7 @@ will return
 
 ###grid-row()
 arguments: `$nested`, `$vertical`
-- **`$nested`**
+- **$nested**
   - optional
   - default: `true`
   - type: `boolean`
@@ -219,8 +219,76 @@ arguments: `$nested`, `$vertical`
 
 This mixin will generate the **row element** of the grid. It's real simple, you may specify if the row is nested in another row (to reset the padding). The other option `$vertical` will simply add the CSS3 `flex-direction: row-reverse` property to the element.
 
-###grid-row()
-TODO
+###grid-column()
+arguments: `$width`, `$collapse`, `$push`, `$pull`, `$order`, `$global`
+- **$width**
+  - optional
+  - default: `auto`
+- **$push**
+  - optional
+  - default: `null`
+- **$pull**
+  - optional
+  - default: `null`
+- **$order**
+  - optional
+  - default: `null`
+- **$collapse**
+  - optional
+  - default: `null`
+  - type: `boolean`
+- **$global**
+  - optional
+  - default: `true`
+  - type: `boolean`
+
+This is the most important mixin of our grid. And probabily it is the mixin that you will use more. Let's take a look at how it works:
+
+```scss
+.foo {
+  @include grid-column(
+      $width: (xxsmall:6, large: 6),
+      $push: (xxsmall:6, large: 12),
+      $pull: 1,
+      $order: 0,
+      $collapse: false,
+      $global: true
+    );
+};
+```
+will generate:
+```css
+.foo {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  right: auto;
+  position: relative;
+  right: auto;
+  right: 8.33333%;
+  padding: 0 0.9375rem;
+  order: 0;
+}
+@media only screen and (min-width: 0em) {
+  .foo {
+    width: 50%; 
+    left: 50%;
+  } 
+}
+@media only screen and (min-width: 64em) {
+  .foo {
+    width: 50%;
+    left: 100%; 
+  } 
+}
+**note:** you can see repeted rules, because we set pull and push for the same element. 
+ 
+```
+`$width`, `$push`, `$pull` and `$order` have similar behaviors. They can be used in three different way.
+**Passing an integer**
+
 
 <br/>
 
