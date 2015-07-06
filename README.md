@@ -2,7 +2,6 @@
 **OW GRID** is a CSS3 flex based grid system. It's developed thinking about modern web application and its first purpose is to make easier to manage responsive layout. It's developed in SASS but you can use a compiled version if you prefer. 
 
 <br/>
-
 ## Installation
 For now you can pull the repo or download it via GitHub options. NPM and Bower options will come soon.
 
@@ -16,31 +15,37 @@ default: `true` - type: `boolean`
 **OW GRID** is developed with CSS3 Flexbox, but we also provide an untested version in float. 
 Set this option to `false`, to use it.
 
+<br/>
 ### $rem-base
 default: `16px` - type: `unit`  
 
 This is the default font-size value for `html`. We use this value not only to set the base font-size of our application, but also as default value for **units functions**
 
+<br/>
 ### $row-width
 default: `rem-calc(1920)` - type: `unit` 
 
 This is the `max-width` of our row objects. The dafault value is 1920 pixels we translate it in rems via **rem-calc units functions**
 
+<br/>
 ### $column-gutter
 default: `rem-calc(30)` - type: `unit` 
 
 This is the space between our column. The dafault value is 30 pixels we translate it in rems via **rem-calc units functions**
 
+<br/>
 ### $grid-columns
 default: `12` - type: `number` 
 
 The number of columns we will use in our layout.
 
+<br/>
 ### $use-classes
 default: `false` - type: `boolean` 
 
 Set this variable to true if you want to generate static classes, like: `.row`, `.column` or `large-12`. 
 
+<br/>
 ### $row-name
 default: `row` - type: `string` 
 
@@ -54,6 +59,7 @@ $row-name: foo;
 }
 ```
 
+<br/>
 ### $column-name
 default: `column` - type: `string` 
 
@@ -66,16 +72,20 @@ $row-name: bar;
 	@extend %bar
 }
 ```
+
+<br/>
 ### $grid-start
 default: `left` - type: `string` //- possibile value: `left` or `right`
 
 This is the value to change if you want to develop a rtl application.
 
+<br/>
 ### $use-dry
 default: `true` - type: `boolean` 
 
 In the **mixins section** you will find a `dry-it` mixin. If you don't want to use it set this variable to `false`.
 
+<br/>
 ### $debug
 default: `false` - type: `boolean` 
 
@@ -98,11 +108,13 @@ With big applications and semantic BEM selectors, is difficult to understand wha
       content: "COLUMN: width : (xxsmall: 6, large: 6) | push : 1 | pull : 1 | order : 0 | global : true"; } }
 ```
 
+<br/>
 ### $eq-grid
 default: `false` - type: `boolean` 
 
 **OW GRID** support [EQJS](https://github.com/Snugug/eq.js). Turn this option `true` to use element queries css instead of classical mediaquery. If you want to use both, you can: see the **media query mixin**. 
 
+<br/>
 ### $breakpoints
 default: `(xxsmall: 0em, xsmall: em-calc(480), small: em-calc(640), medium: em-calc(720), large: em-calc(1024), xlarge: em-calc(1280), xxlarge: em-calc(1440))` - type: `map`
 
@@ -206,6 +218,7 @@ will return
 }
 ```
 
+<br/>
 ###grid-row()
 arguments: `$nested`, `$vertical`
 - **$nested**
@@ -219,25 +232,26 @@ arguments: `$nested`, `$vertical`
 
 This mixin will generate the **row element** of the grid. It's real simple, you may specify if the row is nested in another row (to reset the padding). The other option `$vertical` will simply add the CSS3 `flex-direction: row-reverse` property to the element.
 
+<br/>
 ###grid-column()
 arguments: `$width`, `$push`, `$pull`, `$order`, `$collapse`, `$global`
-- **$width**
+- [**$width**](#gcwidthpushpull)
   - optional
   - default: `auto`
-- **$push**
+- [**$push**](#gcwidthpushpull)
   - optional
   - default: `null`
-- **$pull**
+- [**$pull**](#gcwidthpushpull)
   - optional
   - default: `null`
-- **$order**
+- [**$order**](#gcorder)
   - optional
   - default: `null`
-- **$collapse**
+- [**$collapse**](#gccollapseglobal)
   - optional
   - default: `null`
   - type: `boolean`
-- **$global**
+- [**$global**](#gccollapseglobal)
   - optional
   - default: `true`
   - type: `boolean`
@@ -283,9 +297,10 @@ will generate:
     left: 100%;
   } 
 }
-**note:** you can see repeted rules, because we set pull and push for the same element. 
- 
 ```
+**note:** you can see repeted rules, because we set pull and push for the same element. 
+
+<div id="gcwidthpushpull"></div>
 `$width`, `$push` and `$pull` have similar behaviors. They can be used in three different way.
 
 **1 - Passing an integer**
@@ -359,6 +374,7 @@ will generate:
 ```
 As before, the first four properties are the common rules of our column, the relevant part are those in the media query. How you can see we have the widths of the column set in a responsive way.
 
+<div id="gcorder"></div>
 **$order** is similar, you can set it only in two ways, via `integer` or via `map`.
 It will set the css3 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order" target="_blank">`order`</a>. Let see an example:
 ```scss
@@ -403,7 +419,8 @@ will compile (... is the common css
   } 
 }
 ```
-`$collapse` and `$global` are very simple. The first one if true will generate the padding of our column `padding: 0 0.9375rem;`, the second one will generate this css:
+<div id="gccollapseglobal"></div>
+**$collapse** and **$global** are very simple. The first one if true will generate the padding of our column `padding: 0 0.9375rem;`, the second one will generate this css:
 ```css
   box-sizing: border-box;
   display: flex;
