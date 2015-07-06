@@ -385,7 +385,7 @@ It will set the css3 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/o
   @include grid-column($order: (small: 6, medium: 4, large: 3))
 }
 ```
-will compile (... is the common css 
+will compile in:
 ```css
  .foo {
   box-sizing: border-box;
