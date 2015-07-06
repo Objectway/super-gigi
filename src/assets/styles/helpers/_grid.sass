@@ -80,7 +80,7 @@
 
   // Push -------------
   @if $push != null
-    +dry-it("clPsPl")
+    +dry-it("clPs")
       position: relative
       #{$grid-end}: auto
     @if type-of($push) == map
@@ -93,18 +93,19 @@
 
   // Pull -------------
   @if $pull != null
-    +dry-it("clPsPl")
+    +dry-it("clPl")
       position: relative
-      #{$grid-end}: auto
+      #{$grid-start}: auto
     @if type-of($pull) == map
       @each $query, $value in $pull
         $set: ($query: $value)
         +dry-it("clPl#{$set}")
           position: relative
-          #{$grid-end}: auto
+          #{$grid-start}: auto
           +grid-space($grid-end, $set)
     @else
       +grid-space($grid-end, $pull)
+
 
   // Collapse -------------
   @if $collapse == false
