@@ -1,5 +1,5 @@
-# DA VINCI
-**DA VINCI** is a CSS3 flex based grid system. It's developed thinking about modern web application and its first purpose is to make easier to manage responsive layout. It's developed in SASS but you can use a compiled version if you prefer. 
+# Da Vinci
+**Da Vinci** is a CSS3 flex based grid system. It's developed thinking about modern web application and its first purpose is to make easier to manage responsive layout. It's developed in SASS but you can use a compiled version if you prefer. 
 
 <br/>
 ## Installation
@@ -12,7 +12,7 @@ If you are using the SASS version you can personalize those variables, simply ch
 ### $use-flex
 default: `true` - type: `boolean` 
 
-**DA VINCI** is developed with CSS3 Flexbox, but we also provide an untested version in float. 
+**Da Vinci** is developed with CSS3 Flexbox, but we also provide an untested version in float. 
 Set this option to `false`, to use it.
 
 <br/>
@@ -112,7 +112,7 @@ With big applications and semantic BEM selectors, is difficult to understand wha
 ### $eq-grid
 default: `false` - type: `boolean` 
 
-**DA VINCI** support [EQJS](https://github.com/Snugug/eq.js). Turn this option `true` to use element queries css instead of classical mediaquery. If you want to use both, you can: see the **media query mixin**. 
+**Da Vinci** support [EQJS](https://github.com/Snugug/eq.js). Turn this option `true` to use element queries css instead of classical mediaquery. If you want to use both, you can: see the **media query mixin**. 
 
 <br/>
 ### $breakpoints
@@ -177,7 +177,7 @@ arguments: `$query`, `$only`, `$eq-grid`
 
 As you can guess, this is the mixin that generate our media or element query. 
 The `$query` argument must be one of the `key` values defined in the [`$breakpoints`](#breakpoints) variable. 
-**DA VINCI** is developed mobile first, so if you write `@include mediaquery(small){...}` you will target all the queries from `small` to the last query specified in `$breakpoints` map. If you want to target only a specified mediaquery you will set the `$query` argument to `true`. 
+**Da Vinci** is developed mobile first, so if you write `@include mediaquery(small){...}` you will target all the queries from `small` to the last query specified in `$breakpoints` map. If you want to target only a specified mediaquery you will set the `$query` argument to `true`. 
 You can choose between classical <a href="http://www.w3.org/TR/css3-mediaqueries/" target="_blank">media query</a> or to use <a href="https://github.com/snugug/eq.js" target="_blank">element query</a>. You don't have to specify this setting everytime, we provided a [global $eq-grid](#eq-grid), but sometime is useful to mix media end element query.
 
 ###grid-space()
@@ -626,7 +626,7 @@ $foo: remove-unit(10px); //will return 10
 
 ###rem-calc($values, $base-value: $rem-base)
 $values: `array`
-$base-value: `unit` // $rem-base is a **DA VINCI** default variable, you can find it in variables section.
+$base-value: `unit` // $rem-base is a **Da Vinci** default variable, you can find it in variables section.
 
 Transform an array of pixel values (with or without `px`) in rem unit, based on the optional `$base-value` passed to the function.
 
@@ -661,7 +661,7 @@ will return:
 
 ###px-calc($values, $base-value: $rem-base)
 $values: `array`
-$base-value: `unit` // $rem-base is a **DA VINCI** default variable, you can find it in variables section.
+$base-value: `unit` // $rem-base is a **Da Vinci** default variable, you can find it in variables section.
 
 Transform an array of ems or rems values (with or without `em/rem`) in pixel unit, based on the optional `$base-value` passed to the function.
 
