@@ -1,5 +1,5 @@
 # Da Vinci
-**Da Vinci** is a CSS3 flex based grid system. It's developed thinking about modern web application and its first purpose is to make easier to manage responsive layout. It's developed in SASS but you can use a compiled version if you prefer. 
+**Da Vinci** is a CSS3 flex based grid system. It's developed thinking about modern web application and its first purpose is to make easier to manage responsive layout. It's developed in Sass but you can use a compiled version if you prefer. 
 
 <br/>
 ## Installation
@@ -7,7 +7,7 @@ For now you can pull the repo or download it via GitHub options. NPM and Bower o
 
 <br/>
 ## Options
-If you are using the SASS version you can personalize those variables, simply changing the value before importing our `main.sass`.
+If you are using the Sass version you can personalize those variables, simply changing the value before importing our `main.sass`.
 
 ### $use-flex
 default: `true` - type: `boolean` 
@@ -118,7 +118,7 @@ default: `false` - type: `boolean`
 ### $breakpoints
 default: `(xxsmall: 0em, xsmall: em-calc(480), small: em-calc(640), medium: em-calc(720), large: em-calc(1024), xlarge: em-calc(1280), xxlarge: em-calc(1440))` - type: `map`
 
-Ok, this is a little complicated :) but we want to have this settings in only one place. This is a <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps" target="_blank">SASS map</a>, and we use it to define all our mediaqueries.
+Ok, this is a little complicated :) but we want to have this settings in only one place. This is a <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps" target="_blank">Sass map</a>, and we use it to define all our mediaqueries.
 The **keys** are used to define the name of our breakpoints and will be passed to our classes generator or to our mixins. For example if you use the classes and youchange this object like this: 
 
 ```scss
@@ -581,7 +581,7 @@ will generate this css:
 }
 ```
 The same code for two identical classes. 
-SASS come in our help with placeholders, but we must extend too many selector to have a dry behavior. What if we can generate placeholders on fly? That is exactly what `dry-it()` does. You don't have to use it, this is already in all our mixins seen before. For use it you must only set to `true` the [`$use-dry`](#use-dry) variable. And that is what will happen:
+Sass come in our help with placeholders, but we must extend too many selector to have a dry behavior. What if we can generate placeholders on fly? That is exactly what `dry-it()` does. You don't have to use it, this is already in all our mixins seen before. For use it you must only set to `true` the [`$use-dry`](#use-dry) variable. And that is what will happen:
 ```scss
 .foo {
   @include grid-column((small: 12, large: 6));
