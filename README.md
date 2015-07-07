@@ -19,19 +19,19 @@ Set this option to `false`, to use it.
 ### $rem-base
 default: `16px` - type: `unit`  
 
-This is the default font-size value for `html`. We use this value not only to set the base font-size of our application, but also as default value for **units functions**
+This is the default font-size value for `html`. We use this value not only to set the base font-size of our application, but also as default value for [units functions](#functions)
 
 <br/>
 ### $row-width
 default: `rem-calc(1920)` - type: `unit` 
 
-This is the `max-width` of our row objects. The dafault value is 1920 pixels we translate it in rems via **rem-calc units functions**
+This is the `max-width` of our row objects. The dafault value is 1920 pixels we translate it in rems via [`rem-calc()`](#rem-calc)
 
 <br/>
 ### $column-gutter
 default: `rem-calc(30)` - type: `unit` 
 
-This is the space between our column. The dafault value is 30 pixels we translate it in rems via **rem-calc units functions**
+This is the space between our column. The dafault value is 30 pixels we translate it in rems via [`rem-calc()`](#rem-calc)
 
 <br/>
 ### $grid-columns
@@ -75,7 +75,7 @@ $row-name: bar;
 
 <br/>
 ### $grid-start
-default: `left` - type: `string` //- possibile value: `left` or `right`
+default: `left` - type: `string` - possibile values: `left` or `right`
 
 This is the value to change if you want to develop a rtl application.
 
@@ -83,7 +83,7 @@ This is the value to change if you want to develop a rtl application.
 ### $use-dry
 default: `true` - type: `boolean` 
 
-In the **mixins section** you will find a `dry-it` mixin. If you don't want to use it set this variable to `false`.
+If true, all the grid will be passed by [`dry-it()`](#dry-it) mixin.
 
 <br/>
 ### $debug
@@ -112,13 +112,13 @@ With big applications and semantic BEM selectors, is difficult to understand wha
 ### $eq-grid
 default: `false` - type: `boolean` 
 
-**Da Vinci** support [EQJS](https://github.com/Snugug/eq.js). Turn this option `true` to use element queries css instead of classical mediaquery. If you want to use both, you can: see the **media query mixin**. 
+**Da Vinci** support [EQJS](https://github.com/Snugug/eq.js). Turn this option `true` to use element queries css instead of classical mediaquery. If you want to use both, you can: see the [`media-query()`](#media-query). 
 
 <br/>
 ### $breakpoints
 default: `(xxsmall: 0em, xsmall: em-calc(480), small: em-calc(640), medium: em-calc(720), large: em-calc(1024), xlarge: em-calc(1280), xxlarge: em-calc(1440))` - type: `map`
 
-Ok, this is a little complicated :) but we want to have this settings in only one place. This is a [SASS map](http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps) and we use it to define all our mediaqueries.
+Ok, this is a little complicated :) but we want to have this settings in only one place. This is a <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps" target="_blank">SASS map</a>, and we use it to define all our mediaqueries.
 The **keys** are used to define the name of our breakpoints and will be passed to our classes generator or to our mixins. For example if you use the classes and youchange this object like this: 
 
 ```scss
@@ -617,16 +617,26 @@ will generate this css:
 ## Functions
 We love [Foundation](http://foundation.zurb.com) and we used it a lot. Those function are based on our preferred Foundation functions that we want to continue to use in our projects.
 
-###remove-unit($value)
+###remove-unit()
+arguments: `$value`
+- **$value**
+  - required
+  - type: `list`
 remove the unit from a value
 **Example**
 ```scss
 $foo: remove-unit(10px); //will return 10
 ```
 
-###rem-calc($values, $base-value: $rem-base)
-$values: `array`
-$base-value: `unit` // $rem-base is a **Da Vinci** default variable, you can find it in variables section.
+###rem-calc()
+arguments: `$values`, `$base-value`
+- **$values**
+  - required
+  - type: `list`
+- **$values**
+  - optional
+  - default: [`$rem-base`](#rem-base)
+  - type: `measue`
 
 Transform an array of pixel values (with or without `px`) in rem unit, based on the optional `$base-value` passed to the function.
 
@@ -645,6 +655,20 @@ will return:
 }
 ```
 
+###em-calc()
+arguments: `$values`, `$base-value`
+- **$values**
+  - required
+  - type: `list`
+- **$values**
+  - optional
+  - default: [`$rem-base`](#rem-base)
+  - type: `measue`
+
+Transform an array of pixel values (with or without `px`) in em unit, based on the optional `$base-value` passed to the function.
+
+**Examples**
+
 ```scss
 .foo{
   margin: em-calc(16 8 16 8);
@@ -659,9 +683,15 @@ will return:
 }
 ```
 
-###px-calc($values, $base-value: $rem-base)
-$values: `array`
-$base-value: `unit` // $rem-base is a **Da Vinci** default variable, you can find it in variables section.
+###px-calc()
+arguments: `$values`, `$base-value`
+- **$values**
+  - required
+  - type: `list`
+- **$values**
+  - optional
+  - default: [`$rem-base`](#rem-base)
+  - type: `measue`
 
 Transform an array of ems or rems values (with or without `em/rem`) in pixel unit, based on the optional `$base-value` passed to the function.
 
