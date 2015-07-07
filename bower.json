@@ -24,8 +24,8 @@
     "gulp",
     "src",
     "backstop.json",
-    "gulpfile.json",
-    "package.json"
+    "package.json",
+    "gulpfile.js"
   ],
   "repository": {
     "type": "git",

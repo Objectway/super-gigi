@@ -5,7 +5,7 @@
   "main": "Gulpfile.js",
   "scripts": {
     "compile": "gulp compile",
-    "build": "gulp dist",
+    "build": "gulp compile && gulp minify && gulp move && gulp compress",
     "regression": "bash scripts/backstop.sh",
     "dev": "gulp"
   },

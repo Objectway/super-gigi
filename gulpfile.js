@@ -20,14 +20,13 @@ gulp.task('font', env.loadTask('fontgen'));
 gulp.task('iconfont', env.loadTask('iconfont'));
 gulp.task('srcWatch', env.loadTask('src-watch'));
 gulp.task('clean', env.loadTask('clean'));
-gulp.task('minify', ['move'], env.loadTask('minify'));
+gulp.task('minify', env.loadTask('minify'));
 gulp.task('move', env.loadTask('move'));
 gulp.task('copy', env.loadTask('copy-assets'));
-gulp.task('compress', ['minify'], env.loadTask('compress'));
+gulp.task('compress', env.loadTask('compress'));
 
 
 // USEFUL TASKS
-gulp.task('dist', ['clean', 'compress']);
 gulp.task('compile', ['style', 'view', 'script']);
 gulp.task('default', ['compile', 'srcWatch', 'copy'], env.loadTask('browser-sync'));
 gulp.task('serve', ['srcWatch'], env.loadTask('browser-sync'));
