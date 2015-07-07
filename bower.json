@@ -20,8 +20,12 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "development"
+    "scripts",
+    "gulp",
+    "src",
+    "backstop.json",
+    "gulpfile.json",
+    "package.json"
   ],
   "repository": {
     "type": "git",
