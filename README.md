@@ -1,37 +1,47 @@
 # Da Vinci
-**Da Vinci** is a CSS3 flex based grid system. It's developed thinking about modern web application and its first purpose is to make easier to manage responsive layout. It's developed in Sass but you can use a compiled version if you prefer. 
+**Da Vinci** is a CSS3 flex based grid system. 
+It's developed thinking about modern web application and its first purpose is 
+to make easier to manage responsive layout. 
+It's developed in Sass but you can use a compiled version if you prefer. 
 
 <br/>
 ## Installation
-For now you can pull the repo or download it via GitHub options. NPM and Bower options will come soon.
+For now you can pull the repo or download it via GitHub options. 
+NPM and Bower options will come soon.
 
 <br/>
 ## Options
-If you are using the Sass version you can personalize those variables, simply changing the value before importing our `main.sass`.
+If you are using the Sass version you can personalize those variables, 
+simply changing the value before importing our `main.sass`.
 
 ### $use-flex
 default: `true` - type: `boolean` 
 
-**Da Vinci** is developed with CSS3 Flexbox, but we also provide an untested version in float. 
+**Da Vinci** is developed with CSS3 Flexbox, but we also provide an untested 
+version in float. 
 Set this option to `false`, to use it.
 
 <br/>
 ### $rem-base
 default: `16px` - type: `unit`  
 
-This is the default font-size value for `html`. We use this value not only to set the base font-size of our application, but also as default value for [units functions](#functions)
+This is the default font-size value for `html`. We use this value not only to 
+set the base font-size of our application, but also as default value for 
+[units functions](#functions)
 
 <br/>
 ### $row-width
 default: `rem-calc(1920)` - type: `unit` 
 
-This is the `max-width` of our row objects. The dafault value is 1920 pixels we translate it in rems via [`rem-calc()`](#rem-calc)
+This is the `max-width` of our row objects. The dafault value is 1920 pixels 
+we convert it in rems via [`rem-calc()`](#rem-calc)
 
 <br/>
 ### $column-gutter
 default: `rem-calc(30)` - type: `unit` 
 
-This is the space between our column. The dafault value is 30 pixels we translate it in rems via [`rem-calc()`](#rem-calc)
+This is the space between our column. The dafault value is 30 pixels we 
+convert it in rems via [`rem-calc()`](#rem-calc)
 
 <br/>
 ### $grid-columns
@@ -43,14 +53,16 @@ The number of columns we will use in our layout.
 ### $use-classes
 default: `false` - type: `boolean` 
 
-Set this variable to true if you want to generate static classes, like: `.row`, `.column` or `large-12`. 
+Set this variable to true if you want to generate static classes, like: 
+`.row`, `.column` or `large-12`. 
 
 <br/>
 ### $row-name
 default: `row` - type: `string` 
 
 This option will change the name of the row object classes or placeholder. 
-Remember that if you change this value you have to use this as base for row placeholder:
+Remember that if you change this value you have to use this as base for row 
+placeholder:
 
 ```scss
 $row-name: foo;
@@ -64,7 +76,8 @@ $row-name: foo;
 default: `column` - type: `string` 
 
 This option will change the name of the row object classes or placeholder. 
-Remember that if you change this value you have to use this as base for row placeholder:
+Remember that if you change this value you have to use this as base for row 
+placeholder:
 
 ```scss
 $row-name: bar;
@@ -89,7 +102,10 @@ If true, all the grid will be passed by [`dry-it()`](#dry-it) mixin.
 ### $debug
 default: `false` - type: `boolean` 
 
-With big applications and semantic BEM selectors, is difficult to understand what kind of properties we set to a determinate DOM element. If you set this variable `true`, we will generate a content property to the rules, that will be useful when we inspect the elements.
+With big applications and semantic BEM selectors, is difficult to understand 
+what kind of properties we set to a determinate DOM element. If you set this 
+variable `true`, we will generate a content property to the rules, that will be 
+useful when we inspect the elements.
 
 **Example:**
 
@@ -112,14 +128,21 @@ With big applications and semantic BEM selectors, is difficult to understand wha
 ### $eq-grid
 default: `false` - type: `boolean` 
 
-**Da Vinci** support [EQJS](https://github.com/Snugug/eq.js). Turn this option `true` to use element queries css instead of classical mediaquery. If you want to use both, you can: see the [`media-query()`](#media-query). 
+**Da Vinci** support [EQJS](https://github.com/Snugug/eq.js). Turn this option 
+`true` to use element queries css instead of classical mediaquery. If you want 
+to use both, you can: see the [`media-query()`](#media-query). 
 
 <br/>
 ### $breakpoints
 default: `(xxsmall: 0em, xsmall: em-calc(480), small: em-calc(640), medium: em-calc(720), large: em-calc(1024), xlarge: em-calc(1280), xxlarge: em-calc(1440))` - type: `map`
 
-Ok, this is a little complicated :) but we want to have this settings in only one place. This is a <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps" target="_blank">Sass map</a>, and we use it to define all our mediaqueries.
-The **keys** are used to define the name of our breakpoints and will be passed to our classes generator or to our mixins. For example if you use the classes and youchange this object like this: 
+Ok, this is a little complicated :) but we want to have this settings 
+in only one place. This is a 
+<a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps" target="_blank">Sass map</a>, 
+and we use it to define all our mediaqueries.
+The **keys** are used to define the name of our breakpoints and will be passed 
+to our classes generator or to our mixins. For example if you use the classes 
+and youchange this object like this: 
 
 ```scss
 $breakpoints: (sml: 0em, mdm: 40em, lrg: 60em);
@@ -176,9 +199,18 @@ arguments: `$query`, `$only`, `$eq-grid`
   - type: `boolean`
 
 As you can guess, this is the mixin that generate our media or element query. 
-The `$query` argument must be one of the `key` values defined in the [`$breakpoints`](#breakpoints) variable. 
-**Da Vinci** is developed mobile first, so if you write `@include mediaquery(small){...}` you will target all the queries from `small` to the last query specified in `$breakpoints` map. If you want to target only a specified mediaquery you will set the `$query` argument to `true`. 
-You can choose between classical <a href="http://www.w3.org/TR/css3-mediaqueries/" target="_blank">media query</a> or to use <a href="https://github.com/snugug/eq.js" target="_blank">element query</a>. You don't have to specify this setting everytime, we provided a [global $eq-grid](#eq-grid), but sometime is useful to mix media end element query.
+The `$query` argument must be one of the `key` values defined 
+in the [`$breakpoints`](#breakpoints) variable. 
+**Da Vinci** is developed mobile first, so if you write 
+`@include mediaquery(small){...}` you will target all the queries from `small` 
+to the last query specified in `$breakpoints` map. If you want to target only a 
+specified mediaquery you will set the `$query` argument to `true`. 
+You can choose between classical 
+<a href="http://www.w3.org/TR/css3-mediaqueries/" target="_blank">media query</a> 
+or to use <a href="https://github.com/snugug/eq.js" target="_blank">element query</a>. 
+You don't have to specify this setting everytime, we provided a 
+[global $eq-grid](#eq-grid), but sometime is useful to mix media end 
+element query.
 
 ###grid-space()
 arguments: `$property`, `$attr`
@@ -191,8 +223,13 @@ arguments: `$property`, `$attr`
   - default: `auto`
   -type: `list`
 
-When you are writing css in a grid, it's difficult to menage the measures sometime.
-`grid-space()` come to help us in this ungrateful task! You can set the property you want to set, for example: `width`, `left`, `margin-left` changing the `$property` argument. After that you can pass how many column of the grid you want to take. For example assuming that we have `12` [`$grid-columns`](#grid-columns):
+When you are writing css in a grid, it's difficult to menage 
+the measures sometime. `grid-space()` come to help us in this ungrateful task! 
+You can set the property you want to set, for example: 
+`width`, `left`, `margin-left` changing the `$property` argument. 
+After that you can pass how many column of the grid you want to take. 
+For example assuming that we have `12` [`$grid-columns`](#grid-columns):
+
 ```scss
 .foo {
   @include grid-space(margin-left, 5)
@@ -204,7 +241,9 @@ will return
   margin-left: 41.6667%
 }
 ```
-You can also express the number of column you want to use for your calculation, passing to `$attr` a sass list composed like that: `$column` **`of`** `$columns`. For example:
+You can also express the number of column you want to use for your calculation, 
+passing to `$attr` a sass list composed like 
+that: `$column` **`of`** `$columns`. For example:
  
 ```scss
 .foo {
@@ -230,7 +269,10 @@ arguments: `$nested`, `$vertical`
   - default: `false`
   -type: `boolean`
 
-This mixin will generate the **row element** of the grid. It's real simple, you may specify if the row is nested in another row (to reset the padding). The other option `$vertical` will simply add the CSS3 `flex-direction: row-reverse` property to the element.
+This mixin will generate the **row element** of the grid. It's real simple, 
+you may specify if the row is nested in another row (to reset the padding). 
+The other option `$vertical` will simply add the CSS3 
+`flex-direction: row-reverse` property to the element.
 
 <br/>
 ###grid-column()
@@ -256,7 +298,8 @@ arguments: `$width`, `$push`, `$pull`, `$order`, `$collapse`, `$global`
   - default: `true`
   - type: `boolean`
 
-This is the most important mixin of our grid. And probabily it is the mixin that you will use more. Let's take a look at how it works:
+This is the most important mixin of our grid. And probabily it is the mixin 
+that you will use more. Let's take a look at how it works:
 
 ```scss
 .foo {
@@ -298,10 +341,12 @@ will generate:
   } 
 }
 ```
-**note:** you can see repeted rules, because we set pull and push for the same element. 
+**note:** you can see repeted rules, because we set pull and push for 
+the same element. 
 
 <div id="gcwidthpushpull"></div>
-`$width`, `$push` and `$pull` have similar behaviors. They can be used in three different way.
+`$width`, `$push` and `$pull` have similar behaviors. They can be used 
+in three different way.
 
 **1 - Passing an integer**
 ```scss
@@ -319,7 +364,9 @@ will return:
   width: 8.33333%;
 }
 ```
-The first four properties are the common behaviour of the column object, the relevant part is `width: 8.33333%`. This is calculated via [`grid-space() mixin`](#grid-space)
+The first four properties are the common behaviour of the column object, the 
+relevant part is `width: 8.33333%`. This is calculated via 
+[`grid-space() mixin`](#grid-space)
 
 
 **2 - Passing a semantic list**
@@ -338,7 +385,9 @@ will return:
   width: 33.33333%;
 }
 ```
-As before, the first four properties are the common rules of our column, the relevant part is `width: 33.33333%`. This is calculated via [`grid-space() mixin`](#grid-space)
+As before, the first four properties are the common rules of our column, the 
+relevant part is `width: 33.33333%`. This is calculated via 
+[`grid-space() mixin`](#grid-space)
 
 
 **3 - Passing a queries map**
@@ -372,11 +421,16 @@ will generate:
   } 
 }
 ```
-As before, the first four properties are the common rules of our column, the relevant part are those in the media query. How you can see we have the widths of the column set in a responsive way.
+As before, the first four properties are the common rules of our column, 
+the relevant part are those in the media query. How you can see we have 
+the widths of the column set in a responsive way.
 
 <div id="gcorder"></div>
-**$order** is similar, you can set it only in two ways, via `integer` or via `map`.
-It will set the css3 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order" target="_blank">`order`</a>. Let see an example:
+**$order** is similar, you can set it only in two ways, 
+via `integer` or via `map`.
+It will set the css3 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order" target="_blank">`order`</a>. 
+Let see an example:
+
 ```scss
 .foo {
   @include grid-column($order: 3)
@@ -420,7 +474,9 @@ will compile in:
 }
 ```
 <div id="gccollapseglobal"></div>
-**$collapse** and **$global** are very simple. The first one if true will generate the padding of our column `padding: 0 0.9375rem;`, the second one will generate this css:
+**$collapse** and **$global** are very simple. The first one if true will 
+generate the padding of our column `padding: 0 0.9375rem;`, the second one 
+will generate this css:
 ```css
   box-sizing: border-box;
   display: flex;
@@ -434,7 +490,9 @@ arguments: `$query`
   - required
   - default: `null`
   - type: `string`
-This is the first of our visibility mixin. It simple take a `$query` argument and set the element to `display: none;` until the passed `$query`, where the element will take the property: `display: inherit`. Example
+This is the first of our visibility mixin. It simple take a `$query` argument 
+and set the element to `display: none;` until the passed `$query`, where the 
+element will take the property: `display: inherit`. Example
 ```scss
 .foo {
   @include show-from(small);
@@ -459,7 +517,9 @@ arguments: `$query`
   - required
   - default: `null`
   - type: `string`
-Like `show-from()`. It simple take a `$query` argument and set the element to `display: inherit;` until the passed `$query`, where the element will take the property: `display: none`. Example:
+Like `show-from()`. It simple take a `$query` argument and set the element to 
+`display: inherit;` until the passed `$query`, where the element will take 
+the property: `display: none`. Example:
 ```scss
 .foo {
   @include hide-from(small);
@@ -485,7 +545,9 @@ arguments: `$query`
   - default: `null`
   - type: `string`
 
-In this case the element is hided by  `display: none;` and will have the property: `display: inherit` only for the selected media query range. Example:
+In this case the element is hided by  `display: none;` and will have 
+the property: `display: inherit` only for the selected media query range. 
+Example:
 
 ```scss
 .foo {
@@ -512,7 +574,8 @@ arguments: `$query`
   - default: `null`
   - type: `string`
 
-The last of our visibility mixins. We will hide the element with  `display: none;` only for the selected media query range. Example:
+The last of our visibility mixins. We will hide the element with 
+`display: none;` only for the selected media query range. Example:
 
 ```scss
 .foo {
@@ -538,7 +601,10 @@ arguments: `$id`
   - required
   - type: `string`
 
-One of the bad thing that we have in developing a grid without a default classes schema is that our result css code will be semantic... but not dry... You can serve the css with gzip, but you know that we will have a lot of redundant code...
+One of the bad thing that we have in developing a grid without a default classes
+schema is that our result css code will be semantic... but not dry... You can 
+serve the css with gzip, but you know that we will have a lot of redundant 
+code...
 **Example:**
 ```scss
 .foo {
@@ -581,7 +647,11 @@ will generate this css:
 }
 ```
 The same code for two identical classes. 
-Sass come in our help with placeholders, but we must extend too many selector to have a dry behavior. What if we can generate placeholders on fly? That is exactly what `dry-it()` does. You don't have to use it, this is already in all our mixins seen before. For use it you must only set to `true` the [`$use-dry`](#use-dry) variable. And that is what will happen:
+Sass come in our help with placeholders, but we must extend too many selector to
+have a dry behavior. What if we can generate placeholders on fly? 
+That is exactly what `dry-it()` does. You don't have to use it, this is already
+in all our mixins seen before. For use it you must only set to `true` the 
+[`$use-dry`](#use-dry) variable. And that is what will happen:
 ```scss
 .foo {
   @include grid-column((small: 12, large: 6));
@@ -615,7 +685,9 @@ will generate this css:
 <br/>
 
 ## Functions
-We love [Foundation](http://foundation.zurb.com) and we used it a lot. Those function are based on our preferred Foundation functions that we want to continue to use in our projects.
+We love [Foundation](http://foundation.zurb.com) and we used it a lot. Those 
+function are based on our preferred Foundation functions that we want to 
+continue to use in our projects.
 
 ###remove-unit()
 arguments: `$value`
@@ -638,7 +710,8 @@ arguments: `$values`, `$base-value`
   - default: [`$rem-base`](#rem-base)
   - type: `measue`
 
-Transform an array of pixel values (with or without `px`) in rem unit, based on the optional `$base-value` passed to the function.
+Transform an array of pixel values (with or without `px`) in rem unit, based on 
+the optional `$base-value` passed to the function.
 
 **Examples**
 ```scss
@@ -665,7 +738,8 @@ arguments: `$values`, `$base-value`
   - default: [`$rem-base`](#rem-base)
   - type: `measue`
 
-Transform an array of pixel values (with or without `px`) in em unit, based on the optional `$base-value` passed to the function.
+Transform an array of pixel values (with or without `px`) in em unit, based on 
+the optional `$base-value` passed to the function.
 
 **Examples**
 
@@ -693,7 +767,8 @@ arguments: `$values`, `$base-value`
   - default: [`$rem-base`](#rem-base)
   - type: `measue`
 
-Transform an array of ems or rems values (with or without `em/rem`) in pixel unit, based on the optional `$base-value` passed to the function.
+Transform an array of ems or rems values (with or without `em/rem`) in pixel 
+unit, based on the optional `$base-value` passed to the function.
 
 **Example**
 ```scss
@@ -715,8 +790,7 @@ will return:
 
 
 ## Run it
-You can simply import `main.sass` in your project, or you can run our tasks to deploy your custom css file. You can use:
-
+Do you want to collaborate? It's dangerous to go alone take this:
 
 `$ npm run dev` -> Compile sources, serve the dev folder and start watchers
 

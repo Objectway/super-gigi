@@ -20,7 +20,7 @@
           #{$property}: auto
         @else
           #{$property}: unquote(($value / $grid-columns * 100) + '%')
-      @else    
+      @else
         +media-query($query)
           @if $value == auto
             #{$property}: auto
@@ -197,8 +197,10 @@
       flex-direction: if($grid-start == left, row-reverse, row)
     &#{$class-prefix}#{$separator}vertical
       flex-direction: column
+      flex: 1
     &#{$class-prefix}#{$separator}vertical-reverse
       flex-direction: column-reverse
+      flex: 1
 
     &#{$class-prefix}#{$separator}single-line
       flex-flow: nowrap
