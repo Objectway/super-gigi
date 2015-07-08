@@ -50,7 +50,7 @@
       box-sizing: border-box
       display: flex
       flex-wrap: wrap
-      flex: 1 1 0%
+      flex: 1 0 auto
 
 
 // ------------
@@ -212,6 +212,7 @@
   @else
     $class-prefix: #{str-insert($query, $type, 1)}-
 
+
   //column modificators
   @if $use-flex
     #{$class-prefix}collapse
@@ -228,7 +229,7 @@
       align-self: stretch
     #{$class-prefix}auto
       width: auto
-      flex: 1
+      flex: 1 0 auto
     #{$class-prefix}auto-reset
       flex: 0 0 auto
 
