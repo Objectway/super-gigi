@@ -164,7 +164,6 @@
 
 // Row classes generator
 =row-generate-classes($query, $separator: "-")
-  /* #{$query} Breakpoint */
   $class-prefix: str-insert($query, $type, 1)
 
   @if $use-flex
@@ -214,23 +213,23 @@
 
 
   //column modificators
-  @if $use-flex
-    #{$class-prefix}collapse
+  @if $use-flex and $use-classes
+    .#{$column-name}#{$class-prefix}collapse
       padding: 0
-    #{$class-prefix}top
+    .#{$column-name}#{$class-prefix}top
       align-self: flex-start
-    #{$class-prefix}middle
+    .#{$column-name}#{$class-prefix}middle
       align-self: center
-    #{$class-prefix}bottom
+    .#{$column-name}#{$class-prefix}bottom
       align-self: flex-end
-    #{$class-prefix}baseline
+    .#{$column-name}#{$class-prefix}baseline
       align-self: baseline
-    #{$class-prefix}stretch
+    .#{$column-name}#{$class-prefix}stretch
       align-self: stretch
-    #{$class-prefix}auto
+    .#{$column-name}#{$class-prefix}auto
       width: auto
       flex: 1 0 auto
-    #{$class-prefix}auto-reset
+    .#{$column-name}#{$class-prefix}auto-reset
       flex: 0 0 auto
 
   @for $i from 0 through $grid-columns
