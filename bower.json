@@ -1,0 +1,34 @@
+{
+  "name": "davinci-grid",
+  "version": "0.2.1",
+  "homepage": "http://objectway.github.io/davinci-grid/",
+  "authors": [
+    "Objectway <DWX Sviluppo <dwxsviluppo@objectway.it>"
+  ],
+  "description": "A costumizable grid system based on CSS3 Flexbox",
+  "main": [
+    "dist/styles/davinci.css",
+    "dist/styles/_main.sass"
+  ],
+  "keywords": [
+    "CSS3",
+    "Flexbox",
+    "Grid",
+    "Sass"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "scripts",
+    "gulp",
+    "src",
+    "backstop.json",
+    "package.json",
+    "gulpfile.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Objectway/davinci-grid.git"
+  }
+}

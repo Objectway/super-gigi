@@ -1,24 +1,27 @@
 {
-  "name": "ow-starterkit",
-  "version": "0.0.1",
-  "description": "ow-starterkit",
-  "main": "Gulpfile.js",
+  "name": "davinci-grid",
+  "version": "0.2.1",
+  "description": "A costumizable grid system based on CSS3 Flexbox",
+  "main": [
+    "dist/styles/davinci.css",
+    "dist/styles/_main.sass"
+  ],
   "scripts": {
     "compile": "gulp compile",
-    "build": "gulp dist",
+    "build": "gulp compile && gulp minify && gulp move && gulp compress",
     "regression": "bash scripts/backstop.sh",
     "dev": "gulp"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Objectway/ui-starterkit.git"
+    "url": "git+https://github.com/Objectway/davinci-grid.git"
   },
   "author": "Objectway",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Objectway/ui-starterkit/issues"
+    "url": "https://github.com/Objectway/davinci-grid/issues"
   },
-  "homepage": "https://github.com/Objectway/ui-starterkit#readme",
+  "homepage": "http://objectway.github.io/davinci-grid/",
   "devDependencies": {
     "backstopjs": "^0.5.1",
     "browser-sync": "^2.7.7",

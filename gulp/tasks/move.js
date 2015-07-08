@@ -5,12 +5,8 @@ var $ = require('gulp-load-plugins')();
 
 
 module.exports = function() {
-  var sources = [
-    env.folder.dev + '/**/*',
-    '!' + env.folder.dev + '/sourcemaps/',
-    '!' + env.folder.dev + '/sourcemaps/**'
-  ];
-
-  return gulp.src(sources, { base: env.folder.dev })
+  gulp.src(env.folder.dev + '/styles/**/*.*')
+    .pipe(gulp.dest(env.folder.dist));
+  gulp.src([env.folder.src + '/styles/**/*.*', "!" + env.folder.src + '/styles/davinci.sass'])
     .pipe(gulp.dest(env.folder.dist));
 };

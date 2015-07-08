@@ -50,7 +50,7 @@
       box-sizing: border-box
       display: flex
       flex-wrap: wrap
-      flex: 1 0 auto
+      flex: 1 1 0%
 
 
 // ------------
@@ -164,6 +164,7 @@
 
 // Row classes generator
 =row-generate-classes($query, $separator: "-")
+  /* #{$query} Breakpoint */
   $class-prefix: str-insert($query, $type, 1)
 
   @if $use-flex
@@ -211,25 +212,24 @@
   @else
     $class-prefix: #{str-insert($query, $type, 1)}-
 
-
   //column modificators
-  @if $use-flex and $use-classes
-    .#{$column-name}#{$class-prefix}collapse
+  @if $use-flex
+    #{$class-prefix}collapse
       padding: 0
-    .#{$column-name}#{$class-prefix}top
+    #{$class-prefix}top
       align-self: flex-start
-    .#{$column-name}#{$class-prefix}middle
+    #{$class-prefix}middle
       align-self: center
-    .#{$column-name}#{$class-prefix}bottom
+    #{$class-prefix}bottom
       align-self: flex-end
-    .#{$column-name}#{$class-prefix}baseline
+    #{$class-prefix}baseline
       align-self: baseline
-    .#{$column-name}#{$class-prefix}stretch
+    #{$class-prefix}stretch
       align-self: stretch
-    .#{$column-name}#{$class-prefix}auto
+    #{$class-prefix}auto
       width: auto
-      flex: 1 0 auto
-    .#{$column-name}#{$class-prefix}auto-reset
+      flex: 1
+    #{$class-prefix}auto-reset
       flex: 0 0 auto
 
   @for $i from 0 through $grid-columns

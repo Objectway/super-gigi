@@ -19,7 +19,7 @@ module.exports = function() {
     }
   });
 
-  bs.watch(env.folder.dev + "/styles/main.css").on("change", bs.reload);
-  bs.watch(env.folder.dev + "/scripts/main.js").on('change', bs.reload);
+  bs.watch(env.folder.dev + "/styles/*.css").on("change", bs.reload);
+  bs.watch(env.folder.dev + "/scripts/*.js").on('change', bs.reload);
   bs.watch(env.folder.dev + "/**/*.html").on('change', bs.reload);
 };

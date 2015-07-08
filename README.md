@@ -6,8 +6,18 @@ It's developed in Sass but you can use a compiled version if you prefer.
 
 <br/>
 ## Installation
-For now you can pull the repo or download it via GitHub options. 
-NPM and Bower options will come soon.
+You can choose different ways to install **Da Vinci**:
+
+- [Download the latest release](https://github.com/Objectway/davinci-grid/zipball/master).
+- Clone the repo: `https://github.com/Objectway/davinci-grid.git`.
+- Install with [Bower](http://bower.io): `bower install davinci-grid -S`.
+- Install with [npm](https://www.npmjs.com): `coming soon`.
+
+After the download you can choose if use the compiled version with precompiled
+classes name, including `[path to davinci-grid]/dist/davinci.css`.
+
+Or you can use the Sass version, with all the options and mixins below importing
+in your sass `[path to davinci-grid]/dist/_main.sass`.
 
 <br/>
 ## Options
