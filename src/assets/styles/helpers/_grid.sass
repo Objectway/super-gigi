@@ -56,7 +56,7 @@
 // ------------
 // COLUMN MIXIN
 // ------------
-=grid-column($width: 'auto', $collapse: null, $push: null, $pull: null, $order: null, $global: true)
+=grid-column($width: null, $collapse: null, $push: null, $pull: null, $order: null, $global: true)
   @if $global
     +dry-it("clGl")
       box-sizing: border-box
@@ -75,8 +75,12 @@
         $set: ($query: $value)
         +dry-it("clWd#{$set}")
           +grid-space(width, $set)
+          @if $width == auto
+            flex: 1 0 0%
     @else
       +grid-space(width, $width)
+      @if $width == auto
+        flex: 1 0 0%
 
   // Push -------------
   @if $push != null

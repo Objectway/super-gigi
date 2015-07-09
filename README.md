@@ -289,7 +289,7 @@ The other option `$vertical` will simply add the CSS3
 arguments: `$width`, `$push`, `$pull`, `$order`, `$collapse`, `$global`
 - [**$width**](#gcwidthpushpull)
   - optional
-  - default: `auto`
+  - default: `null`
 - [**$push**](#gcwidthpushpull)
   - optional
   - default: `null`
