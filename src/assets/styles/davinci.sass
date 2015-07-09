@@ -67,9 +67,11 @@ body
 .KitchenSincHead
   +grid-row(false)
   background-color: $primary-color
-  padding: ($column-gutter * 3) 0 ($column-gutter * 2)
   margin-bottom: $column-gutter
   align-items: center
+  padding: ($column-gutter * 1.5) 0 ($column-gutter * 1)
+  +media-query(medium)
+    padding: ($column-gutter * 3) 0 ($column-gutter * 2)
 
   &__text
     +grid-column((xxsmall: 12, medium: auto))
@@ -94,21 +96,33 @@ body
 
 .GitHubLink
   +grid-row()
+  margin-top: $column-gutter / 2
+  +media-query(medium)
+    margin-top: 0
 
   &__logo
     +grid-column($collapse: true)
     +show-from(medium)
   &__text
     +grid-column(auto)
-    color: rgba(white, 0.8)
-    line-height: 1.4em
+    background-color: rgba(white, 0.8)
+    border-radius: 5px
+    color: $primary-color
+    margin-left: $column-gutter / 2
+    padding: rem-calc(5 10)
+    +media-query(medium)
+      background: transparent
+      color: rgba(white, 0.8)
+      line-height: 1.4em
+
 
   svg
     fill: white
     width: rem-calc(50)
 
   strong
-    font-size: 1.75em
-    letter-spacing: 3px
+    +media-query(medium)
+      font-size: 1.75em
+      letter-spacing: 3px
 
 

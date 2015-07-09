@@ -21,7 +21,7 @@
   @else
     // empty array that we will return
     $remValues: ()
-    @for $i from 1 through length($values)
+    @each $value in $values
       $remValues: append($remValues, remove-unit($value) / remove-unit($base-value) * 1rem)
     @return $remValues
 
