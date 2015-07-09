@@ -65,30 +65,50 @@ body
   font-family: "Lato", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
 
 .KitchenSincHead
+  +grid-row(false)
   background-color: $primary-color
   padding: ($column-gutter * 3) 0 ($column-gutter * 2)
   margin-bottom: $column-gutter
-  +grid-row(false)
+  align-items: center
 
   &__text
-    +grid-column('auto')
+    +grid-column((xxsmall: 12, medium: auto))
 
-    &__title
-      +grid-row(false)
-      h1
-        +grid-column()
-        color: white
-        font-size: $rem-base * 2.5
-        margin-bottom: $rem-base
+  &__title
+    +grid-row()
+    h1
+      +grid-column(12)
+      color: white
+      font-size: $rem-base * 2.5
+      margin-bottom: $rem-base
 
-    &__subtitle
-      +grid-row(false)
-      span
-        +grid-column()
-        color: rgba(white, 0.8)
-        font-size: $rem-base * 1.2
+  &__subtitle
+    +grid-row()
+    span
+      +grid-column(12)
+      color: rgba(white, 0.8)
+      font-size: $rem-base * 1.2
 
   &__cta
     +grid-column()
+
+.GitHubLink
+  +grid-row()
+
+  &__logo
+    +grid-column($collapse: true)
+    +show-from(medium)
+  &__text
+    +grid-column(auto)
+    color: rgba(white, 0.8)
+    line-height: 1.4em
+
+  svg
+    fill: white
+    width: rem-calc(50)
+
+  strong
+    font-size: 1.75em
+    letter-spacing: 3px
 
 

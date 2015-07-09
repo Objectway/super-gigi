@@ -18,8 +18,13 @@
       @if $use-dry
         @if $value == auto
           #{$property}: auto
+          @if $property == width
+            flex: 1 1 0%
         @else
           #{$property}: unquote(($value / $grid-columns * 100) + '%')
+          @if $property == width
+            flex: 0 0 auto
+
       @else
         +media-query($query)
           @if $value == auto
@@ -75,8 +80,7 @@
         $set: ($query: $value)
         +dry-it("clWd#{$set}")
           +grid-space(width, $set)
-          @if $width == auto
-            flex: 1 0 0%
+
     @else
       +grid-space(width, $width)
       @if $width == auto
@@ -112,8 +116,8 @@
 
 
   // Collapse -------------
-  @if $collapse == false
-    padding: 0 $column-gutter / 2
+  @if $collapse
+    padding: 0
 
   // Order -------------
   @if $order != null
@@ -232,9 +236,12 @@
       align-self: stretch
     .#{$column-name}#{$class-prefix}auto
       width: auto
-      flex: 1 0 auto
+      flex: 1 1 0%
     .#{$column-name}#{$class-prefix}auto-reset
       flex: 0 0 auto
+
+  #{$type}auto
+    +grid-column($width: ($query: auto), $global: null)
 
   @for $i from 0 through $grid-columns
     #{if($query == nth(map-keys($breakpoints), 1), "#{$type}width-" ,$class-prefix)}#{$i}
