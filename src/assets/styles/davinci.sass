@@ -61,46 +61,48 @@ $debug: true
 //generating static grid
 @import main
 
+// import blocks
+@import blocks/KitchenSincHead.sass
+
+
+
 body
   font-family: "Lato", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
   background: $almost-white
 
-.KitchenSincHead
-  background-color: $primary-color
 
-  &__content
+.KitchenSincBody
+
+  &__section
     +grid-row(false)
-    margin-bottom: $column-gutter
-    align-items: center
-    padding: ($column-gutter * 1.5) 0 ($column-gutter / 2)
-    +media-query(medium)
-      padding: ($column-gutter * 3) 0 ($column-gutter * 2)
+    padding: $column-gutter 0
 
-  &__text
-    +grid-column((xxsmall: 12, medium: auto))
 
-  &__title
-    +grid-row()
+%Line
+  background-color: $aqua
+  padding: $column-gutter 0
 
-    h1
-      +grid-column(12)
-      color: white
-      font-size: $rem-base * 2.5
-      +media-query(medium)
-        margin-bottom: $rem-base
+.Example1
+  +grid-row(false)
+  @extend %Line
 
-  &__subtitle
-    +grid-row()
-    span
-      +grid-column(12)
-      color: rgba(white, 0.8)
-      font-size: $rem-base * 1.2
+  &__element
+    &--first
+      +grid-column(auto)
+    &--second
+      +grid-column(auto)
+    &--third
+      +grid-column(auto)
+      +show-from(large)
 
-  &__cta
-    +grid-column()
-    width: 100%
-    +media-query(medium)
-      width: auto
+
+.Box
+  background-color: $midnight-blue
+  padding: $column-gutter/2
+  color: $white
+  text-align: center
+  vertical-align: middle
+
 
 .GitHubLink
   +grid-row()
