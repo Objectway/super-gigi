@@ -24,6 +24,7 @@ gulp.task('minify', env.loadTask('minify'));
 gulp.task('move', env.loadTask('move'));
 gulp.task('copy', env.loadTask('copy-assets'));
 gulp.task('compress', env.loadTask('compress'));
+gulp.task('bs', env.loadTask('browser-sync'));
 
 
 // USEFUL TASKS
