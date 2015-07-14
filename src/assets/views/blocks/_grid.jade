@@ -1,62 +1,84 @@
 // - THE GRID
 
-.Example1
+.Example__title
+  h3 Example 1
+.Example__content
+  p BOX 1  +grid-column(auto)
+  p BOX 2  +grid-column(auto)
+  p BOX 3  +grid-column(auto) +show-from(large)
 
-  //- .Example__title
-  //-   h3 Example 1
-  //- .Example__content
-  //-   p +grid-column(auto)
-  //-   p +grid-column(auto)
-  //-   p +grid-column(auto) +show-from(large)
+.Example1
 
   .Example1__element.Example1__element--first
     .Box
-      p +grid-column(auto)
+      p 1
 
   .Example1__element.Example1__element--second
     .Box
-      p +grid-column(auto)
+      p 2
 
   .Example1__element.Example1__element--third
     .Box
-      p +grid-column(7)
+      p 3
 
+
+.Example__title
+  h3 Example 2
+.Example__content
+  p BOX 1  +grid-column((xxsmall: 12, medium: 5, xlarge: 6))
+  p BOX 2  +grid-column((xxsmall: 9, medium: 7, xlarge: 6))
 
 .Example2
 
   .Example2__element.Example2__element--first
     .Box
-      p +grid-column((xxsmall: 3, medium: 5))
+      p 1
 
   .Example2__element.Example2__element--second
     .Box
-      p +grid-column((xxsmall: 9, medium: 7))
+      p 2
+
+
+.Example__title
+  h3 Example 3
+.Example__content
+  p BOX 1  +grid-column((xxsmall: 10, small: 2, medium: 8, large: 4, xlarge: 10))
+  p BOX 2  +grid-column(auto)
 
 .Example3
 
   .Example3__element.Example3__element--first
     .Box
-      p +grid-column((xxsmall: 10, small: 2, medium: 8, large: 4, xlarge: 10))
+      p 1
 
   .Example3__element.Example3__element--second
     .Box
-      p +grid-column(auto)
+      p 2
+
+
+.Example__title
+  h3 Example 4
+.Example__content
+  p BOX 1  +grid-column($width: 1 of 5)
+  p BOX 2  +grid-column($width: 2 of 5)
+  p BOX 3  +grid-column(2)
+  p BOX 4  +grid-column(auto)
 
 .Example4
 
   .Example4__element.Example4__element--first
     .Box
-      p +grid-column($width: 1 of 5)
+      p 1
 
   .Example4__element.Example4__element--second
     .Box
-      p +grid-column($width: 2 of 5)
+      p 2
 
   .Example4__element.Example4__element--third
     .Box
-      p +grid-column(2)
+      p 3
 
   .Example4__element.Example4__element--fourth
     .Box
-      p +grid-column(auto)
+      p 4
 

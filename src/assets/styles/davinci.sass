@@ -87,14 +87,18 @@ body
 %Line
   background-color: $aqua
   padding: $column-gutter 0
+  margin-bottom: $column-gutter
 
 .Example
+  +grid-row(false)
   &__title
     +grid-column(12)
-    margin-bottom: $column-gutter/2
+    margin-bottom: $column-gutter/3
   &__content
     +grid-column(12)
     margin-bottom: $column-gutter/2
+    p
+      margin-bottom: $column-gutter/6
 
 .Example1
   +grid-row(false)
@@ -115,7 +119,7 @@ body
 
   &__element
     &--first
-      +grid-column((xxsmall: 3, medium: 5, xlarge: 6))
+      +grid-column((xxsmall: 12, medium: 5, xlarge: 6))
 
     &--second
       +grid-column((xxsmall: 9, medium: 7, xlarge: 6))
