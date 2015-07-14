@@ -1,7 +1,14 @@
 // - THE GRID
 
-
 .Example1
+
+  //- .Example__title
+  //-   h3 Example 1
+  //- .Example__content
+  //-   p +grid-column(auto)
+  //-   p +grid-column(auto)
+  //-   p +grid-column(auto) +show-from(large)
+
   .Example1__element.Example1__element--first
     .Box
       p +grid-column(auto)
@@ -12,4 +19,44 @@
 
   .Example1__element.Example1__element--third
     .Box
-      p +grid-column(auto) +show-from(large)
+      p +grid-column(7)
+
+
+.Example2
+
+  .Example2__element.Example2__element--first
+    .Box
+      p +grid-column((xxsmall: 3, medium: 5))
+
+  .Example2__element.Example2__element--second
+    .Box
+      p +grid-column((xxsmall: 9, medium: 7))
+
+.Example3
+
+  .Example3__element.Example3__element--first
+    .Box
+      p +grid-column((xxsmall: 10, small: 2, medium: 8, large: 4, xlarge: 10))
+
+  .Example3__element.Example3__element--second
+    .Box
+      p +grid-column(auto)
+
+.Example4
+
+  .Example4__element.Example4__element--first
+    .Box
+      p +grid-column($width: 1 of 5)
+
+  .Example4__element.Example4__element--second
+    .Box
+      p +grid-column($width: 2 of 5)
+
+  .Example4__element.Example4__element--third
+    .Box
+      p +grid-column(2)
+
+  .Example4__element.Example4__element--fourth
+    .Box
+      p +grid-column(auto)
+

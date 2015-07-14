@@ -77,10 +77,24 @@ body
     +grid-row(false)
     padding: $column-gutter 0
 
+  &__title
+    +grid-column()
+    font-size: rem-calc(26)
+    margin-bottom: $column-gutter/2
+
+
 
 %Line
   background-color: $aqua
   padding: $column-gutter 0
+
+.Example
+  &__title
+    +grid-column(12)
+    margin-bottom: $column-gutter/2
+  &__content
+    +grid-column(12)
+    margin-bottom: $column-gutter/2
 
 .Example1
   +grid-row(false)
@@ -92,8 +106,48 @@ body
     &--second
       +grid-column(auto)
     &--third
-      +grid-column(auto)
+      +grid-column(7)
       +show-from(large)
+
+.Example2
+  +grid-row(false)
+  @extend %Line
+
+  &__element
+    &--first
+      +grid-column((xxsmall: 3, medium: 5, xlarge: 6))
+
+    &--second
+      +grid-column((xxsmall: 9, medium: 7, xlarge: 6))
+
+.Example3
+  +grid-row(false)
+  @extend %Line
+
+  &__element
+    &--first
+      +grid-column((xxsmall: 10, small: 2, medium: 8, large: 4, xlarge: 10))
+
+    &--second
+      +grid-column(auto)
+
+.Example4
+  +grid-row(false)
+  @extend %Line
+
+  &__element
+    &--first
+      +grid-column($width: 1 of 5)
+
+    &--second
+      +grid-column($width: 2 of 5)
+
+    &--third
+      +grid-column(2)
+
+    &--fourth
+      +grid-column(auto)
+
 
 
 .Box
