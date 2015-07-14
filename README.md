@@ -199,7 +199,7 @@ arguments: `$query`, `$only`, `$eq-grid`
   - optional
   - default: `xxsmall`
   - type: `string`
-- **$onl`**
+- **$only**
   - optional
   - default: `false`
   - type: `boolean`
@@ -484,7 +484,7 @@ will compile in:
 }
 ```
 <div id="gccollapseglobal"></div>
-**$collapse** and **$global** are very simple. The first one if true will 
+**$collapse** and **$global** are very simple. The first one if `false` will 
 generate the padding of our column `padding: 0 0.9375rem;`, the second one 
 will generate this css:
 ```css
