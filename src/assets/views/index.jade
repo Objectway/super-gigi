@@ -2,6 +2,10 @@ doctype html
 html
   head
     title Da Vinci
+    meta(charset='UTF-8')
+    meta(name="viewport", content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0")
+    meta(name="description", content="")
+    meta(name="author", content="")
 
     link(
       rel="stylesheet"
@@ -19,11 +23,13 @@ html
     //- blocks/_kitchensinc-title.jade
     include blocks/_kitchensinc-title.jade
 
-    .MainContent
+    .KitchenSincBody
+      .KitchenSincBody__section
 
-
-    //- blocks/_grid.jade
-    include blocks/_grid.jade
+        .KitchenSincBody__title
+          h2 The Grid
+        //- blocks/_grid.jade
+        include blocks/_grid.jade
 
     .row
       .column.small-12

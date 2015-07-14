@@ -61,46 +61,102 @@ $debug: true
 //generating static grid
 @import main
 
+// import blocks
+@import blocks/KitchenSincHead.sass
+
+
+
 body
   font-family: "Lato", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
   background: $almost-white
 
-.KitchenSincHead
-  background-color: $primary-color
 
-  &__content
+.KitchenSincBody
+
+  &__section
     +grid-row(false)
-    margin-bottom: $column-gutter
-    align-items: center
-    padding: ($column-gutter * 1.5) 0 ($column-gutter / 2)
-    +media-query(medium)
-      padding: ($column-gutter * 3) 0 ($column-gutter * 2)
-
-  &__text
-    +grid-column((xxsmall: 12, medium: auto))
+    padding: $column-gutter 0
 
   &__title
-    +grid-row()
-
-    h1
-      +grid-column(12)
-      color: white
-      font-size: $rem-base * 2.5
-      +media-query(medium)
-        margin-bottom: $rem-base
-
-  &__subtitle
-    +grid-row()
-    span
-      +grid-column(12)
-      color: rgba(white, 0.8)
-      font-size: $rem-base * 1.2
-
-  &__cta
     +grid-column()
-    width: 100%
-    +media-query(medium)
-      width: auto
+    font-size: rem-calc(26)
+    margin-bottom: $column-gutter/2
+
+
+
+%Line
+  background-color: $aqua
+  padding: $column-gutter 0
+
+.Example
+  &__title
+    +grid-column(12)
+    margin-bottom: $column-gutter/2
+  &__content
+    +grid-column(12)
+    margin-bottom: $column-gutter/2
+
+.Example1
+  +grid-row(false)
+  @extend %Line
+
+  &__element
+    &--first
+      +grid-column(auto)
+    &--second
+      +grid-column(auto)
+    &--third
+      +grid-column(7)
+      +show-from(large)
+
+.Example2
+  +grid-row(false)
+  @extend %Line
+
+  &__element
+    &--first
+      +grid-column((xxsmall: 3, medium: 5, xlarge: 6))
+
+    &--second
+      +grid-column((xxsmall: 9, medium: 7, xlarge: 6))
+
+.Example3
+  +grid-row(false)
+  @extend %Line
+
+  &__element
+    &--first
+      +grid-column((xxsmall: 10, small: 2, medium: 8, large: 4, xlarge: 10))
+
+    &--second
+      +grid-column(auto)
+
+.Example4
+  +grid-row(false)
+  @extend %Line
+
+  &__element
+    &--first
+      +grid-column($width: 1 of 5)
+
+    &--second
+      +grid-column($width: 2 of 5)
+
+    &--third
+      +grid-column(2)
+
+    &--fourth
+      +grid-column(auto)
+
+
+
+.Box
+  background-color: $midnight-blue
+  padding: $column-gutter/2
+  color: $white
+  text-align: center
+  vertical-align: middle
+
 
 .GitHubLink
   +grid-row()
