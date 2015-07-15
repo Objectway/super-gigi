@@ -65,10 +65,21 @@ $debug: true
 @import blocks/KitchenSincHead.sass
 
 
-
 body
   font-family: "Lato", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif
   background: $almost-white
+
+
+.KitchenSincBody
+  &__section
+    +grid-row(false)
+    padding-top: $column-gutter
+
+  &__title
+    +grid-column()
+    font-size: rem-calc(26)
+    margin-bottom: $column-gutter/2
+
 
 pre
   background: #fff !important
@@ -82,25 +93,11 @@ pre
     right: 5px
     color: $gray-light
     font-size: 0.8em
+    font-weight: bold
     .Example__html &
       content: "HTML"
     .Example__scss &
       content: "SCSS"
-
-
-
-.KitchenSincBody
-
-  &__section
-    +grid-row(false)
-    padding: $column-gutter 0
-
-  &__title
-    +grid-column()
-    font-size: rem-calc(26)
-    margin-bottom: $column-gutter/2
-
-
 
 %Line
   background-color: rgba($aqua, 0.5)
@@ -122,14 +119,12 @@ pre
     +grid-column(12)
     margin-bottom: $column-gutter/3
   &__html
-    +grid-column((xxsmall: 12, medium: 6))
+    +grid-column((xxsmall: 12, large: 6))
   &__scss
-    +grid-column((xxsmall: 12, medium: 6))
+    +grid-column((xxsmall: 12, large: 6))
   &__content
     +grid-column(12)
-    margin-bottom: $column-gutter/2
-    p
-      margin-bottom: $column-gutter/6
+    margin-bottom: $column-gutter
 
 .Example1
   +grid-row(false)
@@ -162,27 +157,15 @@ pre
 
   &__element
     &--first
-      +grid-column((xxsmall: 2, small: 4, medium: 6, large: 8, xlarge: 10))
+      +grid-column($width: 1 of 5)
+      +media-query(large)
+        +grid-column($width: 3 of 5)
 
     &--second
-      +grid-column(auto)
+      +grid-column($width: 4 of 5)
+      +media-query(large)
+        +grid-column($width: 2 of 5)
 
-.Example4
-  +grid-row(false)
-  @extend %Line
-
-  &__element
-    &--first
-      +grid-column($width: 1 of 5)
-
-    &--second
-      +grid-column($width: 2 of 5)
-
-    &--third
-      +grid-column($width: 1 of 5)
-
-    &--fourth
-      +grid-column(auto)
 
 
 .GitHubLink
