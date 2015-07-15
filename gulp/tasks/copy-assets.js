@@ -10,5 +10,7 @@ module.exports = function() {
     .pipe(gulp.dest(env.folder.dev + '/styles/fonts'));
   gulp.src(env.folder.src + '/styles/icons/fonts/**/*')
     .pipe(gulp.dest(env.folder.dev + '/styles/icons/fonts'));
+  gulp.src(env.folder.src + '/scripts/**/*')
+    .pipe(gulp.dest(env.folder.dev + '/scripts'));
 };
 
