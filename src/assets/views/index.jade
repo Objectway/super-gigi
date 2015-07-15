@@ -25,78 +25,19 @@ html
 
     .KitchenSincBody
       .KitchenSincBody__section
-
         .KitchenSincBody__title
           h2 The Grid
-        //- blocks/_grid.jade
         include blocks/_grid.jade
+      .KitchenSincBody__section
+        .KitchenSincBody__title
+          h2 The Visibility Classes
+        include blocks/_visibility.jade
 
     .row
       .column.small-12
         h1.no-margin-bottom.margin-top-50 The Kitchen Sink
         h5.subheader.margin-bottom-30 This page includes the most important elements so that we can make sure things work together smoothly.
-        //- GRID
-        .panel.no-padding
-          #grid.panel-head The grid
-          .panel-body
-            .row
-              .column.auto
-                .box auto
-              .column.auto
-                .box auto
-              .column.auto.show-for-large-only
-                .box auto show-for-large-only
-            .row
-              .column.small-10.medium-8.medium-landscape-6.large-4
-                .box
-                  span.show-for-large-up large-4
-                  span.show-for-medium-landscape-only medium-landscape-6
-                  span.show-for-medium-only medium-8
-                  span.show-for-small-only small-10
-              .column.small-2.medium-4.medium-landscape-6.large-8
-                .box
-                  span.show-for-large-up large-8
-                  span.show-for-medium-landscape-only medium-landscape-6
-                  span.show-for-medium-only medium-4
-                  span.show-for-small-only small-2
 
-              .column.small-3.medium-6.medium-landscape-2.large-9
-                .box
-                  span.show-for-large-up large-9
-                  span.show-for-medium-landscape-only medium-landscape-2
-                  span.show-for-medium-only medium-6
-                  span.show-for-small-only small-3
-              .column.small-5.medium-3.medium-landscape-8.large-2
-                .box
-                  span.show-for-large-up large-2
-                  span.show-for-medium-landscape-only medium-landscape-8
-                  span.show-for-medium-only medium-3
-                  span.show-for-small-only small-5
-              .column.small-4.medium-3.medium-landscape-2.large-1
-                .box
-                  span.show-for-large-up large-1
-                  span.show-for-medium-landscape-only medium-landscape-2
-                  span.show-for-medium-only medium-3
-                  span.show-for-small-only small-4
-
-              .column.small-12.medium-6.medium-landscape-4.large-3
-                .box
-                  span.show-for-large-up large-3
-                  span.show-for-medium-landscape-only medium-landscape-4
-                  span.show-for-medium-only medium-6
-                  span.show-for-small-only small-12
-              .column.hide-for-small-only.medium-6.medium-landscape-4.large-3
-                .box
-                  span.show-for-large-up large-3
-                  span.show-for-medium-landscape-only medium-landscape-4
-                  span.show-for-medium-only medium-6
-              .column.hide-for-small-up.show-for-medium-landscape-up.medium-landscape-4.large-3
-                .box
-                  span.show-for-large-up large-3
-                  span.show-for-medium-landscape-only medium-landscape-4
-              .column.hide-for-small-up.show-for-large-up.large-3
-                .box
-                  span.show-for-large-up large-3
         //- VISIBILITY CLASSES
         #visibility.panel.no-padding
           .panel-head Visibility classes

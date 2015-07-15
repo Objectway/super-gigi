@@ -89,11 +89,23 @@ body
   padding: $column-gutter 0
   margin-bottom: $column-gutter
 
+.Box
+  background-color: $midnight-blue
+  padding: $column-gutter/2
+  color: $white
+  text-align: center
+  vertical-align: middle
+  border: 2px solid $white
+
 .Example
   +grid-row(false)
   &__title
     +grid-column(12)
     margin-bottom: $column-gutter/3
+  &__html
+    +grid-column((xxsmall: 12, medium: 6))
+  &__sass
+    +grid-column((xxsmall: 12, medium: 6))
   &__content
     +grid-column(12)
     margin-bottom: $column-gutter/2
@@ -106,12 +118,11 @@ body
 
   &__element
     &--first
-      +grid-column(auto)
+      +grid-column((xxsmall: 12, medium: 4, large: 6))
+
     &--second
-      +grid-column(auto)
-    &--third
-      +grid-column(7)
-      +show-from(large)
+      +grid-column((xxsmall: 12, medium: 8, large: 6))
+
 
 .Example2
   +grid-row(false)
@@ -119,10 +130,12 @@ body
 
   &__element
     &--first
-      +grid-column((xxsmall: 12, medium: 5, xlarge: 6))
-
+      +grid-column(auto)
     &--second
-      +grid-column((xxsmall: 9, medium: 7, xlarge: 6))
+      +grid-column(auto)
+    &--third
+      +grid-column((xxsmall: 6, medium: auto, large: 3))
+
 
 .Example3
   +grid-row(false)
@@ -130,7 +143,7 @@ body
 
   &__element
     &--first
-      +grid-column((xxsmall: 10, small: 2, medium: 8, large: 4, xlarge: 10))
+      +grid-column((xxsmall: 2, small: 4, medium: 6, large: 8, xlarge: 10))
 
     &--second
       +grid-column(auto)
@@ -147,19 +160,10 @@ body
       +grid-column($width: 2 of 5)
 
     &--third
-      +grid-column(2)
+      +grid-column($width: 1 of 5)
 
     &--fourth
       +grid-column(auto)
-
-
-
-.Box
-  background-color: $midnight-blue
-  padding: $column-gutter/2
-  color: $white
-  text-align: center
-  vertical-align: middle
 
 
 .GitHubLink
