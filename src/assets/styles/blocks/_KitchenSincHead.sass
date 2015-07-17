@@ -11,7 +11,20 @@ html
   +media-query(medium)
     background-color: $primary-color
 
-  &__menu
+  &__menuRow
+    +media-query(medium)
+      +grid-row(false)
+
+  &__logoColumn
+    display: none
+    +media-query(large)
+      color: $white
+      display: flex
+      +grid-column(4)
+      justify-content: center
+
+
+  &__menuColumn
     background-color: darken($primary-color, 10)
     color: $white
     position: fixed
@@ -25,14 +38,13 @@ html
     left: 0
 
     +media-query(large)
-      +grid-row(false)
-      justify-content: flex-end
+      +grid-column(8)
       background-color: transparent
       position: relative
       margin-left: auto
       height: auto
-      width: auto
       margin: 0 auto
+      text-align: right
 
       li
         display: inline-block
