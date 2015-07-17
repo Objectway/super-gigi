@@ -1,65 +1,12 @@
-@import main
-@import helpers/normalize
-
-// Color palete: Grayscale
-$black: #31363B
-$gray-darker: #494F56
-$gray-dark: #606972
-$gray: #949CA4
-$gray-light: #C0C6CB
-$gray-lighter: #EAEBED
-$almost-white: #F5F5F5
-$white: #FFFFFF
-
-// Color palette: colors
-$navy: #001f3f
-$midnight-blue: #2c3e50
-$blue: #005dad
-$azure: #2983c2
-$cyan: #00afec
-$aqua: #7FDBFF
-$teal: #39CCCC
-$green: #64aa00
-$green-light: #52cf00
-$green-dark: darken($green, 10%)
-$turquoise: #1abc9c
-$lime: #bbd61e
-$yellow: #ffff00
-$kaki: #695F40
-$mustard: #CCB019
-$orange: #f57d23
-$red: #cc1414
-$red-dark: #6f0b0b
-$purple: #902C8E
-$brown: #5c423f
-$brown-dark: darken($brown, 10%)
-$brown-light: #A39998
-$brown-almost-white: #F8F7F4
-
-$primary-color: $blue
-// $accent-color: #55ce53
-$accent-color: $purple
-
-// Layout settings
-$touch-bar-height: rem-calc(60)
-$touch-bar-bg: $primary-color
-$top-bar-height: rem-calc(100)
-$top-bar-shadow: 0 0 10px rgba(black, 0.5)
-$sidebar-width: rem-calc(240)
-$page-content-spacing: rem-calc(30)
-$overlay-bg: rgba(#2D3640, 0.9)
-$footer-bg: $gray-dark
-$offcanvas-menu-color: $gray-lighter
-$offcanvas-menu-active-color: $primary-color
-
-$transition-speed: 300ms
-$transition-ease: ease
 
 $use-classes: true
 $debug: true
 
 //generating static grid
 @import main
+@import helpers/normalize
+//generating static grid
+@import variables
 
 // import blocks
 @import blocks/KitchenSincHead.sass
@@ -126,7 +73,7 @@ pre
     +grid-column(12)
     margin-bottom: $column-gutter
 
-.Example1
+.RoastedRibs
   +grid-row(false)
   @extend %Line
 
@@ -138,7 +85,7 @@ pre
       +grid-column((xxsmall: 12, medium: 8, large: 6))
 
 
-.Example2
+.Tomatoes
   +grid-row(false)
   @extend %Line
 
@@ -151,7 +98,7 @@ pre
       +grid-column((xxsmall: 6, medium: auto, large: 3))
 
 
-.Example3
+.Steak
   +grid-row(false)
   @extend %Line
 
@@ -165,6 +112,18 @@ pre
       +grid-column($width: 4 of 5)
       +media-query(large)
         +grid-column($width: 2 of 5)
+
+
+.FriedChips
+  +grid-row($nested: true, $vertical: true)
+  @extend %Line
+
+  &__element
+    &--first
+      +grid-column(6)
+
+    &--second
+      +grid-column(6)
 
 
 

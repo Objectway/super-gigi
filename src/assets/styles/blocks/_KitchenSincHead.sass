@@ -1,38 +1,40 @@
 // Page Header
-// jade --> _kotchensinc-title.jade
+
+$menu-width: rem-calc(240)
+
+body,
+html
+  overflow-x: hidden
 
 .KitchenSincHead
-  background-color: $primary-color
+  background-color: $white
 
-  &__content
-    +grid-row(false)
-    align-items: center
-    padding: ($column-gutter * 1.5) 0 ($column-gutter / 2)
-    +media-query(medium)
-      padding: ($column-gutter * 3) 0 ($column-gutter * 2)
+  &__menu
+    background-color: red
+    position: fixed
+    height: 100vh
+    width: $menu-width
+    box-sizing: border-box
+    padding: $column-gutter
+    margin-left: -$menu-width
+    top: 0
+    bottom: 0
+    left: 0
 
-  &__text
-    +grid-column((xxsmall: 12, medium: auto))
 
-  &__title
-    +grid-row()
+.KitchenSincBody
+  position: relative
+  // transform: translateX($menu-width)
 
-    h1
-      +grid-column(12)
-      color: white
-      font-size: $rem-base * 2.5
-      +media-query(medium)
-        margin-bottom: $rem-base
+.KitchenSincHead,
+.KitchenSincBody
+  backface-visibility: hidden
+  transition: transform .3s ease-in-out
 
-  &__subtitle
-    +grid-row()
-    span
-      +grid-column(12)
-      color: rgba(white, 0.8)
-      font-size: $rem-base * 1.2
 
-  &__cta
-    +grid-column()
-    width: 100%
-    +media-query(medium)
-      width: auto
+#TogglerMenu
+  display: none
+
+#TogglerMenu:checked ~ .KitchenSincHead,
+#TogglerMenu:checked ~ .KitchenSincBody
+  transform: translateX($menu-width)
