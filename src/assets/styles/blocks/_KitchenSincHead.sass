@@ -9,10 +9,11 @@ html
 .KitchenSincHead
   background-color: $white
   +media-query(medium)
-    background-color: red
+    background-color: $primary-color
 
   &__menu
-    background-color: red
+    background-color: darken($primary-color, 10)
+    color: $white
     position: fixed
     height: 100vh
     width: $menu-width
@@ -37,7 +38,23 @@ html
         display: inline-block
         padding: 0 rem-calc(20)
 
-  &__label
+  &__navbar
+    background: $primary-color
+    height: rem-calc(44)
+
+    label
+      position: absolute
+      min-height: rem-calc(44)
+      min-width: rem-calc(44)
+      margin-left: rem-calc(10)
+
+    svg
+      fill: $white
+      width: rem-calc(20)
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+
     +media-query(large)
       display: none
 
