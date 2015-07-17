@@ -8,6 +8,8 @@ html
 
 .KitchenSincHead
   background-color: $white
+  +media-query(medium)
+    background-color: red
 
   &__menu
     background-color: red
@@ -21,16 +23,31 @@ html
     bottom: 0
     left: 0
 
+    +media-query(large)
+      +grid-row(false)
+      justify-content: flex-end
+      background-color: transparent
+      position: relative
+      margin-left: auto
+      height: auto
+      width: auto
+      margin: 0 auto
+
+      li
+        display: inline-block
+        padding: 0 rem-calc(20)
+
+  &__label
+    +media-query(large)
+      display: none
 
 .KitchenSincBody
   position: relative
-  // transform: translateX($menu-width)
 
 .KitchenSincHead,
 .KitchenSincBody
   backface-visibility: hidden
-  transition: transform .3s ease-in-out
-
+  transition: transform .2s ease-in-out
 
 #TogglerMenu
   display: none
