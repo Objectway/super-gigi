@@ -1,23 +1,23 @@
-# Da Vinci
-**Da Vinci** is a CSS3 flex based grid system. 
+# Super GiGi
+**Super GiGi** is a CSS3 flex based grid system. 
 It's developed thinking about modern web application and its first purpose is 
 to make easier to manage responsive layout. 
 It's developed in Sass but you can use a compiled version if you prefer. 
 
 <br/>
 ## Installation
-You can choose different ways to install **Da Vinci**:
+You can choose different ways to install **Super GiGi**:
 
-- [Download the latest release](https://github.com/Objectway/davinci-grid/zipball/master).
-- Clone the repo: `https://github.com/Objectway/davinci-grid.git`.
-- Install with [Bower](http://bower.io): `bower install davinci-grid -S`.
+- [Download the latest release](https://github.com/Objectway/super-gigi/zipball/master).
+- Clone the repo: `https://github.com/Objectway/super-gigi.git`.
+- Install with [Bower](http://bower.io): `bower install super-gigi -S`.
 - Install with [npm](https://www.npmjs.com): `coming soon`.
 
 After the download you can choose if use the compiled version with precompiled
-classes name, including `[path to davinci-grid]/dist/davinci.css`.
+classes name, including `[path to super-gigi]/dist/davinci.css`.
 
 Or you can use the Sass version, with all the options and mixins below importing
-in your sass `[path to davinci-grid]/dist/_main.sass`.
+in your sass `[path to super-gigi]/dist/_main.sass`.
 
 <br/>
 ## Options
@@ -27,7 +27,7 @@ simply changing the value before importing our `main.sass`.
 ### $use-flex
 default: `true` - type: `boolean` 
 
-**Da Vinci** is developed with CSS3 Flexbox, but we also provide an untested 
+**Super GiGi** is developed with CSS3 Flexbox, but we also provide an untested 
 version in float. 
 Set this option to `false`, to use it.
 
@@ -138,7 +138,7 @@ useful when we inspect the elements.
 ### $eq-grid
 default: `false` - type: `boolean` 
 
-**Da Vinci** support [EQJS](https://github.com/Snugug/eq.js). Turn this option 
+**Super GiGi** support [EQJS](https://github.com/Snugug/eq.js). Turn this option 
 `true` to use element queries css instead of classical mediaquery. If you want 
 to use both, you can: see the [`media-query()`](#media-query). 
 
@@ -211,7 +211,7 @@ arguments: `$query`, `$only`, `$eq-grid`
 As you can guess, this is the mixin that generate our media or element query. 
 The `$query` argument must be one of the `key` values defined 
 in the [`$breakpoints`](#breakpoints) variable. 
-**Da Vinci** is developed mobile first, so if you write 
+**Super GiGi** is developed mobile first, so if you write 
 `@include mediaquery(small){...}` you will target all the queries from `small` 
 to the last query specified in `$breakpoints` map. If you want to target only a 
 specified mediaquery you will set the `$query` argument to `true`. 
