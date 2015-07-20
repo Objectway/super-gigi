@@ -11,7 +11,7 @@ You can choose different ways to install **Super GiGi**:
 - [Download the latest release](https://github.com/Objectway/super-gigi/zipball/master).
 - Clone the repo: `https://github.com/Objectway/super-gigi.git`.
 - Install with [Bower](http://bower.io): `bower install super-gigi -S`.
-- Install with [npm](https://www.npmjs.com): `coming soon`.
+- Install with [npm](https://www.npmjs.com): `npm install super-gigi -D`.
 
 After the download you can choose if use the compiled version with precompiled
 classes name, including `[path to super-gigi]/dist/supergigi.css`.
