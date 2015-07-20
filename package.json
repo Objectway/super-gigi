@@ -1,6 +1,6 @@
 {
   "name": "super-gigi",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A costumizable grid system based on CSS3 Flexbox",
   "main": "dist/_main.sass",
   "scripts": {
