@@ -2,10 +2,7 @@
   "name": "super-gigi",
   "version": "1.0.1",
   "description": "A costumizable grid system based on CSS3 Flexbox",
-  "main": [
-    "dist/supergigi.css",
-    "dist/_main.sass"
-  ],
+  "main": "dist/_main.sass",
   "scripts": {
     "compile": "gulp compile",
     "build": "gulp compile && gulp minify && gulp move && gulp compress",
