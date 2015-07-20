@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A costumizable grid system based on CSS3 Flexbox",
   "main": [
-    "dist/styles/supergigi.css",
-    "dist/styles/_main.sass"
+    "dist/supergigi.css",
+    "dist/_main.sass"
   ],
   "scripts": {
     "compile": "gulp compile",
