@@ -14,7 +14,7 @@ You can choose different ways to install **Super GiGi**:
 - Install with [npm](https://www.npmjs.com): `coming soon`.
 
 After the download you can choose if use the compiled version with precompiled
-classes name, including `[path to super-gigi]/dist/davinci.css`.
+classes name, including `[path to super-gigi]/dist/supergigi.css`.
 
 Or you can use the Sass version, with all the options and mixins below importing
 in your sass `[path to super-gigi]/dist/_main.sass`.

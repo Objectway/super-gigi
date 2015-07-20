@@ -1,36 +1,44 @@
-// ----------------------------------------
+// -----------------------------------------------------------------------------
 // GRID SPACE CALCULATOR
-// take a css property and an array as args
-// ----------------------------------------
+// -----------------------------------------------------------------------------
+
+=grid-calc($property, $attr, $query: false)
+  @if $attr == 'auto'
+    #{$property}: auto
+    @if $property == width
+      flex: 1 1 0%
+
+  @else if length($attr) == 1
+    #{$property}: unquote((nth($attr, 1) / $grid-columns * 100) + '%')
+    @if $property == width
+      flex: 0 0 auto
+
+  @else if length($attr) == 3 and nth($attr, 2) == "of"
+    @if $query and $use-dry
+      @error "You can't use n of N syntax in query. Use mixin mediaquery instead"
+
+    @else
+      #{$property}: unquote((nth($attr, 1) / nth($attr, 3) * 100) + '%')
+      @if $property == width
+        flex: 0 0 auto
+
 =grid-space($property: width, $attr: 'auto')
   @if type-of($attr) != map
-    @if $attr == 'auto'
-      #{$property}: auto
-
-    @else if length($attr) == 1
-      #{$property}: unquote((nth($attr, 1) / $grid-columns * 100) + '%')
-
-    @else if length($attr) == 3 and nth($attr, 2) == "of"
-      #{$property}: unquote((nth($attr, 1) / nth($attr, 3) * 100) + '%')
+    +grid-calc($property, $attr)
 
   @else
     @each $query, $value in $attr
       @if $use-dry
-        @if $value == auto
-          #{$property}: auto
-        @else
-          #{$property}: unquote(($value / $grid-columns * 100) + '%')
+        +grid-calc($property, $value, $query)
+
       @else
         +media-query($query)
-          @if $value == auto
-            #{$property}: auto
-          @else
-            #{$property}: unquote(($value / $grid-columns * 100) + '%')
+          +grid-calc($property, $value)
 
 
-// ---------
+// -----------------------------------------------------------------------------
 // ROW MIXIN
-// ---------
+// -----------------------------------------------------------------------------
 =grid-row($nested: true, $vertical: false)
   +dry-it("row#{$nested$vertical}")
     margin: 0 auto
@@ -50,15 +58,15 @@
       box-sizing: border-box
       display: flex
       flex-wrap: wrap
-      flex: 1 1 0%
+      flex: 1 0 auto
 
 
-// ------------
+// -----------------------------------------------------------------------------
 // COLUMN MIXIN
-// ------------
-=grid-column($width: 'auto', $collapse: null, $push: null, $pull: null, $order: null, $global: true)
+// -----------------------------------------------------------------------------
+=grid-column($width: null, $collapse: null, $push: null, $pull: null, $order: null, $global: true)
   @if $global
-    +dry-it("clGl")
+    +dry-it("colGlob")
       box-sizing: border-box
       padding: 0 $column-gutter / 2
       @if $use-flex
@@ -73,50 +81,51 @@
     @if type-of($width) == map
       @each $query, $value in $width
         $set: ($query: $value)
-        +dry-it("clWd#{$set}")
+        +dry-it("colWidth#{$set}")
           +grid-space(width, $set)
+
     @else
       +grid-space(width, $width)
+      @if $width == auto
+        flex: 1 0 0%
 
   // Push -------------
   @if $push != null
-    +dry-it("clPs")
+    +dry-it("colPush")
       position: relative
       #{$grid-end}: auto
     @if type-of($push) == map
       @each $query, $value in $push
         $set: ($query: $value)
-        +dry-it("clPs#{$set}")
+        +dry-it("colPush#{$set}")
           +grid-space($grid-start, $set)
     @else
       +grid-space($grid-start, $push)
 
   // Pull -------------
   @if $pull != null
-    +dry-it("clPl")
+    +dry-it("colPull")
       position: relative
       #{$grid-start}: auto
     @if type-of($pull) == map
       @each $query, $value in $pull
         $set: ($query: $value)
-        +dry-it("clPl#{$set}")
-          position: relative
-          #{$grid-start}: auto
+        +dry-it("colPull#{$set}")
           +grid-space($grid-end, $set)
     @else
       +grid-space($grid-end, $pull)
 
 
   // Collapse -------------
-  @if $collapse == false
-    padding: 0 $column-gutter / 2
+  @if $collapse
+    padding: 0
 
   // Order -------------
   @if $order != null
     @if type-of($order) == map
       @each $query, $value in $order
         $set: ($query: $value)
-        +dry-it("clOr#{$set}")
+        +dry-it("colOrd#{$set}")
           @each $setQuery, $setValue in $set
             +media-query($setQuery)
               order: $setValue
@@ -164,7 +173,6 @@
 
 // Row classes generator
 =row-generate-classes($query, $separator: "-")
-  /* #{$query} Breakpoint */
   $class-prefix: str-insert($query, $type, 1)
 
   @if $use-flex
@@ -212,25 +220,29 @@
   @else
     $class-prefix: #{str-insert($query, $type, 1)}-
 
+
   //column modificators
-  @if $use-flex
-    #{$class-prefix}collapse
+  @if $use-flex and $use-classes
+    .#{$column-name}#{$class-prefix}collapse
       padding: 0
-    #{$class-prefix}top
+    .#{$column-name}#{$class-prefix}top
       align-self: flex-start
-    #{$class-prefix}middle
+    .#{$column-name}#{$class-prefix}middle
       align-self: center
-    #{$class-prefix}bottom
+    .#{$column-name}#{$class-prefix}bottom
       align-self: flex-end
-    #{$class-prefix}baseline
+    .#{$column-name}#{$class-prefix}baseline
       align-self: baseline
-    #{$class-prefix}stretch
+    .#{$column-name}#{$class-prefix}stretch
       align-self: stretch
-    #{$class-prefix}auto
+    .#{$column-name}#{$class-prefix}auto
       width: auto
-      flex: 1
-    #{$class-prefix}auto-reset
+      flex: 1 1 0%
+    .#{$column-name}#{$class-prefix}auto-reset
       flex: 0 0 auto
+
+  #{$type}auto
+    +grid-column($width: ($query: auto), $global: null)
 
   @for $i from 0 through $grid-columns
     #{if($query == nth(map-keys($breakpoints), 1), "#{$type}width-" ,$class-prefix)}#{$i}
@@ -245,9 +257,9 @@
 
 
 
-// -------------
+// -----------------------------------------------------------------------------
 // ROW GENERATOR
-// -------------
+// -----------------------------------------------------------------------------
 #{$type}#{$row-name}
   +grid-row(false)
 
@@ -263,9 +275,9 @@
 
 
 
-// ----------------
+// -----------------------------------------------------------------------------
 // COLUMN GENERATOR
-// ----------------
+// -----------------------------------------------------------------------------
 #{$type}#{$column-name}
   +grid-column
 @each $query, $breakpoint in $breakpoints

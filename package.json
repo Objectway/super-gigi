@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A costumizable grid system based on CSS3 Flexbox",
   "main": [
-    "dist/styles/davinci.css",
+    "dist/styles/supergigi.css",
     "dist/styles/_main.sass"
   ],
   "scripts": {
