@@ -1,13 +1,13 @@
 {
-  "name": "davinci-grid",
-  "version": "0.2.1",
-  "homepage": "http://objectway.github.io/davinci-grid/",
+  "name": "super-gigi",
+  "version": "1.0.2",
+  "homepage": "http://objectway.github.io/super-gigi/",
   "authors": [
     "Objectway <DWX Sviluppo <dwxsviluppo@objectway.it>"
   ],
   "description": "A costumizable grid system based on CSS3 Flexbox",
   "main": [
-    "dist/styles/davinci.css",
+    "dist/styles/supergigi.css",
     "dist/styles/_main.sass"
   ],
   "keywords": [
@@ -29,6 +29,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Objectway/davinci-grid.git"
+    "url": "https://github.com/Objectway/super-gigi.git"
   }
 }

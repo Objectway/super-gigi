@@ -1,11 +1,8 @@
 {
-  "name": "davinci-grid",
-  "version": "0.2.1",
+  "name": "super-gigi",
+  "version": "1.0.2",
   "description": "A costumizable grid system based on CSS3 Flexbox",
-  "main": [
-    "dist/styles/davinci.css",
-    "dist/styles/_main.sass"
-  ],
+  "main": "dist/_main.sass",
   "scripts": {
     "compile": "gulp compile",
     "build": "gulp compile && gulp minify && gulp move && gulp compress",
@@ -14,14 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Objectway/davinci-grid.git"
+    "url": "https://github.com/Objectway/super-gigi.git"
   },
-  "author": "Objectway",
+  "author": {
+    "name": "Objectway"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Objectway/davinci-grid/issues"
+    "url": "https://github.com/Objectway/super-gigi/issues"
   },
-  "homepage": "http://objectway.github.io/davinci-grid/",
+  "homepage": "https://github.com/Objectway/super-gigi",
   "devDependencies": {
     "backstopjs": "^0.5.1",
     "browser-sync": "^2.7.7",
