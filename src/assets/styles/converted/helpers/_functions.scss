@@ -7,19 +7,18 @@
 
 // - EXAMPLES
 //
-// // width: rem-calc(16 8 16 8)
-// // will return
-// // width: 1rem 0.5rem 1rem 0.5rem
+//  width: rem-calc(16 8 16 8)
+//  will return
+//  width: 1rem 0.5rem 1rem 0.5rem
 //
-// // width: rem-calc(8)
-// // will return
-// // width: 1rem
+//  width: rem-calc(8)
+//  will return
+//  width: 1rem
 
 @function rem-calc($values, $base-value: $rem-base) {
   @if length($values) == 1 {
     @return remove-unit($values) / remove-unit($base-value) * 1rem;
-  }
-  @else {
+  } @else {
     // empty array that we will return
     $remValues: ();
 
@@ -36,8 +35,7 @@
 @function em-calc($values, $base-value: $rem-base) {
   @if length($values) == 1 {
     @return remove-unit($values) / remove-unit($base-value) * 1em;
-  }
-  @else {
+  } @else {
     // empty array that we will return
     $emValues: ();
 
@@ -53,8 +51,7 @@
 @function px-calc($values, $base-value: $rem-base) {
   @if length($values) == 1 {
     @return remove-unit($values) * remove-unit($base-value) * 1px;
-  }
-  @else {
+  } @else {
     // empty array that we will return
     $pxValues: ();
 
