@@ -5,7 +5,7 @@ $min-unit: em-calc(1) !default;
 
 // - MEDIAQUERIES SETTINGS
 // Screens
-$screen: "only screen" !default;
+$screen: 'only screen' !default;
 $landscape: "#{$screen} and (orientation: landscape)" !default;
 $portrait: "#{$screen} and (orientation: portrait)" !default;
 
@@ -18,8 +18,7 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
       [data-eq-state$="#{$query}"] & {
         @content;
       }
-    }
-    @else {
+    } @else {
       [data-eq-state~="#{$query}"] & {
         @content;
       }
@@ -32,25 +31,23 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
       //     @at-root
       //       [data-eq-state~="#{$current-name}"]
       //         @extend [data-eq-state~="#{$query}"] &
+
     }
-  }
-  @else {
+  } @else {
     $cur-bp: map-get($breakpoints, $query);
     $map-position: index(map-keys($breakpoints), $query);
 
     @if $only {
       @if $map-position == length($breakpoints) {
         $next-bp: 99999999em;
-      }
-      @else {
+      } @else {
         $next-bp: nth(map-values($breakpoints), $map-position + 1) - $min-unit;
       }
 
       @media #{$screen} and (min-width: #{$cur-bp}) and (max-width: #{$next-bp}) {
         @content;
       }
-    }
-    @else {
+    } @else {
       @media #{$screen} and (min-width: #{$cur-bp}) {
         @content;
       }
