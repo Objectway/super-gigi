@@ -147,8 +147,6 @@ linters:
     enabled: true
     max_depth: 3
 
-
-
   SelectorFormat:
     enabled: true
     convention: ^((u|is|has)\-[a-z0-9][a-zA-Z0-9]*|([A-Z][a-zA-Z0-9]*(__[a-z0-9][a-zA-Z0-9]*)?(--[a-z0-9][a-zA-Z0-9]*)?))$
