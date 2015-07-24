@@ -299,7 +299,7 @@
   @if $query == nth(map-keys($breakpoints), 1) {
     $class-prefix: #{str-insert('', $type, 1)};
   } @else {
-    $class-prefix: #{str-insert($query, $type, 1)}i#{'-'};
+    $class-prefix: #{str-insert($query, $type, 1)}#{'-'};
   }
 
   //column modificators

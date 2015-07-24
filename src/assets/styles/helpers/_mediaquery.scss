@@ -5,7 +5,7 @@ $min-unit: em-calc(1) !default;
 
 // - MEDIAQUERIES SETTINGS
 // Screens
-$screen: "only screen" !default;
+$screen: 'only screen' !default;
 $landscape: "#{$screen} and (orientation: landscape)" !default;
 $portrait: "#{$screen} and (orientation: portrait)" !default;
 
@@ -31,6 +31,7 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
       //     @at-root
       //       [data-eq-state~="#{$current-name}"]
       //         @extend [data-eq-state~="#{$query}"] &
+
     }
   } @else {
     $cur-bp: map-get($breakpoints, $query);
