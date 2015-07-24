@@ -1,0 +1,109 @@
+// Page Header
+
+$menu-width: rem-calc(240);
+
+body,
+html {
+  overflow-x: hidden;
+}
+
+.KitchenSincHead {
+  background-color: $white;
+
+  @include media-query(medium) {
+    background-color: $primary-color;
+  }
+
+
+  &__menuRow {
+    @include media-query(medium) {
+      @include grid-row(false);
+    }
+  }
+
+  &__logoColumn {
+    display: none;
+
+    @include media-query(large) {
+      color: $white;
+      display: flex;
+
+      @include grid-column(4);
+
+      justify-content: center;
+    }
+  }
+
+  &__menuColumn {
+    background-color: darken($primary-color, 10);
+    bottom: 0;
+    box-sizing: border-box;
+    color: $white;
+    height: 100vh;
+    left: 0;
+    margin-left: -$menu-width;
+    padding: $column-gutter;
+    position: fixed;
+    top: 0;
+    width: $menu-width;
+
+    @include media-query(large) {
+      @include grid-column(8);
+
+      background-color: transparent;
+      height: auto;
+      margin: 0 auto;
+      margin-left: auto;
+      position: relative;
+      text-align: right;
+
+      li {
+        display: inline-block;
+        padding: 0 rem-calc(20);
+      }
+    }
+  }
+
+  &__navbar {
+    background: $primary-color;
+    height: rem-calc(44);
+
+    label {
+      margin-left: rem-calc(10);
+      min-height: rem-calc(44);
+      min-width: rem-calc(44);
+      position: absolute;
+    }
+
+    svg {
+      fill: $white;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: rem-calc(20);
+    }
+
+    @include media-query(large) {
+      display: none;
+    }
+  }
+}
+
+.KitchenSincBody {
+  position: relative;
+}
+
+.KitchenSincHead,
+.KitchenSincBody {
+  backface-visibility: hidden;
+  transition: transform .2s ease-in-out;
+}
+
+#TogglerMenu {
+  display: none;
+}
+
+#TogglerMenu:checked ~ .KitchenSincHead,
+#TogglerMenu:checked ~ .KitchenSincBody {
+  transform: translateX($menu-width);
+}

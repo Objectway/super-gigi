@@ -1,0 +1,452 @@
+// -----------------------------------------------------------------------------
+// GRID SPACE CALCULATOR
+// -----------------------------------------------------------------------------
+
+@mixin grid-calc($property, $attr, $query: false) {
+  @if $attr == 'auto' {
+    #{$property}: auto;
+
+    @if $property == width {
+      flex: 1 1 0%;
+    }
+  } @else if length($attr) == 1 {
+    #{$property}: unquote(nth($attr, 1) / $grid-columns * 100 + '%');
+
+    @if $property == width {
+      flex: 0 0 auto;
+    }
+  } @else if length($attr) == 3 and nth($attr, 2) == 'of' {
+    @if $query and $use-dry {
+      @error 'You can\'t use n of N syntax in query. Use mixin mediaquery instead';
+    } @else {
+      #{$property}: unquote(nth($attr, 1) / nth($attr, 3) * 100 + '%');
+
+      @if $property == width {
+        flex: 0 0 auto;
+      }
+    }
+  }
+}
+
+@mixin grid-space($property: width, $attr: 'auto') {
+  @if type-of($attr) != map {
+    @include grid-calc($property, $attr);
+  } @else {
+    @each $query, $value in $attr {
+      @if $use-dry {
+        @include grid-calc($property, $value, $query);
+      } @else {
+        @include media-query($query) {
+          @include grid-calc($property, $value);
+        }
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// ROW MIXIN
+// -----------------------------------------------------------------------------
+@mixin grid-row($nested: true, $vertical: false) {
+  @include dry-it('row#{$nested $vertical}') {
+    margin: 0 auto;
+
+    @if $grid-start != left and $use-flex {
+      flex-direction: row-reverse;
+    }
+
+    @if $vertical and $use-flex {
+      flex-direction: column;
+    }
+
+    @if $nested {
+      margin: 0 (-$column-gutter / 2);
+      width: auto;
+    } @else {
+      max-width: $row-width;
+      width: 100%;
+    }
+
+    @if $debug {
+      content: 'ROW nested: #{$nested}, vertical #{$vertical}';
+    }
+
+    @if $use-flex {
+      box-sizing: border-box;
+      display: flex;
+      flex: 1 0 auto;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// COLUMN MIXIN
+// -----------------------------------------------------------------------------
+@mixin grid-column($width: null, $collapse: null, $push: null, $pull: null, $order: null, $global: true) {
+  @if $global {
+    @include dry-it('colGlob') {
+      box-sizing: border-box;
+      padding: 0 ($column-gutter / 2);
+
+      @if $use-flex {
+        display: flex;
+        flex-direction: column;
+      } @else {
+        float: $grid-start;
+      }
+    }
+  }
+
+  // Width -------------
+  @if $width != null {
+    @if type-of($width) == map {
+      @each $query, $value in $width {
+        $set: ($query: $value);
+
+        @include dry-it('colWidth#{$set}') {
+          @include grid-space(width, $set);
+        }
+      }
+    } @else {
+      @include grid-space(width, $width);
+
+      @if $width == auto {
+        flex: 1 0 0%;
+      }
+    }
+  }
+
+  // Push -------------
+  @if $push != null {
+    @include dry-it('colPush') {
+      position: relative;
+      #{$grid-end}: auto;
+    }
+
+
+    @if type-of($push) == map {
+      @each $query, $value in $push {
+        $set: ($query: $value);
+
+        @include dry-it('colPush#{$set}') {
+          @include grid-space($grid-start, $set);
+        }
+      }
+    } @else {
+      @include grid-space($grid-start, $push);
+    }
+  }
+
+  // Pull -------------
+  @if $pull != null {
+    @include dry-it('colPull') {
+      position: relative;
+      #{$grid-start}: auto;
+    }
+
+
+    @if type-of($pull) == map {
+      @each $query, $value in $pull {
+        $set: ($query: $value);
+
+        @include dry-it('colPull#{$set}') {
+          @include grid-space($grid-end, $set);
+        }
+      }
+    } @else {
+      @include grid-space($grid-end, $pull);
+    }
+  }
+
+  // Collapse -------------
+  @if $collapse {
+    padding: 0;
+  }
+
+  // Order -------------
+  @if $order != null {
+    @if type-of($order) == map {
+      @each $query, $value in $order {
+        $set: ($query: $value);
+
+        @include dry-it('colOrd#{$set}') {
+          @each $setQuery, $setValue in $set {
+            @include media-query($setQuery) {
+              order: $setValue;
+            }
+          }
+        }
+      }
+    } @else {
+      order: $order;
+    }
+  }
+
+  @if $debug {
+    $column-setting: 'COLUMN: ';
+    $column-setting: $column-setting + if($width, #{width ':' $width '| '}, '');
+    $column-setting: $column-setting + if($collapse, #{collapse ':' $collapse '| '}, '');
+    $column-setting: $column-setting + if($push, #{push ':' $push '| '}, '');
+    $column-setting: $column-setting + if($pull, #{pull ':' $pull '| '}, '');
+    $column-setting: $column-setting + if($order, #{order ':' $order '| '}, '');
+    $column-setting: $column-setting + if($global, #{global ':' $global}, '');
+
+    content: $column-setting;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// WE WILL GENERATE STATIC CSS CLASSES.
+// WE WOULD PREFER THE MIXINS VERSION, BUT NOT IN EVERY PROJECT
+// YOU CAN HAVE PRECOMPILERS...
+// -----------------------------------------------------------------------------
+// If you don't want to use classes we will generate placeholders
+// that you can use like that:
+// .class
+//   @extend %row
+// -----------------------------------------------------------------------------
+// Wait a moment. Why will we generate the placeholder if we don't use classes?
+// The issue is that the mediaqueries don't add specificity to a selector.
+// In that way if i have something like that:
+// .foo
+//   +grid-column((small: 3, large: 4))
+// .bar
+//   +grid-column((xsmall: 11, small: 3))
+// The xsmall rule will be override the small rule, because it's first written.
+// Doing a big cycle with all the options with placeholder, allow us to take
+// all at the correct place.
+// -----------------------------------------------------------------------------
+
+@if $use-classes {
+  $type: '.';
+} @else {
+  $type: '%';
+}
+
+// Row classes generator
+@mixin row-generate-classes($query, $separator: '-') {
+  $class-prefix: str-insert($query, $type, 1);
+
+  @if $use-flex {
+    // row modificators
+    &#{$class-prefix}#{$separator}top {
+      align-items: flex-start;
+    }
+
+    &#{$class-prefix}#{$separator}middle {
+      align-items: center;
+    }
+
+    &#{$class-prefix}#{$separator}bottom {
+      align-items: flex-end;
+    }
+
+    &#{$class-prefix}#{$separator}baseline {
+      align-items: baseline;
+    }
+
+    &#{$class-prefix}#{$separator}stretch {
+      align-items: stretch;
+    }
+
+    &#{$class-prefix}#{$separator}start {
+      justify-content: flex-start;
+    }
+
+    &#{$class-prefix}#{$separator}center {
+      justify-content: center;
+    }
+
+    &#{$class-prefix}#{$separator}end {
+      justify-content: flex-end;
+    }
+
+    &#{$class-prefix}#{$separator}around {
+      justify-content: space-around;
+    }
+
+    &#{$class-prefix}#{$separator}between {
+      justify-content: space-between;
+    }
+
+    &#{$class-prefix}#{$separator}horizontal {
+      flex-direction: if($grid-start == left, row, row-reverse);
+    }
+
+    &#{$class-prefix}#{$separator}horizontal-reverse {
+      flex-direction: if($grid-start == left, row-reverse, row);
+    }
+
+    &#{$class-prefix}#{$separator}vertical {
+      flex: 1;
+      flex-direction: column;
+    }
+
+    &#{$class-prefix}#{$separator}vertical-reverse {
+      flex: 1;
+      flex-direction: column-reverse;
+    }
+
+    &#{$class-prefix}#{$separator}single-line {
+      flex-flow: nowrap;
+    }
+  }
+}
+
+// Column classes generator
+@mixin column-generate-classes($query) {
+  @if $query == nth(map-keys($breakpoints), 1) {
+    $class-prefix: #{str-insert('', $type, 1)};
+  } @else {
+    $class-prefix: #{str-insert($query, $type, 1)}i#{'-'};
+  }
+
+  //column modificators
+  @if $use-flex and $use-classes {
+    .#{$column-name}#{$class-prefix}collapse {
+      padding: 0;
+    }
+
+    .#{$column-name}#{$class-prefix}top {
+      align-self: flex-start;
+    }
+
+    .#{$column-name}#{$class-prefix}middle {
+      align-self: center;
+    }
+
+    .#{$column-name}#{$class-prefix}bottom {
+      align-self: flex-end;
+    }
+
+    .#{$column-name}#{$class-prefix}baseline {
+      align-self: baseline;
+    }
+
+    .#{$column-name}#{$class-prefix}stretch {
+      align-self: stretch;
+    }
+
+    .#{$column-name}#{$class-prefix}auto {
+      flex: 1 1 0%;
+      width: auto;
+    }
+
+    .#{$column-name}#{$class-prefix}auto-reset {
+      flex: 0 0 auto;
+    }
+  }
+
+  #{$type}auto {
+    @include grid-column($width: ($query: auto), $global: null);
+  }
+
+  @for $i from 0 through $grid-columns {
+    #{if($query == nth(map-keys($breakpoints), 1), '#{$type}width-', $class-prefix)}#{$i} {
+      @include grid-column($width: ($query: $i), $global: null);
+    }
+
+    #{$class-prefix}push-#{$i} {
+      @include grid-column($push: ($query: $i), $width: null, $global: null);
+    }
+
+    #{$class-prefix}pull-#{$i} {
+      @include grid-column($pull: ($query: $i), $width: null, $global: null);
+    }
+
+    @if $use-flex {
+      #{$class-prefix}order-#{$i} {
+        @include grid-column($order: $i, $width: null, $global: null);
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// ROW GENERATOR
+// -----------------------------------------------------------------------------
+#{$type}#{$row-name} {
+  @include grid-row(false);
+
+  #{$type}#{$row-name} {
+    margin: 0 (-$column-gutter / 2);
+    width: auto;
+  }
+
+  @include row-generate-classes('', '');
+
+  @each $query, $breakpoint in $breakpoints {
+    @include media-query($query) {
+      @include row-generate-classes(#{$query});
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// COLUMN GENERATOR
+// -----------------------------------------------------------------------------
+#{$type}#{$column-name} {
+  @include grid-column;
+}
+
+@each $query, $breakpoint in $breakpoints {
+  @include media-query($query) {
+    @include column-generate-classes(#{$query});
+  }
+}
+
+// FOR INFO ABOUT EQJS https://github.com/Snugug/eq.js
+@if $eq-grid {
+  // Element Query Setting String ---------
+  $eq-setting-string: ();
+
+  @each $eq-name, $eq-value in $breakpoints {
+    $eq-value: px-calc($eq-value);
+    $tmp: $eq-name;
+    $tmp: str-insert($tmp, #{unquote(': ')}, str-length($tmp) + 1);
+    $tmp: str-insert($tmp, #{remove-unit($eq-value)}, str-length($tmp) + 1);
+    $eq-setting-string: append($eq-setting-string, $tmp, comma);
+  }
+
+  // The element on we'll add eqjs javascript ---------
+  .widget {
+    &:before {
+      content: #{inspect($eq-setting-string)};
+      display: none;
+    }
+  }
+
+  html:before {
+    content: '.widget, .widgets';
+    display: none;
+  }
+}
+
+// SAMPLE
+// .column
+//   +grid-column(1 of 2)
+// .column2
+//   +grid-column(1 of 2)
+// .column3
+//   +grid-column((small: 12, medium: 3))
+// .column4
+//   +grid-column((small: 12, medium: 4))
+// .column5
+//   +grid-column((small: 6, medium: 4))
+// .column5
+//   +grid-column($width: (small: 12, medium: 5), $pull: (small: 2, medium: 3))
+// .column6
+//   +grid-column($width: (small: 12, medium: 3), $push: (small: 4, medium: 4))
+// .column7
+//   +grid-column(1 of 3)
+// .column8
+//   +media-query(small)
+//     +grid-column(1 of 2)
+// .column9
+//   +media-query(large)
+//     +grid-column(1 of 2)
+// .prova
+//   +grid-column($width: (small: 4, large: 2), $push: (small: 3, large: 4))
+// .prova2
+//   +grid-column($width: (small: 4, large: 4), $push: (small: 3, large: 5))

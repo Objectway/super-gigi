@@ -50,6 +50,8 @@
     "gulp-watch": "^4.2.4",
     "gulp.spritesmith": "^3.8.2",
     "lodash": "^3.9.3",
-    "sprity-sass": "^1.0.4"
+    "sass-convert": "^0.5.1",
+    "sprity-sass": "^1.0.4",
+    "vinyl-fs": "^1.0.0"
   }
 }
