@@ -10,18 +10,17 @@
 
 @mixin show-from($query: null) {
   @if $query == null {
-    @warn "show-from mixin must have a query value";
+    @warn 'show-from mixin must have a query value';
   }
 
   @if length($query) > 1 {
-    @warn "show-from must have only one value";
-  }
-  @else {
+    @warn 'show-from must have only one value';
+  } @else {
     @if $debug {
-      content: "show from #{$query}";
+      content: 'show from #{$query}';
     }
 
-    @include dry-it("show-from#{$query}") {
+    @include dry-it('show-from#{$query}') {
       display: none;
 
       @include media-query($query) {
@@ -33,18 +32,17 @@
 
 @mixin hide-from($query: null) {
   @if $query == null {
-    @warn "show-from mixin must have a query value";
+    @warn 'show-from mixin must have a query value';
   }
 
   @if length($query) > 1 {
-    @warn "hide-from must have only one value";
-  }
-  @else {
+    @warn 'hide-from must have only one value';
+  } @else {
     @if $debug {
-      content: "hide from #{$query}";
+      content: 'hide from #{$query}';
     }
 
-    @include dry-it("hide-from#{$query}") {
+    @include dry-it('hide-from#{$query}') {
       display: inherit;
 
       @include media-query($query) {
@@ -56,20 +54,19 @@
 
 @mixin show-for($visibility: null) {
   @if $visibility == null {
-    @warn "show-for mixin must have a query value";
-  }
-  @else {
+    @warn 'show-for mixin must have a query value';
+  } @else {
     @if $debug {
-      content: "show for #{$visibility}";
+      content: 'show for #{$visibility}';
     }
 
-    @include dry-it("show-for") {
+    @include dry-it('show-for') {
       display: none;
     }
 
 
     @each $query in $visibility {
-      @include dry-it("show-for#{$query}") {
+      @include dry-it('show-for#{$query}') {
         @include media-query($query, only) {
           display: inherit;
         }
@@ -80,20 +77,19 @@
 
 @mixin hide-for($visibility: null) {
   @if $visibility == null {
-    @warn "show-for mixin must have a query value";
-  }
-  @else {
+    @warn 'show-for mixin must have a query value';
+  } @else {
     @if $debug {
-      content: "hide for #{$visibility}";
+      content: 'hide for #{$visibility}';
     }
 
-    @include dry-it("hide-for") {
+    @include dry-it('hide-for') {
       display: inherit;
     }
 
 
     @each $query in $visibility {
-      @include dry-it("hide-for#{$query}") {
+      @include dry-it('hide-for#{$query}') {
         @include media-query($query, only) {
           display: none;
         }
@@ -103,10 +99,9 @@
 }
 
 @if $use-classes {
-  $type: ".";
-}
-@else {
-  $type: "%";
+  $type: '.';
+} @else {
+  $type: '%';
 }
 
 @each $query, $breakpoint in $breakpoints {

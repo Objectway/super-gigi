@@ -38,12 +38,10 @@ $placeholders: ();
       }
 
       @extend %#{$unique-id};
-    }
-    @else {
+    } @else {
       @extend %#{$placeholder};
     }
-  }
-  @else {
+  } @else {
     @content;
   }
 }
