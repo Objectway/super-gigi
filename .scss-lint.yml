@@ -1,7 +1,21 @@
+# Default application configuration that all configurations inherit from.
+
+scss_files: "**/*.scss"
+plugin_directories: ['.scss-linters']
+
+# List of gem names to load custom linters from (make sure they are already
+# installed)
+plugin_gems: []
+
 linters:
+  BangFormat:
+    enabled: true
+    space_before_bang: true
+    space_after_bang: false
+
   BemDepth:
     enabled: true
-    max_elements: 1
+    max_elements: 5
 
   BorderZero:
     enabled: true
@@ -21,6 +35,9 @@ linters:
 
   DeclarationOrder:
     enabled: true
+
+  DisableLinterReason:
+    enabled: false
 
   DuplicateProperty:
     enabled: true
@@ -82,7 +99,7 @@ linters:
   NameFormat:
     enabled: true
     allow_leading_underscore: true
-    convention: hyphenated_lowercase  # or 'camel_case', or 'snake_case', or a regex pattern
+    convention: hyphenated_lowercase # or 'camel_case', or 'snake_case', or a regex pattern
 
   NestingDepth:
     enabled: true
@@ -97,6 +114,16 @@ linters:
     include_nested: false
     max_properties: 10
 
+  PropertySortOrder:
+    enabled: true
+    ignore_unspecified: false
+    min_properties: 2
+    separate_groups: false
+
+  PropertySpelling:
+    enabled: true
+    extra_properties: []
+
   PropertyUnits:
     enabled: true
     global: [
@@ -110,16 +137,6 @@ linters:
       '%']                                     # Other
     properties: {}
 
-  PropertySortOrder:
-    enabled: true
-    ignore_unspecified: false
-    min_properties: 2
-    separate_groups: false
-
-  PropertySpelling:
-    enabled: true
-    extra_properties: []
-
   QualifyingElement:
     enabled: true
     allow_element_with_attribute: false
@@ -130,9 +147,11 @@ linters:
     enabled: true
     max_depth: 3
 
+
+
   SelectorFormat:
-    enabled: false
-    convention: hyphenated_BEM # or 'strict_BEM', or 'hyphenated_BEM', or 'snake_case', or 'camel_case', or a regex pattern
+    enabled: true
+    convention: ^((u|is|has)\-[a-z0-9][a-zA-Z0-9]*|([A-Z][a-zA-Z0-9]*(__[a-z0-9][a-zA-Z0-9]*)?(--[a-z0-9][a-zA-Z0-9]*)?))$
 
   Shorthand:
     enabled: true
@@ -154,6 +173,13 @@ linters:
 
   SpaceAfterPropertyName:
     enabled: true
+
+  SpaceAfterVariableName:
+    enabled: true
+
+  SpaceAroundOperator:
+    enabled: true
+    style: one_space # or 'no_space'
 
   SpaceBeforeBrace:
     enabled: true
