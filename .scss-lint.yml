@@ -99,7 +99,7 @@ linters:
   NameFormat:
     enabled: true
     allow_leading_underscore: true
-    convention: ^[A-Z][A-Za-z0-9]*$ # Pascal case
+    convention: hyphenated_lowercase
 
   NestingDepth:
     enabled: true
