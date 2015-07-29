@@ -1,0 +1,46 @@
+// - CONFIGURATION - //
+
+// Global
+$min-unit: em-calc(1) !default
+
+// - MEDIAQUERIES SETTINGS
+// Screens
+$screen: "only screen" !default
+$landscape: "#{$screen} and (orientation: landscape)" !default
+$portrait: "#{$screen} and (orientation: portrait)" !default
+
+// - MEDIAQUERY MIXINS - //
+
+// - Generate Media Query
+=media-query($query: xxsmall, $only: false, $eq-grid: $eq-grid)
+  @if $eq-grid
+    @if $only
+      [data-eq-state$="#{$query}"] &
+        @content
+    @else
+      [data-eq-state~="#{$query}"] &
+        @content
+      // FOLLOWING CODE IS USELESS WITH EQJS MULTIQUOTE STATES
+      // IS HERE FOR REGRESSION TESTING
+      // @each $name, $value in $breakpoints
+      //   $keys: map-keys($breakpoints)
+      //   @if index($keys, $query) < index($keys, $name)
+      //     @at-root
+      //       [data-eq-state~="#{$current-name}"]
+      //         @extend [data-eq-state~="#{$query}"] &
+
+  @else
+    $cur-bp: map-get($breakpoints, $query)
+    $map-position: index(map-keys($breakpoints), $query)
+
+    @if $only
+      @if $map-position == length($breakpoints)
+        $next-bp: 99999999em
+      @else
+        $next-bp: nth(map-values($breakpoints), $map-position+1)-$min-unit
+      @media #{$screen} and (min-width: #{$cur-bp}) and (max-width: #{$next-bp})
+        @content
+
+    @else
+      @media #{$screen} and (min-width: #{$cur-bp})
+        @content
