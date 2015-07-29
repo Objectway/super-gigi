@@ -8,7 +8,7 @@
   "description": "A costumizable grid system based on CSS3 Flexbox",
   "main": [
     "dist/styles/supergigi.css",
-    "dist/styles/_main.sass"
+    "dist/styles/_main.scss"
   ],
   "keywords": [
     "CSS3",
