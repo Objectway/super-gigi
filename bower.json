@@ -25,8 +25,7 @@
     "src",
     "backstop.json",
     "package.json",
-    "gulpfile.js",
-    "dist/old-sass/"
+    "gulpfile.js"
   ],
   "repository": {
     "type": "git",

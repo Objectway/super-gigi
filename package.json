@@ -5,7 +5,7 @@
   "main": "dist/_main.sass",
   "scripts": {
     "compile": "gulp compile",
-    "build": "gulp compile && gulp minify && gulp move && gulp compress",
+    "build": "gulp clean && gulp compile && gulp minify && gulp move && gulp compress",
     "regression": "bash scripts/backstop.sh",
     "dev": "gulp"
   },
