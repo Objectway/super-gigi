@@ -24,12 +24,4 @@ $eq-grid: false !default;
 $debug: false !default;
 
 // USED MEDIAQUERIES
-$breakpoints: (
-  xxsmall: 0em,
-  xsmall: em-calc(480),
-  small: em-calc(640),
-  medium: em-calc(720),
-  large: em-calc(1024),
-  xlarge: em-calc(1280),
-  xxlarge: em-calc(1440)
-) !default;
+$breakpoints: (xxsmall: 0em, xsmall: em-calc(480), small: em-calc(640), medium: em-calc(720), large: em-calc(1024), xlarge: em-calc(1280), xxlarge: em-calc(1440)) !default;
