@@ -55,14 +55,10 @@
     }
   }
 
-  @include dry-it('row#{$nested $vertical}') {
+  @include dry-it('row#{$nested}') {
 
     @if $grid-start != left and $use-flex {
       flex-direction: row-reverse;
-    }
-
-    @if $vertical and $use-flex {
-      flex-direction: column;
     }
 
     @if $nested {
@@ -85,6 +81,11 @@
       flex-wrap: wrap;
     }
   }
+
+  @if $vertical and $use-flex {
+    flex-direction: column;
+  }
+
 }
 
 // -----------------------------------------------------------------------------
