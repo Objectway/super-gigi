@@ -48,8 +48,14 @@
 // ROW MIXIN
 // -----------------------------------------------------------------------------
 @mixin grid-row($nested: true, $vertical: false) {
+  @if $inmedia{
+    @debug 'You shouldn\'t use grid-row mixin in a mediaquery.';
+    @if $use-dry{
+      @debug 'And you are drying your code too. This couldn\'t work.';
+    }
+  }
+
   @include dry-it('row#{$nested $vertical}') {
-    margin: 0 auto;
 
     @if $grid-start != left and $use-flex {
       flex-direction: row-reverse;
@@ -63,6 +69,7 @@
       margin: 0 (-$column-gutter / 2);
       width: auto;
     } @else {
+      margin: 0 auto;
       max-width: $row-width;
       width: 100%;
     }
@@ -381,6 +388,10 @@
       @include row-generate-classes(#{$query});
     }
   }
+}
+
+#{$type}#{$row-name}-nested {
+  @include grid-row();
 }
 
 // -----------------------------------------------------------------------------

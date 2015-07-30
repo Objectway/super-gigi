@@ -2,6 +2,7 @@
 
 // Global
 $min-unit: em-calc(1) !default;
+$inmedia: false !default;
 
 // - MEDIAQUERIES SETTINGS
 // Screens
@@ -13,6 +14,11 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
 
 // - Generate Media Query
 @mixin media-query($query: xxsmall, $only: false, $eq-grid: $eq-grid) {
+
+  //inmedia variable, tell us if we are in a mediaquery.
+  //useful to generate warning, debug and testing.
+  $inmedia: true !global;
+
   @if $eq-grid {
     @if $only {
       [data-eq-state$="#{$query}"] & {
@@ -53,4 +59,5 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
       }
     }
   }
+  $inmedia: false !global;
 }

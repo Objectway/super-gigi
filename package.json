@@ -1,7 +1,7 @@
 {
   "name": "super-gigi",
-  "version": "1.0.5",
-  "description": "A costumizable grid system based on CSS3 Flexbox",
+  "version": "1.0.6",
+  "description": "A customizable grid system based on CSS3 Flexbox",
   "main": "dist/_main.scss",
   "scripts": {
     "compile": "gulp compile",

@@ -728,6 +728,22 @@
         -ms-flex-flow: nowrap;
             flex-flow: nowrap; } }
 
+*.row-nested {
+  margin: 0 -0.9375rem;
+  width: auto;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+
 *.column {
   box-sizing: border-box;
   padding: 0 0.9375rem;
@@ -2544,8 +2560,5 @@
 @media only screen and (min-width: 90em) and (max-width: 99999999em) {
   *.hide-for-xxlarge-only {
     display: none; } }
-
-meta.ow-version {
-  content: '0.1.0'; }
 
 /*# sourceMappingURL=../sourcemaps/supergigi.css.map */

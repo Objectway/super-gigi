@@ -1,11 +1,11 @@
 {
   "name": "super-gigi",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "homepage": "http://objectway.github.io/super-gigi/",
   "authors": [
     "Objectway <DWX Sviluppo <dwxsviluppo@objectway.it>"
   ],
-  "description": "A costumizable grid system based on CSS3 Flexbox",
+  "description": "A customizable grid system based on CSS3 Flexbox",
   "main": [
     "dist/styles/supergigi.css",
     "dist/_main.scss"
