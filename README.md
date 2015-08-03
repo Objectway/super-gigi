@@ -22,7 +22,10 @@ in your sass `[path to super-gigi]/dist/_main.sass`.
 <br/>
 ## Options
 If you are using the Sass version you can personalize those variables, 
-simply changing the value before importing our `main.sass`.
+simply changing the value before importing our `main.sass`. 
+For the size variables, you would like to have the [`rem/em-calc()`](#rem-calc)
+function. To achieve that remember to import the `_functions.scss` partial
+before.
 
 ### $use-flex
 default: `true` - type: `boolean` 
