@@ -33,13 +33,21 @@
     @include grid-calc($property, $attr);
   } @else {
     @each $query, $value in $attr {
-      @if $use-dry {
-        @include grid-calc($property, $value, $query);
-      } @else {
-        @include media-query($query) {
+      $set: ($query: $value);
+
+      @if $inmedia {
+        @include dry-it('#{$property}-#{$set}') {
           @include grid-calc($property, $value);
         }
+      } @else {
+
+        @include media-query($query) {
+          @include dry-it('#{$property}-#{$set}') {
+            @include grid-calc($property, $value);
+          }
+        }
       }
+
     }
   }
 }
@@ -49,9 +57,9 @@
 // -----------------------------------------------------------------------------
 @mixin grid-row($nested: true, $vertical: false) {
   @if $inmedia{
-    @debug 'You shouldn\'t use grid-row mixin in a mediaquery.';
+    @warn "You shouldn't use grid-row mixin in a mediaquery.";
     @if $use-dry{
-      @debug 'And you are drying your code too. This couldn\'t work.';
+      @warn "And you are drying your code too. This couldn't work.";
     }
   }
 
@@ -108,21 +116,7 @@
 
   // Width -------------
   @if $width != null {
-    @if type-of($width) == map {
-      @each $query, $value in $width {
-        $set: ($query: $value);
-
-        @include dry-it('colWidth#{$set}') {
-          @include grid-space(width, $set);
-        }
-      }
-    } @else {
-      @include grid-space(width, $width);
-
-      @if $width == auto {
-        flex: 1 0 0%;
-      }
-    }
+    @include grid-space(width, $width);
   }
 
   // Push -------------
@@ -132,18 +126,7 @@
       #{$grid-end}: auto;
     }
 
-
-    @if type-of($push) == map {
-      @each $query, $value in $push {
-        $set: ($query: $value);
-
-        @include dry-it('colPush#{$set}') {
-          @include grid-space($grid-start, $set);
-        }
-      }
-    } @else {
-      @include grid-space($grid-start, $push);
-    }
+    @include grid-space($grid-start, $push);
   }
 
   // Pull -------------
@@ -153,18 +136,7 @@
       #{$grid-start}: auto;
     }
 
-
-    @if type-of($pull) == map {
-      @each $query, $value in $pull {
-        $set: ($query: $value);
-
-        @include dry-it('colPull#{$set}') {
-          @include grid-space($grid-end, $set);
-        }
-      }
-    } @else {
-      @include grid-space($grid-end, $pull);
-    }
+    @include grid-space($grid-end, $pull);
   }
 
   // Collapse -------------
@@ -179,9 +151,9 @@
         $set: ($query: $value);
 
         @include dry-it('colOrd#{$set}') {
-          @each $setQuery, $setValue in $set {
-            @include media-query($setQuery) {
-              order: $setValue;
+          @each $set-query, $set-value in $set {
+            @include media-query($set-query) {
+              order: $set-value;
             }
           }
         }

@@ -61,7 +61,7 @@ $functions-already-imported: false !default;
       $pxValues: ();
 
       @each $value in $values {
-        $pxValues: append($rpxValues, remove-unit($value) * remove-unit($base-value) * 1px);
+        $pxValues: append($pxValues, remove-unit($value) * remove-unit($base-value) * 1px);
       }
 
       @return $pxValues;

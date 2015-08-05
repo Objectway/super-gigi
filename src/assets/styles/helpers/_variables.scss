@@ -20,7 +20,7 @@ $row-name: row !default;
 $column-name: column !default;
 $grid-start: left !default;
 $grid-end: if($grid-start == left, right, left) !default;
-$use-dry: true !default;
+$use-dry: false !default;
 $eq-grid: false !default;
 $debug: false !default;
 
