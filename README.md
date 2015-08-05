@@ -608,7 +608,7 @@ will generate:
  ```
 <br/>
 
-###dry-it() ```<span style="color: #c00">EXPERIMENTAL</span>```
+###dry-it() ```EXPERIMENTAL```
 arguments: `$id`
 - **$id**
   - required
