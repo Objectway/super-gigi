@@ -1,6 +1,6 @@
 {
   "name": "super-gigi",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "A customizable grid system based on CSS3 Flexbox",
   "main": "dist/_main.scss",
   "scripts": {
@@ -50,7 +50,9 @@
     "gulp-watch": "^4.2.4",
     "gulp.spritesmith": "^3.8.2",
     "lodash": "^3.9.3",
+    "mocha": "^2.2.5",
     "sass-convert": "^0.5.1",
+    "sass-true": "^2.0.2",
     "sprity-sass": "^1.0.4",
     "vinyl-fs": "^1.0.0"
   }
