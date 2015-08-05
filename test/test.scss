@@ -11,7 +11,6 @@
   }
 
   @include test('rem calc') {
-    $rem-base: 16px;
     $test: rem-calc(48);
     $expect: 3rem;
     $test2: rem-calc(8 16 32 64);
@@ -27,7 +26,6 @@
   }
 
   @include test('em calc') {
-    $rem-base: 16px;
     $test: em-calc(48);
     $expect: 3em;
     $test2: em-calc(8 16 32 64);
@@ -43,7 +41,6 @@
   }
 
   @include test('px calc') {
-    $rem-base: 16px;
     $test: px-calc(1);
     $expect: 16px;
     $test2: px-calc(0.5em 1rem 2rem 10em);
@@ -312,7 +309,6 @@
   }
 };
 
-@include report;
 // MEDIA QUERIES AND VISIBILITY ARE NOT TESTABLE, WE ARE WORKING ON IT!
 
 // @include test-module('Visibility') {
@@ -331,3 +327,7 @@
 //     }
 //   }
 // };
+
+
+
+@include report;
