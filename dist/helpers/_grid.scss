@@ -33,8 +33,7 @@
     @include grid-calc($property, $attr);
   } @else {
     @each $query, $value in $attr {
-      $set: ($query: $value);
-
+      $set: #{$query}#{$value};
       @if $inmedia {
         @include dry-it('#{$property}-#{$set}') {
           @include grid-calc($property, $value);
@@ -47,7 +46,6 @@
           }
         }
       }
-
     }
   }
 }
@@ -103,7 +101,10 @@
   @if $global {
     @include dry-it('colGlob') {
       box-sizing: border-box;
-      padding: 0 ($column-gutter / 2);
+      // Collapse -------------
+      @if $collapse == null {
+        padding: 0 ($column-gutter / 2);
+      }
 
       @if $use-flex {
         display: flex;
@@ -139,10 +140,6 @@
     @include grid-space($grid-end, $pull);
   }
 
-  // Collapse -------------
-  @if $collapse {
-    padding: 0;
-  }
 
   // Order -------------
   @if $order != null {
@@ -198,15 +195,14 @@
 // all at the correct place.
 // -----------------------------------------------------------------------------
 
+$type: '%';
 @if $use-classes {
   $type: '.';
-} @else {
-  $type: '%';
 }
 
 // Row classes generator
 @mixin row-generate-classes($query, $separator: '-') {
-  $class-prefix: str-insert($query, $type, 1);
+  $class-prefix: str-insert($query, $type, 1) !global;
 
   @if $use-flex {
     // row modificators
@@ -277,9 +273,9 @@
 // Column classes generator
 @mixin column-generate-classes($query) {
   @if $query == nth(map-keys($breakpoints), 1) {
-    $class-prefix: #{str-insert('', $type, 1)};
+    $class-prefix: #{str-insert('', $type, 1)} !global;
   } @else {
-    $class-prefix: #{str-insert($query, $type, 1)}#{'-'};
+    $class-prefix: #{str-insert($query, $type, 1)}#{'-'} !global;
   }
 
   //column modificators

@@ -4,6 +4,10 @@
 $min-unit: em-calc(1) !default;
 $inmedia: false !default;
 
+// Var declaration
+$cur-bp: false !default;
+$next-bp: false !default;
+
 // - MEDIAQUERIES SETTINGS
 // Screens
 $screen: 'only screen' !default;
@@ -18,7 +22,6 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
   //inmedia variable, tell us if we are in a mediaquery.
   //useful to generate warning, debug and testing.
   $inmedia: true !global;
-
   @if $eq-grid {
     @if $only {
       [data-eq-state$="#{$query}"] & {

@@ -1,70 +1,66 @@
-$functions-already-imported: false !default;
-@if ($functions-already-imported == false){
-  $functions-already-imported: true;
-  // - REMOVE THE UNIT FROM A VALUE. BASED ON ZURB FOUNDATION
-  @function remove-unit($value) {
-    @return $value / ($value * 0 + 1);
-  }
+// - REMOVE THE UNIT FROM A VALUE. BASED ON ZURB FOUNDATION
+@function remove-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
 
-  // - TRANSFORM AN ARRAY OF PX VALUES (with or without px value) in rem unit - //
+// - TRANSFORM AN ARRAY OF PX VALUES (with or without px value) in rem unit - //
 
-  // - EXAMPLES
-  //
-  //  width: rem-calc(16 8 16 8)
-  //  will return
-  //  width: 1rem 0.5rem 1rem 0.5rem
-  //
-  //  width: rem-calc(8)
-  //  will return
-  //  width: 1rem
+// - EXAMPLES
+//
+//  width: rem-calc(16 8 16 8)
+//  will return
+//  width: 1rem 0.5rem 1rem 0.5rem
+//
+//  width: rem-calc(8)
+//  will return
+//  width: 1rem
 
-  $rem-base: 16px !default;
+$rem-base: 16px !default;
 
-  @function rem-calc($values, $base-value: $rem-base) {
-    @if length($values) == 1 {
-      @return remove-unit($values) / remove-unit($base-value) * 1rem;
-    } @else {
-      // empty array that we will return
-      $remValues: ();
+@function rem-calc($values, $base-value: $rem-base) {
+  @if length($values) == 1 {
+    @return remove-unit($values) / remove-unit($base-value) * 1rem;
+  } @else {
+    // empty array that we will return
+    $remValues: ();
 
-      @each $value in $values {
-        $remValues: append($remValues, remove-unit($value) / remove-unit($base-value) * 1rem);
-      }
-
-      @return $remValues;
+    @each $value in $values {
+      $remValues: append($remValues, remove-unit($value) / remove-unit($base-value) * 1rem);
     }
+
+    @return $remValues;
   }
+}
 
-  // - TRANSFORM AN ARRAY OF PX VALUES (with or without px value) in em unit - //
+// - TRANSFORM AN ARRAY OF PX VALUES (with or without px value) in em unit - //
 
-  @function em-calc($values, $base-value: $rem-base) {
-    @if length($values) == 1 {
-      @return remove-unit($values) / remove-unit($base-value) * 1em;
-    } @else {
-      // empty array that we will return
-      $emValues: ();
+@function em-calc($values, $base-value: $rem-base) {
+  @if length($values) == 1 {
+    @return remove-unit($values) / remove-unit($base-value) * 1em;
+  } @else {
+    // empty array that we will return
+    $emValues: ();
 
-      @each $value in $values {
-        $emValues: append($emValues, remove-unit($value) / remove-unit($base-value) * 1em);
-      }
-
-      @return $emValues;
+    @each $value in $values {
+      $emValues: append($emValues, remove-unit($value) / remove-unit($base-value) * 1em);
     }
+
+    @return $emValues;
   }
+}
 
-  // - TRANSFORM AN ARRAY OF EM VALUES (with or without em value) in px unit - //
-  @function px-calc($values, $base-value: $rem-base) {
-    @if length($values) == 1 {
-      @return remove-unit($values) * remove-unit($base-value) * 1px;
-    } @else {
-      // empty array that we will return
-      $pxValues: ();
+// - TRANSFORM AN ARRAY OF EM VALUES (with or without em value) in px unit - //
+@function px-calc($values, $base-value: $rem-base) {
+  @if length($values) == 1 {
+    @return remove-unit($values) * remove-unit($base-value) * 1px;
+  } @else {
+    // empty array that we will return
+    $pxValues: ();
 
-      @each $value in $values {
-        $pxValues: append($pxValues, remove-unit($value) * remove-unit($base-value) * 1px);
-      }
-
-      @return $pxValues;
+    @each $value in $values {
+      $pxValues: append($pxValues, remove-unit($value) * remove-unit($base-value) * 1px);
     }
+
+    @return $pxValues;
   }
 }

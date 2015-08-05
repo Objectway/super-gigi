@@ -1,5 +1,5 @@
 @import 'true';
-@import '../src/assets/styles/main';
+@import '../dist/main';
 
 @include test-module('Functions') {
 
@@ -186,21 +186,6 @@
       }
     }
 
-    @include assert('width in query') {
-
-      $use-dry: false !global;
-      @include input {
-        .pippo {
-          @include grid-space($attr: (small: 2, medium: 4));
-        }
-      }
-
-      @include expect {
-        width: 10%;
-        flex: 0 0 auto;
-      }
-    }
-
     @include assert('width in grid') {
 
       @include input {
@@ -231,6 +216,118 @@
         left: 50%;
       }
     }
+  }
+  // GRID Row
+  @include test('grid-row') {
 
+    @include assert('Default') {
+
+      @include input {
+        @include grid-row(true, false)
+      }
+
+      @include expect {
+        margin: 0 (-$column-gutter / 2);
+        width: auto;
+        box-sizing: border-box;
+        display: flex;
+        flex: 1 0 auto;
+        flex-wrap: wrap;
+      }
+    }
+    @include assert('inverted') {
+
+      @include input {
+        @include grid-row(false, true)
+      }
+
+      @include expect {
+        margin: 0 auto;
+        max-width: $row-width;
+        width: 100%;
+        box-sizing: border-box;
+        display: flex;
+        flex: 1 0 auto;
+        flex-wrap: wrap;
+        flex-direction: column;
+      }
+    }
+  }
+
+  // GRID Column
+  @include test('grid-column') {
+
+    @include assert('Default and collapse') {
+
+      @include input {
+        @include grid-column($collapse: true);
+      }
+
+      @include expect {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    @include assert('Push and Pull') {
+
+      @include input {
+        @include grid-column($push: 5);
+        @include grid-column($pull: 5);
+      }
+
+      @include expect {
+        box-sizing: border-box;
+        padding: 0 0.9375rem;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        right: auto;
+        left: 41.66667%;
+        box-sizing: border-box;
+        padding: 0 0.9375rem;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        left: auto;
+        right: 41.66667%;
+      }
+    }
+
+    @include assert('Order') {
+
+      @include input {
+        @include grid-column($order: 5);
+      }
+
+      @include expect {
+        box-sizing: border-box;
+        padding: 0 ($column-gutter / 2);
+        display: flex;
+        flex-direction: column;
+        order: 5;
+      }
+    }
   }
 };
+
+@include report;
+// MEDIA QUERIES AND VISIBILITY ARE NOT TESTABLE, WE ARE WORKING ON IT!
+
+// @include test-module('Visibility') {
+//   @include test('Visibility test') {
+//     @include assert('') {
+
+//       @include input {
+//         @media screen and (min-width: 480px) {
+//           display: none;
+//         }
+//       }
+
+//       @include expect {
+//         display: none;
+//       }
+//     }
+//   }
+// };
