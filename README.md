@@ -107,7 +107,7 @@ This is the value to change if you want to develop a rtl application.
 
 <br/>
 ### $use-dry
-default: `true` - type: `boolean` 
+default: `false` - type: `boolean` 
 
 If true, all the grid will be passed by [`dry-it()`](#dry-it) mixin.
 
@@ -608,11 +608,13 @@ will generate:
  ```
 <br/>
 
-###dry-it()
+###dry-it() ```<span style="color: #c00">EXPERIMENTAL</span>```
 arguments: `$id`
 - **$id**
   - required
   - type: `string`
+
+**NOTE**: This mixin will change the order of your generated css.
 
 One of the bad thing that we have in developing a grid without a default classes
 schema is that our result css code will be semantic... but not dry... You can 
@@ -812,6 +814,18 @@ Do you want to collaborate? It's dangerous to go alone take this:
 `$ npm run build` -> Compile for distribution
 
 <br/>
+
+## BROWSER SUPPORT
+Super GiGi is built in flex. So the browser support is 
+<a href="http://caniuse.com/#feat=flexbox;" target="_blank">
+the same of the flexbox property</a>.
+
+If you use the sass version, we suggest you to take a look to 
+<a href="https://github.com/postcss/autoprefixer" target="_blank">
+AutoPrefixer</a>, to generate the vendor prefixer.
+
+If you have to support old browsers you can try <a href="http://flexiejs.com">
+Flexie</a>
 
 ## DISTRIBUTED UNDER THE MIT LICENSE
 
