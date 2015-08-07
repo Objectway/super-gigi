@@ -21,10 +21,10 @@
     }
 
     @include dry-it('show-from#{$query}') {
-      display: none;
+      display: none !important;
 
       @include media-query($query) {
-        display: inherit;
+        display: inherit !important;
       }
     }
   }
@@ -43,10 +43,10 @@
     }
 
     @include dry-it('hide-from#{$query}') {
-      display: inherit;
+      display: inherit !important;
 
       @include media-query($query) {
-        display: none;
+        display: none !important;
       }
     }
   }
@@ -61,14 +61,14 @@
     }
 
     @include dry-it('show-for') {
-      display: none;
+      display: none !important;
     }
 
 
     @each $query in $visibility {
       @include dry-it('show-for#{$query}') {
         @include media-query($query, only) {
-          display: inherit;
+          display: inherit !important;
         }
       }
     }
@@ -84,14 +84,14 @@
     }
 
     @include dry-it('hide-for') {
-      display: inherit;
+      display: inherit !important;
     }
 
 
     @each $query in $visibility {
       @include dry-it('hide-for#{$query}') {
         @include media-query($query, only) {
-          display: none;
+          display: none !important;
         }
       }
     }
