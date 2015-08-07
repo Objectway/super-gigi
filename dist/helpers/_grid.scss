@@ -98,13 +98,11 @@
 // COLUMN MIXIN
 // -----------------------------------------------------------------------------
 @mixin grid-column($width: null, $collapse: null, $push: null, $pull: null, $order: null, $global: true) {
+
+  // Global -------------
   @if $global {
     @include dry-it('colGlob') {
       box-sizing: border-box;
-      // Collapse -------------
-      @if $collapse == null {
-        padding: 0 ($column-gutter / 2);
-      }
 
       @if $use-flex {
         display: flex;
@@ -113,6 +111,11 @@
         float: $grid-start;
       }
     }
+  }
+
+  // Collapse -------------
+  @if $collapse == null {
+    padding: 0 ($column-gutter / 2);
   }
 
   // Width -------------
