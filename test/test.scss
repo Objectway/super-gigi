@@ -276,16 +276,16 @@
 
       @include expect {
         box-sizing: border-box;
-        padding: 0 0.9375rem;
         display: flex;
         flex-direction: column;
+        padding: 0 0.9375rem;
         position: relative;
         right: auto;
         left: 41.66667%;
         box-sizing: border-box;
-        padding: 0 0.9375rem;
         display: flex;
         flex-direction: column;
+        padding: 0 0.9375rem;
         position: relative;
         left: auto;
         right: 41.66667%;
@@ -300,9 +300,9 @@
 
       @include expect {
         box-sizing: border-box;
-        padding: 0 ($column-gutter / 2);
         display: flex;
         flex-direction: column;
+        padding: 0 ($column-gutter / 2);
         order: 5;
       }
     }
