@@ -1,11 +1,11 @@
 {
   "name": "super-gigi",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "description": "A customizable grid system based on CSS3 Flexbox",
   "main": "dist/_main.scss",
   "scripts": {
     "compile": "gulp compile",
-    "build": "gulp clean && gulp compile && gulp minify && gulp move && gulp compress",
+    "build": "gulp clean && gulp compile && gulp minify && gulp move && gulp compress && mocha",
     "regression": "bash scripts/backstop.sh",
     "dev": "gulp"
   },
