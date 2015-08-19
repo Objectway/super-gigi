@@ -730,10 +730,10 @@ arguments: `$values`, `$base-value`
 - **$values**
   - required
   - type: `list`
-- **$values**
+- **$base-value**
   - optional
   - default: [`$rem-base`](#rem-base)
-  - type: `measue`
+  - type: `measure`
 
 Transforms an array of pixel values (with or without `px`) in rem unit, based on 
 the optional `$base-value` passed to the function.
@@ -758,10 +758,10 @@ arguments: `$values`, `$base-value`
 - **$values**
   - required
   - type: `list`
-- **$values**
+- **$base-value**
   - optional
   - default: [`$rem-base`](#rem-base)
-  - type: `measue`
+  - type: `measure`
 
 Transforms an array of pixel values (with or without `px`) in em unit, based on 
 the optional `$base-value` passed to the function.
@@ -787,10 +787,10 @@ arguments: `$values`, `$base-value`
 - **$values**
   - required
   - type: `list`
-- **$values**
+- **$base-value**
   - optional
   - default: [`$rem-base`](#rem-base)
-  - type: `measue`
+  - type: `measure`
 
 Transforms an array of ems or rems values (with or without `em/rem`) in pixel 
 unit, based on the optional `$base-value` passed to the function.
