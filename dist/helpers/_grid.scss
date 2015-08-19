@@ -323,20 +323,20 @@ $type: '%';
 
   @for $i from 0 through $grid-columns {
     #{if($query == nth(map-keys($breakpoints), 1), '#{$type}width-', $class-prefix)}#{$i} {
-      @include grid-column($width: ($query: $i), $global: null);
+      @include grid-column($width: ($query: $i), $global: null, $collapse: true);
     }
 
     #{$class-prefix}push-#{$i} {
-      @include grid-column($push: ($query: $i), $width: null, $global: null);
+      @include grid-column($push: ($query: $i), $width: null, $global: null, $collapse: true);
     }
 
     #{$class-prefix}pull-#{$i} {
-      @include grid-column($pull: ($query: $i), $width: null, $global: null);
+      @include grid-column($pull: ($query: $i), $width: null, $global: null, $collapse: true);
     }
 
     @if $use-flex {
       #{$class-prefix}order-#{$i} {
-        @include grid-column($order: $i, $width: null, $global: null);
+        @include grid-column($order: $i, $width: null, $global: null, $collapse: true);
       }
     }
   }
@@ -375,7 +375,7 @@ $type: '%';
 
 @each $query, $breakpoint in $breakpoints {
   @include media-query($query) {
-    // @include column-generate-classes(#{$query});
+    @include column-generate-classes(#{$query});
   }
 }
 
