@@ -82,7 +82,7 @@ $row-name: foo;
 .row {
 	@extend %foo
 }
-```
+```. 
 
 <br/>
 ### $column-name
@@ -115,7 +115,7 @@ If true, all the grid will be passed by [`dry-it()`](#dry-it) mixin.
 ### $debug
 default: `false` - type: `boolean` 
 
-With big applications and semantic BEM selectors, is difficult to understand 
+With big applications and semantic BEM selectors, it is difficult to understand 
 what kind of properties we set to a determinate DOM element. If you set this 
 variable `true`, we will generate a content property to the rules, that will be 
 useful when we inspect the elements.
