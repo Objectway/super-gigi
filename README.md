@@ -130,7 +130,7 @@ useful when we inspect the elements.
 ```
 
 <br/>
-### $eq-grid
+### $eq-grid `EXPERIMENTAL
 default: `false` - type: `boolean` 
 
 **Super GiGi** supports [EQJS](https://github.com/Snugug/eq.js). Turn this option to
@@ -707,7 +707,7 @@ will generate this css:
 }
 ```
 
-***IMPORTANT*** To use this option you must order your media query correctly.
+***IMPORTANT*** To use this option is preferable to order your media query smaller to larger.
 I know, that is a very boring thing to do manually, but fortunally:
 <a href="https://github.com/hail2u/node-css-mqpacker" target="_blankW">
 PostCSS mqpacker

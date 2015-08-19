@@ -345,41 +345,37 @@ $type: '%';
 // -----------------------------------------------------------------------------
 // ROW GENERATOR CLASSES
 // -----------------------------------------------------------------------------
-@if $use-classes {
+#{$type}#{$row-name} {
+  @include grid-row(false);
+
   #{$type}#{$row-name} {
-    @include grid-row(false);
-
-    #{$type}#{$row-name} {
-      margin: 0 (-$column-gutter / 2);
-      width: auto;
-    }
-
-    @include row-generate-classes('', '');
-
-    @each $query, $breakpoint in $breakpoints {
-      @include media-query($query) {
-        @include row-generate-classes(#{$query});
-      }
-    }
+    margin: 0 (-$column-gutter / 2);
+    width: auto;
   }
 
-  #{$type}#{$row-name}-nested {
-    @include grid-row();
+  @include row-generate-classes('', '');
+
+  @each $query, $breakpoint in $breakpoints {
+    @include media-query($query) {
+      @include row-generate-classes(#{$query});
+    }
   }
+}
+
+#{$type}#{$row-name}-nested {
+  @include grid-row();
 }
 
 // -----------------------------------------------------------------------------
 // COLUMN GENERATOR CLASSES
 // -----------------------------------------------------------------------------
-@if $use-classes {
-  #{$type}#{$column-name} {
-    @include grid-column;
-  }
+#{$type}#{$column-name} {
+  @include grid-column;
+}
 
-  @each $query, $breakpoint in $breakpoints {
-    @include media-query($query) {
-      @include column-generate-classes(#{$query});
-    }
+@each $query, $breakpoint in $breakpoints {
+  @include media-query($query) {
+    // @include column-generate-classes(#{$query});
   }
 }
 
@@ -402,7 +398,7 @@ $type: '%';
   // The element on we'll add eqjs javascript ---------
   .widget {
     &:before {
-      content: #{inspect($eq-setting-string)};
+      content: "#{inspect($eq-setting-string)}";
       display: none;
     }
   }

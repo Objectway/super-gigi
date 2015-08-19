@@ -402,7 +402,6 @@ $type: '%';
   // The element on we'll add eqjs javascript ---------
   .widget {
     &:before {
-      content: #{inspect($eq-setting-string)};
       display: none;
     }
   }

@@ -20,7 +20,7 @@ $placeholders: ();
 // OUR MIXIN THAT WILL GENERATE PLACEHOLDERS
 // -----------------------------------------------------------------------------
 @mixin dry-it($id) {
-  @if $use-dry {
+  @if $use-dry and $eq-grid == false{
     $placeholder: map-get($placeholders, $id);
 
     @if $placeholder == null {

@@ -1,5 +1,17 @@
-$use-classes: true;
+$use-classes: false;
 $use-dry: true;
+$eq-grid: false;
 
 @import 'main';
- 
+
+.pippo {
+	@include grid-column((small:3, large: 4));
+}
+.pippo2 {
+	@include grid-column((small:3, large: 4));
+}
+
+$eq-grid: true;
+.pippo3 {
+	@include grid-column((small:2, large: 4));
+}
