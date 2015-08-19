@@ -343,43 +343,50 @@ $type: '%';
 }
 
 // -----------------------------------------------------------------------------
-// ROW GENERATOR
+// ROW GENERATOR CLASSES
 // -----------------------------------------------------------------------------
-#{$type}#{$row-name} {
-  @include grid-row(false);
-
+@if $use-classes {
   #{$type}#{$row-name} {
-    margin: 0 (-$column-gutter / 2);
-    width: auto;
+    @include grid-row(false);
+
+    #{$type}#{$row-name} {
+      margin: 0 (-$column-gutter / 2);
+      width: auto;
+    }
+
+    @include row-generate-classes('', '');
+
+    @each $query, $breakpoint in $breakpoints {
+      @include media-query($query) {
+        @include row-generate-classes(#{$query});
+      }
+    }
   }
 
-  @include row-generate-classes('', '');
+  #{$type}#{$row-name}-nested {
+    @include grid-row();
+  }
+}
+
+// -----------------------------------------------------------------------------
+// COLUMN GENERATOR CLASSES
+// -----------------------------------------------------------------------------
+@if $use-classes {
+  #{$type}#{$column-name} {
+    @include grid-column;
+  }
 
   @each $query, $breakpoint in $breakpoints {
     @include media-query($query) {
-      @include row-generate-classes(#{$query});
+      @include column-generate-classes(#{$query});
     }
   }
 }
 
-#{$type}#{$row-name}-nested {
-  @include grid-row();
-}
-
 // -----------------------------------------------------------------------------
-// COLUMN GENERATOR
-// -----------------------------------------------------------------------------
-#{$type}#{$column-name} {
-  @include grid-column;
-}
-
-@each $query, $breakpoint in $breakpoints {
-  @include media-query($query) {
-    @include column-generate-classes(#{$query});
-  }
-}
-
+// EQJS
 // FOR INFO ABOUT EQJS https://github.com/Snugug/eq.js
+// -----------------------------------------------------------------------------
 @if $eq-grid {
   // Element Query Setting String ---------
   $eq-setting-string: ();
@@ -405,31 +412,3 @@ $type: '%';
     display: none;
   }
 }
-
-// SAMPLE
-// .column
-//   +grid-column(1 of 2)
-// .column2
-//   +grid-column(1 of 2)
-// .column3
-//   +grid-column((small: 12, medium: 3))
-// .column4
-//   +grid-column((small: 12, medium: 4))
-// .column5
-//   +grid-column((small: 6, medium: 4))
-// .column5
-//   +grid-column($width: (small: 12, medium: 5), $pull: (small: 2, medium: 3))
-// .column6
-//   +grid-column($width: (small: 12, medium: 3), $push: (small: 4, medium: 4))
-// .column7
-//   +grid-column(1 of 3)
-// .column8
-//   +media-query(small)
-//     +grid-column(1 of 2)
-// .column9
-//   +media-query(large)
-//     +grid-column(1 of 2)
-// .prova
-//   +grid-column($width: (small: 4, large: 2), $push: (small: 3, large: 4))
-// .prova2
-//   +grid-column($width: (small: 4, large: 4), $push: (small: 3, large: 5))

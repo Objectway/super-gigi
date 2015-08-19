@@ -618,7 +618,7 @@ will generate:
  ```
 <br/>
 
-###dry-it() ```EXPERIMENTAL```
+### dry-it() ```EXPERIMENTAL```
 arguments: `$id`
 - **$id**
   - required
@@ -706,6 +706,32 @@ will generate this css:
   } 
 }
 ```
+
+***IMPORTANT*** To use this option you must order your media query correctly.
+I know, that is a very boring thing to do manually, but fortunally:
+<a href="https://github.com/hail2u/node-css-mqpacker" target="_blankW">
+PostCSS mqpacker
+</a> comes to help us. An example on how to use it in gulp:
+
+```js
+var mqpacker = require('css-mqpacker');
+var postcss = require('gulp-postcss');
+var sass = require('gulp-sass');
+
+module.exports = function() {
+  return gulp.src('/styles/*.+(sass|scss)')
+    .pipe(sass())
+    .pipe(
+      postcss([
+        mqpacker({
+          sort: true
+        })
+      ])
+    )
+    .pipe(gulp.dest('/styles/'));
+```
+
+You can found a complete gulp file in `gulp/tasks/sass.js`.
 
 <br/>
 

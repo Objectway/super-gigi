@@ -1,13 +1,15 @@
 var env = require('../env.js');
 var gulp = require('gulp');
-var sourcemaps = require('gulp-sourcemaps');
+
+var autoprefixer = require('autoprefixer-core');
 var changed = require('gulp-changed');
-var autoprefixer = require('gulp-autoprefixer');
 var cssPrefix = require('gulp-css-prefix');
 var gulpif = require('gulp-if');
+var mqpacker = require('css-mqpacker');
+var postcss = require('gulp-postcss');
 var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var util = require('gulp-util');
-
 
 
 module.exports = function() {
@@ -25,10 +27,17 @@ module.exports = function() {
       env.namespaceCSS,
       cssPrefix({'parentClass': env.namespaceCSS})
     ))
-    .pipe(autoprefixer({
-      browsers: env.compatibility,
-      cascade: true
-    }))
+    .pipe(
+      postcss([
+        autoprefixer({
+          browsers: env.compatibility,
+          cascade: true
+        }),
+        mqpacker({
+          sort: true
+        })
+      ])
+    )
     .pipe(sourcemaps.write('../sourcemaps'))
     .pipe(gulp.dest(env.folder.dev + '/styles/'));
 };
