@@ -28,21 +28,30 @@
 }
 
 @mixin grid-space($property: width, $attr: 'auto') {
+
   @if type-of($attr) != map {
-    @include grid-calc($property, $attr);
+    @include dry-it(#{$property}-#{$attr}){
+      @include grid-calc($property, $attr);
+    }
+
   } @else {
+
     @each $query, $value in $attr {
-      $set: #{$query}#{$value};
+      $set: #{$query}#{$value}#{$eq-grid};
+
       @if $inmedia {
         @include dry-it('#{$property}-#{$set}') {
           @include grid-calc($property, $value);
         }
+
       } @else {
 
         @include media-query($query) {
+
           @include dry-it('#{$property}-#{$set}') {
             @include grid-calc($property, $value);
           }
+          
         }
       }
     }
@@ -116,12 +125,15 @@
       } @else {
         float: $grid-start;
       }
+      @if $collapse != true {
+        padding: 0 ($column-gutter / 2);
+      }
     }
   }
 
   // Collapse -------------
-  @if $collapse == null {
-    padding: 0 ($column-gutter / 2);
+  @if $collapse == true {
+    padding: 0;
   }
 
   // Width -------------
@@ -154,8 +166,7 @@
   @if $order != null {
     @if type-of($order) == map {
       @each $query, $value in $order {
-        $set: ($query: $value);
-
+        $set: #{$query}#{$value}#{$eq-grid};
         @include dry-it('colOrd#{$set}') {
           @each $set-query, $set-value in $set {
             @include media-query($set-query) {
