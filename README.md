@@ -73,7 +73,7 @@ $row-name: foo;
 .row {
 	@extend %foo
 }
-```. 
+```
 
 <br/>
 ### $column-name
@@ -84,7 +84,7 @@ Remember that if you change this value you have to use this as base for column
 placeholder:
 
 ```scss
-$row-name: bar;
+$column-name: bar;
 .column {
 	@extend %bar
 }
@@ -188,7 +188,7 @@ In the same way you have to change how you refer to breakpoints in all your mixi
     );
   }
   &foo {
-  	@include media-query(lrg){
+  	@include media-query(lrg) {
   	  background: red
   	}
   }
