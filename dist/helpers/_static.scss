@@ -1,0 +1,228 @@
+// -----------------------------------------------------------------------------
+// WE WILL GENERATE STATIC CSS CLASSES.
+// WE WOULD PREFER THE MIXINS VERSION, BUT NOT IN EVERY PROJECT
+// YOU CAN HAVE PRECOMPILERS...
+// -----------------------------------------------------------------------------
+// If you don't want to use classes we will generate placeholders
+// that you can use like that:
+// .class
+//   @extend %row
+// -----------------------------------------------------------------------------
+// Wait a moment. Why will we generate the placeholder if we don't use classes?
+// The issue is that the mediaqueries don't add specificity to a selector.
+// In that way if i have something like that:
+// .foo
+//   +grid-column((small: 3, large: 4))
+// .bar
+//   +grid-column((xsmall: 11, small: 3))
+// The xsmall rule will be override the small rule, because it's first written.
+// Doing a big cycle with all the options with placeholder, allow us to take
+// all at the correct place.
+// -----------------------------------------------------------------------------
+
+$type: '%';
+@if $use-classes {
+  $type: '.';
+}
+
+// Row classes generator
+@mixin row-generate-classes($query, $separator: '-') {
+  $class-prefix: str-insert($query, $type, 1) !global;
+
+  @if $use-flex {
+    // row modificators
+    &#{$class-prefix}#{$separator}top {
+      align-items: flex-start;
+    }
+
+    &#{$class-prefix}#{$separator}middle {
+      align-items: center;
+    }
+
+    &#{$class-prefix}#{$separator}bottom {
+      align-items: flex-end;
+    }
+
+    &#{$class-prefix}#{$separator}baseline {
+      align-items: baseline;
+    }
+
+    &#{$class-prefix}#{$separator}stretch {
+      align-items: stretch;
+    }
+
+    &#{$class-prefix}#{$separator}start {
+      justify-content: flex-start;
+    }
+
+    &#{$class-prefix}#{$separator}center {
+      justify-content: center;
+    }
+
+    &#{$class-prefix}#{$separator}end {
+      justify-content: flex-end;
+    }
+
+    &#{$class-prefix}#{$separator}around {
+      justify-content: space-around;
+    }
+
+    &#{$class-prefix}#{$separator}between {
+      justify-content: space-between;
+    }
+
+    &#{$class-prefix}#{$separator}horizontal {
+      flex-direction: if($grid-start == left, row, row-reverse);
+    }
+
+    &#{$class-prefix}#{$separator}horizontal-reverse {
+      flex-direction: if($grid-start == left, row-reverse, row);
+    }
+
+    &#{$class-prefix}#{$separator}vertical {
+      flex: 1;
+      flex-direction: column;
+    }
+
+    &#{$class-prefix}#{$separator}vertical-reverse {
+      flex: 1;
+      flex-direction: column-reverse;
+    }
+
+    &#{$class-prefix}#{$separator}single-line {
+      flex-flow: nowrap;
+    }
+  }
+}
+
+// Column classes generator
+@mixin column-generate-classes($query) {
+  @if $query == nth(map-keys($breakpoints), 1) {
+    $class-prefix: #{str-insert('', $type, 1)} !global;
+  } @else {
+    $class-prefix: #{str-insert($query, $type, 1)}#{'-'} !global;
+  }
+
+  //column modificators
+  @if $use-flex and $use-classes {
+    .#{$column-name}#{$class-prefix}collapse {
+      padding: 0;
+    }
+
+    .#{$column-name}#{$class-prefix}top {
+      align-self: flex-start;
+    }
+
+    .#{$column-name}#{$class-prefix}middle {
+      align-self: center;
+    }
+
+    .#{$column-name}#{$class-prefix}bottom {
+      align-self: flex-end;
+    }
+
+    .#{$column-name}#{$class-prefix}baseline {
+      align-self: baseline;
+    }
+
+    .#{$column-name}#{$class-prefix}stretch {
+      align-self: stretch;
+    }
+
+    .#{$column-name}#{$class-prefix}auto {
+      flex: 1 1 0%;
+      width: auto;
+    }
+
+    .#{$column-name}#{$class-prefix}auto-reset {
+      flex: 0 0 auto;
+    }
+  }
+
+  #{$type}auto {
+    @include grid-column($width: ($query: auto), $global: null);
+  }
+
+  @for $i from 0 through $grid-columns {
+    #{if($query == nth(map-keys($breakpoints), 1), '#{$type}width-', $class-prefix)}#{$i} {
+      @include grid-column($width: ($query: $i), $global: null);
+    }
+
+    #{$class-prefix}push-#{$i} {
+      @include grid-column($push: ($query: $i), $width: null, $global: null);
+    }
+
+    #{$class-prefix}pull-#{$i} {
+      @include grid-column($pull: ($query: $i), $width: null, $global: null);
+    }
+
+    @if $use-flex {
+      #{$class-prefix}order-#{$i} {
+        @include grid-column($order: $i, $width: null, $global: null);
+      }
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// ROW GENERATOR CLASSES
+// -----------------------------------------------------------------------------
+
+@if $use-classes or $use-dry { 
+  #{$type}#{$row-name} {
+    @include grid-row(false);
+
+    #{$type}#{$row-name} {
+      margin: 0 (-$column-gutter / 2);
+      width: auto;
+    }
+
+    @include row-generate-classes('', '');
+
+    @each $query, $breakpoint in $breakpoints {
+      @include media-query($query) {
+        @include row-generate-classes(#{$query});
+      }
+
+
+      @if $use-classes == false {
+        $eq-grid: if($eq-grid, false, true) !global;
+        @include media-query($query) {
+          @include row-generate-classes(#{$query});
+        }
+        $eq-grid: if($eq-grid, true, false) !global;
+      }
+
+    }
+  }
+
+  #{$type}#{$row-name}-nested {
+    @include grid-row();
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// COLUMN GENERATOR CLASSES
+// -----------------------------------------------------------------------------
+
+@if $use-classes or $use-dry { 
+  #{$type}#{$column-name} {
+    @include grid-column;
+  }
+
+  @each $query, $breakpoint in $breakpoints {
+    @include media-query($query) {
+      @include column-generate-classes(#{$query});
+    }
+
+    @if $use-classes == false {
+      $eq-grid: if($eq-grid, false, true) !global;
+      @include media-query($query) {
+        @include column-generate-classes(#{$query});
+      }
+      $eq-grid: if($eq-grid, true, false) !global;
+    }
+  }
+}
+
