@@ -13,9 +13,9 @@ var util = require('gulp-util');
 
 
 module.exports = function() {
-  return gulp.src(env.folder.src + '/styles/*.+(sass|scss)')
+  return gulp.src(env.folder.src + '/devStyles/*.+(sass|scss)')
     .pipe(sourcemaps.init())
-    .pipe(changed(env.folder.dev + '/styles/'))
+    .pipe(changed(env.folder.dev + '/devStyles/'))
     .pipe(sass({
       includePaths: ['./node_modules/']
     }))
