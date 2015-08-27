@@ -16,9 +16,7 @@ html {
 
 
   &__menuRow {
-    @include media-query(medium) {
-      @include grid-row(false);
-    }
+    @include grid-row(false);
   }
 
   &__logoColumn {
