@@ -1,0 +1,85 @@
+body {
+  background: $almost-white;
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+}
+
+.KitchenSincBody {
+  &__section {
+    @include grid-row(false);
+
+    padding-top: $column-gutter;
+  }
+
+  &__title {
+    @include grid-column;
+
+    font-size: rem-calc(26);
+    margin-bottom: $column-gutter / 2;
+  }
+}
+
+
+pre {
+  background: #fff !important;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  flex: 1 0 auto;
+  position: relative;
+
+  &::after {
+    color: $gray-light;
+    font-size: .8em;
+    font-weight: bold;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+
+    .Example__html & {
+      content: 'HTML';
+    }
+
+    .Example__scss & {
+      content: 'SCSS';
+    }
+  }
+}
+
+%Line {
+  background-color: rgba($aqua, .5);
+  margin-bottom: $column-gutter;
+  margin-top: $column-gutter / 2;
+  padding: $column-gutter 0;
+}
+
+.Box {
+  background-color: $midnight-blue;
+  border: 2px solid $white;
+  color: $white;
+  padding: $column-gutter / 2;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.Example {
+  @include grid-row(false);
+
+  &__title {
+    @include grid-column(12);
+
+    margin-bottom: $column-gutter / 3;
+  }
+
+  &__html {
+    @include grid-column((xxsmall: 12, large: 6));
+  }
+
+  &__scss {
+    @include grid-column((xxsmall: 12, large: 6));
+  }
+
+  &__content {
+    @include grid-column(12);
+
+    margin-bottom: $column-gutter;
+  }
+}

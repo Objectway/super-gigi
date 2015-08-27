@@ -45,6 +45,10 @@ html {
     top: 0;
     width: $menu-width;
 
+    li {
+      margin-bottom: rem-calc(20);
+    }
+
     @include media-query(large) {
       @include grid-column(8);
 
@@ -57,7 +61,8 @@ html {
 
       li {
         display: inline-block;
-        padding: 0 rem-calc(20);
+        padding: rem-calc(20);
+        margin-bottom: 0;
       }
     }
   }

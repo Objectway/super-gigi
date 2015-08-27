@@ -1,0 +1,12 @@
+
+mixin menuList(active)
+  ul.KitchenSincMenu
+
+    li.KitchenSincMenu__element(class=active == "index" ? "KitchenSincMenu__element--active" : "")
+      a(href="index.html") The Grid
+
+    li.KitchenSincMenu__element(class=active == "visibility" ? "KitchenSincMenu__element--active" : "")
+      a(href="visibility.html") Visibility
+
+    li.KitchenSincMenu__element(class=active == "variables" ? "KitchenSincMenu__element--active" : "")
+      a(href="variables.html") Variables
