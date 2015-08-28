@@ -1,0 +1,23 @@
+.DocumentationSection {
+  @include grid-row(false);
+
+  &__title {
+    @include grid-column(12);
+
+    margin-bottom: $column-gutter / 3;
+  }
+
+  &__html {
+    @include grid-column((xxsmall: 12, large: 6));
+  }
+
+  &__scss {
+    @include grid-column((xxsmall: 12, large: 6));
+  }
+
+  &__content {
+    @include grid-column(12);
+
+    margin-bottom: $column-gutter;
+  }
+}

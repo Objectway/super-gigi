@@ -1,0 +1,24 @@
+.KitchenSinkBody {
+  position: relative;
+  backface-visibility: hidden;
+  transition: transform .2s ease-in-out;
+
+  &__section {
+    @include grid-row(false);
+    padding-top: $column-gutter;
+  }
+
+  &__title {
+    @include grid-column;
+
+    font-size: rem-calc(26);
+    margin-bottom: $column-gutter / 2;
+  }
+}
+
+%Line {
+  background-color: rgba($aqua, .5);
+  margin-bottom: $column-gutter;
+  margin-top: $column-gutter / 2;
+  padding: $column-gutter 0;
+}

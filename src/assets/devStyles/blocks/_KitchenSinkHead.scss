@@ -2,17 +2,11 @@
 
 $menu-width: rem-calc(240);
 
-body,
-html {
-  overflow-x: hidden;
-}
+.KitchenSinkHead {
+  backface-visibility: hidden;
+  transition: transform .2s ease-in-out;
 
-.KitchenSincHead {
-  background-color: $white;
-
-  @include media-query(medium) {
-    background-color: $primary-color;
-  }
+  background-color: $primary-color;
 
 
   &__menuRow {
@@ -92,21 +86,11 @@ html {
   }
 }
 
-.KitchenSincBody {
-  position: relative;
-}
-
-.KitchenSincHead,
-.KitchenSincBody {
-  backface-visibility: hidden;
-  transition: transform .2s ease-in-out;
-}
-
 #TogglerMenu {
   display: none;
 }
 
-#TogglerMenu:checked ~ .KitchenSincHead,
-#TogglerMenu:checked ~ .KitchenSincBody {
+#TogglerMenu:checked ~ .KitchenSinkHead,
+#TogglerMenu:checked ~ .KitchenSinkBody {
   transform: translateX($menu-width);
 }

@@ -1,0 +1,19 @@
+.Tomatoes {
+  @extend %Line;
+
+  @include grid-row(false);
+
+  &__element {
+    &--first {
+      @include grid-column(auto);
+    }
+
+    &--second {
+      @include grid-column(auto);
+    }
+
+    &--third {
+      @include grid-column((xxsmall: 6, medium: auto, large: 3));
+    }
+  }
+}

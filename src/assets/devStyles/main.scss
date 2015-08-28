@@ -1,144 +1,83 @@
 $use-classes: true;
 $debug: true;
 
-//generating static grid
-@import 'variables';
+// Settings - global variables
+@import 'Variables';
 
+// SuperGigi
 @import '../styles/main';
+
+// Generic styles
 @import '../styles/helpers/normalize';
 
+// Unclassed HTML elements (type selectors)
+@import 'Base';
+@import 'Typo';
 
-// import blocks
-@import 'blocks/KitchenSincHead';
-@import 'blocks/KitchenSincBody';
-
-
-.RoastedRibs {
-  @extend %Line;
-
-  @include grid-row(false);
-
-  &__element {
-    &--first {
-      @include grid-column((xxsmall: 12, medium: 4, large: 6));
-    }
-
-    &--second {
-      @include grid-column((xxsmall: 12, medium: 8, large: 6));
-    }
-  }
-}
-
-.Tomatoes {
-  @extend %Line;
-
-  @include grid-row(false);
-
-  &__element {
-    &--first {
-      @include grid-column(auto);
-    }
-
-    &--second {
-      @include grid-column(auto);
-    }
-
-    &--third {
-      @include grid-column((xxsmall: 6, medium: auto, large: 3));
-    }
-  }
-}
-
-.Steak {
-  @extend %Line;
-
-  @include grid-row(false);
-
-  &__element {
-    &--first {
-      @include grid-column($width: 1 of 5);
-
-      @include media-query(large) {
-        @include grid-column($width: 3 of 5);
-      }
-    }
-
-    &--second {
-      @include grid-column($width: 4 of 5);
-
-      @include media-query(large) {
-        @include grid-column($width: 2 of 5);
-      }
-    }
-  }
-}
-
-.FriedChips {
-  @extend %Line;
-
-  @include grid-row($nested: true, $vertical: true);
-
-  &__element {
-    &--first {
-      @include grid-column(6);
-    }
-
-    &--second {
-      @include grid-column(6);
-    }
-  }
-}
-
-.GitHubLink {
-  @include grid-row;
-
-  justify-content: flex-end;
-  margin-top: $column-gutter / 2;
-
-  @include media-query(medium) {
-    margin-top: 0;
-  }
+// Components blocks
+@import 'blocks/KitchenSinkHead';
+@import 'blocks/KitchenSinkBody';
+@import 'blocks/DocumentationSection';
+@import 'blocks/Box';
+@import 'blocks/exampleGrid/RoastedRibs';
+@import 'blocks/exampleGrid/Tomatoes';
+@import 'blocks/exampleGrid/Steak';
+@import 'blocks/exampleGrid/FriedChips';
 
 
-  &__logo {
-    @include grid-column($collapse: true);
-
-    @include show-from(medium);
-  }
-
-  &__text {
-    @include grid-column;
-
-    background-color: rgba(#fff, .8);
-    border-radius: 5px;
-    color: $primary-color;
-    margin-right: $column-gutter / 2;
-    padding-bottom: rem-calc(5);
-    padding-top: rem-calc(5);
-
-    @include media-query(medium) {
-      padding-bottom: 0;
-      padding-top: 0;
-    }
 
 
-    @include media-query(medium) {
-      background: transparent;
-      color: rgba(#fff, .8);
-      line-height: 1.4em;
-      margin-right: 0;
-    }
-  }
 
-  svg {
-    fill: #fff;
-    width: rem-calc(50);
-  }
+// .GitHubLink {
+//   @include grid-row;
 
-  strong {
-    @include media-query(medium) {
-      font-size: 1.75em;
-      letter-spacing: 3px;
-    }
-  }
-}
+//   justify-content: flex-end;
+//   margin-top: $column-gutter / 2;
+
+//   @include media-query(medium) {
+//     margin-top: 0;
+//   }
+
+
+//   &__logo {
+//     @include grid-column($collapse: true);
+
+//     @include show-from(medium);
+//   }
+
+//   &__text {
+//     @include grid-column;
+
+//     background-color: rgba(#fff, .8);
+//     border-radius: 5px;
+//     color: $primary-color;
+//     margin-right: $column-gutter / 2;
+//     padding-bottom: rem-calc(5);
+//     padding-top: rem-calc(5);
+
+//     @include media-query(medium) {
+//       padding-bottom: 0;
+//       padding-top: 0;
+//     }
+
+
+//     @include media-query(medium) {
+//       background: transparent;
+//       color: rgba(#fff, .8);
+//       line-height: 1.4em;
+//       margin-right: 0;
+//     }
+//   }
+
+//   svg {
+//     fill: #fff;
+//     width: rem-calc(50);
+//   }
+
+//   strong {
+//     @include media-query(medium) {
+//       font-size: 1.75em;
+//       letter-spacing: 3px;
+//     }
+//   }
+// }
