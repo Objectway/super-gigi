@@ -1,7 +1,7 @@
 .KitchenSinkBody {
-  position: relative;
   backface-visibility: hidden;
-  transition: transform .2s ease-in-out;
+  position: relative;
+  transition: transform 0.2s ease-in-out;
 
   &__section {
     @include grid-row(false);
@@ -17,7 +17,7 @@
 }
 
 %Line {
-  background-color: rgba($aqua, .5);
+  background-color: rgba($aqua, 0.5);
   margin-bottom: $column-gutter;
   margin-top: $column-gutter / 2;
   padding: $column-gutter 0;

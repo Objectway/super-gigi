@@ -3,20 +3,20 @@ body {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 }
 
-body, html {
+body {
   overflow-x: hidden;
 }
 
 pre {
-  background: #fff !important;
-  border: 1px solid #ddd;
+  background: $white !important;
+  border: rem-calc(1) solid $gray-lighter;
   border-radius: 5px;
   flex: 1 0 auto;
   position: relative;
 
   &::after {
     color: $gray-light;
-    font-size: .8em;
+    font-size: 0.8em;
     font-weight: bold;
     position: absolute;
     right: 5px;

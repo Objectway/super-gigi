@@ -1,12 +1,12 @@
 // Color palete: Grayscale
-$black: #31363B;
-$gray-darker: #494F56;
+$black: #31363b;
+$gray-darker: #494f56;
 $gray-dark: #606972;
-$gray: #949CA4;
-$gray-light: #C0C6CB;
-$gray-lighter: #EAEBED;
-$almost-white: #F5F5F5;
-$white: #FFFFFF;
+$gray: #949ca4;
+$gray-light: #c0c6cb;
+$gray-lighter: #eaebed;
+$almost-white: #f5f5f5;
+$white: #fff;
 
 // Color palette: colors
 $navy: #001f3f;
@@ -14,24 +14,24 @@ $midnight-blue: #2c3e50;
 $blue: #005dad;
 $azure: #2983c2;
 $cyan: #00afec;
-$aqua: #7FDBFF;
-$teal: #39CCCC;
+$aqua: #7fdbff;
+$teal: #39cccc;
 $green: #64aa00;
 $green-light: #52cf00;
 $green-dark: darken($green, 10%);
 $turquoise: #1abc9c;
 $lime: #bbd61e;
-$yellow: #ffff00;
-$kaki: #695F40;
-$mustard: #CCB019;
+$yellow: #ff0;
+$kaki: #695f40;
+$mustard: #ccb019;
 $orange: #f57d23;
 $red: #cc1414;
 $red-dark: #6f0b0b;
-$purple: #902C8E;
+$purple: #902c8e;
 $brown: #5c423f;
 $brown-dark: darken($brown, 10%);
-$brown-light: #A39998;
-$brown-almost-white: #F8F7F4;
+$brown-light: #a39998;
+$brown-almost-white: #f8f7f4;
 
 $primary-color: $blue;
 
@@ -42,10 +42,10 @@ $accent-color: $purple;
 $touch-bar-height: rem-calc(60);
 $touch-bar-bg: $primary-color;
 $top-bar-height: rem-calc(100);
-$top-bar-shadow: 0 0 10px rgba(#000, .5);
+$top-bar-shadow: 0 0 10px rgba(#000, 0.5);
 $sidebar-width: rem-calc(240);
 $page-content-spacing: rem-calc(30);
-$overlay-bg: rgba(#2D3640, 0.9);
+$overlay-bg: rgba(#2d3640, 0.9);
 $footer-bg: $gray-dark;
 $offcanvas-menu-color: $gray-lighter;
 $offcanvas-menu-active-color: $primary-color;

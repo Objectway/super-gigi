@@ -4,10 +4,8 @@ $menu-width: rem-calc(240);
 
 .KitchenSinkHead {
   backface-visibility: hidden;
-  transition: transform .2s ease-in-out;
-
   background-color: $primary-color;
-
+  transition: transform 0.2s ease-in-out;
 
   &__menuRow {
     @include grid-row(false);
@@ -17,17 +15,15 @@ $menu-width: rem-calc(240);
     display: none;
 
     @include media-query(large) {
+      @include grid-column(4);
       color: $white;
       display: flex;
-
-      @include grid-column(4);
-
       justify-content: center;
     }
   }
 
   &__menuColumn {
-    background-color: darken($primary-color, 10);
+    background-color: $primary-color;
     bottom: 0;
     box-sizing: border-box;
     color: $white;
@@ -55,8 +51,8 @@ $menu-width: rem-calc(240);
 
       li {
         display: inline-block;
-        padding: rem-calc(20);
         margin-bottom: 0;
+        padding: rem-calc(20);
       }
     }
   }
@@ -64,6 +60,10 @@ $menu-width: rem-calc(240);
   &__navbar {
     background: $primary-color;
     height: rem-calc(44);
+
+    @include media-query(large) {
+      display: none;
+    }
 
     label {
       margin-left: rem-calc(10);
@@ -80,9 +80,6 @@ $menu-width: rem-calc(240);
       width: rem-calc(20);
     }
 
-    @include media-query(large) {
-      display: none;
-    }
   }
 }
 
