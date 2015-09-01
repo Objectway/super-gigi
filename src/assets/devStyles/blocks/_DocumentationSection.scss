@@ -3,21 +3,32 @@
 
   &__title {
     @include grid-column(12);
-
     margin-bottom: $column-gutter / 3;
   }
 
   &__html {
     @include grid-column((xxsmall: 12, large: 6));
+    position: relative;
+
+    &::after {
+      @extend %CodeSampleTitle;
+      content: 'HTML';
+    }
   }
 
   &__scss {
     @include grid-column((xxsmall: 12, large: 6));
+    position: relative;
+
+    &::after {
+      @extend %CodeSampleTitle;
+      content: 'SCSS';
+    }
   }
 
-  &__content {
+  &__example {
     @include grid-column(12);
-
     margin-bottom: $column-gutter;
   }
 }
+

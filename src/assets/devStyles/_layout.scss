@@ -1,0 +1,15 @@
+%CodeSampleTitle {
+  color: $gray-light;
+  font-size: 0.8em;
+  font-weight: bold;
+  position: absolute;
+  right: rem-calc(25);
+  top: rem-calc(15);
+}
+
+%Line {
+  background-color: rgba($aqua, 0.5);
+  margin-bottom: $column-gutter;
+  margin-top: $column-gutter / 2;
+  padding: $column-gutter 0;
+}

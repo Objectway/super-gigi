@@ -2,7 +2,7 @@ $use-classes: true;
 $debug: true;
 
 // Settings - global variables
-@import 'Variables';
+@import 'variables';
 
 // SuperGigi
 @import '../styles/main';
@@ -11,73 +11,24 @@ $debug: true;
 @import '../styles/helpers/normalize';
 
 // Unclassed HTML elements (type selectors)
-@import 'Base';
-@import 'Typo';
+@import 'base';
+@import 'typo';
+
+//Cosmetic patterns
+@import 'layout';
 
 // Components blocks
-@import 'blocks/KitchenSinkHead';
+@import 'blocks/KitchenSinkNavBar';
+@import 'blocks/KitchenSinkTouchBar';
+@import 'blocks/KitchenSinkSideBar';
+@import 'blocks/KitchenSinkMenuList';
+@import 'blocks/KitchenSinkOverlay';
+@import 'blocks/TogglerMenu';
 @import 'blocks/KitchenSinkBody';
+@import 'blocks/CodeExampleBox';
 @import 'blocks/DocumentationSection';
 @import 'blocks/Box';
 @import 'blocks/exampleGrid/RoastedRibs';
 @import 'blocks/exampleGrid/Tomatoes';
 @import 'blocks/exampleGrid/Steak';
 @import 'blocks/exampleGrid/FriedChips';
-
-
-
-
-
-// .GitHubLink {
-//   @include grid-row;
-
-//   justify-content: flex-end;
-//   margin-top: $column-gutter / 2;
-
-//   @include media-query(medium) {
-//     margin-top: 0;
-//   }
-
-
-//   &__logo {
-//     @include grid-column($collapse: true);
-
-//     @include show-from(medium);
-//   }
-
-//   &__text {
-//     @include grid-column;
-
-//     background-color: rgba(#fff, .8);
-//     border-radius: 5px;
-//     color: $primary-color;
-//     margin-right: $column-gutter / 2;
-//     padding-bottom: rem-calc(5);
-//     padding-top: rem-calc(5);
-
-//     @include media-query(medium) {
-//       padding-bottom: 0;
-//       padding-top: 0;
-//     }
-
-
-//     @include media-query(medium) {
-//       background: transparent;
-//       color: rgba(#fff, .8);
-//       line-height: 1.4em;
-//       margin-right: 0;
-//     }
-//   }
-
-//   svg {
-//     fill: #fff;
-//     width: rem-calc(50);
-//   }
-
-//   strong {
-//     @include media-query(medium) {
-//       font-size: 1.75em;
-//       letter-spacing: 3px;
-//     }
-//   }
-// }

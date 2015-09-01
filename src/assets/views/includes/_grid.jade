@@ -3,9 +3,10 @@
 .DocumentationSection__title
   h3.Typo_h3 Example 1 - Simple grid
   .DocumentationSection__docReference
-    a(href="https://github.com/Objectway/super-gigi#grid-row" target="_blank") grid-row()
+    a.DocumentationSection__docLink(href="https://github.com/Objectway/super-gigi#grid-row" target="_blank") grid-row()
+
 .DocumentationSection__html
-  pre
+  pre.CodeExampleBox
     code.language-markup.
       &lt;div class=&quot;RoastedRibs&quot;&gt;
         &lt;div class=&quot;RoastedRibs__element RoastedRibs__element--first&quot;&gt;
@@ -19,13 +20,14 @@
           &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
+
 .DocumentationSection__scss
-  pre
+  pre.CodeExampleBox
     code.language-scss.
       .RoastedRibs{
         @include grid-row($nested: false) // Equivalent to grid-row(false);
-        &__element {
 
+        &__element {
           &--first {
             @include grid-column((xxsmall: 12, medium: 4, large: 6));
           }
@@ -36,22 +38,20 @@
         }
       }
 
-.DocumentationSection__content
+.DocumentationSection__example
   .RoastedRibs
-
     .RoastedRibs__element.RoastedRibs__element--first
       .Box
-        p 1
-
+        p.Box__paragraph 1
     .RoastedRibs__element.RoastedRibs__element--second
       .Box
-        p 2
-
+        p.Box__paragraph 2
 
 .DocumentationSection__title
   h3.Typo_h3 Example 2 - Column auto
+
 .DocumentationSection__html
-  pre
+  pre.CodeExampleBox
     code.language-markup.
       &lt;div class=&quot;Tomatoes&quot;&gt;
         &lt;div class=&quot;Tomatoes__element Tomatoes__element--first&quot;&gt;
@@ -71,12 +71,12 @@
         &lt;/div&gt;
 
 .DocumentationSection__scss
-  pre
+  pre.CodeExampleBox
     code.language-scss.
       .Tomatoes {
         @include grid-row(false);
-        &__element {
 
+        &__element {
           &--first {
             @include grid-column(auto);
           }
@@ -91,26 +91,23 @@
         }
       }
 
-.DocumentationSection__content
+.DocumentationSection__example
   .Tomatoes
-
     .Tomatoes__element.Tomatoes__element--first
       .Box
-        p 1
-
+        p.Box__paragraph 1
     .Tomatoes__element.Tomatoes__element--second
       .Box
-        p 2
-
+        p.Box__paragraph 2
     .Tomatoes__element.Tomatoes__element--third
       .Box
-        p 3
-
+        p.Box__paragraph 3
 
 .DocumentationSection__title
   h3.Typo_h3 Example 3 - Change the grid base
+
 .DocumentationSection__html
-  pre
+  pre.CodeExampleBox
     code.language-markup.
       &lt;div class=&quot;Steak&quot;&gt;
         &lt;div class=&quot;Steak__element Steak__element--first&quot;&gt;
@@ -126,12 +123,12 @@
       &lt;/div&gt;
 
 .DocumentationSection__scss
-  pre
+  pre.CodeExampleBox
     code.language-scss.
       .Steak {
         @include grid-row(false);
-        &__element {
 
+        &__element {
           &--first {
             @include grid-column($width: 1 of 5);
             @include media-query(large) {
@@ -148,22 +145,20 @@
         }
       }
 
-.DocumentationSection__content
+.DocumentationSection__example
   .Steak
-
     .Steak__element.Steak__element--first
       .Box
-        p 1
-
+        p.Box__paragraph 1
     .Steak__element.Steak__element--second
       .Box
-        p 2
-
+        p.Box__paragraph 2
 
 .DocumentationSection__title
   h3.Typo_h3 Example 4 - Nested and vertical row
+
 .DocumentationSection__html
-  pre
+  pre.CodeExampleBox
     code.language-markup.
       &lt;div class=&quot;FriedChips&quot;&gt;
         &lt;div class=&quot;FriedChips__element FriedChips__element--first&quot;&gt;
@@ -179,12 +174,12 @@
       &lt;/div&gt;
 
 .DocumentationSection__scss
-  pre
+  pre.CodeExampleBox
     code.language-scss.
       .FriedChips {
         @include grid-row($nested: true, $vertical: true);
-        &__element {
 
+        &__element {
           &--first {
             @include grid-column(6);
           }
@@ -195,14 +190,12 @@
         }
       }
 
-.DocumentationSection__content
+.DocumentationSection__example
   .FriedChips
-
     .FriedChips__element.FriedChips__element--first
       .Box
-        p 1
-
+        p.Box__paragraph 1
     .FriedChips__element.FriedChips__element--second
       .Box
-        p 2
+        p.Box__paragraph 2
 

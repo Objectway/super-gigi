@@ -1,6 +1,5 @@
 .Tomatoes {
   @extend %Line;
-
   @include grid-row(false);
 
   &__element {

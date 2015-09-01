@@ -1,33 +1,6 @@
 body {
   background: $almost-white;
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
-}
-
-body {
   overflow-x: hidden;
 }
 
-pre {
-  background: $white !important;
-  border: rem-calc(1) solid $gray-lighter;
-  border-radius: 5px;
-  flex: 1 0 auto;
-  position: relative;
-
-  &::after {
-    color: $gray-light;
-    font-size: 0.8em;
-    font-weight: bold;
-    position: absolute;
-    right: 5px;
-    top: 5px;
-
-    .DocumentationSection__html & {
-      content: 'HTML';
-    }
-
-    .DocumentationSection__scss & {
-      content: 'SCSS';
-    }
-  }
-}

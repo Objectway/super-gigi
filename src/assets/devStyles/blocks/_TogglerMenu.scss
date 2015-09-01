@@ -1,0 +1,22 @@
+.TogglerMenu {
+  display: none;
+}
+
+.TogglerMenu:checked ~ .KitchenSinkSideBar {
+  transform: translateX($menu-width);
+  transition: all 300ms ease-out 0s;
+  z-index: 1000;
+
+  @include media-query(large) {
+    transform: none;
+    transition: none;
+  }
+}
+
+.TogglerMenu:checked ~ .KitchenSinkOverlay {
+  visibility: visible;
+
+  @include media-query(large) {
+    visibility: hidden;
+  }
+}

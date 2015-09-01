@@ -1,0 +1,18 @@
+.KitchenSinkMenuList {
+
+  &__element {
+    color: $white;
+    padding: rem-calc(20);
+
+    @include media-query(large) {
+      display: inline-block;
+      padding: rem-calc(20);
+    }
+
+    &--active {
+      @include media-query(large) {
+        border-bottom: rem-calc(3) solid $white;
+      }
+    }
+  }
+}
