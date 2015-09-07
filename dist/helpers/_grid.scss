@@ -132,15 +132,18 @@
       } @else {
         float: $grid-start;
       }
-      @if $collapse != true {
-        padding: 0 ($column-gutter / 2);
-      }
     }
   }
 
   // Collapse -------------
   @if $collapse == true {
-    padding: 0;
+    @include dry-it('collapseGlob') {
+      padding: 0;
+    }
+  } @else {
+    @include dry-it('paddingGlob') {
+      padding: 0 ($column-gutter / 2);
+    }
   }
 
   // Width -------------
