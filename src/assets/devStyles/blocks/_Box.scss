@@ -1,6 +1,7 @@
 .Box {
-  background-color: $midnight-blue;
-  border: 2px solid $white;
+  background-color: $gray;
+  border: 1px solid $almost-white;
+  border-radius: rem-calc(4);
   color: $white;
   padding: $column-gutter / 2;
   text-align: center;

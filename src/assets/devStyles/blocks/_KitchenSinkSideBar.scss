@@ -5,4 +5,9 @@
   position: fixed;
   transition: transform 0.2s ease-in-out;
   width: $menu-width;
+
+  &__logo {
+    color: $white;
+    padding: rem-calc(30);
+  }
 }

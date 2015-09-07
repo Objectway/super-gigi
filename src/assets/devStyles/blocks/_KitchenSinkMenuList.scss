@@ -2,17 +2,26 @@
 
   &__element {
     color: $white;
-    padding: rem-calc(20);
 
     @include media-query(large) {
+      border-top: 0;
       display: inline-block;
-      padding: rem-calc(20);
     }
 
     &--active {
+      background-color: darken($primary-color, 10%);
+      border-left: rem-calc(5) solid $gray-light;
+
       @include media-query(large) {
+        background-color: transparent;
         border-bottom: rem-calc(3) solid $white;
+        border-left: 0;
       }
     }
+  }
+
+  &__link {
+    display: block;
+    padding: rem-calc(20);
   }
 }

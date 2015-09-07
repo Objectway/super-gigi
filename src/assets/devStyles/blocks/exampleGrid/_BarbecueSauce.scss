@@ -1,0 +1,20 @@
+.BarbecueSauce {
+  @extend %Line;
+  @include grid-row(false);
+
+  &__element {
+    &--first {
+      @include show-for(medium);
+      @include grid-column(4);
+    }
+
+    &--second {
+      @include grid-column((xxsmall: 6, medium: 2, large: 6));
+    }
+
+    &--last {
+      @include hide-for(small);
+      @include grid-column(6);
+    }
+  }
+}

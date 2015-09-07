@@ -1,7 +1,7 @@
 .KitchenSinkTouchBar {
   background: $primary-color;
   box-shadow: 0 0 rem-calc(5) rgba(0, 0, 0, 0.5);
-  height: rem-calc(44);
+  height: rem-calc(50);
   position: fixed;
   transition: transform 0.2s ease-in-out;
   width: 100%;
@@ -13,17 +13,24 @@
 
   &__label {
     cursor: pointer;
+    display: inline-block;
     height: 100%;
-    margin-left: rem-calc(20);
+    margin-left: rem-calc(10);
     min-width: rem-calc(40);
-    position: absolute;
   }
 
   &__icon {
     fill: $white;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translate(50%, -50%);
     width: rem-calc(20);
+  }
+
+  &__logo {
+    color: $white;
+    display: inline-block;
+    padding: rem-calc(15);
+    position: absolute;
   }
 }
