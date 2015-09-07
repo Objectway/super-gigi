@@ -174,11 +174,10 @@
     @if type-of($order) == map {
       @each $query, $value in $order {
         $set: #{$query}#{$value}#{$eq-grid};
+
         @include dry-it('colOrd#{$set}') {
-          @each $set-query, $set-value in $set {
-            @include media-query($set-query) {
-              order: $set-value;
-            }
+          @include media-query($query) {
+            order: $value;
           }
         }
       }
