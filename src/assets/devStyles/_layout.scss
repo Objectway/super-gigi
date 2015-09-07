@@ -8,7 +8,9 @@
 }
 
 %Line {
-  background-color: rgba($aqua, 0.5);
+  background-color: $gray-lighter;
+  border: rem-calc(1) solid $almost-white;
+  border-radius: rem-calc(4);
   margin-bottom: $column-gutter;
   margin-top: $column-gutter / 2;
   padding: $column-gutter 0;

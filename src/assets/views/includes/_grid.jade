@@ -228,7 +228,7 @@
   .DocumentationSection__title
     h3.Typo_h3 5) Push & Pull
     .DocumentationSection__docReference
-      p.Typo_p Testo esempio 5
+      p.Typo_p Testo esempio 5 $push e $pull
       a.DocumentationSection__docLink(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
 
   .DocumentationSection__html
@@ -243,6 +243,11 @@
           &lt;div class=&quot;Pepperoni__element Pepperoni__element--second&quot;&gt;
             &lt;div class=&quot;Box&quot;&gt;
               &lt;p&gt;2&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Pepperoni__element Pepperoni__element--third&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;3&lt;/p&gt;
             &lt;/div&gt;
           &lt;/div&gt;
         &lt;/div&gt;
@@ -296,7 +301,7 @@
   .DocumentationSection__title
     h3.Typo_h3 6) Order
     .DocumentationSection__docReference
-      p.Typo_p Testo esempio 6
+      p.Typo_p Testo esempio 6 $order
       a.DocumentationSection__docLink(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
 
   .DocumentationSection__html
@@ -313,6 +318,16 @@
               &lt;p&gt;2&lt;/p&gt;
             &lt;/div&gt;
           &lt;/div&gt;
+          &lt;div class=&quot;Sausages__element Sausages__element--third&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;3&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Sausages__element Sausages__element--fourth&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;4&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
         &lt;/div&gt;
 
   .DocumentationSection__scss
@@ -324,23 +339,29 @@
           &__element {
             &--first {
               @include grid-column(
-                $width: 4,
-                $push: (xxsmall:8, large: 12)
+                $width: auto,
+                $order: (medium: 4, large: 3)
               );
             }
 
             &--second {
               @include grid-column(
-                $width: 4,
-                $push: 4,
-                $pull: (large: 4)
+                $width: auto,
+                $order: (xxsmall: 3, large: 4)
               );
             }
 
             &--third {
               @include grid-column(
-                $width: 4,
-                $pull: (xxsmall: 8, large: 0)
+                $width: auto,
+                $order: (xxsmall: 2, large: 1)
+              );
+            }
+
+            &--fourth {
+              @include grid-column(
+                $width: auto,
+                $order: (xxsmall: 4, medium: 1, large: 2)
               );
             }
           }
@@ -358,6 +379,156 @@
         .Box
           p.Box__paragraph 3
       .Sausages__element.Sausages__element--fourth
+        .Box
+          p.Box__paragraph 4
+
+
+// - Example 7
+.DocumentationSection
+  .DocumentationSection__title
+    h3.Typo_h3 7) Collapse
+    .DocumentationSection__docReference
+      p.Typo_p Testo esempio 7 $collapse
+      a.DocumentationSection__docLink(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
+
+  .DocumentationSection__html
+    pre.CodeExampleBox
+      code.language-markup.
+        &lt;div class=&quot;Eggplant&quot;&gt;
+          &lt;div class=&quot;Eggplant__element Eggplant__element--first&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;1&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Eggplant__element Eggplant__element--second&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;2&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Eggplant__element Eggplant__element--third&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;3&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Eggplant__element Eggplant__element--fourth&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;4&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+  .DocumentationSection__scss
+    pre.CodeExampleBox
+      code.language-scss.
+        .Eggplant{
+          @include grid-row(false);
+
+          &__element {
+            &--first {
+              @include grid-column($width: 3, $collapse: true);
+            }
+
+            &--second {
+              @include grid-column($width: 3, $collapse: true);
+            }
+
+            &--third {
+              @include grid-column($width: 3, $collapse: false);
+            }
+
+            &--fourth {
+              @include grid-column($width: 3, $collapse: false);
+            }
+          }
+        }
+
+  .DocumentationSection__example
+    .Eggplant
+      .Eggplant__element.Eggplant__element--first
+        .Box
+          p.Box__paragraph 1
+      .Eggplant__element.Eggplant__element--second
+        .Box
+          p.Box__paragraph 2
+      .Eggplant__element.Eggplant__element--third
+        .Box
+          p.Box__paragraph 3
+      .Eggplant__element.Eggplant__element--fourth
+        .Box
+          p.Box__paragraph 4
+
+
+// - Example 8
+.DocumentationSection
+  .DocumentationSection__title
+    h3.Typo_h3 8) Global
+    .DocumentationSection__docReference
+      p.Typo_p Testo esempio 8 $global
+      a.DocumentationSection__docLink(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
+
+  .DocumentationSection__html
+    pre.CodeExampleBox
+      code.language-markup.
+        &lt;div class=&quot;Eggplant&quot;&gt;
+          &lt;div class=&quot;Eggplant__element Eggplant__element--first&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;1&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Eggplant__element Eggplant__element--second&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;2&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Eggplant__element Eggplant__element--third&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;3&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Eggplant__element Eggplant__element--fourth&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;4&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+  .DocumentationSection__scss
+    pre.CodeExampleBox
+      code.language-scss.
+        .Eggplant{
+          @include grid-row(false);
+
+          &__element {
+            &--first {
+              @include grid-column($width: 3, $collapse: true);
+            }
+
+            &--second {
+              @include grid-column($width: 3, $collapse: true);
+            }
+
+            &--third {
+              @include grid-column($width: 3, $collapse: false);
+            }
+
+            &--fourth {
+              @include grid-column($width: 3, $collapse: false);
+            }
+          }
+        }
+
+  .DocumentationSection__example
+    .Eggplant
+      .Eggplant__element.Eggplant__element--first
+        .Box
+          p.Box__paragraph 1
+      .Eggplant__element.Eggplant__element--second
+        .Box
+          p.Box__paragraph 2
+      .Eggplant__element.Eggplant__element--third
+        .Box
+          p.Box__paragraph 3
+      .Eggplant__element.Eggplant__element--fourth
         .Box
           p.Box__paragraph 4
 
