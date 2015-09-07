@@ -27,7 +27,7 @@
     &--fourth {
       @include grid-column(
         $width: auto,
-        $order: (medium: 1, large: 2)
+        $order: (xxsmall: 4, medium: 1, large: 2)
       );
     }
   }

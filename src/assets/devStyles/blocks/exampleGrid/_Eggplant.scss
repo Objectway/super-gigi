@@ -1,0 +1,22 @@
+.Eggplant {
+  @extend %Line;
+  @include grid-row(false);
+
+  &__element {
+    &--first {
+      @include grid-column($width: 3, $collapse: true);
+    }
+
+    &--second {
+      @include grid-column($width: 3, $collapse: true);
+    }
+
+    &--third {
+      @include grid-column($width: 3, $collapse: false);
+    }
+
+    &--fourth {
+      @include grid-column($width: 3, $collapse: false);
+    }
+  }
+}
