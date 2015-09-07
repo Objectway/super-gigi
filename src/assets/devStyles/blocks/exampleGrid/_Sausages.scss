@@ -1,0 +1,35 @@
+.Sausages {
+  @extend %Line;
+  @include grid-row(false);
+
+  &__element {
+    &--first {
+      @include grid-column(
+        $width: auto,
+        $order: (medium: 4, large: 3)
+      );
+    }
+
+    &--second {
+      @include grid-column(
+        $width: auto,
+        $order: (xxsmall: 3, large: 4)
+      );
+    }
+
+    &--third {
+      @include grid-column(
+        $width: auto,
+        $order: (xxsmall: 2, large: 1)
+      );
+    }
+
+    &--fourth {
+      @include grid-column(
+        $width: auto,
+        $order: (medium: 1, large: 2)
+      );
+    }
+  }
+}
+

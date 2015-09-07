@@ -1,201 +1,365 @@
 // - THE GRID
 
-.DocumentationSection__title
-  h3.Typo_h3 Example 1 - Simple grid
-  .DocumentationSection__docReference
-    a.DocumentationSection__docLink(href="https://github.com/Objectway/super-gigi#grid-row" target="_blank") grid-row()
+// - Example 1
+.DocumentationSection
+  .DocumentationSection__title
+    h3.Typo_h3 1) Simple grid
+    .DocumentationSection__docReference
+      p.Typo_p Testo esempio 1
+      a.DocumentationSection__docLink(href="https://github.com/Objectway/super-gigi#grid-row" target="_blank") grid-row()
 
-.DocumentationSection__html
-  pre.CodeExampleBox
-    code.language-markup.
-      &lt;div class=&quot;RoastedRibs&quot;&gt;
-        &lt;div class=&quot;RoastedRibs__element RoastedRibs__element--first&quot;&gt;
-          &lt;div class=&quot;Box&quot;&gt;
-            &lt;p&gt;1&lt;/p&gt;
+  .DocumentationSection__html
+    pre.CodeExampleBox
+      code.language-markup.
+        &lt;div class=&quot;RoastedRibs&quot;&gt;
+          &lt;div class=&quot;RoastedRibs__element RoastedRibs__element--first&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;1&lt;/p&gt;
+            &lt;/div&gt;
           &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;RoastedRibs__element RoastedRibs__element--second&quot;&gt;
-          &lt;div class=&quot;Box&quot;&gt;
-            &lt;p&gt;2&lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-
-.DocumentationSection__scss
-  pre.CodeExampleBox
-    code.language-scss.
-      .RoastedRibs{
-        @include grid-row($nested: false) // Equivalent to grid-row(false);
-
-        &__element {
-          &--first {
-            @include grid-column((xxsmall: 12, medium: 4, large: 6));
-          }
-
-          &--second {
-            @include grid-column((xxsmall: 12, medium: 8, large: 6));
-          }
-        }
-      }
-
-.DocumentationSection__example
-  .RoastedRibs
-    .RoastedRibs__element.RoastedRibs__element--first
-      .Box
-        p.Box__paragraph 1
-    .RoastedRibs__element.RoastedRibs__element--second
-      .Box
-        p.Box__paragraph 2
-
-.DocumentationSection__title
-  h3.Typo_h3 Example 2 - Column auto
-
-.DocumentationSection__html
-  pre.CodeExampleBox
-    code.language-markup.
-      &lt;div class=&quot;Tomatoes&quot;&gt;
-        &lt;div class=&quot;Tomatoes__element Tomatoes__element--first&quot;&gt;
-          &lt;div class=&quot;Box&quot;&gt;
-            &lt;p&gt;1&lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;Tomatoes__element Tomatoes__element--second&quot;&gt;
-          &lt;div class=&quot;Box&quot;&gt;
-            &lt;p&gt;2&lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;Tomatoes__element Tomatoes__element--third&quot;&gt;
-          &lt;div class=&quot;Box&quot;&gt;
-            &lt;p&gt;3&lt;/p&gt;
+          &lt;div class=&quot;RoastedRibs__element RoastedRibs__element--second&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;2&lt;/p&gt;
+            &lt;/div&gt;
           &lt;/div&gt;
         &lt;/div&gt;
 
-.DocumentationSection__scss
-  pre.CodeExampleBox
-    code.language-scss.
-      .Tomatoes {
-        @include grid-row(false);
+  .DocumentationSection__scss
+    pre.CodeExampleBox
+      code.language-scss.
+        .RoastedRibs{
+          @include grid-row();
+          // Equivalent to grid-row($nested: false, $vertical: false)
 
-        &__element {
-          &--first {
-            @include grid-column(auto);
-          }
-
-          &--second {
-            @include grid-column(auto);
-          }
-
-          &--third {
-            @include grid-column((xxsmall: 6, medium: auto, large: 3));
-          }
-        }
-      }
-
-.DocumentationSection__example
-  .Tomatoes
-    .Tomatoes__element.Tomatoes__element--first
-      .Box
-        p.Box__paragraph 1
-    .Tomatoes__element.Tomatoes__element--second
-      .Box
-        p.Box__paragraph 2
-    .Tomatoes__element.Tomatoes__element--third
-      .Box
-        p.Box__paragraph 3
-
-.DocumentationSection__title
-  h3.Typo_h3 Example 3 - Change the grid base
-
-.DocumentationSection__html
-  pre.CodeExampleBox
-    code.language-markup.
-      &lt;div class=&quot;Steak&quot;&gt;
-        &lt;div class=&quot;Steak__element Steak__element--first&quot;&gt;
-          &lt;div class=&quot;Box&quot;&gt;
-            &lt;p&gt;1&lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;Steak__element Steak__element--second&quot;&gt;
-          &lt;div class=&quot;Box&quot;&gt;
-            &lt;p&gt;2&lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-
-.DocumentationSection__scss
-  pre.CodeExampleBox
-    code.language-scss.
-      .Steak {
-        @include grid-row(false);
-
-        &__element {
-          &--first {
-            @include grid-column($width: 1 of 5);
-            @include media-query(large) {
-              @include grid-column($width: 3 of 5);
+          &__element {
+            &--first {
+              @include grid-column((xxsmall: 12, medium: 4, large: 6));
             }
-          }
 
-          &--second {
-            @include grid-column($width: 4 of 5);
-            @include media-query(large) {
-              @include grid-column($width: 2 of 5);
+            &--second {
+              @include grid-column((xxsmall: 12, medium: 8, large: 6));
             }
           }
         }
-      }
 
-.DocumentationSection__example
-  .Steak
-    .Steak__element.Steak__element--first
-      .Box
-        p.Box__paragraph 1
-    .Steak__element.Steak__element--second
-      .Box
-        p.Box__paragraph 2
+  .DocumentationSection__example
+    .RoastedRibs
+      .RoastedRibs__element.RoastedRibs__element--first
+        .Box
+          p.Box__paragraph 1
+      .RoastedRibs__element.RoastedRibs__element--second
+        .Box
+          p.Box__paragraph 2
 
-.DocumentationSection__title
-  h3.Typo_h3 Example 4 - Nested and vertical row
 
-.DocumentationSection__html
-  pre.CodeExampleBox
-    code.language-markup.
-      &lt;div class=&quot;FriedChips&quot;&gt;
-        &lt;div class=&quot;FriedChips__element FriedChips__element--first&quot;&gt;
-          &lt;div class=&quot;Box&quot;&gt;
-            &lt;p&gt;1&lt;/p&gt;
+// - Example 2
+.DocumentationSection
+  .DocumentationSection__title
+    h3.Typo_h3 2) Nested and vertical row
+    .DocumentationSection__docReference
+      p.Typo_p Testo esempio 2
+      a.DocumentationSection__docLink(href="https://github.com/Objectway/super-gigi#grid-row" target="_blank") grid-row()
+
+
+  .DocumentationSection__html
+    pre.CodeExampleBox
+      code.language-markup.
+        &lt;div class=&quot;FriedChips&quot;&gt;
+          &lt;div class=&quot;FriedChips__element FriedChips__element--first&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;1&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;FriedChips__element FriedChips__element--second&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;2&lt;/p&gt;
+            &lt;/div&gt;
           &lt;/div&gt;
         &lt;/div&gt;
-        &lt;div class=&quot;FriedChips__element FriedChips__element--second&quot;&gt;
-          &lt;div class=&quot;Box&quot;&gt;
-            &lt;p&gt;2&lt;/p&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
 
-.DocumentationSection__scss
-  pre.CodeExampleBox
-    code.language-scss.
-      .FriedChips {
-        @include grid-row($nested: true, $vertical: true);
+  .DocumentationSection__scss
+    pre.CodeExampleBox
+      code.language-scss.
+        .FriedChips {
+          @include grid-row($nested: true, $vertical: true);
 
-        &__element {
-          &--first {
-            @include grid-column(6);
-          }
+          &__element {
+            &--first {
+              @include grid-column(6);
+            }
 
-          &--second{
-            @include grid-column(6);
+            &--second{
+              @include grid-column(6);
+            }
           }
         }
-      }
 
-.DocumentationSection__example
-  .FriedChips
-    .FriedChips__element.FriedChips__element--first
-      .Box
-        p.Box__paragraph 1
-    .FriedChips__element.FriedChips__element--second
-      .Box
-        p.Box__paragraph 2
+  .DocumentationSection__example
+    .FriedChips
+      .FriedChips__element.FriedChips__element--first
+        .Box
+          p.Box__paragraph 1
+      .FriedChips__element.FriedChips__element--second
+        .Box
+          p.Box__paragraph 2
+
+
+// - Example 3
+.DocumentationSection
+  .DocumentationSection__title
+    h3.Typo_h3 3) Column auto
+    .DocumentationSection__docReference
+      p.Typo_p Testo esempio 3
+      a.DocumentationSection__docLink(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
+
+  .DocumentationSection__html
+    pre.CodeExampleBox
+      code.language-markup.
+        &lt;div class=&quot;Tomatoes&quot;&gt;
+          &lt;div class=&quot;Tomatoes__element Tomatoes__element--first&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;1&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Tomatoes__element Tomatoes__element--second&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;2&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Tomatoes__element Tomatoes__element--third&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;3&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+  .DocumentationSection__scss
+    pre.CodeExampleBox
+      code.language-scss.
+        .Tomatoes {
+          @include grid-row(false);
+
+          &__element {
+            &--first {
+              @include grid-column(auto);
+            }
+
+            &--second {
+              @include grid-column(auto);
+            }
+
+            &--third {
+              @include grid-column((xxsmall: 6, medium: auto, large: 3));
+            }
+          }
+        }
+
+  .DocumentationSection__example
+    .Tomatoes
+      .Tomatoes__element.Tomatoes__element--first
+        .Box
+          p.Box__paragraph 1
+      .Tomatoes__element.Tomatoes__element--second
+        .Box
+          p.Box__paragraph 2
+      .Tomatoes__element.Tomatoes__element--third
+        .Box
+          p.Box__paragraph 3
+
+
+// - Example 4
+.DocumentationSection
+  .DocumentationSection__title
+    h3.Typo_h3 4) Change the grid base
+    .DocumentationSection__docReference
+      p.Typo_p Testo esempio 4
+      a.DocumentationSection__docLink(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
+
+  .DocumentationSection__html
+    pre.CodeExampleBox
+      code.language-markup.
+        &lt;div class=&quot;Steak&quot;&gt;
+          &lt;div class=&quot;Steak__element Steak__element--first&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;1&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Steak__element Steak__element--second&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;2&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+  .DocumentationSection__scss
+    pre.CodeExampleBox
+      code.language-scss.
+        .Steak {
+          @include grid-row(false);
+
+          &__element {
+            &--first {
+              @include grid-column($width: 1 of 5);
+              @include media-query(large) {
+                @include grid-column($width: 3 of 5);
+              }
+            }
+
+            &--second {
+              @include grid-column($width: 4 of 5);
+              @include media-query(large) {
+                @include grid-column($width: 2 of 5);
+              }
+            }
+          }
+        }
+
+  .DocumentationSection__example
+    .Steak
+      .Steak__element.Steak__element--first
+        .Box
+          p.Box__paragraph 1
+      .Steak__element.Steak__element--second
+        .Box
+          p.Box__paragraph 2
+
+
+// - Example 5
+.DocumentationSection
+  .DocumentationSection__title
+    h3.Typo_h3 5) Push & Pull
+    .DocumentationSection__docReference
+      p.Typo_p Testo esempio 5
+      a.DocumentationSection__docLink(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
+
+  .DocumentationSection__html
+    pre.CodeExampleBox
+      code.language-markup.
+        &lt;div class=&quot;Pepperoni&quot;&gt;
+          &lt;div class=&quot;Pepperoni__element Pepperoni__element--first&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;1&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Pepperoni__element Pepperoni__element--second&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;2&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+  .DocumentationSection__scss
+    pre.CodeExampleBox
+      code.language-scss.
+        .Pepperoni{
+          @include grid-row(false);
+
+          &__element {
+            &--first {
+              @include grid-column(
+                $width: 4,
+                $push: (xxsmall:8, large: 12)
+              );
+            }
+
+            &--second {
+              @include grid-column(
+                $width: 4,
+                $push: 4,
+                $pull: (large: 4)
+              );
+            }
+
+            &--third {
+              @include grid-column(
+                $width: 4,
+                $pull: (xxsmall: 8, large: 0)
+              );
+            }
+          }
+        }
+
+  .DocumentationSection__example
+    .Pepperoni
+      .Pepperoni__element.Pepperoni__element--first
+        .Box
+          p.Box__paragraph 1
+      .Pepperoni__element.Pepperoni__element--second
+        .Box
+          p.Box__paragraph 2
+      .Pepperoni__element.Pepperoni__element--third
+        .Box
+          p.Box__paragraph 3
+
+
+// - Example 6
+.DocumentationSection
+  .DocumentationSection__title
+    h3.Typo_h3 6) Order
+    .DocumentationSection__docReference
+      p.Typo_p Testo esempio 6
+      a.DocumentationSection__docLink(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
+
+  .DocumentationSection__html
+    pre.CodeExampleBox
+      code.language-markup.
+        &lt;div class=&quot;Sausages&quot;&gt;
+          &lt;div class=&quot;Sausages__element Sausages__element--first&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;1&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Sausages__element Sausages__element--second&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;2&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+  .DocumentationSection__scss
+    pre.CodeExampleBox
+      code.language-scss.
+        .Sausages{
+          @include grid-row(false);
+
+          &__element {
+            &--first {
+              @include grid-column(
+                $width: 4,
+                $push: (xxsmall:8, large: 12)
+              );
+            }
+
+            &--second {
+              @include grid-column(
+                $width: 4,
+                $push: 4,
+                $pull: (large: 4)
+              );
+            }
+
+            &--third {
+              @include grid-column(
+                $width: 4,
+                $pull: (xxsmall: 8, large: 0)
+              );
+            }
+          }
+        }
+
+  .DocumentationSection__example
+    .Sausages
+      .Sausages__element.Sausages__element--first
+        .Box
+          p.Box__paragraph 1
+      .Sausages__element.Sausages__element--second
+        .Box
+          p.Box__paragraph 2
+      .Sausages__element.Sausages__element--third
+        .Box
+          p.Box__paragraph 3
+      .Sausages__element.Sausages__element--fourth
+        .Box
+          p.Box__paragraph 4
+
+
 

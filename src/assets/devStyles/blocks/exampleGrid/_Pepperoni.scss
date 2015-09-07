@@ -1,0 +1,29 @@
+.Pepperoni {
+  @extend %Line;
+  @include grid-row(false);
+
+  &__element {
+    &--first {
+      @include grid-column(
+        $width: 4,
+        $push: (xxsmall:8, large: 12)
+      );
+    }
+
+    &--second {
+      @include grid-column(
+        $width: 4,
+        $push: 4,
+        $pull: (large: 4)
+      );
+    }
+
+    &--third {
+      @include grid-column(
+        $width: 4,
+        $pull: (xxsmall: 8, large: 0)
+      );
+    }
+  }
+}
+
