@@ -447,6 +447,21 @@ As before, the first four properties are the common rules of our column,
 the relevant part are these in the media query. How you can see we have 
 the widths of the column set in a responsive way.
 
+**4 - Width**
+As said before `$width`, `$push` and `$pull` have similar behaviors, but `$width` is obviously a bit different.
+
+We've seen that you can pass to `$width` essentialy a number. When you do that,
+`Super GiGi` will add to your css: `flex: 0 0 auto`. This is essential to our flex grid to work. 
+
+But you can set `$width` to `auto`, that will set the `width` css property to `auto` and the `flex` property to `1 1 0%`. 
+With this option you can have columns that will take all the space available on
+the row. If you have one column, that will take 100% of the space, if two that will take half each one and so on.
+
+Another important option is to set `$width` to `0`. **This will not set `width` to 0%** (a column must have a minimun width). But the width will be `auto`.
+In this way you can have a column with the width decided from the content.
+
+**Note** we are preparing a visual example. Stay tuned.
+
 <div id="gcorder"></div>
 **$order** is similar, you can set it only in two ways, 
 via `integer` or via `map`.
