@@ -8,17 +8,6 @@
 // .class
 //   @extend %row
 // -----------------------------------------------------------------------------
-// Wait a moment. Why will we generate the placeholder if we don't use classes?
-// The issue is that the mediaqueries don't add specificity to a selector.
-// In that way if i have something like that:
-// .foo
-//   +grid-column((small: 3, large: 4))
-// .bar
-//   +grid-column((xsmall: 11, small: 3))
-// The xsmall rule will be override the small rule, because it's first written.
-// Doing a big cycle with all the options with placeholder, allow us to take
-// all at the correct place.
-// -----------------------------------------------------------------------------
 
 $type: '%';
 @if $use-classes {
@@ -168,7 +157,7 @@ $type: '%';
 // ROW GENERATOR CLASSES
 // -----------------------------------------------------------------------------
 
-@if $use-classes or $use-dry { 
+@if $use-classes or $use-placeholders {
   #{$type}#{$row-name} {
     @include grid-row(false);
 
@@ -206,7 +195,7 @@ $type: '%';
 // COLUMN GENERATOR CLASSES
 // -----------------------------------------------------------------------------
 
-@if $use-classes or $use-dry { 
+@if $use-classes or $use-placeholders {
   #{$type}#{$column-name} {
     @include grid-column;
   }

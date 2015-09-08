@@ -61,34 +61,29 @@ Set this variable to true if you want to generate static classes, like:
 `.row`, `.column` or `.large-12`. 
 
 <br/>
+### $use-placeholders
+default: `false` - type: `boolean` 
+
+Set this variable to true if you want to generate placeholders to us like: 
+
+```scss
+.column {
+  @extend %column;
+  @extend %large-12;
+}
+```
+
+<br/>
 ### $row-name
 default: `row` - type: `string` 
 
-This option will change the name of the row object classes or placeholder. 
-Remember that if you change this value you have to use this as base for row 
-placeholder:
-
-```scss
-$row-name: foo;
-.row {
-	@extend %foo
-}
-```
+This option will change the name of the row object classes or placeholder.
 
 <br/>
 ### $column-name
 default: `column` - type: `string` 
 
 This option will change the name of the column object classes or placeholder. 
-Remember that if you change this value you have to use this as base for column 
-placeholder:
-
-```scss
-$column-name: bar;
-.column {
-	@extend %bar
-}
-```
 
 <br/>
 ### $grid-start
@@ -633,7 +628,8 @@ will generate:
  ```
 <br/>
 
-### dry-it() ```EXPERIMENTAL```
+<div id="dry-it"></div>
+### dry-it()
 arguments: `$id`
 - **$id**
   - required
