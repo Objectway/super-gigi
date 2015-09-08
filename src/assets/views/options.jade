@@ -1,0 +1,17 @@
+extends templates/_base.jade
+
+block head
+  include includes/_head.jade
+
+block menu
+  include helpers/_menuList.jade
+  +menuList("variables")
+
+block content
+  .KitchenSinkBody__section
+    .KitchenSinkBody__title
+      h2.Typo__h2 Options
+      p.Typo__p.
+        If you are using the Sass version you can personalize Super GiGi simply changing the value of its variables before importing main.sass.#[br]
+        For the size variables, you would like to have the rem/em-calc() functions available. To achieve that remember to import the _functions.scss partial before.
+    include includes/_variables.jade

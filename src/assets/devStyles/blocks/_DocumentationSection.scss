@@ -12,7 +12,6 @@
 
     &--variables {
       @include grid-column(6);
-      margin-bottom: 0;
     }
   }
 
@@ -47,7 +46,7 @@
 
   &__example {
     @include grid-column(12);
-    margin-bottom: $column-gutter/2;
+    margin-bottom: ($column-gutter /2 );
   }
 }
 
