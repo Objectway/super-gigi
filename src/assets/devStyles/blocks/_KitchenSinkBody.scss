@@ -15,6 +15,6 @@
 
   &__title {
     @include grid-column;
-    margin-bottom: $column-gutter / 2;
+    margin-bottom: $column-gutter;
   }
 }
