@@ -15,7 +15,6 @@
 
   &__title {
     @include grid-column;
-    font-size: rem-calc(26);
     margin-bottom: $column-gutter / 2;
   }
 }

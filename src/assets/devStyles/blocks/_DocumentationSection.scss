@@ -1,12 +1,17 @@
 .DocumentationSection {
   @include grid-row(false);
+  margin-bottom: $column-gutter*2;
 
-  margin-bottom: $column-gutter;
+  &__description {
+    @include grid-column(12);
+    margin-bottom: $column-gutter;
+  }
 
   &__title {
-    @include grid-column(12);
+    margin-bottom: $column-gutter/4;
+  }
 
-    margin-bottom: $column-gutter;
+  &__text {
   }
 
   &__html {
