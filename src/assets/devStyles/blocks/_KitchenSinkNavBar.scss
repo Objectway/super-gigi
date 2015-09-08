@@ -21,8 +21,6 @@ $menu-width: rem-calc(240);
 
   &__logo {
     @include grid-column(4);
-
-    color: $white;
     justify-content: center;
   }
 
@@ -30,5 +28,11 @@ $menu-width: rem-calc(240);
     @include grid-column(8);
 
     text-align: right;
+  }
+
+  &__title {
+    @extend .Typo__h1;
+    color: $white;
+    font-size: rem-calc(18);
   }
 }

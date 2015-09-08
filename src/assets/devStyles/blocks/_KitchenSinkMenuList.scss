@@ -1,8 +1,6 @@
 .KitchenSinkMenuList {
 
   &__element {
-    color: $white;
-
     @include media-query(large) {
       border-top: 0;
       display: inline-block;
@@ -21,6 +19,8 @@
   }
 
   &__link {
+    @extend .Typo__a;
+    color: $white;
     display: block;
     padding: rem-calc(20);
   }

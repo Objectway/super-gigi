@@ -1,10 +1,75 @@
 // - VISIBILITY CLASSES
 
 .DocumentationSection
-  .DocumentationSection__title
-    h3.Typo_h3 Example 1 - Show from & Hide from
-    .DocumentationSection__docReference
-      a.DocumentationSection__docLink(href="https://github.com/Objectway/super-gigi#show-from" target="_blank")
+  .DocumentationSection__description
+    .DocumentationSection__title
+      h3.Typo__h3 Show for - Hide for
+    .DocumentationSection__text
+      p.Typo__p In this example, we use the #[a.Typo__a(href="https://github.com/Objectway/super-gigi#show-for" target="_blank") show-for()] and #[a.Typo__a(href="https://github.com/Objectway/super-gigi#hide-for" target="_blank") hide-for()] mixins to show or hide the columns based on the device on which users view a page. If their browser meets the viewport condition, the element will be shown. If not, it will be hidden.
+
+  .DocumentationSection__example
+    .BarbecueSauce
+      .BarbecueSauce__element.BarbecueSauce__element--first
+        .Box
+          p.Box__paragraph 1
+      .BarbecueSauce__element.BarbecueSauce__element--second
+        .Box
+          p.Box__paragraph 2
+      .BarbecueSauce__element.BarbecueSauce__element--last
+        .Box
+          p.Box__paragraph 3
+
+  .DocumentationSection__html
+    pre.CodeExampleBox
+      code.language-markup.
+        &lt;div class=&quot;BarbecueSauce&quot;&gt;
+          &lt;div class=&quot;BarbecueSauce__element BarbecueSauce__element--first&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;1&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;BarbecueSauce__element BarbecueSauce__element--second&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;2&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;BarbecueSauce__element BarbecueSauce__element--last&quot;&gt;
+            &lt;div class=&quot;Box&quot;&gt;
+              &lt;p&gt;3&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+  .DocumentationSection__scss
+    pre.CodeExampleBox
+      code.language-scss.
+        .BarbecueSauce{
+          @include grid-row($nested: false) // Equivalent to grid-row(false);
+
+          &__element {
+            &--first {
+              @include show-for(medium);
+              @include grid-column(4);
+            }
+
+            &--second {
+              @include grid-column((xxsmall: 6, medium: 2, large: 6));
+            }
+
+            &--last {
+              @include hide-for(small);
+              @include grid-column(6);
+            }
+          }
+        }
+
+.DocumentationSection
+  .DocumentationSection__description
+    .DocumentationSection__title
+      h3.Typo__h3 Show from - Hide from
+    .DocumentationSection__text
+      p.Typo.Typo__p For this example we use the #[a.Typo__a(href="https://github.com/Objectway/super-gigi#show-from" target="_blank") show-from()] and #[a.Typo__a(href="https://github.com/Objectway/super-gigi#hide-from" target="_blank") hide-from()] mixins to determine which columns are going to be shown or hidden from a viewport size condition.
+       hola
 
   .DocumentationSection__example
     .ChickenWings
@@ -73,66 +138,3 @@
             }
           }
         }
-
-.DocumentationSection
-  .DocumentationSection__title
-    h3.Typo_h3 Example 2 - Show for & Hide for
-    .DocumentationSection__docReference
-      a.DocumentationSection__docLink(href="https://github.com/Objectway/super-gigi#show-from" target="_blank")
-
-  .DocumentationSection__example
-    .BarbecueSauce
-      .BarbecueSauce__element.BarbecueSauce__element--first
-        .Box
-          p.Box__paragraph 1
-      .BarbecueSauce__element.BarbecueSauce__element--second
-        .Box
-          p.Box__paragraph 2
-      .BarbecueSauce__element.BarbecueSauce__element--last
-        .Box
-          p.Box__paragraph 3
-
-  .DocumentationSection__html
-    pre.CodeExampleBox
-      code.language-markup.
-        &lt;div class=&quot;BarbecueSauce&quot;&gt;
-          &lt;div class=&quot;BarbecueSauce__element BarbecueSauce__element--first&quot;&gt;
-            &lt;div class=&quot;Box&quot;&gt;
-              &lt;p&gt;1&lt;/p&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class=&quot;BarbecueSauce__element BarbecueSauce__element--second&quot;&gt;
-            &lt;div class=&quot;Box&quot;&gt;
-              &lt;p&gt;2&lt;/p&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-          &lt;div class=&quot;BarbecueSauce__element BarbecueSauce__element--last&quot;&gt;
-            &lt;div class=&quot;Box&quot;&gt;
-              &lt;p&gt;3&lt;/p&gt;
-            &lt;/div&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-
-  .DocumentationSection__scss
-    pre.CodeExampleBox
-      code.language-scss.
-        .BarbecueSauce{
-          @include grid-row($nested: false) // Equivalent to grid-row(false);
-
-          &__element {
-            &--first {
-              @include show-for(medium);
-              @include grid-column(4);
-            }
-
-            &--second {
-              @include grid-column((xxsmall: 6, medium: 2, large: 6));
-            }
-
-            &--last {
-              @include hide-for(small);
-              @include grid-column(6);
-            }
-          }
-        }
-

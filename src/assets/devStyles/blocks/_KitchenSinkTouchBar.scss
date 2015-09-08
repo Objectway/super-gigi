@@ -28,9 +28,14 @@
   }
 
   &__logo {
-    color: $white;
     display: inline-block;
     padding: rem-calc(15);
     position: absolute;
+  }
+
+  &__title {
+    @extend .Typo__h1;
+    color: $white;
+    font-size: rem-calc(18);
   }
 }
