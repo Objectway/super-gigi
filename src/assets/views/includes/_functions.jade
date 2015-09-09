@@ -1,0 +1,122 @@
+// - VARIABLES
+
+.DocumentationSection.DocumentationSection--variables
+
+  // - dry-it()
+  .DocumentationSection__description.DocumentationSection__description--variables
+    .DocumentationSection__title
+      h3.Typo__h3 dry-it() #[a.Typo__a(href="https://github.com/Objectway/super-gigi#dry-it" target="_blank") Link]
+    .DocumentationSection__text
+      p.Typo__p arguments:
+        span.DocumentationSection__inlineCode $id
+      ul.DocumentationSection__list
+        li.DocumentationSection__itemList
+          p.Typo__p required
+        li.DocumentationSection__itemList
+          p.Typo__p type:
+            span.DocumentationSection__inlineCode string
+
+  // - remove-unit()
+  .DocumentationSection__description.DocumentationSection__description--variables
+    .DocumentationSection__title
+      h3.Typo__h3 remove-unit() #[a.Typo__a(href="https://github.com/Objectway/super-gigi#remove-unit" target="_blank") Link]
+    .DocumentationSection__text
+      p.Typo__p arguments:
+        span.DocumentationSection__inlineCode $value
+      ul.DocumentationSection__list
+        li.DocumentationSection__itemList
+          p.Typo__p required
+        li.DocumentationSection__itemList
+          p.Typo__p type:
+            span.DocumentationSection__inlineCode list
+
+  // - rem-calc()
+  .DocumentationSection__description.DocumentationSection__description--variables
+    .DocumentationSection__title
+      h3.Typo__h3 rem-calc() #[a.Typo__a(href="https://github.com/Objectway/super-gigi#rem-calc" target="_blank") Link]
+    .DocumentationSection__text
+      p.Typo__p arguments:
+        span.DocumentationSection__inlineCode $values
+        | ,
+        span.DocumentationSection__inlineCode $base-value
+      ul.DocumentationSection__list
+        li.DocumentationSection__itemList
+          p.Typo__p $values
+          ul.DocumentationSection__subList
+            li.DocumentationSection__itemSublist
+              p.Typo__p required
+            li.DocumentationSection__itemSublist
+              p.Typo__p type:
+                span.DocumentationSection__inlineCode list
+        li.DocumentationSection__itemList
+          p.Typo__p $base-value
+          ul.DocumentationSection__subList
+            li.DocumentationSection__itemSublist
+              p.Typo__p optional
+            li.DocumentationSection__itemSublist
+              p.Typo__p default:
+                span.DocumentationSection__inlineCode $rem-base
+            li.DocumentationSection__itemSublist
+              p.Typo__p type:
+                span.DocumentationSection__inlineCode measure
+
+
+  // - em-calc()
+  .DocumentationSection__description.DocumentationSection__description--variables
+    .DocumentationSection__title
+      h3.Typo__h3 em-calc() #[a.Typo__a(href="https://github.com/Objectway/super-gigi#em-calc" target="_blank") Link]
+    .DocumentationSection__text
+      p.Typo__p arguments:
+        span.DocumentationSection__inlineCode $value
+        | ,
+        span.DocumentationSection__inlineCode $base-value
+      ul.DocumentationSection__list
+        li.DocumentationSection__itemList
+          p.Typo__p $values
+          ul.DocumentationSection__subList
+            li.DocumentationSection__itemSublist
+              p.Typo__p required
+            li.DocumentationSection__itemSublist
+              p.Typo__p type:
+                span.DocumentationSection__inlineCode list
+        li.DocumentationSection__itemList
+          p.Typo__p $base-value
+          ul.DocumentationSection__subList
+            li.DocumentationSection__itemSublist
+              p.Typo__p optional
+            li.DocumentationSection__itemSublist
+              p.Typo__p default:
+                span.DocumentationSection__inlineCode $rem-base
+            li.DocumentationSection__itemSublist
+              p.Typo__p type:
+                span.DocumentationSection__inlineCode measure
+
+  // - px-calc()
+  .DocumentationSection__description.DocumentationSection__description--variables
+    .DocumentationSection__title
+      h3.Typo__h3 px-calc() #[a.Typo__a(href="https://github.com/Objectway/super-gigi#px-calc" target="_blank") Link]
+    .DocumentationSection__text
+      p.Typo__p arguments:
+        span.DocumentationSection__inlineCode $value
+        | ,
+        span.DocumentationSection__inlineCode $base-value
+      ul.DocumentationSection__list
+        li.DocumentationSection__itemList
+          p.Typo__p $values
+          ul.DocumentationSection__subList
+            li.DocumentationSection__itemSublist
+              p.Typo__p required
+            li.DocumentationSection__itemSublist
+              p.Typo__p type:
+                span.DocumentationSection__inlineCode list
+        li.DocumentationSection__itemList
+          p.Typo__p $base-value
+          ul.DocumentationSection__subList
+            li.DocumentationSection__itemSublist
+              p.Typo__p optional
+            li.DocumentationSection__itemSublist
+              p.Typo__p default:
+                span.DocumentationSection__inlineCode $rem-base
+            li.DocumentationSection__itemSublist
+              p.Typo__p type:
+                span.DocumentationSection__inlineCode measure

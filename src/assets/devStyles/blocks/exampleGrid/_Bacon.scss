@@ -1,0 +1,27 @@
+.Bacon {
+  @extend %Line;
+  @include grid-row(false);
+
+  &__element {
+    &--first {
+      @include grid-column($width: 3, $global: false);
+    }
+
+    &--second {
+      @include grid-column($width: 3);
+    }
+
+    &--third {
+      @include grid-column($width: 3);
+    }
+
+    &--fourth {
+      @include grid-column($width: 3);
+    }
+  }
+
+  &__box {
+    @extend .Box;
+    display: inline-block;
+  }
+}

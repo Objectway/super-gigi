@@ -4,10 +4,11 @@
 .DocumentationSection
   .DocumentationSection__description
     .DocumentationSection__title
-      h3.Typo__h3 1) Simple grid
+      h3.Typo__h3 Simple grid
     .DocumentationSection__text
-      p.Typo__p Testo esempio Simple grid
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-row" target="_blank") grid-row()
+      | &nbsp; - &nbsp;
+      a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-row" target="_blank") grid-column()
 
   .DocumentationSection__example
     .RoastedRibs
@@ -57,7 +58,7 @@
 .DocumentationSection
   .DocumentationSection__description
     .DocumentationSection__title
-      h3.Typo__h3 2) Nested and vertical row
+      h3.Typo__h3 Nested and vertical row
     .DocumentationSection__text
       p.Typo__p Testo esempio nested and vertical row
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-row" target="_blank") grid-row()
@@ -109,7 +110,7 @@
 .DocumentationSection
   .DocumentationSection__description
     .DocumentationSection__title
-      h3.Typo__h3 3) Column auto
+      h3.Typo__h3 Column auto
     .DocumentationSection__text
       p.Typo__p Testo esempio column auto
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
@@ -172,7 +173,7 @@
 .DocumentationSection
   .DocumentationSection__description
     .DocumentationSection__title
-      h3.Typo__h3 4) Change the grid base
+      h3.Typo__h3 Change the grid base
     .DocumentationSection__text
       p.Typo__p Testo esempio change the grid base
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
@@ -230,7 +231,7 @@
 .DocumentationSection
   .DocumentationSection__description
     .DocumentationSection__title
-      h3.Typo__h3 5) Push & Pull
+      h3.Typo__h3 Push & Pull
     .DocumentationSection__text
       p.Typo__p Testo esempio $push e $pull
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
@@ -304,7 +305,7 @@
 .DocumentationSection
   .DocumentationSection__description
     .DocumentationSection__title
-      h3.Typo__h3 6) Order
+      h3.Typo__h3 Order
     .DocumentationSection__text
       p.Typo__p Testo esempio $order
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
@@ -392,7 +393,7 @@
 .DocumentationSection
   .DocumentationSection__description
     .DocumentationSection__title
-      h3.Typo__h3 7) Collapse
+      h3.Typo__h3 Collapse
     .DocumentationSection__text
       p.Typo__p Testo esempio $collapse
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
@@ -468,7 +469,67 @@
 .DocumentationSection
   .DocumentationSection__description
     .DocumentationSection__title
-      h3.Typo__h3 8) Global
+      h3.Typo__h3 Global
     .DocumentationSection__text
       p.Typo__p Testo esempio $global
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
+
+  .DocumentationSection__example
+    .Bacon
+      .Bacon__element.Bacon__element--first
+        span.Bacon__box 1
+      .Bacon__element.Bacon__element--second
+        span.Bacon__box 2
+      .Bacon__element.Bacon__element--third
+        span.Bacon__box 3
+      .Bacon__element.Bacon__element--fourth
+        span.Bacon__box 4
+
+  .DocumentationSection__html
+    pre.CodeExampleBox
+      code.language-markup.
+        &lt;div class=&quot;Bacon&quot;&gt;
+          &lt;div class=&quot;Bacon__element Bacon__element--first&quot;&gt;
+            &lt;span class=&quot;Bacon_box&quot;&gt;1&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Bacon__element Bacon__element--second&quot;&gt;
+            &lt;span class=&quot;Bacon_box&quot;&gt;2&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Bacon__element Bacon__element--third&quot;&gt;
+            &lt;span class=&quot;Bacon_box&quot;&gt;3&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;Bacon__element Bacon__element--fourth&quot;&gt;
+            &lt;span class=&quot;Bacon_box&quot;&gt;4&lt;/span&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+  .DocumentationSection__scss
+    pre.CodeExampleBox
+      code.language-scss.
+        .Bacon {
+          @extend %Line;
+          @include grid-row(false);
+
+          &__element {
+            &--first {
+              @include grid-column($width: 3, $global: false);
+              display: inline-block;
+            }
+
+            &--second {
+              @include grid-column($width: 3);
+            }
+
+            &--third {
+              @include grid-column($width: 3);
+            }
+
+            &--fourth {
+              @include grid-column($width: 3);
+            }
+          }
+
+          &__box {
+            @extend .Box;
+          }
+        }

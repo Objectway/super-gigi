@@ -2,8 +2,11 @@
   @include grid-row(false);
   margin-bottom: ($column-gutter * 2);
 
-  &--variables{
+  &--variables {
+    @extend .CodeExampleBox;
+
     margin-bottom: $column-gutter;
+    padding: rem-calc(20);
   }
 
   &__description {
@@ -16,10 +19,13 @@
   }
 
   &__title {
-    margin-bottom: ($column-gutter / 4);
+    margin-bottom: ($column-gutter/3);
   }
 
   &__text {
+    .Typo__p {
+      margin-bottom: rem-calc(10);
+    }
   }
 
   &__html {
@@ -46,7 +52,32 @@
 
   &__example {
     @include grid-column(12);
-    margin-bottom: ($column-gutter /2 );
+    margin-bottom: ($column-gutter /2);
+  }
+
+  &__inlineCode {
+    background-color: $gray-lighter;
+    border-radius: rem-calc(3);
+    font-family: 'Courier';
+    font-size: rem-calc(13);
+    margin: rem-calc(0 5);
+    padding: rem-calc(5);
+  }
+
+  &__list,
+  &__subList {
+    margin-left: $column-gutter;
+  }
+
+  &__itemList{
+    display: list-item;
+
+    > .Typo__p {
+      font-weight: bold;
+    }
+
+    &__itemSublist {
+      display: list-item;
+    }
   }
 }
-

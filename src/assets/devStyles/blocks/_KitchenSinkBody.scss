@@ -1,6 +1,6 @@
 .KitchenSinkBody {
   backface-visibility: hidden;
-  padding-top: rem-calc(45);
+  padding: rem-calc(45 20 20 20);
   position: relative;
   transition: transform 0.2s ease-in-out;
 
@@ -16,5 +16,9 @@
   &__title {
     @include grid-column;
     margin-bottom: $column-gutter;
+
+    .Typo__h2 {
+      margin-bottom: ($column-gutter/3);
+    }
   }
 }

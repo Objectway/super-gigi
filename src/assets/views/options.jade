@@ -10,8 +10,14 @@ block menu
 block content
   .KitchenSinkBody__section
     .KitchenSinkBody__title
-      h2.Typo__h2 Options
+      h2.Typo__h2 Variables
       p.Typo__p.
         If you are using the Sass version you can personalize Super GiGi simply changing the value of its variables before importing main.sass.#[br]
         For the size variables, you would like to have the rem/em-calc() functions available. To achieve that remember to import the _functions.scss partial before.
     include includes/_variables.jade
+  .KitchenSinkBody__section
+    .KitchenSinkBody__title
+      h2.Typo__h2 Functions
+      p.Typo__p.
+        We love Foundation and we used it a lot. These functions are based on our preferred Foundation functions that we want to continue to use in our projects.
+    include includes/_functions.jade
