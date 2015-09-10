@@ -7,6 +7,8 @@
   width: $menu-width;
 
   &__logo {
+    @extend .Typo__h1;
+
     color: $white;
     padding: rem-calc(30);
   }

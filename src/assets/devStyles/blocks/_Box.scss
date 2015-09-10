@@ -3,7 +3,11 @@
   border: 1px solid $almost-white;
   border-radius: rem-calc(4);
   color: $white;
-  padding: $column-gutter / 2;
+  padding: $column-gutter / 3;
   text-align: center;
   vertical-align: middle;
+
+  @include media-query(medium) {
+    padding: $column-gutter / 2;
+  }
 }

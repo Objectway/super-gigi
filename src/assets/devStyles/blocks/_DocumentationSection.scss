@@ -14,7 +14,7 @@
     margin-bottom: $column-gutter;
 
     &--variables {
-      @include grid-column(6);
+      @include grid-column((xxsmall: 12, medium: 6));
     }
   }
 
