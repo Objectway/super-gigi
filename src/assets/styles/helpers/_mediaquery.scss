@@ -3,6 +3,9 @@
 // Global
 $min-unit: em-calc(1) !default;
 $inmedia: false !default;
+$query-direction: (min-width, max-width) !default;
+$query-start: nth($query-direction, 1);
+$query-end: nth($query-direction, 2);
 
 // Var declaration
 $cur-bp: false !default;
@@ -48,16 +51,20 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
 
     @if $only {
       @if $map-position == length($breakpoints) {
-        $next-bp: 99999999em;
+        @if $query-start == min-width {
+          $next-bp: 99999999em;
+        } @else {
+          $next-bp: 0em;
+        }
       } @else {
         $next-bp: nth(map-values($breakpoints), $map-position + 1) - $min-unit;
       }
 
-      @media #{$screen} and (min-width: #{$cur-bp}) and (max-width: #{$next-bp}) {
+      @media #{$screen} and (#{$query-start}: #{$cur-bp}) and (#{$query-end}: #{$next-bp}) {
         @content;
       }
     } @else {
-      @media #{$screen} and (min-width: #{$cur-bp}) {
+      @media #{$screen} and (#{$query-start}: #{$cur-bp}) {
         @content;
       }
     }
