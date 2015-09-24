@@ -199,6 +199,15 @@ version in float.
 Set this option to `false`, to try it.
 
 <br/>
+### $query-direction `EXPERIMENTAL`
+default: `(min-width, max-width)` - type: `list` 
+
+**Super GiGi** is developed mobile first, but in some cases you would like to 
+develop in graceful decadency. To do this you can set 
+`$query-direction: (max-width, min-width)`. The media-queries will be reverted
+and all the queries will go from the largest query to the smallest one.
+
+<br/>
 
 ## Mixins
 ### media-query()

@@ -76,6 +76,10 @@
     }
   }
 
+  @if $debug {
+    content: 'ROW nested: #{$nested}, vertical #{$vertical}';
+  }
+
   @include dry-it('row#{$nested}') {
 
     @if $grid-start != left and $use-flex {
@@ -89,10 +93,6 @@
       margin: 0 auto;
       max-width: $row-width;
       width: 100%;
-    }
-
-    @if $debug {
-      content: 'ROW nested: #{$nested}, vertical #{$vertical}';
     }
 
     @if $use-flex {
@@ -120,6 +120,20 @@
   $order: null,
   $global: true
 ) {
+
+  // DEBUG -------------
+  @if $debug {
+    $column-setting: 'COLUMN: ';
+    $column-setting: $column-setting + if($width, #{width ':' $width '| '}, '');
+    $column-setting: $column-setting + if($collapse, #{collapse ':' $collapse '| '}, '');
+    $column-setting: $column-setting + if($push, #{push ':' $push '| '}, '');
+    $column-setting: $column-setting + if($pull, #{pull ':' $pull '| '}, '');
+    $column-setting: $column-setting + if($order, #{order ':' $order '| '}, '');
+    $column-setting: $column-setting + if($global, #{global ':' $global}, '');
+
+    content: $column-setting;
+  }
+
 
   // Global -------------
   @if $global {
@@ -189,15 +203,4 @@
     }
   }
 
-  @if $debug {
-    $column-setting: 'COLUMN: ';
-    $column-setting: $column-setting + if($width, #{width ':' $width '| '}, '');
-    $column-setting: $column-setting + if($collapse, #{collapse ':' $collapse '| '}, '');
-    $column-setting: $column-setting + if($push, #{push ':' $push '| '}, '');
-    $column-setting: $column-setting + if($pull, #{pull ':' $pull '| '}, '');
-    $column-setting: $column-setting + if($order, #{order ':' $order '| '}, '');
-    $column-setting: $column-setting + if($global, #{global ':' $global}, '');
-
-    content: $column-setting;
-  }
 }
