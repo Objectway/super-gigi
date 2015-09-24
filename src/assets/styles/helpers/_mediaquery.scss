@@ -57,7 +57,11 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
           $next-bp: 0em;
         }
       } @else {
-        $next-bp: nth(map-values($breakpoints), $map-position + 1) - $min-unit;
+        @if $query-start == min-width {
+          $next-bp: nth(map-values($breakpoints), $map-position + 1) - $min-unit;
+        } @else {
+          $next-bp: nth(map-values($breakpoints), $map-position + 1) + $min-unit;
+        }
       }
 
       @media #{$screen} and (#{$query-start}: #{$cur-bp}) and (#{$query-end}: #{$next-bp}) {
