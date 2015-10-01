@@ -238,7 +238,7 @@ You don't have to specify this setting everytime, **Super GiGi** provides a
 [global $eq-grid](#eq-grid) variable, but sometime is useful to mix media end 
 element query.
 
-###g rid-space()
+###grid-space()
 arguments: `$property`, `$attr`
 - **$property**
   - optional
