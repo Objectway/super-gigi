@@ -6,26 +6,30 @@
 // -----------------------------------------------------------------------------
 @if $eq-grid {
   // Element Query Setting String ---------
-  $eq-setting-string: ();
+  $eq-queries-string: ();
+  $eq-elements-string: ();
 
   @each $eq-name, $eq-value in $breakpoints {
     $eq-value: px-calc($eq-value);
     $tmp: $eq-name;
     $tmp: str-insert($tmp, #{unquote(': ')}, str-length($tmp) + 1);
     $tmp: str-insert($tmp, #{remove-unit($eq-value)}, str-length($tmp) + 1);
-    $eq-setting-string: append($eq-setting-string, $tmp, comma);
+    $eq-queries-string: append($eq-queries-string, $tmp, comma);
   }
 
   // The element on we'll add eqjs javascript ---------
-  .widget {
-    &:before {
-      content: "#{inspect($eq-setting-string)}";
+
+  @mixin eq-element {
+    $eq-elements-string: append($eq-elements-string, #{&}, comma) !global;
+    &::before {
+      content: "#{inspect($eq-queries-string)}";
       display: none;
     }
   }
 
-  html:before {
-    content: '.widget, .widgets';
+  @mixin eq-html {
+    content: "#{inspect($eq-elements-string)}";
     display: none;
   }
+
 }
