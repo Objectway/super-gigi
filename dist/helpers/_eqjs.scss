@@ -4,32 +4,32 @@
 // EQJS
 // FOR INFO ABOUT EQJS https://github.com/Snugug/eq.js
 // -----------------------------------------------------------------------------
-@if $eq-grid {
-  // Element Query Setting String ---------
-  $eq-queries-string: ();
-  $eq-elements-string: ();
+// Element Query Setting String ---------
+$eq-queries-string: ();
+$eq-elements-string: ();
 
-  @each $eq-name, $eq-value in $breakpoints {
-    $eq-value: px-calc($eq-value);
-    $tmp: $eq-name;
-    $tmp: str-insert($tmp, #{unquote(': ')}, str-length($tmp) + 1);
-    $tmp: str-insert($tmp, #{remove-unit($eq-value)}, str-length($tmp) + 1);
-    $eq-queries-string: append($eq-queries-string, $tmp, comma);
+@each $eq-name, $eq-value in $breakpoints {
+  $eq-value: px-calc($eq-value);
+  $tmp: $eq-name;
+  $tmp: str-insert($tmp, #{unquote(': ')}, str-length($tmp) + 1);
+  $tmp: str-insert($tmp, #{remove-unit($eq-value)}, str-length($tmp) + 1);
+  $eq-queries-string: append($eq-queries-string, $tmp, comma);
+}
+
+// The element on we'll add eqjs javascript ---------
+
+@mixin eq-element {
+  $eq-elements-string: append($eq-elements-string, #{&}, comma) !global;
+  &::before {
+    content: "#{inspect($eq-queries-string)}";
+    display: none;
   }
+}
 
-  // The element on we'll add eqjs javascript ---------
-
-  @mixin eq-element {
-    $eq-elements-string: append($eq-elements-string, #{&}, comma) !global;
-    &::before {
-      content: "#{inspect($eq-queries-string)}";
-      display: none;
-    }
-  }
-
-  @mixin eq-html {
+@mixin eq-html {
+  html:before {
     content: "#{inspect($eq-elements-string)}";
     display: none;
   }
-
 }
+
