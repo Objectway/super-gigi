@@ -137,6 +137,10 @@ $type: '%';
       @include grid-column($width: ($query: $i), $global: null);
     }
 
+    #{$class-prefix}offset-#{$i} {
+      @include grid-column($offset: ($query: $i), $width: null, $global: null);
+    }
+
     #{$class-prefix}push-#{$i} {
       @include grid-column($push: ($query: $i), $width: null, $global: null);
     }

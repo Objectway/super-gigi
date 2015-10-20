@@ -268,11 +268,14 @@
       }
     }
 
-    @include assert('Push and Pull') {
+    @include assert('Offset, push and pull') {
 
       @include input {
-        @include grid-column($push: 5);
-        @include grid-column($pull: 5);
+        @include grid-column(
+          $offset: 5,
+          $push: 5,
+          $pull: 5
+        );
       }
 
       @include expect {
@@ -280,13 +283,10 @@
         display: flex;
         flex-direction: column;
         padding: 0 0.9375rem;
+        margin-left: 41.66667%;
         position: relative;
         right: auto;
         left: 41.66667%;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        padding: 0 0.9375rem;
         position: relative;
         left: auto;
         right: 41.66667%;

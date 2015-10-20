@@ -302,14 +302,17 @@ The other option `$vertical` will simply add the CSS3
 
 <br/>
 ### grid-column()
-arguments: `$width`, `$push`, `$pull`, `$order`, `$collapse`, `$global`
-- [**$width**](#gcwidthpushpull)
+arguments: `$width`, `$offset`, `$push`, `$pull`, `$order`, `$collapse`, `$global`
+- [**$width**](#gcwidthoffsetpushpull)
   - optional
   - default: `null`
-- [**$push**](#gcwidthpushpull)
+- [**$offset**](#gcwidthoffsetpushpull)
   - optional
   - default: `null`
-- [**$pull**](#gcwidthpushpull)
+- [**$push**](#gcwidthoffsetpushpull)
+  - optional
+  - default: `null`
+- [**$pull**](#gcwidthoffsetpushpull)
   - optional
   - default: `null`
 - [**$order**](#gcorder)
@@ -370,9 +373,8 @@ will generate:
 **note:** you see repeted properties, because we set pull and push for 
 the same element. 
 
-<div id="gcwidthpushpull"></div>
-`$width`, `$push` and `$pull` have similar behaviors. They can be used 
-in three different way.
+<div id="gcwidthoffsetpushpull"></div>
+`$width`, `$offset`, `$push` and `$pull` have similar behaviors. They can be used in three different way.
 
 **1 - Passing an integer**
 ```scss
@@ -452,7 +454,7 @@ the relevant part are these in the media query. How you can see we have
 the widths of the column set in a responsive way.
 
 **4 - Width**
-As said before `$width`, `$push` and `$pull` have similar behaviors, but `$width` is obviously a bit different.
+As said before `$width`, `$offset`, `$push` and `$pull` have similar behaviors, but `$width` is obviously a bit different.
 
 We've seen that you can pass to `$width` essentialy a number. When you do that,
 `Super GiGi` will add to your css: `flex: 0 0 auto`. This is essential to our flex grid to work. 
