@@ -129,7 +129,6 @@
 
       @include expect {
         width: 50%;
-        flex: 0 0 auto;
       }
     }
 
@@ -144,7 +143,6 @@
 
       @include expect {
         width: 50%;
-        flex: 0 0 auto;
       }
 
       @include input {
@@ -179,7 +177,6 @@
 
       @include expect {
         width: 10%;
-        flex: 0 0 auto;
       }
     }
 
@@ -191,7 +188,6 @@
 
       @include expect {
         width: 50%;
-        flex: 0 0 auto;
       }
     }
 
@@ -225,7 +221,7 @@
 
       @include expect {
         margin: 0 (-$column-gutter / 2);
-        width: 100%;
+        width: auto;
         box-sizing: border-box;
         display: flex;
         flex: 1 0 auto;
@@ -264,6 +260,7 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
+        flex: 0 0 auto;
         padding: 0;
       }
     }
@@ -282,6 +279,7 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
+        flex: 0 0 auto;
         padding: 0 0.9375rem;
         margin-left: 41.66667%;
         position: relative;
@@ -303,6 +301,7 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
+        flex: 0 0 auto;
         padding: 0 ($column-gutter / 2);
         order: 5;
       }
