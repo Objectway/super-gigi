@@ -86,11 +86,7 @@ $type: '%';
 
 // Column classes generator
 @mixin column-generate-classes($query) {
-  @if $query == nth(map-keys($breakpoints), 1) {
-    $class-prefix: #{str-insert('', $type, 1)} !global;
-  } @else {
-    $class-prefix: #{str-insert($query, $type, 1)}#{'-'} !global;
-  }
+  $class-prefix: #{str-insert($query, $type, 1)}#{'-'} !global;
 
   //column modificators
   @if $use-flex and $use-classes {
@@ -133,7 +129,7 @@ $type: '%';
   }
 
   @for $i from 0 through $grid-columns {
-    #{if($query == nth(map-keys($breakpoints), 1), '#{$type}width-', $class-prefix)}#{$i} {
+    #{$class-prefix}#{$i} {
       @include grid-column($width: ($query: $i), $global: null);
     }
 

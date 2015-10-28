@@ -33,7 +33,7 @@ $placeholders: ();
       // * is here for a libsass bug:
       // https://github.com/sass/libsass/issues/1210
 
-      @at-root * {
+      @at-root {
         &%#{$unique-id} {
           @content;
         }
