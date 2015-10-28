@@ -125,13 +125,13 @@
   // DEBUG -------------
   @if $debug {
     $column-setting: 'COLUMN: ';
-    $column-setting: $column-setting + if($width, #{width ':' $width '| '}, '');
-    $column-setting: $column-setting + if($collapse, #{collapse ':' $collapse '| '}, '');
-    $column-setting: $column-setting + if($offset, #{offset ':' $offset '| '}, '');
-    $column-setting: $column-setting + if($push, #{push ':' $push '| '}, '');
-    $column-setting: $column-setting + if($pull, #{pull ':' $pull '| '}, '');
-    $column-setting: $column-setting + if($order, #{order ':' $order '| '}, '');
-    $column-setting: $column-setting + if($global, #{global ':' $global}, '');
+    $column-setting: $column-setting + if($width, #{width ':' inspect($width) '| '}, '');
+    $column-setting: $column-setting + if($collapse, #{collapse ':' inspect($collapse) '| '}, '');
+    $column-setting: $column-setting + if($offset, #{offset ':' inspect($offset) '| '}, '');
+    $column-setting: $column-setting + if($push, #{push ':' inspect($push) '| '}, '');
+    $column-setting: $column-setting + if($pull, #{pull ':' inspect($pull) '| '}, '');
+    $column-setting: $column-setting + if($order, #{order ':' inspect($order) '| '}, '');
+    $column-setting: $column-setting + if($global, #{global ':' inspect($global)}, '');
 
     content: $column-setting;
   }
