@@ -88,7 +88,7 @@
 
     @if $nested {
       margin: 0 (-$column-gutter / 2);
-      width: auto;
+      width: 100%; // changed in 100% in super-gigi 1.6.1 TEST
     } @else {
       margin: 0 auto;
       max-width: $row-width;

@@ -225,7 +225,7 @@
 
       @include expect {
         margin: 0 (-$column-gutter / 2);
-        width: auto;
+        width: 100%;
         box-sizing: border-box;
         display: flex;
         flex: 1 0 auto;
