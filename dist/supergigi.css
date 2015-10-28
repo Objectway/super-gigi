@@ -169,7 +169,7 @@
 
 *.row-nested {
   margin: 0 -0.9375rem;
-  width: auto;
+  width: 100%;
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
