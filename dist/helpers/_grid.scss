@@ -89,6 +89,7 @@
     @if $nested {
       margin: 0 (-$column-gutter / 2);
       width: auto;
+      flex-basis: auto;
     } @else {
       margin: 0 auto;
       max-width: $row-width;
@@ -98,7 +99,6 @@
     @if $use-flex {
       box-sizing: border-box;
       display: flex;
-      flex: 1 0 auto;
       flex-wrap: wrap;
     }
   }
