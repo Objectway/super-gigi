@@ -20,7 +20,9 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
 // - MEDIAQUERY MIXINS - //
 
 // - Generate Media Query
-@mixin media-query($query: xxsmall, $only: false, $eq-grid: $eq-grid) {
+@mixin media-query($query: xxsmall, $until: false, $eq-grid: $eq-grid) {
+
+  $only: ($until == true or $until == only);
 
   //inmedia variable, tell us if we are in a mediaquery.
   //useful to generate warning, debug and testing.
@@ -30,6 +32,23 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
       [data-eq-state$="#{$query}"] & {
         @content;
       }
+    } @else if $until {
+
+      @if map-has-key($breakpoints, $until) {
+        $map-position: index(map-keys($breakpoints), $until);
+        @if $map-position == length($breakpoints) {
+          [data-eq-state~="#{$query}"]) & {
+            @content;
+          }
+        } @else {
+          $next-bp: nth(map-keys($breakpoints), $map-position + 1);
+
+          [data-eq-state~="#{$query}"]:not([data-eq-state~="#{$next-bp}"]) & {
+            @content;
+          }
+        }
+      }
+
     } @else {
       [data-eq-state~="#{$query}"] & {
         @content;
@@ -45,11 +64,18 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
       //         @extend [data-eq-state~="#{$query}"] &
 
     }
+
+  // STANDARD MEDIA QUERY
   } @else {
     $cur-bp: map-get($breakpoints, $query);
-    $map-position: index(map-keys($breakpoints), $query);
 
     @if $only {
+      $map-position: index(map-keys($breakpoints), $query);
+    } @else {
+      $map-position: index(map-keys($breakpoints), $until);
+    }
+
+    @if $until {
       @if $map-position == length($breakpoints) {
         @if $query-start == min-width {
           $next-bp: 99999999em;

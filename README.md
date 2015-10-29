@@ -16,12 +16,12 @@ You can choose different ways to install **Super GiGi**:
 After the download you can choose if use the compiled version including `[path to super-gigi]/dist/supergigi.css`.
 
 Or you can use the Sass version, with all the options and mixins below, importing
-in your sass `[path to super-gigi]/dist/_main.sass`.
+in your sass `[path to super-gigi]/dist/_main.scss`.
 
 <br/>
 ## Options
 If you are using the Sass version you can personalize **Super GiGi**
-simply changing the value of its variables before importing `main.sass`. 
+simply changing the value of its variables before importing `main.scss`. 
 
 For the size variables, you would like to have the [`rem/em-calc()`](#rem-calc)
 functions available. To achieve that remember to import the `_functions.scss` partial
@@ -216,10 +216,10 @@ arguments: `$query`, `$only`, `$eq-grid`
   - optional
   - default: `xxsmall`
   - type: `string`
-- **$only**
+- **$until**
   - optional
   - default: `false`
-  - type: `boolean`
+  - type: `boolean` or `string`
 - **$eq-grid**
   - optional
   - default: `false`
@@ -229,8 +229,35 @@ As you can guess, this is the mixin that generates our media or element query.
 The `$query` argument must be one of the `key` values defined 
 in the [`$breakpoints`](#breakpoints) variable. 
 **Super GiGi** is developed mobile first, so if you write 
-`@include mediaquery(small){...}` you will target all the queries **from** `small`. If you want to target only a 
-specified mediaquery you will set the `$only` argument to `true`. 
+`@include mediaquery(small){...}` you will target all the queries **from** `small`. 
+
+If you want to trigger only a range you can pass `$until` parameter to your mixin implementation. 
+`$until` accepts `only` or a [`$breakpoints`](#breakpoints) key value.
+Example: 
+```SCSS
+.sausage {
+  @include media-query(small, only) {
+    content: "small only;"
+  }
+}
+
+.eggplant {
+  @include media-query(small, large) {
+    content: "small to large;"
+  }
+}
+```
+will generate: 
+```CSS
+@media only screen and (min-width: 40em) and (max-width: 44.9375em) {
+  .sausage {
+    content: "small only;"; } }
+
+@media only screen and (min-width: 40em) and (max-width: 79.9375em) {
+  .eggplant {
+    content: "small to large;"; } }
+```
+
 You can choose between classical 
 <a href="http://www.w3.org/TR/css3-mediaqueries/" target="_blank">media query</a> 
 or to use <a href="https://github.com/snugug/eq.js" target="_blank">element query</a>. 
