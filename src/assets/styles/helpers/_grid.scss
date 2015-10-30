@@ -16,7 +16,7 @@
       } @else {
         width: auto;
       }
-      // flex: 0 0 auto;
+      flex: 0 0 auto;
     } @else {
       #{$property}: unquote(nth($attr, 1) / $grid-columns * 100 + '%');
     }
@@ -27,9 +27,9 @@
     } @else {
       #{$property}: unquote(nth($attr, 1) / nth($attr, 3) * 100 + '%');
 
-      // @if $property == width {
-      //   flex: 0 0 auto;
-      // }
+      @if $property == width {
+        flex: 0 0 auto;
+      }
     }
   }
 }
@@ -145,7 +145,6 @@
       @if $use-flex {
         display: flex;
         flex-direction: column;
-        flex: 0 0 auto;
       } @else {
         float: $grid-start;
       }
