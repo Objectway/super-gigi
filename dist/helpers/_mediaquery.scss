@@ -37,7 +37,7 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
       @if map-has-key($breakpoints, $until) {
         $map-position: index(map-keys($breakpoints), $until);
         @if $map-position == length($breakpoints) {
-          [data-eq-state~="#{$query}"]) & {
+          [data-eq-state~="#{$query}"] & {
             @content;
           }
         } @else {
