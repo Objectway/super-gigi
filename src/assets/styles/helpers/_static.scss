@@ -185,10 +185,6 @@ $type: '%';
 
     }
   }
-
-  #{$type}#{$row-name}-nested {
-    @include grid-row();
-  }
 }
 
 
