@@ -105,20 +105,38 @@
 }
 
 @each $query, $breakpoint in $breakpoints {
-  #{$type}show-for-#{$query}-up {
-    @include show-from($query);
-  }
+  @if $use-bem {
+    #{$type}u-show\@#{$query} {
+      @include show-from($query);
+    }
 
-  #{$type}hide-for-#{$query}-up {
-    @include hide-from($query);
-  }
+    #{$type}u-hide\@#{$query} {
+      @include hide-from($query);
+    }
 
-  #{$type}show-for-#{$query}-only {
-    @include show-for($query);
-  }
+    #{$type}u-show\@#{$query}-only {
+      @include show-for($query);
+    }
 
-  #{$type}hide-for-#{$query}-only {
-    @include hide-for($query);
+    #{$type}u-hide\@#{$query}-only {
+      @include hide-for($query);
+    }
+  } @else {
+    #{$type}show-for-#{$query}-up {
+      @include show-from($query);
+    }
+
+    #{$type}hide-for-#{$query}-up {
+      @include hide-from($query);
+    }
+
+    #{$type}show-for-#{$query}-only {
+      @include show-for($query);
+    }
+
+    #{$type}hide-for-#{$query}-only {
+      @include hide-for($query);
+    }
   }
 }
 

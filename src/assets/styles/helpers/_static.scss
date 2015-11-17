@@ -11,71 +11,86 @@
 
 $type: if($use-classes, '.', '%');
 
+
+@function grid-class-name($prop, $query) {
+  $name: #{$class-prefix}#{$prop};
+
+  @if $use-bem {
+    $name: #{$bem-separator}#{$prop};
+    @if $query != '' {
+      $name: #{$name}\@#{$query};
+    }
+  }
+
+  @return $name;
+}
+
+
 // Row classes generator
 @mixin row-generate-classes($query, $separator: '-') {
   $class-prefix: #{$type}#{$query}#{$separator} !global;
 
   @if $use-flex {
     // row modificators
-    &#{$class-prefix}top {
+    &#{grid-class-name(top, $query)} {
       align-items: flex-start;
     }
 
-    &#{$class-prefix}middle {
+    &#{grid-class-name(middle, $query)} {
       align-items: center;
     }
 
-    &#{$class-prefix}bottom {
+    &#{grid-class-name(bottom, $query)} {
       align-items: flex-end;
     }
 
-    &#{$class-prefix}baseline {
+    &#{grid-class-name(baseline, $query)} {
       align-items: baseline;
     }
 
-    &#{$class-prefix}stretch {
+    &#{grid-class-name(stretch, $query)} {
       align-items: stretch;
     }
 
-    &#{$class-prefix}start {
+    &#{grid-class-name(start, $query)} {
       justify-content: flex-start;
     }
 
-    &#{$class-prefix}center {
+    &#{grid-class-name(center, $query)} {
       justify-content: center;
     }
 
-    &#{$class-prefix}end {
+    &#{grid-class-name(end, $query)} {
       justify-content: flex-end;
     }
 
-    &#{$class-prefix}around {
+    &#{grid-class-name(around, $query)} {
       justify-content: space-around;
     }
 
-    &#{$class-prefix}between {
+    &#{grid-class-name(between, $query)} {
       justify-content: space-between;
     }
 
-    &#{$class-prefix}horizontal {
+    &#{grid-class-name(horizontal, $query)} {
       flex-direction: if($grid-start == left, row, row-reverse);
     }
 
-    &#{$class-prefix}horizontal-reverse {
+    &#{grid-class-name(horizontal-reverse, $query)} {
       flex-direction: if($grid-start == left, row-reverse, row);
     }
 
-    &#{$class-prefix}vertical {
+    &#{grid-class-name(vertical, $query)} {
       flex: 1;
       flex-direction: column;
     }
 
-    &#{$class-prefix}vertical-reverse {
+    &#{grid-class-name(vertical-reverse, $query)} {
       flex: 1;
       flex-direction: column-reverse;
     }
 
-    &#{$class-prefix}single-line {
+    &#{grid-class-name(single-line, $query)} {
       flex-flow: nowrap;
     }
   }
@@ -87,63 +102,67 @@ $type: if($use-classes, '.', '%');
 
   //column modificators
   @if $use-flex and $use-classes {
-    &#{$class-prefix}collapse {
+    &#{grid-class-name(collapse, $query)} {
       padding: 0;
     }
 
-    &#{$class-prefix}top {
+    &#{grid-class-name(top, $query)} {
       align-self: flex-start;
     }
 
-    &#{$class-prefix}middle {
+    &#{grid-class-name(middle, $query)} {
       align-self: center;
     }
 
-    &#{$class-prefix}bottom {
+    &#{grid-class-name(bottom, $query)} {
       align-self: flex-end;
     }
 
-    &#{$class-prefix}baseline {
+    &#{grid-class-name(baseline, $query)} {
       align-self: baseline;
     }
 
-    &#{$class-prefix}stretch {
+    &#{grid-class-name(stretch, $query)} {
       align-self: stretch;
     }
 
-    &#{$class-prefix}auto {
+    &#{grid-class-name(auto, $query)} {
       flex: 1 1 0%;
       width: auto;
     }
 
-    &#{$class-prefix}auto-reset {
+    &#{grid-class-name(auto-reset, $query)} {
       flex: 0 0 auto;
     }
   }
 
-  &#{$type}auto {
-    @include grid-column($width: ($query: auto), $global: null);
+  $q: if($query != '', ($query: auto), auto);
+  &#{grid-class-name(auto, $query)} {
+    @include grid-column($width: $q, $global: null);
   }
 
+  $divider: if($use-bem, '', '-');
+
   @for $i from 0 through $grid-columns {
-    &#{$class-prefix}#{$i} {
-      @include grid-column($width: ($query: $i), $global: null);
+    $q: if($query != '', ($query: $i), $i);
+    &#{grid-class-name(if($use-bem, span#{$i}, #{$i}), $query)} {
+      @include grid-column($width: $q, $global: null);
     }
 
-    &#{$class-prefix}offset-#{$i} {
-      @include grid-column($offset: ($query: $i), $width: null, $global: null);
+    &#{grid-class-name(offset#{$divider}#{$i}, $query)} {
+      @include grid-column($offset: $q, $width: null, $global: null);
     }
 
-    &#{$class-prefix}push-#{$i} {
-      @include grid-column($push: ($query: $i), $width: null, $global: null);
+    &#{grid-class-name(push#{$divider}#{$i}, $query)} {
+      @include grid-column($push: $q, $width: null, $global: null);
     }
 
-    &#{$class-prefix}pull-#{$i} {
-      @include grid-column($pull: ($query: $i), $width: null, $global: null);
+    &#{grid-class-name(pull#{$divider}#{$i}, $query)} {
+      @include grid-column($pull: $q, $width: null, $global: null);
     }
 
     @if $use-flex {
-      &#{$class-prefix}order-#{$i} {
+      &#{grid-class-name(order#{$divider}#{$i}, $query)} {
         @include grid-column($order: $i, $width: null, $global: null);
       }
     }
@@ -192,6 +211,8 @@ $type: if($use-classes, '.', '%');
 @if $use-classes or $use-placeholders {
   #{$type}#{$column-name} {
     @include grid-column;
+
+    @include column-generate-classes('', '');
 
     @each $query, $breakpoint in $breakpoints {
       @include media-query($query) {

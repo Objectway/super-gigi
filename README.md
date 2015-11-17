@@ -86,6 +86,18 @@ default: `column` - type: `string`
 This option will change the name of the column object classes or placeholder. 
 
 <br/>
+### $use-bem
+default: `false` - type: `boolean` 
+
+This option will change the format of the class names generated when `$use-class` is `true`.
+
+<br/>
+### $bem-separator
+default: `'--'` - type: `string` 
+
+This option will change the separator between the block and the element whe using BEM naming.
+
+<br/>
 ### $grid-start
 default: `left` - type: `string` - possibile values: `left` or `right`
 

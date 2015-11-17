@@ -19,6 +19,8 @@ $use-classes: false !default;
 $use-placeholders: false !default;
 $row-name: row !default;
 $column-name: column !default;
+$use-bem: false !default;
+$bem-separator: '--' !default;
 $grid-start: left !default;
 $grid-end: if($grid-start == left, right, left) !default;
 $use-dry: false !default;
