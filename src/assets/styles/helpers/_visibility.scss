@@ -104,20 +104,35 @@
   $type: '%';
 }
 
+
+@function utility-class-name($util, $query, $only) {
+  $name: #{$util}-for-#{$query}#{if($only, -only, -up)};
+
+  @if $use-bem {
+    $name: u-#{$util};
+    @if $query != '' {
+      $name: #{$name}\@#{$query};
+    }
+  }
+
+  @return $name;
+}
+
+
 @each $query, $breakpoint in $breakpoints {
-  #{$type}show-for-#{$query}-up {
+  #{$type}#{utility-class-name('show', $query, false)} {
     @include show-from($query);
   }
 
-  #{$type}hide-for-#{$query}-up {
+  #{$type}#{utility-class-name('hide', $query, false)} {
     @include hide-from($query);
   }
 
-  #{$type}show-for-#{$query}-only {
+  #{$type}#{utility-class-name('show', $query, true)} {
     @include show-for($query);
   }
 
-  #{$type}hide-for-#{$query}-only {
+  #{$type}#{utility-class-name('hide', $query, true)} {
     @include hide-for($query);
   }
 }

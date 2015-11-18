@@ -15,8 +15,6 @@
 // will return
 // width: 1rem
 
-$rem-base: 16px !default;
-$font-size: $rem-base !default;
 
 @function rem-calc($values, $base-value: $rem-base) {
   @if length($values) == 1 {
@@ -35,7 +33,7 @@ $font-size: $rem-base !default;
 
 // - TRANSFORM AN ARRAY OF PX VALUES (with or without px value) in em unit - //
 
-@function em-calc($values, $base-value: $font-size) {
+@function em-calc($values, $base-value: $rem-base) {
   @if length($values) == 1 {
     @return remove-unit($values) / remove-unit($base-value) * 1em;
   } @else {
@@ -51,7 +49,7 @@ $font-size: $rem-base !default;
 }
 
 // - TRANSFORM AN ARRAY OF EM VALUES (with or without em value) in px unit - //
-@function px-calc($values, $base-value: $font-size) {
+@function px-calc($values, $base-value: $rem-base) {
   @if length($values) == 1 {
     @return remove-unit($values) * remove-unit($base-value) * 1px;
   } @else {
