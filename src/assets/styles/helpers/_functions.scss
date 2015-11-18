@@ -15,6 +15,7 @@
 // will return
 // width: 1rem
 
+$rem-base: 16px !default;
 
 @function rem-calc($values, $base-value: $rem-base) {
   @if length($values) == 1 {
