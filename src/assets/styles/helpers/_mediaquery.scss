@@ -11,6 +11,9 @@ $query-end: nth($query-direction, 2);
 $cur-bp: false !default;
 $next-bp: false !default;
 
+// Initializing $map-position variable
+$map-position: 0;
+
 // - MEDIAQUERIES SETTINGS
 // Screens
 $screen: 'only screen' !default;
