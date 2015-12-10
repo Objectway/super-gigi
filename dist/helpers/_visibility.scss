@@ -111,7 +111,7 @@
   @if $use-bem {
     $name: u-#{$util};
     @if $query != '' {
-      $name: #{$name}\@#{$query};
+      $name: #{$name}\@#{$query}#{if($only, -only, '')};
     }
   }
 
