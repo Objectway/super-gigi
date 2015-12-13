@@ -279,7 +279,7 @@ You don't have to specify this setting everytime, **Super GiGi** provides a
 [global $eq-grid](#eq-grid) variable, but sometime is useful to mix media end 
 element query.
 
-###grid-space()
+### grid-space()
 arguments: `$property`, `$attr`
 - **$property**
   - optional
@@ -596,7 +596,7 @@ and magically:
 ```
   
 
-###hide-from()
+### hide-from()
 arguments: `$query`
 - **$query**
   - required
@@ -623,7 +623,7 @@ will generate:
  ```
   
 
-###show-for()
+### show-for()
 arguments: `$query`
 - **$query**
   - required
@@ -652,7 +652,7 @@ will generate:
  ```
   
 
-###hide-for()
+### hide-for()
 arguments: `$query`
 - **$query**
   - required
@@ -902,6 +902,7 @@ will return:
 
   
 
+## Extras
 
 ### Run it
 Do you want to collaborate? It's dangerous to go alone take this:
