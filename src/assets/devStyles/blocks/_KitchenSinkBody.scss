@@ -17,8 +17,9 @@
     padding-top: $column-gutter;
   }
 
-  &__title {
-    @include grid-column;
+  &__title,
+  &__content {
+    @include grid-column(auto);
     margin-bottom: $column-gutter;
 
     .Typo__h2 {
@@ -26,9 +27,13 @@
     }
   }
 
+  &__aside {
+    @include grid-column((xxsmall: 12, medium: 4, large: 3));
+  }
+
   &__homepageImage {
     background-color: $azure;
-    height: rem-calc(750);
+    min-height: 50vh;
     margin: rem-calc(-5 -20 20 -20);
   }
 }

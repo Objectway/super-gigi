@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html>
+  <!-- - HEAD-->
+  <head>
+    <title>SuperGiGi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,400,700" type="text/css">
+    <link rel="stylesheet" href="development/scripts/vendor/prism.css">
+    <link rel="stylesheet" href="development/styles/main.css" type="text/css">
+  </head>
+  <body class="Typo">
+    <!-- Kitchen Sink menu toggler-->
+    <input id="TogglerMenu" type="checkbox" class="TogglerMenu">
+    <aside class="KitchenSinkSideBar">
+      <div class="KitchenSinkSideBar__logo"><a href="index.html">SuperGiGi</a></div>
+            <ul class="KitchenSinkMenuList">
+              <li class="KitchenSinkMenuList__element KitchenSinkMenuList__element--active"><a href="grid.html" class="KitchenSinkMenuList__link">The Grid</a></li>
+              <li class="KitchenSinkMenuList__element"><a href="visibility.html" class="KitchenSinkMenuList__link">Visibility</a></li>
+              <li class="KitchenSinkMenuList__element"><a href="options.html" class="KitchenSinkMenuList__link">Options</a></li>
+              <li class="KitchenSinkMenuList__element"><a href="mixins.html" class="KitchenSinkMenuList__link">Mixins</a></li>
+              <li class="KitchenSinkMenuList__element"><a href="functions.html" class="KitchenSinkMenuList__link">Functions</a></li>
+            </ul>
+    </aside>
+    <nav class="KitchenSinkNavBar">
+      <div class="KitchenSinkNavBar__menuBar">
+        <div class="KitchenSinkNavBar__logo">
+          <div class="KitchenSinkNavBar__title"><a href="index.html">SuperGiGi</a></div>
+        </div>
+        <div class="KitchenSinkNavBar__menuItems">
+                    <ul class="KitchenSinkMenuList">
+                      <li class="KitchenSinkMenuList__element KitchenSinkMenuList__element--active"><a href="grid.html" class="KitchenSinkMenuList__link">The Grid</a></li>
+                      <li class="KitchenSinkMenuList__element"><a href="visibility.html" class="KitchenSinkMenuList__link">Visibility</a></li>
+                      <li class="KitchenSinkMenuList__element"><a href="options.html" class="KitchenSinkMenuList__link">Options</a></li>
+                      <li class="KitchenSinkMenuList__element"><a href="mixins.html" class="KitchenSinkMenuList__link">Mixins</a></li>
+                      <li class="KitchenSinkMenuList__element"><a href="functions.html" class="KitchenSinkMenuList__link">Functions</a></li>
+                    </ul>
+        </div>
+      </div>
+    </nav>
+    <nav class="KitchenSinkTouchBar">
+      <label for="TogglerMenu" class="KitchenSinkTouchBar__label">
+        <svg id="Livello_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve" class="KitchenSinkTouchBar__icon">
+          <rect id="XMLID_1_" x="-0.1" y="70.3" width="100.1" height="15.5"></rect>
+          <rect id="XMLID_4_" x="-0.1" y="42.7" width="100.1" height="15.5"></rect>
+          <rect id="XMLID_3_" x="-0.1" y="14.8" width="100.1" height="16.3"></rect>
+        </svg>
+      </label>
+      <div class="KitchenSinkTouchBar__logo">
+        <div class="KitchenSinkTouchBar__title"><a href="index.html">SuperGiGi</a></div>
+      </div>
+    </nav>
+    <div class="KitchenSinkOverlay">
+      <label for="TogglerMenu" class="KitchenSinkOverlay__label"></label>
+    </div>
+    <div class="KitchenSinkBody">
+      <div class="KitchenSinkBody__section">
+        <div class="KitchenSinkBody__title">
+          <h2 class="Typo__h2">The Grid</h2>
+          <p class="Typo__p">Super GiGi is a CSS3 flex based grid system. It's developed thinking about modern web applications and its first purpose is to make easier to manage responsive layout. It's developed in Sass but you can use a compiled version if you prefer.</p>
+        </div>
+        <!-- - THE GRID-->
+        <!-- - Example 1-->
+        <div class="DocumentationSection">
+          <div class="DocumentationSection__description">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">Simple grid</h3>
+            </div>
+            <div class="DocumentationSection__text"><a href="https://github.com/Objectway/super-gigi#grid-row" target="_blank" class="Typo__a">grid-row()</a>&nbsp; - &nbsp;<a href="https://github.com/Objectway/super-gigi#grid-row" target="_blank" class="Typo__a">grid-column()</a></div>
+          </div>
+          <div class="DocumentationSection__example">
+            <div class="RoastedRibs">
+              <div class="RoastedRibs__element RoastedRibs__element--first">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">1</p>
+                </div>
+              </div>
+              <div class="RoastedRibs__element RoastedRibs__element--second">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">2</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="DocumentationSection__html">
+            <pre class="CodeExampleBox"><code class="language-markup">&lt;div class=&quot;RoastedRibs&quot;&gt;
+  &lt;div class=&quot;RoastedRibs__element RoastedRibs__element--first&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;1&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;RoastedRibs__element RoastedRibs__element--second&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;2&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+          </div>
+          <div class="DocumentationSection__scss">
+            <pre class="CodeExampleBox"><code class="language-scss">.RoastedRibs{
+  @include grid-row();
+  // Equivalent to grid-row($nested: true, $vertical: false)
+
+  &__element {
+    &--first {
+      @include grid-column((xxsmall: 12, medium: 4, large: 6));
+    }
+
+    &--second {
+      @include grid-column((xxsmall: 12, medium: 8, large: 6));
+    }
+  }
+}
+
+</code></pre>
+          </div>
+        </div>
+        <!-- - Example 2-->
+        <div class="DocumentationSection">
+          <div class="DocumentationSection__description">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">Nested and vertical row</h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Nested will set negative margin to the row to reset the padding of a parent row.</p><a href="https://github.com/Objectway/super-gigi#grid-row" target="_blank" class="Typo__a">grid-row()</a>
+            </div>
+          </div>
+          <div class="DocumentationSection__example">
+            <div class="FriedChips">
+              <div class="FriedChips__element FriedChips__element--first">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">1</p>
+                </div>
+              </div>
+              <div class="FriedChips__element FriedChips__element--second">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">2</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="DocumentationSection__html">
+            <pre class="CodeExampleBox"><code class="language-markup">&lt;div class=&quot;FriedChips&quot;&gt;
+  &lt;div class=&quot;FriedChips__element FriedChips__element--first&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;1&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;FriedChips__element FriedChips__element--second&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;2&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+          </div>
+          <div class="DocumentationSection__scss">
+            <pre class="CodeExampleBox"><code class="language-scss">.FriedChips {
+  @include grid-row($nested: true, $vertical: true);
+
+  &__element {
+    &--first {
+      @include grid-column(6);
+    }
+
+    &--second{
+      @include grid-column(6);
+    }
+  }
+}
+
+</code></pre>
+          </div>
+        </div>
+        <!-- - Example 3-->
+        <div class="DocumentationSection">
+          <div class="DocumentationSection__description">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">Column auto</h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Testo esempio column auto</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
+            </div>
+          </div>
+          <div class="DocumentationSection__example">
+            <div class="Tomatoes">
+              <div class="Tomatoes__element Tomatoes__element--first">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">1</p>
+                </div>
+              </div>
+              <div class="Tomatoes__element Tomatoes__element--second">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">2</p>
+                </div>
+              </div>
+              <div class="Tomatoes__element Tomatoes__element--third">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">3</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="DocumentationSection__html">
+            <pre class="CodeExampleBox"><code class="language-markup">&lt;div class=&quot;Tomatoes&quot;&gt;
+  &lt;div class=&quot;Tomatoes__element Tomatoes__element--first&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;1&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Tomatoes__element Tomatoes__element--second&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;2&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Tomatoes__element Tomatoes__element--third&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;3&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+          </div>
+          <div class="DocumentationSection__scss">
+            <pre class="CodeExampleBox"><code class="language-scss">.Tomatoes {
+  @include grid-row(false);
+
+  &__element {
+    &--first {
+      @include grid-column(auto);
+    }
+
+    &--second {
+      @include grid-column(auto);
+    }
+
+    &--third {
+      @include grid-column((xxsmall: 6, medium: auto, large: 3));
+    }
+  }
+}
+
+</code></pre>
+          </div>
+        </div>
+        <!-- - Example 4-->
+        <div class="DocumentationSection">
+          <div class="DocumentationSection__description">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">Change the grid base</h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Testo esempio change the grid base</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
+            </div>
+          </div>
+          <div class="DocumentationSection__example">
+            <div class="Steak">
+              <div class="Steak__element Steak__element--first">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">1</p>
+                </div>
+              </div>
+              <div class="Steak__element Steak__element--second">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">2</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="DocumentationSection__html">
+            <pre class="CodeExampleBox"><code class="language-markup">&lt;div class=&quot;Steak&quot;&gt;
+  &lt;div class=&quot;Steak__element Steak__element--first&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;1&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Steak__element Steak__element--second&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;2&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+          </div>
+          <div class="DocumentationSection__scss">
+            <pre class="CodeExampleBox"><code class="language-scss">.Steak {
+  @include grid-row(false);
+
+  &__element {
+    &--first {
+      @include grid-column($width: 2 of 5);
+    }
+
+    &--second {
+      @include grid-column($width: 3 of 5);
+    }
+  }
+}
+</code></pre>
+          </div>
+        </div>
+        <div class="DocumentationSection">
+          <div class="DocumentationSection__description">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">Offset</h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">With the offset you can move a column up to a column number following the direction of the grid. The space occupied by the column will be the width number added with the offset number.</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
+            </div>
+          </div>
+          <div class="DocumentationSection__example">
+            <div class="Ribs">
+              <div class="Ribs__element Ribs__element--first">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">1</p>
+                </div>
+              </div>
+              <div class="Ribs__element Ribs__element--second">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">2</p>
+                </div>
+              </div>
+              <div class="Ribs__element Ribs__element--third">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">3</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="DocumentationSection__html">
+            <pre class="CodeExampleBox"><code class="language-markup">&lt;div class=&quot;Ribs&quot;&gt;
+  &lt;div class=&quot;Ribs__element Ribs__element--first&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;1&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Ribs__element Ribs__element--second&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;2&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Ribs__element Ribs__element--third&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;3&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+          </div>
+          <div class="DocumentationSection__scss">
+            <pre class="CodeExampleBox"><code class="language-scss">.Ribs {
+  @include grid-row(false);
+
+  &__element {
+    &--first {
+      @include grid-column(
+        $width: 4,
+        $offset: (
+          xxsmall: 6, large: 1
+        )
+      );
+    }
+
+    &--second {
+      @include grid-column(
+        $width: 4,
+        $offset: 2
+      );
+    }
+
+    &--third {
+      @include grid-column(
+        $width: 4,
+        $offset: (
+          xxsmall: 8,
+          large: 4
+        )
+      );
+    }
+  }
+}
+
+
+
+
+</code></pre>
+          </div>
+        </div>
+        <!-- - Example 5-->
+        <div class="DocumentationSection">
+          <div class="DocumentationSection__description">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">Push &amp; Pull</h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Testo esempio $push e $pull</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
+            </div>
+          </div>
+          <div class="DocumentationSection__example">
+            <div class="Pepperoni">
+              <div class="Pepperoni__element Pepperoni__element--first">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">1</p>
+                </div>
+              </div>
+              <div class="Pepperoni__element Pepperoni__element--second">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">2</p>
+                </div>
+              </div>
+              <div class="Pepperoni__element Pepperoni__element--third">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">3</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="DocumentationSection__html">
+            <pre class="CodeExampleBox"><code class="language-markup">&lt;div class=&quot;Pepperoni&quot;&gt;
+  &lt;div class=&quot;Pepperoni__element Pepperoni__element--first&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;1&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Pepperoni__element Pepperoni__element--second&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;2&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Pepperoni__element Pepperoni__element--third&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;3&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+          </div>
+          <div class="DocumentationSection__scss">
+            <pre class="CodeExampleBox"><code class="language-scss">.Pepperoni{
+  @include grid-row(false);
+
+  &__element {
+    &--first {
+      @include grid-column(
+        $width: 4,
+        $push: (xxsmall:8, large: 4)
+      );
+    }
+
+    &--second {
+      @include grid-column(
+        $width: 4,
+        $push: 4,
+        $pull: (large: 4)
+      );
+    }
+
+    &--third {
+      @include grid-column(
+        $width: 4,
+        $pull: (xxsmall: 8, large: 0)
+      );
+    }
+  }
+}
+
+</code></pre>
+          </div>
+        </div>
+        <!-- - Example 6-->
+        <div class="DocumentationSection">
+          <div class="DocumentationSection__description">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">Order</h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Testo esempio $order</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
+            </div>
+          </div>
+          <div class="DocumentationSection__example">
+            <div class="Sausages">
+              <div class="Sausages__element Sausages__element--first">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">1</p>
+                </div>
+              </div>
+              <div class="Sausages__element Sausages__element--second">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">2</p>
+                </div>
+              </div>
+              <div class="Sausages__element Sausages__element--third">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">3</p>
+                </div>
+              </div>
+              <div class="Sausages__element Sausages__element--fourth">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">4</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="DocumentationSection__html">
+            <pre class="CodeExampleBox"><code class="language-markup">&lt;div class=&quot;Sausages&quot;&gt;
+  &lt;div class=&quot;Sausages__element Sausages__element--first&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;1&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Sausages__element Sausages__element--second&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;2&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Sausages__element Sausages__element--third&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;3&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Sausages__element Sausages__element--fourth&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;4&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+          </div>
+          <div class="DocumentationSection__scss">
+            <pre class="CodeExampleBox"><code class="language-scss">.Sausages{
+  @include grid-row(false);
+
+  &__element {
+    &--first {
+      @include grid-column(
+        $width: auto,
+        $order: (medium: 4, large: 3)
+      );
+    }
+
+    &--second {
+      @include grid-column(
+        $width: auto,
+        $order: (xxsmall: 3, large: 4)
+      );
+    }
+
+    &--third {
+      @include grid-column(
+        $width: auto,
+        $order: (xxsmall: 2, large: 1)
+      );
+    }
+
+    &--fourth {
+      @include grid-column(
+        $width: auto,
+        $order: (xxsmall: 4, medium: 1, large: 2)
+      );
+    }
+  }
+}
+
+</code></pre>
+          </div>
+        </div>
+        <!-- - Example 7-->
+        <div class="DocumentationSection">
+          <div class="DocumentationSection__description">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">Collapse</h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Testo esempio $collapse</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
+            </div>
+          </div>
+          <div class="DocumentationSection__example">
+            <div class="Eggplant">
+              <div class="Eggplant__element Eggplant__element--first">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">1</p>
+                </div>
+              </div>
+              <div class="Eggplant__element Eggplant__element--second">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">2</p>
+                </div>
+              </div>
+              <div class="Eggplant__element Eggplant__element--third">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">3</p>
+                </div>
+              </div>
+              <div class="Eggplant__element Eggplant__element--fourth">
+                <div class="Box">
+                  <p class="Typo__p Box__paragraph">4</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="DocumentationSection__html">
+            <pre class="CodeExampleBox"><code class="language-markup">&lt;div class=&quot;Eggplant&quot;&gt;
+  &lt;div class=&quot;Eggplant__element Eggplant__element--first&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;1&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Eggplant__element Eggplant__element--second&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;2&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Eggplant__element Eggplant__element--third&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;3&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Eggplant__element Eggplant__element--fourth&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;4&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+          </div>
+          <div class="DocumentationSection__scss">
+            <pre class="CodeExampleBox"><code class="language-scss">.Eggplant{
+  @include grid-row(false);
+
+  &__element {
+    &--first {
+      @include grid-column($width: 3, $collapse: true);
+    }
+
+    &--second {
+      @include grid-column($width: 3, $collapse: true);
+    }
+
+    &--third {
+      @include grid-column($width: 3, $collapse: false);
+    }
+
+    &--fourth {
+      @include grid-column($width: 3, $collapse: false);
+    }
+  }
+}
+
+</code></pre>
+          </div>
+        </div>
+        <!-- - Example 8-->
+        <div class="DocumentationSection">
+          <div class="DocumentationSection__description">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">Global</h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Testo esempio $global</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
+            </div>
+          </div>
+          <div class="DocumentationSection__example">
+            <div class="Bacon">
+              <div class="Bacon__element Bacon__element--first"><span class="Bacon__box">1</span></div>
+              <div class="Bacon__element Bacon__element--second"><span class="Bacon__box">2</span></div>
+              <div class="Bacon__element Bacon__element--third"><span class="Bacon__box">3</span></div>
+              <div class="Bacon__element Bacon__element--fourth"><span class="Bacon__box">4</span></div>
+            </div>
+          </div>
+          <div class="DocumentationSection__html">
+            <pre class="CodeExampleBox"><code class="language-markup">&lt;div class=&quot;Bacon&quot;&gt;
+  &lt;div class=&quot;Bacon__element Bacon__element--first&quot;&gt;
+    &lt;span class=&quot;Bacon_box&quot;&gt;1&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Bacon__element Bacon__element--second&quot;&gt;
+    &lt;span class=&quot;Bacon_box&quot;&gt;2&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Bacon__element Bacon__element--third&quot;&gt;
+    &lt;span class=&quot;Bacon_box&quot;&gt;3&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;Bacon__element Bacon__element--fourth&quot;&gt;
+    &lt;span class=&quot;Bacon_box&quot;&gt;4&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+          </div>
+          <div class="DocumentationSection__scss">
+            <pre class="CodeExampleBox"><code class="language-scss">.Bacon {
+  @extend %Line;
+  @include grid-row(false);
+
+  &__element {
+    &--first {
+      @include grid-column($width: 3, $global: false);
+      display: inline-block;
+    }
+
+    &--second {
+      @include grid-column($width: 3);
+    }
+
+    &--third {
+      @include grid-column($width: 3);
+    }
+
+    &--fourth {
+      @include grid-column($width: 3);
+    }
+  }
+
+  &__box {
+    @extend .Box;
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="KitchenSinkFooter">
+      <p class="KitchenSinkFooter__paragraph">© 2015 Objectway Financial Software S.p.a.</p>
+      <script type="text/javascript" src="development/scripts/vendor/prism.js"></script>
+    </div>
+  </body>
+</html>

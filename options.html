@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <!-- - HEAD-->
+  <head>
+    <title>SuperGiGi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,400,700" type="text/css">
+    <link rel="stylesheet" href="development/scripts/vendor/prism.css">
+    <link rel="stylesheet" href="development/styles/main.css" type="text/css">
+  </head>
+  <body class="Typo">
+    <!-- Kitchen Sink menu toggler-->
+    <input id="TogglerMenu" type="checkbox" class="TogglerMenu">
+    <aside class="KitchenSinkSideBar">
+      <div class="KitchenSinkSideBar__logo"><a href="index.html">SuperGiGi</a></div>
+            <ul class="KitchenSinkMenuList">
+              <li class="KitchenSinkMenuList__element"><a href="grid.html" class="KitchenSinkMenuList__link">The Grid</a></li>
+              <li class="KitchenSinkMenuList__element"><a href="visibility.html" class="KitchenSinkMenuList__link">Visibility</a></li>
+              <li class="KitchenSinkMenuList__element KitchenSinkMenuList__element--active"><a href="options.html" class="KitchenSinkMenuList__link">Options</a></li>
+              <li class="KitchenSinkMenuList__element"><a href="mixins.html" class="KitchenSinkMenuList__link">Mixins</a></li>
+              <li class="KitchenSinkMenuList__element"><a href="functions.html" class="KitchenSinkMenuList__link">Functions</a></li>
+            </ul>
+    </aside>
+    <nav class="KitchenSinkNavBar">
+      <div class="KitchenSinkNavBar__menuBar">
+        <div class="KitchenSinkNavBar__logo">
+          <div class="KitchenSinkNavBar__title"><a href="index.html">SuperGiGi</a></div>
+        </div>
+        <div class="KitchenSinkNavBar__menuItems">
+                    <ul class="KitchenSinkMenuList">
+                      <li class="KitchenSinkMenuList__element"><a href="grid.html" class="KitchenSinkMenuList__link">The Grid</a></li>
+                      <li class="KitchenSinkMenuList__element"><a href="visibility.html" class="KitchenSinkMenuList__link">Visibility</a></li>
+                      <li class="KitchenSinkMenuList__element KitchenSinkMenuList__element--active"><a href="options.html" class="KitchenSinkMenuList__link">Options</a></li>
+                      <li class="KitchenSinkMenuList__element"><a href="mixins.html" class="KitchenSinkMenuList__link">Mixins</a></li>
+                      <li class="KitchenSinkMenuList__element"><a href="functions.html" class="KitchenSinkMenuList__link">Functions</a></li>
+                    </ul>
+        </div>
+      </div>
+    </nav>
+    <nav class="KitchenSinkTouchBar">
+      <label for="TogglerMenu" class="KitchenSinkTouchBar__label">
+        <svg id="Livello_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve" class="KitchenSinkTouchBar__icon">
+          <rect id="XMLID_1_" x="-0.1" y="70.3" width="100.1" height="15.5"></rect>
+          <rect id="XMLID_4_" x="-0.1" y="42.7" width="100.1" height="15.5"></rect>
+          <rect id="XMLID_3_" x="-0.1" y="14.8" width="100.1" height="16.3"></rect>
+        </svg>
+      </label>
+      <div class="KitchenSinkTouchBar__logo">
+        <div class="KitchenSinkTouchBar__title"><a href="index.html">SuperGiGi</a></div>
+      </div>
+    </nav>
+    <div class="KitchenSinkOverlay">
+      <label for="TogglerMenu" class="KitchenSinkOverlay__label"></label>
+    </div>
+    <div class="KitchenSinkBody">
+      <div class="KitchenSinkBody__section">
+        <div class="KitchenSinkBody__aside"></div>
+        <div class="KitchenSinkBody__content">
+          <div class="MarkDownGenerated">
+            <div class="MarkDownGenerated__content"><h2 id="options">Options</h2>
+<p>If you are using the Sass version you can personalize <strong>Super GiGi</strong>
+simply changing the value of its variables before importing <code>main.scss</code>. </p>
+<p>For the size variables, you would like to have the <a href="#rem-calc"><code>rem/em-calc()</code></a>
+functions available. To achieve that remember to import the <code>_functions.scss</code> partial
+before.</p>
+<h3 id="-rem-base">$rem-base</h3>
+<p>default: <code>16px</code> - type: <code>unit</code>  </p>
+<p>This is the default value for all the
+<a href="#functions">units functions</a>. 
+set the same value you&#39;ve used for your <code>html</code>.</p>
+<h3 id="-row-width">$row-width</h3>
+<p>default: <code>rem-calc(1920)</code> - type: <code>unit</code> </p>
+<p>This is the <code>max-width</code> of our row objects. The default value is 1920 pixels 
+converted in rems via <a href="#rem-calc"><code>rem-calc()</code></a> function.</p>
+<h3 id="-column-gutter">$column-gutter</h3>
+<p>default: <code>rem-calc(30)</code> - type: <code>unit</code> </p>
+<p>This is the space between our columns. The default value is 30 pixels converted in rems via <a href="#rem-calc"><code>rem-calc()</code></a> function. </p>
+<h3 id="-grid-columns">$grid-columns</h3>
+<p>default: <code>12</code> - type: <code>number</code> </p>
+<p>The number of columns used in our layout.</p>
+<h3 id="-use-classes">$use-classes</h3>
+<p>default: <code>false</code> - type: <code>boolean</code> </p>
+<p>Set this variable to true if you want to generate static classes, like: 
+<code>.row</code>, <code>.column</code> or <code>.large-12</code>. </p>
+<h3 id="-use-placeholders">$use-placeholders</h3>
+<p>default: <code>false</code> - type: <code>boolean</code> </p>
+<p>Set this variable to true if you want to generate placeholders to us like: </p>
+<pre><code class="lang-scss">.column {
+  @extend %column;
+  @extend %large-12;
+}
+</code></pre>
+<h3 id="-row-name">$row-name</h3>
+<p>default: <code>row</code> - type: <code>string</code> </p>
+<p>This option will change the name of the row object classes or placeholder.</p>
+<h3 id="-column-name">$column-name</h3>
+<p>default: <code>column</code> - type: <code>string</code> </p>
+<p>This option will change the name of the column object classes or placeholder. </p>
+<h3 id="-use-bem">$use-bem</h3>
+<p>default: <code>false</code> - type: <code>boolean</code> </p>
+<p>This option will change the format of the class names generated when <code>$use-class</code> is <code>true</code>.</p>
+<h3 id="-bem-separator">$bem-separator</h3>
+<p>default: <code>&#39;--&#39;</code> - type: <code>string</code> </p>
+<p>This option will change the separator between the block and the element whe using BEM naming.</p>
+<h3 id="-grid-start">$grid-start</h3>
+<p>default: <code>left</code> - type: <code>string</code> - possibile values: <code>left</code> or <code>right</code></p>
+<p>This is the value to change if you want to develop a rtl application.</p>
+<h3 id="-use-dry">$use-dry</h3>
+<p>default: <code>false</code> - type: <code>boolean</code> </p>
+<p>If true, all the grid will be passed by <a href="#dry-it"><code>dry-it()</code></a> mixin.</p>
+<h3 id="-debug">$debug</h3>
+<p>default: <code>false</code> - type: <code>boolean</code> </p>
+<p>With big applications and semantic BEM selectors, it is difficult to understand 
+what kind of properties a determinate DOM element has. If you set this 
+variable to <code>true</code>, <strong>Super GiGi</strong> will add a content property that will be 
+useful when we inspect the elements.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="lang-css">.fooColumn {
+  font-size: 30px; }
+  @media only screen and (min-width: 45em) {
+    .fooColumn {
+      left: 8.33333%;
+      right: 8.33333%;
+      padding: 0 0.9375rem;
+      order: 0;
+
+      content: &quot;COLUMN: width : (xxsmall: 6, large: 6) | push : 1 | pull : 1 | order : 0 | global : true&quot;; 
+
+    } 
+  }
+</code></pre>
+<h3 id="-eq-grid-experimental-">$eq-grid <code>EXPERIMENTAL</code></h3>
+<p>default: <code>false</code> - type: <code>boolean</code> </p>
+<p><strong>Super GiGi</strong> supports <a href="https://github.com/Snugug/eq.js">EQJS</a>. Turn this option to
+<code>true</code> to use element queries css instead of classical mediaqueries. See the <a href="#media-query"><code>media-query()</code></a> mixin for other infos. </p>
+<h3 id="-breakpoints">$breakpoints</h3>
+<p>default: <code>(
+  xxsmall: 0em, 
+  xsmall: em-calc(480), 
+  small: em-calc(640), 
+  medium: em-calc(720), 
+  large: em-calc(1024), 
+  xlarge: em-calc(1280), 
+  xxlarge: em-calc(1440)
+  )</code></p>
+<ul>
+<li>type: <code>map</code></li>
+</ul>
+<p>Ok, this is a little complicated :) but we want to have this settings 
+in only one place. This is a 
+<a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps" target="_blank">Sass map</a>, 
+and is used to define all our mediaqueries.</p>
+<p>The <strong>keys</strong> are used to define the name of our breakpoints and will be passed 
+to our classes generator or to our mixins. For example if you use the classes 
+and youchange this object like this: </p>
+<pre><code class="lang-scss">$breakpoints: (sml: 0em, mdm: 40em, lrg: 60em);
+</code></pre>
+<p>you will generate this kind of css:</p>
+<pre><code class="lang-css">@media (min-width: 40em) {
+  .mdm-3 {
+    width: 25%; } }
+@media (min-width: 40em) {
+  .lrg-3 {
+    width: 25%; }}
+</code></pre>
+<p>In the same way you have to change how you refer to breakpoints in all your mixins:</p>
+<pre><code class="lang-scss">.foo {
+  @include grid-row(false);
+  &amp;__bar {
+    @include grid-column(
+      $width: (sml:6, lrg: 6),
+      $collapse: false,
+      $push: (mdm:6, lrg: 12),
+      $pull: 1,
+      $order: 0
+    );
+  }
+  &amp;foo {
+      @include media-query(lrg) {
+        background: red
+      }
+  }
+</code></pre>
+<h3 id="-use-flex-experimental-">$use-flex <code>EXPERIMENTAL</code></h3>
+<p>default: <code>true</code> - type: <code>boolean</code> </p>
+<p><strong>Super GiGi</strong> is developed with CSS3 Flexbox, but there is an untested 
+version in float. 
+Set this option to <code>false</code>, to try it.</p>
+<h3 id="-query-direction-experimental-">$query-direction <code>EXPERIMENTAL</code></h3>
+<p>default: <code>(min-width, max-width)</code> - type: <code>list</code> </p>
+<p><strong>Super GiGi</strong> is developed mobile first, but in some cases you would like to 
+develop in graceful decadency. To do this you can set 
+<code>$query-direction: (max-width, min-width)</code>. The media-queries will be reverted
+and all the queries will go from the largest query to the smallest one.</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="KitchenSinkFooter">
+      <p class="KitchenSinkFooter__paragraph">© 2015 Objectway Financial Software S.p.a.</p>
+      <script type="text/javascript" src="development/scripts/vendor/prism.js"></script>
+    </div>
+  </body>
+</html>

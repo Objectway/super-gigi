@@ -4,19 +4,11 @@
 
   &__element {
     &--first {
-      @include grid-column($width: 1 of 5);
-
-      @include media-query(large) {
-        @include grid-column($width: 3 of 5);
-      }
+      @include grid-column($width: 2 of 5);
     }
 
     &--second {
-      @include grid-column($width: 4 of 5);
-
-      @include media-query(large) {
-        @include grid-column($width: 2 of 5);
-      }
+      @include grid-column($width: 3 of 5);
     }
   }
 }

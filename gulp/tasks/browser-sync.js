@@ -9,7 +9,7 @@ module.exports = function() {
     open: false,
     notify: false,
     server: {
-      baseDir: env.folder.dev
+      baseDir: './'
     },
     ghostMode: {
       clicks: false,

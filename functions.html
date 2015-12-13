@@ -21,7 +21,7 @@
               <li class="KitchenSinkMenuList__element"><a href="visibility.html" class="KitchenSinkMenuList__link">Visibility</a></li>
               <li class="KitchenSinkMenuList__element"><a href="options.html" class="KitchenSinkMenuList__link">Options</a></li>
               <li class="KitchenSinkMenuList__element"><a href="mixins.html" class="KitchenSinkMenuList__link">Mixins</a></li>
-              <li class="KitchenSinkMenuList__element"><a href="functions.html" class="KitchenSinkMenuList__link">Functions</a></li>
+              <li class="KitchenSinkMenuList__element KitchenSinkMenuList__element--active"><a href="functions.html" class="KitchenSinkMenuList__link">Functions</a></li>
             </ul>
     </aside>
     <nav class="KitchenSinkNavBar">
@@ -35,7 +35,7 @@
                       <li class="KitchenSinkMenuList__element"><a href="visibility.html" class="KitchenSinkMenuList__link">Visibility</a></li>
                       <li class="KitchenSinkMenuList__element"><a href="options.html" class="KitchenSinkMenuList__link">Options</a></li>
                       <li class="KitchenSinkMenuList__element"><a href="mixins.html" class="KitchenSinkMenuList__link">Mixins</a></li>
-                      <li class="KitchenSinkMenuList__element"><a href="functions.html" class="KitchenSinkMenuList__link">Functions</a></li>
+                      <li class="KitchenSinkMenuList__element KitchenSinkMenuList__element--active"><a href="functions.html" class="KitchenSinkMenuList__link">Functions</a></li>
                     </ul>
         </div>
       </div>
@@ -56,29 +56,116 @@
       <label for="TogglerMenu" class="KitchenSinkOverlay__label"></label>
     </div>
     <div class="KitchenSinkBody">
-      <div class="KitchenSinkBody__homepageImage"></div>
-      <div class="HomePage">
-        <div class="HomePage__section">
-          <div class="HomePage__title">
-            <h2 class="Typo__h2">CSS3 flex based grid system</h2>
-            <p class="Typo__p">It's developed thinking about modern web applications and its first purpose is to make easier to manage responsive layout.</p>
-          </div>
-        </div>
-        <div class="HomePage__section">
-          <div class="HomePage__features">
-            <div class="CircleIcon"></div>
-            <h2 class="Typo__h2">Customizable</h2>
-            <p class="Typo__p">Using the Sass version you can personalize SuperGiGi to define the number of columns, breakpoints, name of grid components, etc.</p>
-          </div>
-          <div class="HomePage__features">
-            <div class="CircleIcon"></div>
-            <h2 class="Typo__h2">Preprocessors</h2>
-            <p class="Typo__p">It's developed in Sass but if you prefer you can use a compiled version.</p>
-          </div>
-          <div class="HomePage__features">
-            <div class="CircleIcon"></div>
-            <h2 class="Typo__h2">Mobile first</h2>
-            <p class="Typo__p">You can build for small devices first. Then, as devices get larger and larger, SuperGiGi easily scale your applications for a complete responsive design.</p>
+      <div class="KitchenSinkBody__section">
+        <div class="KitchenSinkBody__aside"></div>
+        <div class="KitchenSinkBody__content">
+          <div class="MarkDownGenerated">
+            <div class="MarkDownGenerated__content"><h2 id="functions">Functions</h2>
+<p>We love <a href="http://foundation.zurb.com">Foundation</a> and we used it a lot. These 
+functions are based on our preferred Foundation functions that we want to 
+continue to use in our projects.</p>
+<h3 id="remove-unit-">remove-unit()</h3>
+<p>arguments: <code>$value</code></p>
+<ul>
+<li><strong>$value</strong><ul>
+<li>required</li>
+<li>type: <code>list</code></li>
+</ul>
+</li>
+</ul>
+<p>remove the unit from a value
+<strong>Example</strong></p>
+<pre><code class="lang-scss">$foo: remove-unit(10px); //will return 10
+</code></pre>
+<h3 id="rem-calc-">rem-calc()</h3>
+<p>arguments: <code>$values</code>, <code>$base-value</code></p>
+<ul>
+<li><strong>$values</strong><ul>
+<li>required</li>
+<li>type: <code>list</code></li>
+</ul>
+</li>
+<li><strong>$base-value</strong><ul>
+<li>optional</li>
+<li>default: <a href="#rem-base"><code>$rem-base</code></a></li>
+<li>type: <code>measure</code></li>
+</ul>
+</li>
+</ul>
+<p>Transforms an array of pixel values (with or without <code>px</code>) in rem unit, based on 
+the optional <code>$base-value</code> passed to the function.</p>
+<p><strong>Examples</strong></p>
+<pre><code class="lang-scss">.foo{
+  margin: rem-calc(16 8 16 8);
+  padding: rem-calc(8px);
+}
+</code></pre>
+<p>will return:</p>
+<pre><code class="lang-css">.foo{
+  margin: 1rem 0.5rem 1rem 0.5rem;
+  padding: 0.5rem;
+}
+</code></pre>
+<h3 id="em-calc-">em-calc()</h3>
+<p>arguments: <code>$values</code>, <code>$base-value</code></p>
+<ul>
+<li><strong>$values</strong><ul>
+<li>required</li>
+<li>type: <code>list</code></li>
+</ul>
+</li>
+<li><strong>$base-value</strong><ul>
+<li>optional</li>
+<li>default: <a href="#rem-base"><code>$rem-base</code></a></li>
+<li>type: <code>measure</code></li>
+</ul>
+</li>
+</ul>
+<p>Transforms an array of pixel values (with or without <code>px</code>) in em unit, based on 
+the optional <code>$base-value</code> passed to the function.</p>
+<p><strong>Examples</strong></p>
+<pre><code class="lang-scss">.foo{
+  margin: em-calc(16 8 16 8);
+  padding: em-calc(8, 8);
+}
+</code></pre>
+<p>will return:</p>
+<pre><code class="lang-css">.foo{
+  margin: 1em 0.5em 1em 0.5em;
+  padding: 0.5em;
+}
+</code></pre>
+<h3 id="px-calc-">px-calc()</h3>
+<p>arguments: <code>$values</code>, <code>$base-value</code></p>
+<ul>
+<li><strong>$values</strong><ul>
+<li>required</li>
+<li>type: <code>list</code></li>
+</ul>
+</li>
+<li><strong>$base-value</strong><ul>
+<li>optional</li>
+<li>default: <a href="#rem-base"><code>$rem-base</code></a></li>
+<li>type: <code>measure</code></li>
+</ul>
+</li>
+</ul>
+<p>Transforms an array of ems or rems values (with or without <code>em/rem</code>) in pixel 
+unit, based on the optional <code>$base-value</code> passed to the function.</p>
+<p><strong>Example</strong></p>
+<pre><code class="lang-scss">.foo{
+  margin: px-calc(1em 0.5em 1em 0.5em);
+  padding: px-calc(1rem);
+}
+</code></pre>
+<p>will return:</p>
+<pre><code class="lang-css">.foo{
+  margin: 16px 8px 16px 8px;
+  padding: 16px;
+}
+</code></pre>
+
+            </div>
           </div>
         </div>
       </div>

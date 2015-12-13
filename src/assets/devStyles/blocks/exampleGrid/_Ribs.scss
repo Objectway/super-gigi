@@ -1,4 +1,4 @@
-.Pepperoni {
+.Ribs {
   @extend %Line;
   @include grid-row(false);
 
@@ -6,22 +6,26 @@
     &--first {
       @include grid-column(
         $width: 4,
-        $push: (xxsmall:8, large: 4)
+        $offset: (
+          xxsmall: 6, large: 1
+        )
       );
     }
 
     &--second {
       @include grid-column(
         $width: 4,
-        $push: 4,
-        $pull: (large: 4)
+        $offset: 2
       );
     }
 
     &--third {
       @include grid-column(
         $width: 4,
-        $pull: (xxsmall: 8, large: 0)
+        $offset: (
+          xxsmall: 8,
+          large: 4
+        )
       );
     }
   }

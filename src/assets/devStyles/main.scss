@@ -17,6 +17,8 @@ $debug: true;
 //Cosmetic patterns
 @import 'layout';
 
+// Imported from README.md
+
 // Components blocks
 @import 'blocks/HomePage';
 @import 'blocks/KitchenSinkNavBar';
@@ -30,7 +32,10 @@ $debug: true;
 @import 'blocks/CodeExampleBox';
 @import 'blocks/DocumentationSection';
 @import 'blocks/Box';
+@import 'blocks/MarkDownGenerated';
+
 @import 'blocks/exampleGrid/RoastedRibs';
+@import 'blocks/exampleGrid/Ribs';
 @import 'blocks/exampleGrid/FriedChips';
 @import 'blocks/exampleGrid/Tomatoes';
 @import 'blocks/exampleGrid/Steak';

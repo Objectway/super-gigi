@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <!-- - HEAD-->
+  <head>
+    <title>SuperGiGi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,400,700" type="text/css">
+    <link rel="stylesheet" href="development/scripts/vendor/prism.css">
+    <link rel="stylesheet" href="development/styles/main.css" type="text/css">
+  </head>
+  <body class="Typo">
+    <!-- Kitchen Sink menu toggler-->
+    <input id="TogglerMenu" type="checkbox" class="TogglerMenu">
+    <aside class="KitchenSinkSideBar">
+      <div class="KitchenSinkSideBar__logo"><a href="index.html">SuperGiGi</a></div>
+            <ul class="KitchenSinkMenuList">
+              <li class="KitchenSinkMenuList__element"><a href="grid.html" class="KitchenSinkMenuList__link">The Grid</a></li>
+              <li class="KitchenSinkMenuList__element KitchenSinkMenuList__element--active"><a href="visibility.html" class="KitchenSinkMenuList__link">Visibility</a></li>
+              <li class="KitchenSinkMenuList__element"><a href="options.html" class="KitchenSinkMenuList__link">Options</a></li>
+              <li class="KitchenSinkMenuList__element"><a href="mixins.html" class="KitchenSinkMenuList__link">Mixins</a></li>
+              <li class="KitchenSinkMenuList__element"><a href="functions.html" class="KitchenSinkMenuList__link">Functions</a></li>
+            </ul>
+    </aside>
+    <nav class="KitchenSinkNavBar">
+      <div class="KitchenSinkNavBar__menuBar">
+        <div class="KitchenSinkNavBar__logo">
+          <div class="KitchenSinkNavBar__title"><a href="index.html">SuperGiGi</a></div>
+        </div>
+        <div class="KitchenSinkNavBar__menuItems">
+                    <ul class="KitchenSinkMenuList">
+                      <li class="KitchenSinkMenuList__element"><a href="grid.html" class="KitchenSinkMenuList__link">The Grid</a></li>
+                      <li class="KitchenSinkMenuList__element KitchenSinkMenuList__element--active"><a href="visibility.html" class="KitchenSinkMenuList__link">Visibility</a></li>
+                      <li class="KitchenSinkMenuList__element"><a href="options.html" class="KitchenSinkMenuList__link">Options</a></li>
+                      <li class="KitchenSinkMenuList__element"><a href="mixins.html" class="KitchenSinkMenuList__link">Mixins</a></li>
+                      <li class="KitchenSinkMenuList__element"><a href="functions.html" class="KitchenSinkMenuList__link">Functions</a></li>
+                    </ul>
+        </div>
+      </div>
+    </nav>
+    <nav class="KitchenSinkTouchBar">
+      <label for="TogglerMenu" class="KitchenSinkTouchBar__label">
+        <svg id="Livello_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve" class="KitchenSinkTouchBar__icon">
+          <rect id="XMLID_1_" x="-0.1" y="70.3" width="100.1" height="15.5"></rect>
+          <rect id="XMLID_4_" x="-0.1" y="42.7" width="100.1" height="15.5"></rect>
+          <rect id="XMLID_3_" x="-0.1" y="14.8" width="100.1" height="16.3"></rect>
+        </svg>
+      </label>
+      <div class="KitchenSinkTouchBar__logo">
+        <div class="KitchenSinkTouchBar__title"><a href="index.html">SuperGiGi</a></div>
+      </div>
+    </nav>
+    <div class="KitchenSinkOverlay">
+      <label for="TogglerMenu" class="KitchenSinkOverlay__label"></label>
+    </div>
+    <div class="KitchenSinkBody">
+      <div class="KitchenSinkBody__section">
+        <div class="KitchenSinkBody__title">
+          <h2 class="Typo__h2">Visibility Mixins</h2>
+          <p class="Typo__p">Let you show or hide elements based on screen size or device orientation. You can use these mixins to control which elements users see depending on their browsing environment.</p>
+        </div>
+        <!-- - VISIBILITY CLASSES-->
+        <div class="DocumentationSection">
+          <div class="DocumentationSection__description">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">Show for - Hide for</h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">In this example, we use the <a href="https://github.com/Objectway/super-gigi#show-for" target="_blank" class="Typo__a">show-for()</a> and <a href="https://github.com/Objectway/super-gigi#hide-for" target="_blank" class="Typo__a">hide-for()</a> mixins to show or hide the columns based on the device on which users view a page. If their browser meets the viewport condition, the element will be shown. If not, it will be hidden.</p>
+            </div>
+          </div>
+          <div class="DocumentationSection__example">
+            <div class="BarbecueSauce">
+              <div class="BarbecueSauce__element BarbecueSauce__element--first">
+                <div class="Box">
+                  <p class="Box__paragraph">1</p>
+                </div>
+              </div>
+              <div class="BarbecueSauce__element BarbecueSauce__element--second">
+                <div class="Box">
+                  <p class="Box__paragraph">2</p>
+                </div>
+              </div>
+              <div class="BarbecueSauce__element BarbecueSauce__element--last">
+                <div class="Box">
+                  <p class="Box__paragraph">3</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="DocumentationSection__html">
+            <pre class="CodeExampleBox"><code class="language-markup">&lt;div class=&quot;BarbecueSauce&quot;&gt;
+  &lt;div class=&quot;BarbecueSauce__element BarbecueSauce__element--first&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;1&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;BarbecueSauce__element BarbecueSauce__element--second&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;2&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;BarbecueSauce__element BarbecueSauce__element--last&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;3&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+          </div>
+          <div class="DocumentationSection__scss">
+            <pre class="CodeExampleBox"><code class="language-scss">.BarbecueSauce{
+  @include grid-row($nested: false) // Equivalent to grid-row(false);
+
+  &__element {
+    &--first {
+      @include show-for(medium);
+      @include grid-column(4);
+    }
+
+    &--second {
+      @include grid-column((xxsmall: 6, medium: 2, large: 6));
+    }
+
+    &--last {
+      @include hide-for(small);
+      @include grid-column(6);
+    }
+  }
+}
+</code></pre>
+          </div>
+        </div>
+        <div class="DocumentationSection">
+          <div class="DocumentationSection__description">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">Show from - Hide from</h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo Typo__p">For this example we use the <a href="https://github.com/Objectway/super-gigi#show-from" target="_blank" class="Typo__a">show-from()</a> and <a href="https://github.com/Objectway/super-gigi#hide-from" target="_blank" class="Typo__a">hide-from()</a> mixins to determine which columns are going to be shown or hidden from a viewport size condition.
+                <hola></hola>
+              </p>
+            </div>
+          </div>
+          <div class="DocumentationSection__example">
+            <div class="ChickenWings">
+              <div class="ChickenWings__element ChickenWings__element--first">
+                <div class="Box">
+                  <p class="Box__paragraph">1</p>
+                </div>
+              </div>
+              <div class="ChickenWings__element ChickenWings__element--second">
+                <div class="Box">
+                  <p class="Box__paragraph">2</p>
+                </div>
+              </div>
+              <div class="ChickenWings__element ChickenWings__element--third">
+                <div class="Box">
+                  <p class="Box__paragraph">3</p>
+                </div>
+              </div>
+              <div class="ChickenWings__element ChickenWings__element--last">
+                <div class="Box">
+                  <p class="Box__paragraph">4</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="DocumentationSection__html">
+            <pre class="CodeExampleBox"><code class="language-markup">&lt;div class=&quot;ChickenWings&quot;&gt;
+  &lt;div class=&quot;ChickenWings__element ChickenWings__element--first&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;1&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;ChickenWings__element ChickenWings__element--second&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;2&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;ChickenWings__element ChickenWings__element--third&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;3&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;ChickenWings__element ChickenWings__element--last&quot;&gt;
+    &lt;div class=&quot;Box&quot;&gt;
+      &lt;p&gt;4&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+          </div>
+          <div class="DocumentationSection__scss">
+            <pre class="CodeExampleBox"><code class="language-scss">.ChickenWings{
+  @include grid-row($nested: false) // Equivalent to grid-row(false);
+
+  &__element {
+    &--first {
+      @include grid-column((xxsmall: 4, medium: 4, large: 6));
+    }
+
+    &--second {
+      @include hide-from(medium);
+      @include grid-column(4);
+    }
+
+    &--third {
+      @include grid-column((xxsmall: 4, medium: 8, large: 3));
+    }
+
+    &--last {
+      @include show-from(large);
+      @include grid-column(3);
+    }
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="KitchenSinkFooter">
+      <p class="KitchenSinkFooter__paragraph">© 2015 Objectway Financial Software S.p.a.</p>
+      <script type="text/javascript" src="development/scripts/vendor/prism.js"></script>
+    </div>
+  </body>
+</html>

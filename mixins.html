@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+  <!-- - HEAD-->
+  <head>
+    <title>SuperGiGi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,400,700" type="text/css">
+    <link rel="stylesheet" href="development/scripts/vendor/prism.css">
+    <link rel="stylesheet" href="development/styles/main.css" type="text/css">
+  </head>
+  <body class="Typo">
+    <!-- Kitchen Sink menu toggler-->
+    <input id="TogglerMenu" type="checkbox" class="TogglerMenu">
+    <aside class="KitchenSinkSideBar">
+      <div class="KitchenSinkSideBar__logo"><a href="index.html">SuperGiGi</a></div>
+            <ul class="KitchenSinkMenuList">
+              <li class="KitchenSinkMenuList__element"><a href="grid.html" class="KitchenSinkMenuList__link">The Grid</a></li>
+              <li class="KitchenSinkMenuList__element"><a href="visibility.html" class="KitchenSinkMenuList__link">Visibility</a></li>
+              <li class="KitchenSinkMenuList__element"><a href="options.html" class="KitchenSinkMenuList__link">Options</a></li>
+              <li class="KitchenSinkMenuList__element KitchenSinkMenuList__element--active"><a href="mixins.html" class="KitchenSinkMenuList__link">Mixins</a></li>
+              <li class="KitchenSinkMenuList__element"><a href="functions.html" class="KitchenSinkMenuList__link">Functions</a></li>
+            </ul>
+    </aside>
+    <nav class="KitchenSinkNavBar">
+      <div class="KitchenSinkNavBar__menuBar">
+        <div class="KitchenSinkNavBar__logo">
+          <div class="KitchenSinkNavBar__title"><a href="index.html">SuperGiGi</a></div>
+        </div>
+        <div class="KitchenSinkNavBar__menuItems">
+                    <ul class="KitchenSinkMenuList">
+                      <li class="KitchenSinkMenuList__element"><a href="grid.html" class="KitchenSinkMenuList__link">The Grid</a></li>
+                      <li class="KitchenSinkMenuList__element"><a href="visibility.html" class="KitchenSinkMenuList__link">Visibility</a></li>
+                      <li class="KitchenSinkMenuList__element"><a href="options.html" class="KitchenSinkMenuList__link">Options</a></li>
+                      <li class="KitchenSinkMenuList__element KitchenSinkMenuList__element--active"><a href="mixins.html" class="KitchenSinkMenuList__link">Mixins</a></li>
+                      <li class="KitchenSinkMenuList__element"><a href="functions.html" class="KitchenSinkMenuList__link">Functions</a></li>
+                    </ul>
+        </div>
+      </div>
+    </nav>
+    <nav class="KitchenSinkTouchBar">
+      <label for="TogglerMenu" class="KitchenSinkTouchBar__label">
+        <svg id="Livello_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve" class="KitchenSinkTouchBar__icon">
+          <rect id="XMLID_1_" x="-0.1" y="70.3" width="100.1" height="15.5"></rect>
+          <rect id="XMLID_4_" x="-0.1" y="42.7" width="100.1" height="15.5"></rect>
+          <rect id="XMLID_3_" x="-0.1" y="14.8" width="100.1" height="16.3"></rect>
+        </svg>
+      </label>
+      <div class="KitchenSinkTouchBar__logo">
+        <div class="KitchenSinkTouchBar__title"><a href="index.html">SuperGiGi</a></div>
+      </div>
+    </nav>
+    <div class="KitchenSinkOverlay">
+      <label for="TogglerMenu" class="KitchenSinkOverlay__label"></label>
+    </div>
+    <div class="KitchenSinkBody">
+      <div class="KitchenSinkBody__section">
+        <div class="KitchenSinkBody__aside"></div>
+        <div class="KitchenSinkBody__content">
+          <div class="MarkDownGenerated">
+            <div class="MarkDownGenerated__content"><h2 id="mixins">Mixins</h2>
+<p>If you&#39;re using the Sass version of Super-GiGi you&#39;ll can use the following Mixins. Here you can found extended documentation for Grid and Visibility mixins too.</p>
+<h3 id="media-query-">media-query()</h3>
+<p>arguments: <code>$query</code>, <code>$only</code>, <code>$eq-grid</code></p>
+<ul>
+<li><strong>$query</strong><ul>
+<li>optional</li>
+<li>default: <code>xxsmall</code></li>
+<li>type: <code>string</code></li>
+</ul>
+</li>
+<li><strong>$until</strong><ul>
+<li>optional</li>
+<li>default: <code>false</code></li>
+<li>type: <code>boolean</code> or <code>string</code></li>
+</ul>
+</li>
+<li><strong>$eq-grid</strong><ul>
+<li>optional</li>
+<li>default: <code>false</code></li>
+<li>type: <code>boolean</code></li>
+</ul>
+</li>
+</ul>
+<p>As you can guess, this is the mixin that generates our media or element query. 
+The <code>$query</code> argument must be one of the <code>key</code> values defined 
+in the <a href="#breakpoints"><code>$breakpoints</code></a> variable. 
+<strong>Super GiGi</strong> is developed mobile first, so if you write 
+<code>@include mediaquery(small){...}</code> you will target all the queries <strong>from</strong> <code>small</code>. </p>
+<p>If you want to trigger only a range you can pass <code>$until</code> parameter to your mixin implementation. 
+<code>$until</code> accepts <code>only</code> or a <a href="#breakpoints"><code>$breakpoints</code></a> key value.
+Example: </p>
+<pre><code class="lang-scss">.sausage {
+  @include media-query(small, only) {
+    content: &quot;small only;&quot;
+  }
+}
+
+.eggplant {
+  @include media-query(small, large) {
+    content: &quot;small to large;&quot;
+  }
+}
+</code></pre>
+<p>will generate: </p>
+<pre><code class="lang-css">@media only screen and (min-width: 40em) and (max-width: 44.9375em) {
+  .sausage {
+    content: &quot;small only;&quot;; } }
+
+@media only screen and (min-width: 40em) and (max-width: 79.9375em) {
+  .eggplant {
+    content: &quot;small to large;&quot;; } }
+</code></pre>
+<p>You can choose between classical 
+<a href="http://www.w3.org/TR/css3-mediaqueries/" target="_blank">media query</a> 
+or to use <a href="https://github.com/snugug/eq.js" target="_blank">element query</a>. 
+You don&#39;t have to specify this setting everytime, <strong>Super GiGi</strong> provides a 
+<a href="#eq-grid">global $eq-grid</a> variable, but sometime is useful to mix media end 
+element query.</p>
+<h3 id="grid-space-">grid-space()</h3>
+<p>arguments: <code>$property</code>, <code>$attr</code></p>
+<ul>
+<li><strong>$property</strong><ul>
+<li>optional</li>
+<li>default: <code>width</code></li>
+<li>type: <code>string</code></li>
+</ul>
+</li>
+<li><strong>$attr</strong><ul>
+<li>optional</li>
+<li>default: <code>auto</code></li>
+<li>type: <code>list</code></li>
+</ul>
+</li>
+</ul>
+<p>When you are writing css in a grid, it&#39;s difficult to manage 
+the measures sometime. <code>grid-space()</code> comes to help us in this ungrateful task! 
+You must declare the property you want to set (for example: 
+<code>margin-left</code>) changing the <code>$property</code> argument. 
+After that you can pass how many column of the grid you want to take. 
+For example assuming that we have <code>12</code> <a href="#grid-columns"><code>$grid-columns</code></a>:</p>
+<pre><code class="lang-scss">.foo {
+  @include grid-space(margin-left, 5)
+}
+</code></pre>
+<p>will return</p>
+<pre><code class="lang-css">.foo {
+  margin-left: 41.6667%
+}
+</code></pre>
+<p>You can also express the number of column you want to use for your calculation, 
+passing to <code>$attr</code> a sass list composed like 
+that: <code>$column</code> <strong><code>of</code></strong> <code>$columns</code>. For example:</p>
+<pre><code class="lang-scss">.foo {
+  @include grid-space(margin-left, 1 of 2)
+}
+</code></pre>
+<p>will return</p>
+<pre><code class="lang-css">.foo {
+  margin-left: 50%
+}
+</code></pre>
+<h3 id="grid-row-">grid-row()</h3>
+<p>arguments: <code>$nested</code>, <code>$vertical</code></p>
+<ul>
+<li><strong>$nested</strong><ul>
+<li>optional</li>
+<li>default: <code>true</code></li>
+<li>type: <code>boolean</code></li>
+</ul>
+</li>
+<li><strong>$vertical</strong><ul>
+<li>optional</li>
+<li>default: <code>false</code></li>
+<li>type: <code>boolean</code></li>
+</ul>
+</li>
+</ul>
+<p>This mixin will generate the <strong>row element</strong> of the grid. It&#39;s real simple, 
+you may specify if the row is nested in another row (to reset the padding). 
+The other option <code>$vertical</code> will simply add the CSS3 
+<code>flex-direction: row-reverse</code> property to the element.</p>
+<h3 id="grid-column-">grid-column()</h3>
+<p>arguments: <code>$width</code>, <code>$offset</code>, <code>$push</code>, <code>$pull</code>, <code>$order</code>, <code>$collapse</code>, <code>$global</code></p>
+<ul>
+<li><a href="#gcwidthoffsetpushpull"><strong>$width</strong></a><ul>
+<li>optional</li>
+<li>default: <code>null</code></li>
+</ul>
+</li>
+<li><a href="#gcwidthoffsetpushpull"><strong>$offset</strong></a><ul>
+<li>optional</li>
+<li>default: <code>null</code></li>
+</ul>
+</li>
+<li><a href="#gcwidthoffsetpushpull"><strong>$push</strong></a><ul>
+<li>optional</li>
+<li>default: <code>null</code></li>
+</ul>
+</li>
+<li><a href="#gcwidthoffsetpushpull"><strong>$pull</strong></a><ul>
+<li>optional</li>
+<li>default: <code>null</code></li>
+</ul>
+</li>
+<li><a href="#gcorder"><strong>$order</strong></a><ul>
+<li>optional</li>
+<li>default: <code>null</code></li>
+</ul>
+</li>
+<li><a href="#gccollapseglobal"><strong>$collapse</strong></a><ul>
+<li>optional</li>
+<li>default: <code>null</code></li>
+<li>type: <code>boolean</code></li>
+</ul>
+</li>
+<li><a href="#gccollapseglobal"><strong>$global</strong></a><ul>
+<li>optional</li>
+<li>default: <code>true</code></li>
+<li>type: <code>boolean</code></li>
+</ul>
+</li>
+</ul>
+<p>This is the most important mixin of our grid. And probabily it is the mixin 
+that you will use more. Let&#39;s take a look at how it works:</p>
+<pre><code class="lang-scss">.foo {
+  @include grid-column(
+      $width: (xxsmall:6, large: 6),
+      $push: (xxsmall:6, large: 12),
+      $pull: 1,
+      $order: 0,
+      $collapse: false,
+      $global: true
+    );
+};
+</code></pre>
+<p>will generate:</p>
+<pre><code class="lang-css">.foo {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  right: auto;
+  position: relative;
+  left: auto;
+  right: 8.33333%;
+  padding: 0 0.9375rem;
+  order: 0;
+}
+@media only screen and (min-width: 0em) {
+  .foo {
+    width: 50%; 
+    left: 50%;
+  } 
+}
+@media only screen and (min-width: 64em) {
+  .foo {
+    width: 50%; 
+    left: 100%;
+  } 
+}
+</code></pre>
+<p><strong>note:</strong> you see repeted properties, because we set pull and push for 
+the same element. </p>
+<p><div id="gcwidthoffsetpushpull"></div>
+<code>$width</code>, <code>$offset</code>, <code>$push</code> and <code>$pull</code> have similar behaviors. They can be used in three different way.</p>
+<p><strong>1 - Passing an integer</strong></p>
+<pre><code class="lang-scss">.foo {
+  @include grid-column($width: 1);
+}
+</code></pre>
+<p>will return:</p>
+<pre><code class="lang-css">.foo {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  width: 8.33333%;
+}
+</code></pre>
+<p>The first four properties are the common behaviour of the column object, the 
+relevant part is <code>width: 8.33333%</code>. This is calculated via 
+<a href="#grid-space"><code>grid-space() mixin</code></a></p>
+<p><strong>2 - Passing a semantic list</strong></p>
+<pre><code class="lang-scss">.foo {
+  @include grid-column($width: 1 of 3);
+}
+</code></pre>
+<p>will return:</p>
+<pre><code class="lang-css">.foo {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  width: 33.33333%;
+}
+</code></pre>
+<p>As before, the first four properties are the common rules of our column, the 
+relevant part is <code>width: 33.33333%</code>. This is calculated via 
+<a href="#grid-space"><code>grid-space() mixin</code></a></p>
+<p><strong>3 - Passing a queries map</strong></p>
+<pre><code class="lang-scss">.foo {
+  @include grid-column($width: (small: 6, medium: 4, large: 3));
+}
+</code></pre>
+<p>will generate:</p>
+<pre><code class="lang-css">.foo {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (min-width: 40em) {
+  .foo {
+    width: 50%; 
+  } 
+}
+@media only screen and (min-width: 45em) {
+  .foo {
+    width: 33.33333%; 
+  } 
+}
+@media only screen and (min-width: 64em) {
+  .foo {
+    width: 25%; 
+  } 
+}
+</code></pre>
+<p>As before, the first four properties are the common rules of our column, 
+the relevant part are these in the media query. How you can see we have 
+the widths of the column set in a responsive way.</p>
+<p><strong>4 - Width</strong>
+As said before <code>$width</code>, <code>$offset</code>, <code>$push</code> and <code>$pull</code> have similar behaviors, but <code>$width</code> is obviously a bit different.</p>
+<p>We&#39;ve seen that you can pass to <code>$width</code> essentialy a number. When you do that,
+<code>Super GiGi</code> will add to your css: <code>flex: 0 0 auto</code>. This is essential to our flex grid to work. </p>
+<p>But you can set <code>$width</code> to <code>auto</code>, that will set the <code>width</code> css property to <code>auto</code> and the <code>flex</code> property to <code>1 1 0%</code>. 
+With this option you can have columns that will take all the space available on
+the row. If you have one column, that will take 100% of the space, if two that will take half each one and so on.</p>
+<p>Another important option is to set <code>$width</code> to <code>0</code>. <strong>This will not set <code>width</code> to 0%</strong> (a column must have a minimun width). But the width will be <code>auto</code>.
+In this way you can have a column with the width decided from the content.</p>
+<p><strong>Note</strong> we are preparing a visual example. Stay tuned.</p>
+<p><div id="gcorder"></div>
+<strong>$order</strong> is similar, you can set it only in two ways, 
+via <code>integer</code> or via <code>map</code>.
+It will set the css3 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order" target="_blank"><code>order</code></a>. 
+Let see an example:</p>
+<pre><code class="lang-scss">.foo {
+  @include grid-column($order: 3)
+}
+.bar {
+  @include grid-column($order: (small: 6, medium: 4, large: 3))
+}
+</code></pre>
+<p>will compile in:</p>
+<pre><code class="lang-css"> .foo {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  order: 3;
+}
+
+.bar {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+@media only screen and (min-width: 40em) {
+  .bar {
+    order: 6; 
+  } 
+}
+@media only screen and (min-width: 45em) {
+  .bar {
+    order: 4; 
+  } 
+}
+@media only screen and (min-width: 64em) {
+  .bar {
+    order: 3; 
+  } 
+}
+</code></pre>
+<p><div id="gccollapseglobal"></div>
+<strong>$collapse</strong> and <strong>$global</strong> are very simple. The first one if <code>false</code> will 
+generate the padding of our columns <code>padding: 0 0.9375rem;</code>, the second one 
+will generate this css:</p>
+<pre><code class="lang-css">  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+</code></pre>
+<p>aka the common properties that defines our columns. 
+<br /></p>
+<h3 id="show-from-">show-from()</h3>
+<p>arguments: <code>$query</code></p>
+<ul>
+<li><strong>$query</strong><ul>
+<li>required</li>
+<li>default: <code>null</code></li>
+<li>type: <code>string</code>
+This is the first of <strong>Super GiGi</strong>&#39;s visibility mixins. It simple takes a <code>$query</code> argument 
+and sets the element to <code>display: none;</code> until the passed <code>$query</code>, where the 
+element will take the property: <code>display: inherit</code>. Example<pre><code class="lang-scss">.foo {
+@include show-from(small);
+}
+</code></pre>
+and magically:<pre><code class="lang-css">.foo {
+display: none; 
+}
+@media only screen and (min-width: 40em) {
+.foo {
+display: inherit; 
+} 
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="hide-from-">hide-from()</h3>
+<p>arguments: <code>$query</code></p>
+<ul>
+<li><strong>$query</strong><ul>
+<li>required</li>
+<li>default: <code>null</code></li>
+<li>type: <code>string</code>
+Like <code>show-from()</code>. It simple takes a <code>$query</code> argument and sets the element to 
+<code>display: inherit;</code> until the passed <code>$query</code>, where the element will take 
+the property: <code>display: none</code>. Example:<pre><code class="lang-scss">.foo {
+@include hide-from(small);
+}
+</code></pre>
+will generate:<pre><code class="lang-css">.foo {
+display: inherit; 
+}
+@media only screen and (min-width: 40em) {
+.foo {
+display: none; 
+} 
+}
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="show-for-">show-for()</h3>
+<p>arguments: <code>$query</code></p>
+<ul>
+<li><strong>$query</strong><ul>
+<li>required</li>
+<li>default: <code>null</code></li>
+<li>type: <code>string</code></li>
+</ul>
+</li>
+</ul>
+<p>In this case the element is hided by  <code>display: none;</code> and will have 
+the property: <code>display: inherit</code> only for the selected media query range. 
+Example:</p>
+<pre><code class="lang-scss">.foo {
+  @include show-for(small);
+}
+</code></pre>
+<p>will generate:</p>
+<pre><code class="lang-css">.foo {
+  display: none; 
+}
+@media only screen and (min-width: 40em) and (max-width: 44.9375em) {
+  .foo {
+    display: inherit; 
+  } 
+}
+</code></pre>
+<h3 id="hide-for-">hide-for()</h3>
+<p>arguments: <code>$query</code></p>
+<ul>
+<li><strong>$query</strong><ul>
+<li>required</li>
+<li>default: <code>null</code></li>
+<li>type: <code>string</code></li>
+</ul>
+</li>
+</ul>
+<p>The last of our visibility mixins. This will hide the element with 
+<code>display: none;</code> only for the selected media query range. Example:</p>
+<pre><code class="lang-scss">.foo {
+  @include hide-for(small);
+}
+</code></pre>
+<p>will generate:</p>
+<pre><code class="lang-css">.foo {
+  display: inherit; 
+}
+@media only screen and (min-width: 40em) and (max-width: 44.9375em) {
+  .foo {
+    display: none; 
+  } 
+}
+</code></pre>
+<p><div id="dry-it"></div></p>
+<h3 id="dry-it-">dry-it()</h3>
+<p>arguments: <code>$id</code></p>
+<ul>
+<li><strong>$id</strong><ul>
+<li>required</li>
+<li>type: <code>string</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>NOTE</strong>: This mixin will change the order of your generated css.</p>
+<p>One of the bad thing that we have in developing a grid without a default classes
+schema is that our result css code will be semantic... but not dry... You can 
+serve the css with gzip, but you know that we will have a lot of redundant 
+code...
+<strong>Example:</strong></p>
+<pre><code class="lang-scss">.foo {
+  @include grid-column((small: 12, large: 6));
+}
+.bar {
+  @include grid-column((small: 12, large: 6));
+}
+</code></pre>
+<p>will generate this css:</p>
+<pre><code class="lang-css">.foo {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (min-width: 40em) {
+  .foo {
+    width: 100%; } }
+@media only screen and (min-width: 64em) {
+  .foo {
+    width: 50%; } }
+
+.bar {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (min-width: 40em) {
+  .bar {
+    width: 100%; 
+  } 
+}
+@media only screen and (min-width: 64em) {
+  .bar {
+    width: 50%; 
+  } 
+}
+</code></pre>
+<p>The same code for two identical classes. 
+Sass comes in our help with placeholders, but we must extend too many selector to
+have a dry behavior. What if we can generate placeholders on fly? 
+That is exactly what <code>dry-it()</code> does. You don&#39;t have to use it, this is already
+in all our mixins seen before. For use it you must only set to <code>true</code> the 
+<a href="#use-dry"><code>$use-dry</code></a> variable. And that is what will happen:</p>
+<pre><code class="lang-scss">.foo {
+  @include grid-column((small: 12, large: 6));
+}
+.bar {
+  @include grid-column((small: 12, large: 6));
+}
+</code></pre>
+<p>will generate this css:</p>
+<pre><code class="lang-css">*.foo, *.bar {
+  box-sizing: border-box;
+  padding: 0 0.9375rem;
+  display: flex;
+  flex-direction: column; 
+}
+
+@media only screen and (min-width: 40em) {
+  *.foo, *.bar {
+    width: 100%; 
+  } 
+}
+
+@media only screen and (min-width: 64em) {
+  *.foo, *.bar {
+    width: 50%; 
+  } 
+}
+</code></pre>
+<p><strong><em>IMPORTANT</em></strong> To use this option is preferable to order your media query smaller to larger.
+I know, that is a very boring thing to do manually, but fortunally:
+<a href="https://github.com/hail2u/node-css-mqpacker" target="_blankW">
+PostCSS mqpacker
+</a> comes to help us. An example on how to use it in gulp:</p>
+<pre><code class="lang-js">var mqpacker = require(&#39;css-mqpacker&#39;);
+var postcss = require(&#39;gulp-postcss&#39;);
+var sass = require(&#39;gulp-sass&#39;);
+
+module.exports = function() {
+  return gulp.src(&#39;/styles/*.+(sass|scss)&#39;)
+    .pipe(sass())
+    .pipe(
+      postcss([
+        mqpacker({
+          sort: true
+        })
+      ])
+    )
+    .pipe(gulp.dest(&#39;/styles/&#39;));
+</code></pre>
+<p>You can find a complete gulp file in <code>gulp/tasks/sass.js</code>.</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="KitchenSinkFooter">
+      <p class="KitchenSinkFooter__paragraph">© 2015 Objectway Financial Software S.p.a.</p>
+      <script type="text/javascript" src="development/scripts/vendor/prism.js"></script>
+    </div>
+  </body>
+</html>
