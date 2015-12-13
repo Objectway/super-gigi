@@ -2,4 +2,6 @@
   background-color: $midnight-blue;
   color: $white;
   padding: rem-calc(20);
+  position: relative;
+  z-index: 2;
 }

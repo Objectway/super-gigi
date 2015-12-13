@@ -1,15 +1,15 @@
 .KitchenSinkBody {
   backface-visibility: hidden;
-  padding: rem-calc(45 0 20 0);
+  // padding: rem-calc(45 0 20 0);
   position: relative;
   transition: transform 0.2s ease-in-out;
 
   @include media-query(large) {
-    padding: rem-calc(45 20 20 20);
+    // padding: rem-calc(45 20 20 20);
   }
 
   @include media-query(large) {
-    padding-top: rem-calc(60);
+    // padding-top: rem-calc(60);
   }
 
   &__section {

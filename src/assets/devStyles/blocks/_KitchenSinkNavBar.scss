@@ -6,7 +6,6 @@ $menu-width: rem-calc(240);
   background-color: $black;
   box-shadow: 0 0 rem-calc(5) rgba(0, 0, 0, 0.5);
   display: none;
-  position: fixed;
   transition: transform 0.2s ease-in-out;
   width: 100%;
   z-index: 1000;

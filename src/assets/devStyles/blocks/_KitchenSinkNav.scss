@@ -1,0 +1,33 @@
+.KitchenSinkNav {
+  border-radius: 3px;
+
+  &__link {
+    display: block;
+    padding: 15px;
+    color: $blue;
+    border-bottom: 1px solid $almost-white;
+    position: relative;
+    z-index: 2;
+    background: $white;
+
+    &:hover {
+      color: $white;
+      background: $blue;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  &__top {
+    @include show-from(large);
+    position: fixed;
+    bottom: 10px;
+    padding: 15px;
+    color: $blue;
+    background: $white;
+    border-radius: 3px;
+
+  }
+}
