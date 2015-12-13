@@ -223,7 +223,7 @@ and all the queries will go from the largest query to the smallest one.
 
 ## Mixins
 ### media-query()
-arguments: `$query`, `$only`, `$eq-grid`
+arguments: `$query`, `$until`, `$eq-grid`
 - **$query**
   - optional
   - default: `xxsmall`
