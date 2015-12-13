@@ -224,6 +224,8 @@ and all the queries will go from the largest query to the smallest one.
   
 
 ## Mixins
+If you're using the Sass version of Super-GiGi you'll can use the following Mixins. Here you can found extended documentation for Grid and Visibility mixins too.
+
 ### media-query()
 arguments: `$query`, `$only`, `$eq-grid`
 - **$query**
@@ -808,6 +810,7 @@ arguments: `$value`
 - **$value**
   - required
   - type: `list`
+
 remove the unit from a value
 **Example**
 ```scss
