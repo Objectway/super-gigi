@@ -248,7 +248,7 @@ in the [`$breakpoints`](#breakpoints) variable.
 If you want to trigger only a range you can pass `$until` parameter to your mixin implementation. 
 `$until` accepts `only` or a [`$breakpoints`](#breakpoints) key value.
 Example: 
-```SCSS
+```scss
 .sausage {
   @include media-query(small, only) {
     content: "small only;"
@@ -262,7 +262,7 @@ Example:
 }
 ```
 will generate: 
-```CSS
+```css
 @media only screen and (min-width: 40em) and (max-width: 44.9375em) {
   .sausage {
     content: "small only;"; } }
@@ -903,7 +903,7 @@ will return:
   
 
 
-## Run it
+### Run it
 Do you want to collaborate? It's dangerous to go alone take this:
 
 `$ npm run dev` -> Compile sources, serve the dev folder and start watchers
