@@ -98,6 +98,9 @@
   }
 }
 
+// Initializing $type variable
+$type: '';
+
 @if $use-classes {
   $type: '.';
 } @else {
