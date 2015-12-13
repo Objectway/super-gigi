@@ -4,7 +4,7 @@ It's developed thinking about modern web applications and its first purpose is
 to make easier to manage responsive layout.
 It's developed in Sass but you can use a compiled version if you prefer. 
 
-<br/>
+  
 ## Installation
 You can choose different ways to install **Super GiGi**:
 
@@ -18,7 +18,7 @@ After the download you can choose if use the compiled version including `[path t
 Or you can use the Sass version, with all the options and mixins below, importing
 in your sass `[path to super-gigi]/dist/_main.scss`.
 
-<br/>
+  
 ## Options
 If you are using the Sass version you can personalize **Super GiGi**
 simply changing the value of its variables before importing `main.scss`. 
@@ -34,33 +34,36 @@ This is the default value for all the
 [units functions](#functions). 
 set the same value you've used for your `html`.
 
-<br/>
-### $row-width
-default: `rem-calc(1920)` - type: `unit` 
+  
 
-This is the `max-width` of our row objects. The default value is 1920 pixels 
-converted in rems via [`rem-calc()`](#rem-calc) function.
+<div id="row-width"> 
+  ### $row-width
+  default: `rem-calc(1920)` - type: `unit` 
 
-<br/>
+  This is the `max-width` of our row objects. The default value is 1920 pixels 
+  converted in rems via [`rem-calc()`](#rem-calc) function.
+</div>
+
+  
 ### $column-gutter
 default: `rem-calc(30)` - type: `unit` 
 
 This is the space between our columns. The default value is 30 pixels converted in rems via [`rem-calc()`](#rem-calc) function. 
 
-<br/>
+  
 ### $grid-columns
 default: `12` - type: `number` 
 
 The number of columns used in our layout.
 
-<br/>
+  
 ### $use-classes
 default: `false` - type: `boolean` 
 
 Set this variable to true if you want to generate static classes, like: 
 `.row`, `.column` or `.large-12`. 
 
-<br/>
+  
 ### $use-placeholders
 default: `false` - type: `boolean` 
 
@@ -73,43 +76,43 @@ Set this variable to true if you want to generate placeholders to us like:
 }
 ```
 
-<br/>
+  
 ### $row-name
 default: `row` - type: `string` 
 
 This option will change the name of the row object classes or placeholder.
 
-<br/>
+  
 ### $column-name
 default: `column` - type: `string` 
 
 This option will change the name of the column object classes or placeholder. 
 
-<br/>
+  
 ### $use-bem
 default: `false` - type: `boolean` 
 
 This option will change the format of the class names generated when `$use-class` is `true`.
 
-<br/>
+  
 ### $bem-separator
 default: `'--'` - type: `string` 
 
 This option will change the separator between the block and the element whe using BEM naming.
 
-<br/>
+  
 ### $grid-start
 default: `left` - type: `string` - possibile values: `left` or `right`
 
 This is the value to change if you want to develop a rtl application.
 
-<br/>
+  
 ### $use-dry
 default: `false` - type: `boolean` 
 
 If true, all the grid will be passed by [`dry-it()`](#dry-it) mixin.
 
-<br/>
+  
 ### $debug
 default: `false` - type: `boolean` 
 
@@ -136,14 +139,14 @@ useful when we inspect the elements.
   }
 ```
 
-<br/>
+  
 ### $eq-grid `EXPERIMENTAL`
 default: `false` - type: `boolean` 
 
 **Super GiGi** supports [EQJS](https://github.com/Snugug/eq.js). Turn this option to
 `true` to use element queries css instead of classical mediaqueries. See the [`media-query()`](#media-query) mixin for other infos. 
 
-<br/>
+  
 ### $breakpoints
 default: ```(
   xxsmall: 0em, 
@@ -202,7 +205,7 @@ In the same way you have to change how you refer to breakpoints in all your mixi
   
 ```
 
-<br/>
+  
 ### $use-flex `EXPERIMENTAL`
 default: `true` - type: `boolean` 
 
@@ -210,7 +213,7 @@ default: `true` - type: `boolean`
 version in float. 
 Set this option to `false`, to try it.
 
-<br/>
+  
 ### $query-direction `EXPERIMENTAL`
 default: `(min-width, max-width)` - type: `list` 
 
@@ -219,11 +222,11 @@ develop in graceful decadency. To do this you can set
 `$query-direction: (max-width, min-width)`. The media-queries will be reverted
 and all the queries will go from the largest query to the smallest one.
 
-<br/>
+  
 
 ## Mixins
 ### media-query()
-arguments: `$query`, `$until`, `$eq-grid`
+arguments: `$query`, `$only`, `$eq-grid`
 - **$query**
   - optional
   - default: `xxsmall`
@@ -322,7 +325,7 @@ will return
 }
 ```
 
-<br/>
+  
 ### grid-row()
 arguments: `$nested`, `$vertical`
 - **$nested**
@@ -339,7 +342,7 @@ you may specify if the row is nested in another row (to reset the padding).
 The other option `$vertical` will simply add the CSS3 
 `flex-direction: row-reverse` property to the element.
 
-<br/>
+  
 ### grid-column()
 arguments: `$width`, `$offset`, `$push`, `$pull`, `$order`, `$collapse`, `$global`
 - [**$width**](#gcwidthoffsetpushpull)
@@ -592,7 +595,7 @@ and magically:
   } 
 }
 ```
-<br/>
+  
 
 ###hide-from()
 arguments: `$query`
@@ -619,7 +622,7 @@ will generate:
   } 
 }
  ```
-<br/>
+  
 
 ###show-for()
 arguments: `$query`
@@ -648,7 +651,7 @@ will generate:
   } 
 }
  ```
-<br/>
+  
 
 ###hide-for()
 arguments: `$query`
@@ -676,7 +679,7 @@ will generate:
   } 
 }
  ```
-<br/>
+  
 
 <div id="dry-it"></div>
 ### dry-it()
@@ -794,7 +797,7 @@ module.exports = function() {
 
 You can find a complete gulp file in `gulp/tasks/sass.js`.
 
-<br/>
+  
 
 ## Functions
 We love [Foundation](http://foundation.zurb.com) and we used it a lot. These 
@@ -898,7 +901,7 @@ will return:
 }
 ```
 
-<br/>
+  
 
 
 ## Run it
@@ -912,7 +915,7 @@ Do you want to collaborate? It's dangerous to go alone take this:
 
 we have added unit tests recently. You can run it with Mocha. 
 
-<br/>
+  
 
 ## BROWSER SUPPORT
 Super GiGi is built in flex. So the browser support is 
