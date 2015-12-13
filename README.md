@@ -137,7 +137,7 @@ useful when we inspect the elements.
 ```
 
 <br/>
-### $eq-grid `EXPERIMENTAL
+### $eq-grid `EXPERIMENTAL`
 default: `false` - type: `boolean` 
 
 **Super GiGi** supports [EQJS](https://github.com/Snugug/eq.js). Turn this option to
@@ -792,7 +792,7 @@ module.exports = function() {
     .pipe(gulp.dest('/styles/'));
 ```
 
-You can found a complete gulp file in `gulp/tasks/sass.js`.
+You can find a complete gulp file in `gulp/tasks/sass.js`.
 
 <br/>
 
