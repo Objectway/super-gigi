@@ -36,13 +36,12 @@ set the same value you've used for your `html`.
 
   
 
-<div id="row-width"> 
-  ### $row-width
-  default: `rem-calc(1920)` - type: `unit` 
+### $row-width
+default: `rem-calc(1920)` - type: `unit` 
 
-  This is the `max-width` of our row objects. The default value is 1920 pixels 
-  converted in rems via [`rem-calc()`](#rem-calc) function.
-</div>
+This is the `max-width` of our row objects. The default value is 1920 pixels 
+converted in rems via [`rem-calc()`](#rem-calc) function.
+
 
   
 ### $column-gutter
