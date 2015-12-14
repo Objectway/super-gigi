@@ -3,6 +3,7 @@
   // padding: rem-calc(45 0 20 0);
   position: relative;
   transition: transform 0.2s ease-in-out;
+  flex-grow: 1;
 
   @include media-query(large) {
     // padding: rem-calc(45 20 20 20);

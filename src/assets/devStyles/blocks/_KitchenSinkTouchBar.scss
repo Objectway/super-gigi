@@ -2,7 +2,7 @@
   background: $black;
   box-shadow: 0 0 rem-calc(5) rgba(0, 0, 0, 0.5);
   height: rem-calc(50);
-  position: fixed;
+  position: relative;
   transition: transform 0.2s ease-in-out;
   width: 100%;
   z-index: 500;

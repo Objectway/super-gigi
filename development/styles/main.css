@@ -811,7 +811,17 @@ body {
   color: #31363b;
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
   font-size: 16px;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh; }
 
 .Typo__h1, .KitchenSinkNavBar__title, .KitchenSinkTouchBar__title, .KitchenSinkSideBar__logo {
   font-size: 2.5em;
@@ -996,7 +1006,7 @@ body {
   background: #31363b;
   box-shadow: 0 0 0.3125rem rgba(0, 0, 0, 0.5);
   height: 3.125rem;
-  position: fixed;
+  position: relative;
   -webkit-transition: -webkit-transform 0.2s ease-in-out;
           transition: transform 0.2s ease-in-out;
   width: 100%;
@@ -1084,7 +1094,11 @@ body {
           backface-visibility: hidden;
   position: relative;
   -webkit-transition: -webkit-transform 0.2s ease-in-out;
-          transition: transform 0.2s ease-in-out; }
+          transition: transform 0.2s ease-in-out;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
   .KitchenSinkBody__section {
     content: "ROW nested: false, vertical false";
     margin: 0 auto;
