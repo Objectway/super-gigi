@@ -2,7 +2,7 @@
 .HomePage {
 
   .HomePage__section {
-    @include grid-row;
+    @include grid-row();
     justify-content: center;
     margin-bottom: $column-gutter;
   }
@@ -18,7 +18,9 @@
   }
 
   &__features {
-    @include grid-column((xxsmall: 10, medium: 3));
+    @include grid-column((xxsmall: 8, large: 3));
+
+    margin-bottom: rem-calc(20);
 
     .Typo__h2 {
       margin-bottom: rem-calc(20);
