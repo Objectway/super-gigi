@@ -6,6 +6,7 @@
     .DocumentationSection__title
       h3.Typo__h3 Simple grid
     .DocumentationSection__text
+      p.Typo__p Start by adding an element with a class that includes the mixin for the row, this will create a horizontal block to contain vertical columns. Then add elements with classes which include the column mixin within that row. Specify the widths of each column inside the mixin starting from the smallest device, as SuperGiGi is mobile first larger devices will inherit those styles, customise them if necessary.
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-row" target="_blank") grid-row()
       | &nbsp; - &nbsp;
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-row" target="_blank") grid-column()
@@ -60,7 +61,7 @@
     .DocumentationSection__title
       h3.Typo__h3 Nested and vertical row
     .DocumentationSection__text
-      p.Typo__p Nested will set negative margin to the row to reset the padding of a parent row.
+      p.Typo__p You can nest the grids and remove unnecessary padding between them, set the property nested to true and it will set negative margin to the row to reset the padding of a parent row container. Setting vertical to true will add the property flex-direction to column to create a vertical block.
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-row" target="_blank") grid-row()
 
   .DocumentationSection__example
@@ -112,7 +113,7 @@
     .DocumentationSection__title
       h3.Typo__h3 Column auto
     .DocumentationSection__text
-      p.Typo__p Testo esempio column auto
+      p.Typo__p It will set the property width to auto, which allows the browser to take the remaining space for the column.
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
 
   .DocumentationSection__example
@@ -175,7 +176,7 @@
     .DocumentationSection__title
       h3.Typo__h3 Change the grid base
     .DocumentationSection__text
-      p.Typo__p Testo esempio change the grid base
+      p.Typo__p You can define the amount of columns a row will have by setting a fraction of the space for each column, this gives you the width as a percentage value.
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
 
   .DocumentationSection__example
@@ -307,7 +308,7 @@
     .DocumentationSection__title
       h3.Typo__h3 Push &amp; Pull
     .DocumentationSection__text
-      p.Typo__p Testo esempio $push e $pull
+      p.Typo__p Direction and amount of columns to move. The element will move equal to the width specified for each device.
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
 
   .DocumentationSection__example
@@ -381,7 +382,7 @@
     .DocumentationSection__title
       h3.Typo__h3 Order
     .DocumentationSection__text
-      p.Typo__p Testo esempio $order
+      p.Typo__p You can shift columns around between our device breakpoints by setting the order property of the columns.
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
 
   .DocumentationSection__example
@@ -469,7 +470,7 @@
     .DocumentationSection__title
       h3.Typo__h3 Collapse
     .DocumentationSection__text
-      p.Typo__p Testo esempio $collapse
+      p.Typo__p Collapse the gutters on a column by removing the padding.
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
 
   .DocumentationSection__example
@@ -545,7 +546,7 @@
     .DocumentationSection__title
       h3.Typo__h3 Global
     .DocumentationSection__text
-      p.Typo__p Testo esempio $global
+      p.Typo__p By setting this to false it will remove the basic properties that define the column behavior.
       a.Typo__a(href="https://github.com/Objectway/super-gigi#grid-column" target="_blank") grid-column()
 
   .DocumentationSection__example

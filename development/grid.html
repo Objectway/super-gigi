@@ -8,8 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,400,700" type="text/css">
-    <link rel="stylesheet" href="development/scripts/vendor/prism.css">
-    <link rel="stylesheet" href="development/styles/main.css" type="text/css">
+    <link rel="stylesheet" href="scripts/vendor/prism.css">
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
   </head>
   <body class="Typo">
     <!-- Kitchen Sink menu toggler-->
@@ -20,8 +20,6 @@
               <li class="KitchenSinkMenuList__element KitchenSinkMenuList__element--active"><a href="grid.html" class="KitchenSinkMenuList__link">The Grid</a></li>
               <li class="KitchenSinkMenuList__element"><a href="visibility.html" class="KitchenSinkMenuList__link">Visibility</a></li>
               <li class="KitchenSinkMenuList__element"><a href="options.html" class="KitchenSinkMenuList__link">Options</a></li>
-              <li class="KitchenSinkMenuList__element"><a href="mixins.html" class="KitchenSinkMenuList__link">Mixins</a></li>
-              <li class="KitchenSinkMenuList__element"><a href="functions.html" class="KitchenSinkMenuList__link">Functions</a></li>
             </ul>
     </aside>
     <nav class="KitchenSinkNavBar">
@@ -34,8 +32,6 @@
                       <li class="KitchenSinkMenuList__element KitchenSinkMenuList__element--active"><a href="grid.html" class="KitchenSinkMenuList__link">The Grid</a></li>
                       <li class="KitchenSinkMenuList__element"><a href="visibility.html" class="KitchenSinkMenuList__link">Visibility</a></li>
                       <li class="KitchenSinkMenuList__element"><a href="options.html" class="KitchenSinkMenuList__link">Options</a></li>
-                      <li class="KitchenSinkMenuList__element"><a href="mixins.html" class="KitchenSinkMenuList__link">Mixins</a></li>
-                      <li class="KitchenSinkMenuList__element"><a href="functions.html" class="KitchenSinkMenuList__link">Functions</a></li>
                     </ul>
         </div>
       </div>
@@ -68,9 +64,7 @@
             <div class="DocumentationSection__title">
               <h3 class="Typo__h3">Simple grid</h3>
             </div>
-            <div class="DocumentationSection__text">
-              <p class="Typo__p">Start by adding an element with a class that includes the mixin for the row, this will create a horizontal block to contain vertical columns. Then add elements with classes which include the column mixin within that row. Specify the widths of each column inside the mixin starting from the smallest device, as SuperGiGi is mobile first larger devices will inherit those styles, customise them if necessary.</p><a href="https://github.com/Objectway/super-gigi#grid-row" target="_blank" class="Typo__a">grid-row()</a>&nbsp; - &nbsp;<a href="https://github.com/Objectway/super-gigi#grid-row" target="_blank" class="Typo__a">grid-column()</a>
-            </div>
+            <div class="DocumentationSection__text"><a href="https://github.com/Objectway/super-gigi#grid-row" target="_blank" class="Typo__a">grid-row()</a>&nbsp; - &nbsp;<a href="https://github.com/Objectway/super-gigi#grid-row" target="_blank" class="Typo__a">grid-column()</a></div>
           </div>
           <div class="DocumentationSection__example">
             <div class="RoastedRibs">
@@ -104,7 +98,7 @@
           <div class="DocumentationSection__scss">
             <pre class="CodeExampleBox"><code class="language-scss">.RoastedRibs{
   @include grid-row();
-  // Equivalent to grid-row($nested: true, $vertical: false)
+  // Equivalent to grid-row($nested: false, $vertical: false)
 
   &__element {
     &--first {
@@ -127,7 +121,7 @@
               <h3 class="Typo__h3">Nested and vertical row</h3>
             </div>
             <div class="DocumentationSection__text">
-              <p class="Typo__p">You can nest the grids and remove unnecessary padding between them, set the property nested to true and it will set negative margin to the row to reset the padding of a parent row container. Setting vertical to true will add the property flex-direction to column to create a vertical block.</p><a href="https://github.com/Objectway/super-gigi#grid-row" target="_blank" class="Typo__a">grid-row()</a>
+              <p class="Typo__p">Testo esempio nested and vertical row</p><a href="https://github.com/Objectway/super-gigi#grid-row" target="_blank" class="Typo__a">grid-row()</a>
             </div>
           </div>
           <div class="DocumentationSection__example">
@@ -184,7 +178,7 @@
               <h3 class="Typo__h3">Column auto</h3>
             </div>
             <div class="DocumentationSection__text">
-              <p class="Typo__p">It will set the property width to auto, which allows the browser to take the remaining space for the column.</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
+              <p class="Typo__p">Testo esempio column auto</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
             </div>
           </div>
           <div class="DocumentationSection__example">
@@ -254,7 +248,7 @@
               <h3 class="Typo__h3">Change the grid base</h3>
             </div>
             <div class="DocumentationSection__text">
-              <p class="Typo__p">You can define the amount of columns a row will have by setting a fraction of the space for each column, this gives you the width as a percentage value.</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
+              <p class="Typo__p">Testo esempio change the grid base</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
             </div>
           </div>
           <div class="DocumentationSection__example">
@@ -292,100 +286,20 @@
 
   &__element {
     &--first {
-      @include grid-column($width: 2 of 5);
+      @include grid-column($width: 1 of 5);
+      @include media-query(large) {
+        @include grid-column($width: 3 of 5);
+      }
     }
 
     &--second {
-      @include grid-column($width: 3 of 5);
+      @include grid-column($width: 4 of 5);
+      @include media-query(large) {
+        @include grid-column($width: 2 of 5);
+      }
     }
   }
 }
-</code></pre>
-          </div>
-        </div>
-        <div class="DocumentationSection">
-          <div class="DocumentationSection__description">
-            <div class="DocumentationSection__title">
-              <h3 class="Typo__h3">Offset</h3>
-            </div>
-            <div class="DocumentationSection__text">
-              <p class="Typo__p">With the offset you can move a column up to a column number following the direction of the grid. The space occupied by the column will be the width number added with the offset number.</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
-            </div>
-          </div>
-          <div class="DocumentationSection__example">
-            <div class="Ribs">
-              <div class="Ribs__element Ribs__element--first">
-                <div class="Box">
-                  <p class="Typo__p Box__paragraph">1</p>
-                </div>
-              </div>
-              <div class="Ribs__element Ribs__element--second">
-                <div class="Box">
-                  <p class="Typo__p Box__paragraph">2</p>
-                </div>
-              </div>
-              <div class="Ribs__element Ribs__element--third">
-                <div class="Box">
-                  <p class="Typo__p Box__paragraph">3</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="DocumentationSection__html">
-            <pre class="CodeExampleBox"><code class="language-markup">&lt;div class=&quot;Ribs&quot;&gt;
-  &lt;div class=&quot;Ribs__element Ribs__element--first&quot;&gt;
-    &lt;div class=&quot;Box&quot;&gt;
-      &lt;p&gt;1&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;Ribs__element Ribs__element--second&quot;&gt;
-    &lt;div class=&quot;Box&quot;&gt;
-      &lt;p&gt;2&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;Ribs__element Ribs__element--third&quot;&gt;
-    &lt;div class=&quot;Box&quot;&gt;
-      &lt;p&gt;3&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-</code></pre>
-          </div>
-          <div class="DocumentationSection__scss">
-            <pre class="CodeExampleBox"><code class="language-scss">.Ribs {
-  @include grid-row(false);
-
-  &__element {
-    &--first {
-      @include grid-column(
-        $width: 4,
-        $offset: (
-          xxsmall: 6, large: 1
-        )
-      );
-    }
-
-    &--second {
-      @include grid-column(
-        $width: 4,
-        $offset: 2
-      );
-    }
-
-    &--third {
-      @include grid-column(
-        $width: 4,
-        $offset: (
-          xxsmall: 8,
-          large: 4
-        )
-      );
-    }
-  }
-}
-
-
-
 
 </code></pre>
           </div>
@@ -394,10 +308,10 @@
         <div class="DocumentationSection">
           <div class="DocumentationSection__description">
             <div class="DocumentationSection__title">
-              <h3 class="Typo__h3">Push &amp; Pull</h3>
+              <h3 class="Typo__h3">Push & Pull</h3>
             </div>
             <div class="DocumentationSection__text">
-              <p class="Typo__p">Direction and amount of columns to move. The element will move equal to the width specified for each device.</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
+              <p class="Typo__p">Testo esempio $push e $pull</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
             </div>
           </div>
           <div class="DocumentationSection__example">
@@ -447,7 +361,7 @@
     &--first {
       @include grid-column(
         $width: 4,
-        $push: (xxsmall:8, large: 4)
+        $push: (xxsmall:8, large: 12)
       );
     }
 
@@ -478,7 +392,7 @@
               <h3 class="Typo__h3">Order</h3>
             </div>
             <div class="DocumentationSection__text">
-              <p class="Typo__p">You can shift columns around between our device breakpoints by setting the order property of the columns.</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
+              <p class="Typo__p">Testo esempio $order</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
             </div>
           </div>
           <div class="DocumentationSection__example">
@@ -575,7 +489,7 @@
               <h3 class="Typo__h3">Collapse</h3>
             </div>
             <div class="DocumentationSection__text">
-              <p class="Typo__p">Collapse the gutters on a column by removing the padding.</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
+              <p class="Typo__p">Testo esempio $collapse</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
             </div>
           </div>
           <div class="DocumentationSection__example">
@@ -660,7 +574,7 @@
               <h3 class="Typo__h3">Global</h3>
             </div>
             <div class="DocumentationSection__text">
-              <p class="Typo__p">By setting this to false it will remove the basic properties that define the column behavior.</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
+              <p class="Typo__p">Testo esempio $global</p><a href="https://github.com/Objectway/super-gigi#grid-column" target="_blank" class="Typo__a">grid-column()</a>
             </div>
           </div>
           <div class="DocumentationSection__example">
@@ -722,7 +636,7 @@
     </div>
     <div class="KitchenSinkFooter">
       <p class="KitchenSinkFooter__paragraph">© 2015 Objectway Financial Software S.p.a.</p>
-      <script type="text/javascript" src="development/scripts/vendor/prism.js"></script>
+      <script type="text/javascript" src="scripts/vendor/prism.js"></script>
     </div>
   </body>
 </html>

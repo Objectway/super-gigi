@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <!-- - HEAD-->
+  <head>
+    <title>SuperGiGi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,400,700" type="text/css">
+    <link rel="stylesheet" href="scripts/vendor/prism.css">
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
+  </head>
+  <body class="Typo">
+    <!-- Kitchen Sink menu toggler-->
+    <input id="TogglerMenu" type="checkbox" class="TogglerMenu">
+    <aside class="KitchenSinkSideBar">
+      <div class="KitchenSinkSideBar__logo"><a href="index.html">SuperGiGi</a></div>
+            <ul class="KitchenSinkMenuList">
+              <li class="KitchenSinkMenuList__element"><a href="grid.html" class="KitchenSinkMenuList__link">The Grid</a></li>
+              <li class="KitchenSinkMenuList__element"><a href="visibility.html" class="KitchenSinkMenuList__link">Visibility</a></li>
+              <li class="KitchenSinkMenuList__element KitchenSinkMenuList__element--active"><a href="options.html" class="KitchenSinkMenuList__link">Options</a></li>
+            </ul>
+    </aside>
+    <nav class="KitchenSinkNavBar">
+      <div class="KitchenSinkNavBar__menuBar">
+        <div class="KitchenSinkNavBar__logo">
+          <div class="KitchenSinkNavBar__title"><a href="index.html">SuperGiGi</a></div>
+        </div>
+        <div class="KitchenSinkNavBar__menuItems">
+                    <ul class="KitchenSinkMenuList">
+                      <li class="KitchenSinkMenuList__element"><a href="grid.html" class="KitchenSinkMenuList__link">The Grid</a></li>
+                      <li class="KitchenSinkMenuList__element"><a href="visibility.html" class="KitchenSinkMenuList__link">Visibility</a></li>
+                      <li class="KitchenSinkMenuList__element KitchenSinkMenuList__element--active"><a href="options.html" class="KitchenSinkMenuList__link">Options</a></li>
+                    </ul>
+        </div>
+      </div>
+    </nav>
+    <nav class="KitchenSinkTouchBar">
+      <label for="TogglerMenu" class="KitchenSinkTouchBar__label">
+        <svg id="Livello_1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve" class="KitchenSinkTouchBar__icon">
+          <rect id="XMLID_1_" x="-0.1" y="70.3" width="100.1" height="15.5"></rect>
+          <rect id="XMLID_4_" x="-0.1" y="42.7" width="100.1" height="15.5"></rect>
+          <rect id="XMLID_3_" x="-0.1" y="14.8" width="100.1" height="16.3"></rect>
+        </svg>
+      </label>
+      <div class="KitchenSinkTouchBar__logo">
+        <div class="KitchenSinkTouchBar__title"><a href="index.html">SuperGiGi</a></div>
+      </div>
+    </nav>
+    <div class="KitchenSinkOverlay">
+      <label for="TogglerMenu" class="KitchenSinkOverlay__label"></label>
+    </div>
+    <div class="KitchenSinkBody">
+      <div class="KitchenSinkBody__section">
+        <div class="KitchenSinkBody__title">
+          <h2 class="Typo__h2">Variables</h2>
+          <p class="Typo__p">If you are using the Sass version you can personalize Super GiGi simply changing the value of its variables before importing main.sass.<br>
+            For the size variables, you would like to have the rem/em-calc() functions available. To achieve that remember to import the _functions.scss partial before.
+          </p>
+        </div>
+        <!-- - VARIABLES-->
+        <div class="DocumentationSection DocumentationSection--variables">
+          <!-- - $rem-base-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">$rem-base <a href="https://github.com/Objectway/super-gigi#rem-base" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Default:<span class="DocumentationSection__inlineCode">16px</span></p>
+              <p class="Typo__p">Type:<span class="DocumentationSection__inlineCode">unit</span></p>
+            </div>
+          </div>
+          <!-- - $row-width-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">$row-width <a href="https://github.com/Objectway/super-gigi#row-width" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Default:<span class="DocumentationSection__inlineCode">rem-calc(1920)</span></p>
+              <p class="Typo__p">Type:<span class="DocumentationSection__inlineCode">unit</span></p>
+            </div>
+          </div>
+          <!-- - $column-gutter-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">$column-gutter <a href="https://github.com/Objectway/super-gigi#column-gutter" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Default:<span class="DocumentationSection__inlineCode">rem-calc(30)</span></p>
+              <p class="Typo__p">Type:<span class="DocumentationSection__inlineCode">unit</span></p>
+            </div>
+          </div>
+          <!-- - $grid-columns-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">$grid-columns <a href="https://github.com/Objectway/super-gigi#grid-columns" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Default:<span class="DocumentationSection__inlineCode">12</span></p>
+              <p class="Typo__p">Type:<span class="DocumentationSection__inlineCode">number</span></p>
+            </div>
+          </div>
+          <!-- - $use-classes-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">$use-classes <a href="https://github.com/Objectway/super-gigi#use-classes" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Default:<span class="DocumentationSection__inlineCode">false</span></p>
+              <p class="Typo__p">Type:<span class="DocumentationSection__inlineCode">boolean</span></p>
+            </div>
+          </div>
+          <!-- - $use-placeholders-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">$use-placeholders <a href="https://github.com/Objectway/super-gigi#use-placeholders" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Default:<span class="DocumentationSection__inlineCode">false</span></p>
+              <p class="Typo__p">Type:<span class="DocumentationSection__inlineCode">boolean</span></p>
+            </div>
+          </div>
+          <!-- - $row-name-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">$row-name <a href="https://github.com/Objectway/super-gigi#row-name" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Default:<span class="DocumentationSection__inlineCode">row</span></p>
+              <p class="Typo__p">Type:<span class="DocumentationSection__inlineCode">string</span></p>
+            </div>
+          </div>
+          <!-- - $column-name-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">$column-name <a href="https://github.com/Objectway/super-gigi#column-name" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Default:<span class="DocumentationSection__inlineCode">column</span></p>
+              <p class="Typo__p">Type:<span class="DocumentationSection__inlineCode">string</span></p>
+            </div>
+          </div>
+          <!-- - $grid-start-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">$grid-start <a href="https://github.com/Objectway/super-gigi#grid-start" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Default:<span class="DocumentationSection__inlineCode">left</span></p>
+              <p class="Typo__p">Type:<span class="DocumentationSection__inlineCode">string</span>- possible values:<span class="DocumentationSection__inlineCode">left</span>or<span class="DocumentationSection__inlineCode">right</span></p>
+            </div>
+          </div>
+          <!-- - $use-dry-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">$use-dry <a href="https://github.com/Objectway/super-gigi#use-dry" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Default:<span class="DocumentationSection__inlineCode">false</span></p>
+              <p class="Typo__p">Type:<span class="DocumentationSection__inlineCode">boolean</span></p>
+            </div>
+          </div>
+          <!-- - $debug-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">$debug <a href="https://github.com/Objectway/super-gigi#debug" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Default:<span class="DocumentationSection__inlineCode">false</span></p>
+              <p class="Typo__p">Type:<span class="DocumentationSection__inlineCode">boolean</span></p>
+            </div>
+          </div>
+          <!-- - $breakpoints-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">$breakpoints <a href="https://github.com/Objectway/super-gigi#breakpoints" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">Default:<span class="DocumentationSection__inlineCode">(xxsmall: 0em, xsmall: em-calc(480), small: em-calc(640), medium: em-calc(720), large: em-calc(1024), xlarge: em-calc(1280), xxlarge: em-calc(1440))</span></p>
+              <p class="Typo__p">Type:<span class="DocumentationSection__inlineCode">map</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="KitchenSinkBody__section">
+        <div class="KitchenSinkBody__title">
+          <h2 class="Typo__h2">Functions</h2>
+          <p class="Typo__p">We love Foundation and we used it a lot. These functions are based on our preferred Foundation functions that we want to continue to use in our projects.</p>
+        </div>
+        <!-- - VARIABLES-->
+        <div class="DocumentationSection DocumentationSection--variables">
+          <!-- - dry-it()-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">dry-it() <a href="https://github.com/Objectway/super-gigi#dry-it" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">arguments:<span class="DocumentationSection__inlineCode">$id</span></p>
+              <ul class="DocumentationSection__list">
+                <li class="DocumentationSection__itemList">
+                  <p class="Typo__p">required</p>
+                </li>
+                <li class="DocumentationSection__itemList">
+                  <p class="Typo__p">type:<span class="DocumentationSection__inlineCode">string</span></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- - remove-unit()-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">remove-unit() <a href="https://github.com/Objectway/super-gigi#remove-unit" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">arguments:<span class="DocumentationSection__inlineCode">$value</span></p>
+              <ul class="DocumentationSection__list">
+                <li class="DocumentationSection__itemList">
+                  <p class="Typo__p">required</p>
+                </li>
+                <li class="DocumentationSection__itemList">
+                  <p class="Typo__p">type:<span class="DocumentationSection__inlineCode">list</span></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- - rem-calc()-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">rem-calc() <a href="https://github.com/Objectway/super-gigi#rem-calc" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">arguments:<span class="DocumentationSection__inlineCode">$values</span>,<span class="DocumentationSection__inlineCode">$base-value</span></p>
+              <ul class="DocumentationSection__list">
+                <li class="DocumentationSection__itemList">
+                  <p class="Typo__p">$values</p>
+                  <ul class="DocumentationSection__subList">
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">required</p>
+                    </li>
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">type:<span class="DocumentationSection__inlineCode">list</span></p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="DocumentationSection__itemList">
+                  <p class="Typo__p">$base-value</p>
+                  <ul class="DocumentationSection__subList">
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">optional</p>
+                    </li>
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">default:<span class="DocumentationSection__inlineCode">$rem-base</span></p>
+                    </li>
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">type:<span class="DocumentationSection__inlineCode">measure</span></p>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- - em-calc()-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">em-calc() <a href="https://github.com/Objectway/super-gigi#em-calc" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">arguments:<span class="DocumentationSection__inlineCode">$value</span>,<span class="DocumentationSection__inlineCode">$base-value</span></p>
+              <ul class="DocumentationSection__list">
+                <li class="DocumentationSection__itemList">
+                  <p class="Typo__p">$values</p>
+                  <ul class="DocumentationSection__subList">
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">required</p>
+                    </li>
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">type:<span class="DocumentationSection__inlineCode">list</span></p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="DocumentationSection__itemList">
+                  <p class="Typo__p">$base-value</p>
+                  <ul class="DocumentationSection__subList">
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">optional</p>
+                    </li>
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">default:<span class="DocumentationSection__inlineCode">$rem-base</span></p>
+                    </li>
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">type:<span class="DocumentationSection__inlineCode">measure</span></p>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- - px-calc()-->
+          <div class="DocumentationSection__description DocumentationSection__description--variables">
+            <div class="DocumentationSection__title">
+              <h3 class="Typo__h3">px-calc() <a href="https://github.com/Objectway/super-gigi#px-calc" target="_blank" class="Typo__a">Link</a></h3>
+            </div>
+            <div class="DocumentationSection__text">
+              <p class="Typo__p">arguments:<span class="DocumentationSection__inlineCode">$value</span>,<span class="DocumentationSection__inlineCode">$base-value</span></p>
+              <ul class="DocumentationSection__list">
+                <li class="DocumentationSection__itemList">
+                  <p class="Typo__p">$values</p>
+                  <ul class="DocumentationSection__subList">
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">required</p>
+                    </li>
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">type:<span class="DocumentationSection__inlineCode">list</span></p>
+                    </li>
+                  </ul>
+                </li>
+                <li class="DocumentationSection__itemList">
+                  <p class="Typo__p">$base-value</p>
+                  <ul class="DocumentationSection__subList">
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">optional</p>
+                    </li>
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">default:<span class="DocumentationSection__inlineCode">$rem-base</span></p>
+                    </li>
+                    <li class="DocumentationSection__itemSublist">
+                      <p class="Typo__p">type:<span class="DocumentationSection__inlineCode">measure</span></p>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="KitchenSinkFooter">
+      <p class="KitchenSinkFooter__paragraph">© 2015 Objectway Financial Software S.p.a.</p>
+      <script type="text/javascript" src="scripts/vendor/prism.js"></script>
+    </div>
+  </body>
+</html>

@@ -910,7 +910,7 @@ body {
     margin-bottom: 1.25rem; }
 
 .HomePage__features {
-  content: "COLUMN: width : (xxsmall: 10, medium: 3) | global : true";
+  content: "COLUMN: width : (xxsmall: 8, large: 3) | global : true";
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -921,7 +921,8 @@ body {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 0 0.9375rem; }
+  padding: 0 0.9375rem;
+  margin-bottom: 1.25rem; }
   .HomePage__features .Typo__h2, .HomePage__features .MarkDownGenerated h2, .MarkDownGenerated .HomePage__features h2 {
     margin-bottom: 1.25rem;
     text-align: center; }
@@ -1113,7 +1114,8 @@ body {
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
     padding-top: 1.875rem; }
-  .KitchenSinkBody__title, .KitchenSinkBody__content {
+  .KitchenSinkBody__title,
+  .KitchenSinkBody__content {
     content: "COLUMN: width : auto | global : true";
     box-sizing: border-box;
     display: -webkit-box;
@@ -1132,7 +1134,9 @@ body {
         -ms-flex: 1 1 0%;
             flex: 1 1 0%;
     margin-bottom: 1.875rem; }
-    .KitchenSinkBody__title .Typo__h2, .KitchenSinkBody__title .MarkDownGenerated h2, .MarkDownGenerated .KitchenSinkBody__title h2, .KitchenSinkBody__content .Typo__h2, .KitchenSinkBody__content .MarkDownGenerated h2, .MarkDownGenerated .KitchenSinkBody__content h2 {
+    .KitchenSinkBody__title .Typo__h2,
+    .KitchenSinkBody__title .MarkDownGenerated h2,
+    .MarkDownGenerated .KitchenSinkBody__title h2, .KitchenSinkBody__content .Typo__h2, .KitchenSinkBody__content .MarkDownGenerated h2, .MarkDownGenerated .KitchenSinkBody__content h2 {
       margin-bottom: 0.625rem; }
   .KitchenSinkBody__aside {
     content: "COLUMN: width : (xxsmall: 12, medium: 4, large: 3) | global : true";
@@ -1280,7 +1284,8 @@ body {
     font-size: 0.8125rem;
     margin: 0rem 0.3125rem;
     padding: 0.3125rem; }
-  .DocumentationSection__list, .DocumentationSection__subList {
+  .DocumentationSection__list,
+  .DocumentationSection__subList {
     margin-left: 1.875rem; }
   .DocumentationSection__itemList {
     display: list-item; }
@@ -2764,7 +2769,7 @@ body {
     flex: 0 0 auto; }
 
   .HomePage__features {
-    width: 83.33333%;
+    width: 66.66667%;
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
@@ -4776,13 +4781,6 @@ body {
     -ms-flex: 0 0 auto;
     flex: 0 0 auto; }
 
-  .HomePage__features {
-    width: 25%;
-    -webkit-box-flex: 0;
-    -webkit-flex: 0 0 auto;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto; }
-
   .KitchenSinkBody__aside {
     width: 33.33333%;
     -webkit-box-flex: 0;
@@ -5491,6 +5489,13 @@ body {
     -webkit-order: 12;
     -ms-flex-order: 12;
     order: 12; }
+
+  .HomePage__features {
+    width: 25%;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto; }
 
   .KitchenSinkNavBar {
     display: block; }
