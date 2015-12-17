@@ -27,7 +27,6 @@
     padding: 2px;
     border-radius: 3px;
     font-size: 0.9em;
-    max-width: 1px;
   }
 
   ul {
@@ -53,6 +52,7 @@
     code {
       background-color: transparent;
       font-size: 1em;
+      max-width: 1px;
     }
 
     &::after {
