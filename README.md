@@ -4,6 +4,8 @@ It's developed thinking about modern web applications and its first purpose is
 to make easier to manage responsive layout.
 It's developed in Sass but you can use a compiled version if you prefer. 
 
+## Visual Doc `WIP`
+http://objectway.github.io/super-gigi/
   
 ## Installation
 You can choose different ways to install **Super GiGi**:
