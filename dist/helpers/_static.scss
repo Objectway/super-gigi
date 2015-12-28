@@ -12,7 +12,7 @@
 $type: if($use-classes, '.', '%');
 
 
-@function grid-class-name($prop, $query, $parent: '') {
+@function grid-class-name($prop, $query: '', $parent: '') {
   $name: #{$class-prefix}#{$prop};
 
   @if $use-bem {
@@ -177,12 +177,13 @@ $type: if($use-classes, '.', '%');
   #{$type}#{$row-name} {
     @include grid-row(false);
 
-    #{$type}#{$row-name} {
+    @include row-generate-classes('', '');
+
+    #{$type}#{$row-name},
+    &#{grid-class-name(nested)} {
       margin: 0 (-$column-gutter / 2);
       width: auto;
     }
-
-    @include row-generate-classes('', '');
 
     @each $query, $breakpoint in $breakpoints {
       @include media-query($query) {
