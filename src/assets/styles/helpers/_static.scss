@@ -177,11 +177,12 @@ $type: if($use-classes, '.', '%');
   #{$type}#{$row-name} {
     @include grid-row(false);
 
-    #{$type}#{$row-name} {
+    #{$type}#{$row-name},
+    &#{$divider}nested {
       margin: 0 (-$column-gutter / 2);
       width: auto;
     }
-
+    
     @include row-generate-classes('', '');
 
     @each $query, $breakpoint in $breakpoints {
