@@ -123,9 +123,6 @@
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap; }
-  .row .row {
-    margin: 0 -0.9375rem;
-    width: auto; }
   .row.top {
     -webkit-box-align: start;
     -webkit-align-items: flex-start;
@@ -211,6 +208,9 @@
     -webkit-flex-flow: nowrap;
         -ms-flex-flow: nowrap;
             flex-flow: nowrap; }
+  .row .row, .row.nested {
+    margin: 0 -0.9375rem;
+    width: auto; }
 
 .column {
   content: "COLUMN: global : true";
@@ -872,11 +872,12 @@ body {
 
 .HomePage .HomePage__section {
   content: "ROW nested: true, vertical false";
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
   margin: 0 -0.9375rem;
-  width: auto;
-  -webkit-flex-basis: auto;
-      -ms-flex-preferred-size: auto;
-          flex-basis: auto;
+  width: calc(100% + 1.875rem);
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1491,11 +1492,12 @@ body {
 
 .FriedChips {
   content: "ROW nested: true, vertical true";
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
   margin: 0 -0.9375rem;
-  width: auto;
-  -webkit-flex-basis: auto;
-      -ms-flex-preferred-size: auto;
-          flex-basis: auto;
+  width: calc(100% + 1.875rem);
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
