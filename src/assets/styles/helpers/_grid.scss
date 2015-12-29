@@ -87,9 +87,9 @@
     }
 
     @if $nested {
+      flex: 1 0 auto;
       margin: 0 (-$column-gutter / 2);
-      width: auto;
-      flex-basis: auto;
+      width: calc(100% + #{$column-gutter});
     } @else {
       margin: 0 auto;
       max-width: $row-width;
