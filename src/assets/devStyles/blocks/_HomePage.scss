@@ -1,13 +1,85 @@
-
 .HomePage {
 
-  .HomePage__section {
-    @include grid-row();
+  &__section {
+    @include grid-row($nested: false);
     justify-content: center;
     margin-bottom: $column-gutter;
+    max-width: none;
+  }
+
+  &__logoWrapper {
+    @include grid-row($nested: false);
+    background: $primary-color;
+    max-width: none;
+    min-height: 50vh;
+    width: 100%;
+
+    @include media-query(large) {
+      min-height: 80vh;
+    }
+  }
+
+  &__titleSection {
+    @include grid-column((xxsmall: 12, xsmall: 7));
+    align-items: center;
+    justify-content: center;
+    order: 1;
+
+    @include media-query(xsmall) {
+      align-items: flex-end;
+      order: 0;
+    }
+  }
+
+  &__logoContainer {
+    @include grid-column((xxsmall: 12, xsmall: 5));
+    padding: $column-gutter/2;
   }
 
   &__title {
+    color: $white;
+    font-family: Helvetica;
+    font-size: rem-calc(40);
+    font-weight: 400;
+    margin-bottom: $column-gutter/2;
+
+    @include media-query(large) {
+      font-size: rem-calc(70);
+    }
+  }
+
+  &__subtitle {
+    color: $almost-white;
+    font-family: Helvetica;
+    font-size: rem-calc(25);
+    font-weight: 300;
+    margin-bottom: $column-gutter/3;
+    opacity: 0.4;
+  }
+
+  &__cta {
+    @extend %Button;
+    margin-bottom: $column-gutter/2;
+    margin-right: $column-gutter/2;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__logo {
+    background: $primary-color url('../images/SGG-logo.png') no-repeat center center;
+    background-size: contain;
+    height: 100%;
+    min-height: rem-calc(80);
+
+    @include media-query(xsmall) {
+      background-position: center left;
+      background-size: auto 50%;
+    }
+  }
+
+  &__description {
     @include grid-column((xxsmall: 10, medium: 6));
     margin-bottom: rem-calc(20);
     text-align: center;
