@@ -4,7 +4,11 @@
     @include grid-row($nested: false);
     justify-content: center;
     margin-bottom: $column-gutter;
-    max-width: none;
+    padding: rem-calc(0 30);
+  }
+
+  &__topContent {
+    margin-bottom: $column-gutter;
   }
 
   &__logoWrapper {
@@ -80,9 +84,12 @@
   }
 
   &__description {
-    @include grid-column((xxsmall: 10, medium: 6));
     margin-bottom: rem-calc(20);
     text-align: center;
+
+    @include media-query(medium) {
+      max-width: 50%;
+    }
 
     .Typo__h2 {
       margin-bottom: rem-calc(20);
@@ -90,7 +97,7 @@
   }
 
   &__features {
-    @include grid-column((xxsmall: 8, large: 3));
+    @include grid-column((xxsmall: 12, medium: 4));
 
     margin-bottom: rem-calc(20);
 
