@@ -34,7 +34,7 @@
   }
 }
 
-@mixin grid-space($property: width, $attr: 'auto') {
+@mixin grid-space($property: width, $attr: 'auto', $eq-grid: $eq-grid) {
 
   @if type-of($attr) != map {
     @include dry-it(#{$property}-#{$attr}){
@@ -53,7 +53,7 @@
 
       } @else {
 
-        @include media-query($query) {
+        @include media-query($query, $eq-grid: $eq-grid) {
 
           @include dry-it('#{$property}-#{$set}') {
             @include grid-calc($property, $value);
@@ -119,7 +119,8 @@
   $push: null,
   $pull: null,
   $order: null,
-  $global: true
+  $global: true,
+  $eq-grid: $eq-grid
 ) {
 
   // DEBUG -------------
@@ -131,7 +132,8 @@
     $column-setting: $column-setting + if($push, #{push ':' inspect($push) '| '}, '');
     $column-setting: $column-setting + if($pull, #{pull ':' inspect($pull) '| '}, '');
     $column-setting: $column-setting + if($order, #{order ':' inspect($order) '| '}, '');
-    $column-setting: $column-setting + if($global, #{global ':' inspect($global)}, '');
+    $column-setting: $column-setting + if($global, #{global ':' inspect($global) '| '}, '');
+    $column-setting: $column-setting + if($eq-grid, #{eq-grid ':' inspect($eq-grid)}, '');
 
     content: $column-setting;
   }
@@ -164,12 +166,12 @@
 
   // Width -------------
   @if $width != null {
-    @include grid-space(width, $width);
+    @include grid-space(width, $width, $eq-grid);
   }
 
   // Offset -------------
   @if $offset != null {
-    @include grid-space(margin-#{$grid-start}, $offset);
+    @include grid-space(margin-#{$grid-start}, $offset, $eq-grid);
   }
 
   // Push -------------
@@ -179,7 +181,7 @@
       #{$grid-end}: auto;
     }
 
-    @include grid-space($grid-start, $push);
+    @include grid-space($grid-start, $push, $eq-grid);
   }
 
   // Pull -------------
@@ -189,7 +191,7 @@
       #{$grid-start}: auto;
     }
 
-    @include grid-space($grid-end, $pull);
+    @include grid-space($grid-end, $pull, $eq-grid);
   }
 
 
@@ -200,7 +202,7 @@
         $set: #{$query}#{$value}#{$eq-grid};
 
         @include dry-it('colOrd#{$set}') {
-          @include media-query($query) {
+          @include media-query($query, $eq-grid: $eq-grid) {
             order: $value;
           }
         }
