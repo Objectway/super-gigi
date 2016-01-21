@@ -371,6 +371,11 @@ arguments: `$width`, `$offset`, `$push`, `$pull`, `$order`, `$collapse`, `$globa
   - optional
   - default: `true`
   - type: `boolean`
+- [**$eq-grid**](#eq-grid)
+  - optional
+  - default: `false`
+  - type: `boolean`
+
 
 This is the most important mixin of our grid. And probabily it is the mixin 
 that you will use more. Let's take a look at how it works:
@@ -383,7 +388,8 @@ that you will use more. Let's take a look at how it works:
       $pull: 1,
       $order: 0,
       $collapse: false,
-      $global: true
+      $global: true,
+      $eq-grid: false
     );
 };
 ```
