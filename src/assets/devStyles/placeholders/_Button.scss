@@ -1,0 +1,19 @@
+%Button {
+  align-self: baseline;
+  background-color: $white;
+  border-radius: rem-calc(6);
+  color: $primary-color;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.81em;
+  font-weight: 500;
+  padding: 0.625em 1em;
+  text-align: center;
+  transition: background-color $transition-speed / 2;
+  width: auto;
+  will-change: background-color;
+
+  &:hover {
+    background-color: $almost-white;
+  }
+}

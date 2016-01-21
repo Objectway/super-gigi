@@ -9,7 +9,9 @@
   &__logo {
     @extend .Typo__h1;
 
+    border-bottom: 1px solid $almost-white;
     color: $white;
+    margin-bottom: $column-gutter / 2;
     padding: rem-calc(30);
   }
 }
