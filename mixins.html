@@ -224,6 +224,12 @@ The other option <code>$vertical</code> will simply add the CSS3
 <li>type: <code>boolean</code></li>
 </ul>
 </li>
+<li><a href="#eq-grid"><strong>$eq-grid</strong></a><ul>
+<li>optional</li>
+<li>default: <code>false</code></li>
+<li>type: <code>boolean</code></li>
+</ul>
+</li>
 </ul>
 <p>This is the most important mixin of our grid. And probabily it is the mixin 
 that you will use more. Let&#39;s take a look at how it works:</p>
@@ -234,7 +240,8 @@ that you will use more. Let&#39;s take a look at how it works:</p>
       $pull: 1,
       $order: 0,
       $collapse: false,
-      $global: true
+      $global: true,
+      $eq-grid: false
     );
 };
 </code></pre>
