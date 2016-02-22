@@ -30,11 +30,14 @@ functions available. To achieve that remember to import the `_functions.scss` pa
 before.
 
 ### $rem-base
-default: `16px` - type: `unit`  
+If you want to use rem on your site, set the font-size of your `html` tag to `rem-base`. 
+
+### $design-base
+default: `$rem-base` - type: `unit`  
 
 This is the default value for all the
-[units functions](#functions). 
-set the same value you've used for your `html`.
+[units functions](#functions), is useful when you have a pixel based design mockup and you want to convert al the measurements in rem / em. By default has the same value of `$rem-base`, but in some cases you may want change it. 
+
 
   
 
