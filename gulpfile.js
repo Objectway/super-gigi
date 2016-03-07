@@ -16,7 +16,6 @@ gulp.task('style', env.loadTask('sass'));
 gulp.task('view', env.loadTask('jade'));
 gulp.task('sprite', env.loadTask('sprites'));
 gulp.task('script', env.loadTask('typescript'));
-gulp.task('font', env.loadTask('fontgen'));
 gulp.task('iconfont', env.loadTask('iconfont'));
 gulp.task('srcWatch', env.loadTask('src-watch'));
 gulp.task('clean', env.loadTask('clean'));

@@ -1,5 +1,4 @@
 .HomePage {
-
   &__section {
     @include grid-row($nested: false);
     justify-content: center;
@@ -19,12 +18,12 @@
     width: 100%;
 
     @include media-query(large) {
-      min-height: 80vh;
+      min-height: 50vh;
     }
   }
 
   &__titleSection {
-    @include grid-column((xxsmall: 12, xsmall: 7));
+    @include grid-column((xxsmall: 12, xsmall: 6));
     align-items: center;
     justify-content: center;
     order: 1;
@@ -36,7 +35,7 @@
   }
 
   &__logoContainer {
-    @include grid-column((xxsmall: 12, xsmall: 5));
+    @include grid-column((xxsmall: 12, xsmall: 6));
     padding: $column-gutter/2;
   }
 
@@ -72,14 +71,15 @@
   }
 
   &__logo {
-    background: $primary-color url('../images/SGG-logo.png') no-repeat center center;
+    background: $primary-color url('../images/SGG-logo800x800.png') no-repeat center center;
     background-size: contain;
     height: 100%;
     min-height: rem-calc(80);
 
     @include media-query(xsmall) {
-      background-position: center left;
-      background-size: auto 50%;
+      background-position: center center;
+      background-size: 66%;
+      flex: 1;
     }
   }
 
@@ -98,7 +98,6 @@
 
   &__features {
     @include grid-column((xxsmall: 12, medium: 4));
-
     margin-bottom: rem-calc(20);
 
     .Typo__h2 {
@@ -115,4 +114,15 @@
   height: 100px;
   margin-bottom: rem-calc(20);
   width: 100px;
+  &--customizable {
+    background: url('../images/thigh.png') no-repeat center center / cover;
+  }
+
+  &--mobile {
+    background: url('../images/steak.png') no-repeat center center / cover;
+  }
+
+  &--preprocessors {
+    background: url('../images/drink.png') no-repeat center center / cover;
+  }
 }

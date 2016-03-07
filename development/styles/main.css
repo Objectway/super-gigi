@@ -932,7 +932,7 @@ body {
   width: 100%; }
 
 .HomePage__titleSection {
-  content: "COLUMN: width : (xxsmall: 12, xsmall: 7) | global : true | ";
+  content: "COLUMN: width : (xxsmall: 12, xsmall: 6) | global : true | ";
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -958,7 +958,7 @@ body {
           order: 1; }
 
 .HomePage__logoContainer {
-  content: "COLUMN: width : (xxsmall: 12, xsmall: 5) | global : true | ";
+  content: "COLUMN: width : (xxsmall: 12, xsmall: 6) | global : true | ";
   box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
@@ -994,7 +994,7 @@ body {
     margin-right: 0; }
 
 .HomePage__logo {
-  background: #005dad url("../images/SGG-logo.png") no-repeat center center;
+  background: #005dad url("../images/SGG-logo800x800.png") no-repeat center center;
   background-size: contain;
   height: 100%;
   min-height: 5rem; }
@@ -1032,6 +1032,12 @@ body {
   height: 100px;
   margin-bottom: 1.25rem;
   width: 100px; }
+  .CircleIcon--customizable {
+    background: url("../images/thigh.png") no-repeat center center/cover; }
+  .CircleIcon--mobile {
+    background: url("../images/steak.png") no-repeat center center/cover; }
+  .CircleIcon--preprocessors {
+    background: url("../images/drink.png") no-repeat center center/cover; }
 
 .KitchenSinkNavBar {
   background-color: #31363b;
@@ -3607,7 +3613,7 @@ body {
     order: 12; }
 
   .HomePage__titleSection {
-    width: 58.33333%;
+    width: 50%;
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
@@ -3624,15 +3630,19 @@ body {
     order: 0; }
 
   .HomePage__logoContainer {
-    width: 41.66667%;
+    width: 50%;
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto; }
 
   .HomePage__logo {
-    background-position: center left;
-    background-size: auto 50%; } }
+    background-position: center center;
+    background-size: 66%;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1; } }
   @media only screen and (min-width: 30em) and (max-width: 39.9375em) {
 
   .show-for-xsmall-only {
@@ -5621,7 +5631,7 @@ body {
     order: 12; }
 
   .HomePage__logoWrapper {
-    min-height: 80vh; }
+    min-height: 50vh; }
 
   .HomePage__title {
     font-size: 4.375rem; }
