@@ -82,7 +82,7 @@
     min-height: rem-calc(140);
 
     @include media-query(xsmall) {
-      background-position: center center;
+      background-position: 20% center;
       background-size: 50%;
       min-height: rem-calc(80);
     }

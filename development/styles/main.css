@@ -3649,7 +3649,7 @@ body {
     flex: 0 0 auto; }
 
   .HomePage__logo {
-    background-position: center center;
+    background-position: 20% center;
     background-size: 50%;
     min-height: 5rem; } }
   @media only screen and (min-width: 30em) and (max-width: 39.9375em) {
