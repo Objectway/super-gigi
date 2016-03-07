@@ -928,7 +928,7 @@ body {
           flex-wrap: wrap;
   background: #005dad;
   max-width: none;
-  min-height: 50vh;
+  min-height: 100vh;
   width: 100%; }
 
 .HomePage__titleSection {
@@ -948,6 +948,9 @@ body {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-align-self: flex-start;
+      -ms-flex-item-align: start;
+          align-self: flex-start;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
@@ -996,8 +999,14 @@ body {
 .HomePage__logo {
   background: #005dad url("../images/SGG-logo800x800.png") no-repeat center center;
   background-size: contain;
-  height: 100%;
-  min-height: 5rem; }
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: auto;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  min-height: 8.75rem; }
 
 .HomePage__description {
   margin-bottom: 1.25rem;
@@ -3624,6 +3633,9 @@ body {
     -webkit-align-items: flex-end;
     -ms-flex-align: end;
     align-items: flex-end;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
     -webkit-box-ordinal-group: 1;
     -webkit-order: 0;
     -ms-flex-order: 0;
@@ -3638,11 +3650,8 @@ body {
 
   .HomePage__logo {
     background-position: center center;
-    background-size: 66%;
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1; } }
+    background-size: 50%;
+    min-height: 5rem; } }
   @media only screen and (min-width: 30em) and (max-width: 39.9375em) {
 
   .show-for-xsmall-only {
