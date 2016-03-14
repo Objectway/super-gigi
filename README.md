@@ -1,8 +1,9 @@
 # Super GiGi
 **Super GiGi** is a CSS3 flex based grid system. 
-It's developed thinking about modern web applications and its first purpose is 
-to make easier to manage responsive layout.
-It's developed in Sass but you can use a compiled version if you prefer. 
+
+It has been developed with modern web applications in mind and its first purpose is 
+to make it easier to manage responsive layouts.
+It is developed in Sass, but a compiled Css version is available.
 
 ## Visual Doc `WIP`
 http://objectway.github.io/super-gigi/
