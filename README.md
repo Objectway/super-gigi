@@ -15,14 +15,14 @@ You can choose different ways to install **Super GiGi**:
 - Install with [Bower](http://bower.io): `bower install super-gigi -S`.
 - Install with [npm](https://www.npmjs.com): `npm install super-gigi -D`.
 
-After the download you can choose if use the compiled version including `[path to super-gigi]/dist/supergigi.css`.
+After the download you can use the CSS compiled version by importing `[path to super-gigi]/dist/supergigi.css`.
 
-Or you can use the Sass version, with all the options and mixins below, importing
-in your sass `[path to super-gigi]/dist/_main.scss`.
+To use the Sass version (which uses all of the options and mixins below) you have to import
+in your sass file `[path to super-gigi]/dist/_main.scss`.
 
   
 ## Options
-If you are using the Sass version you can personalize **Super GiGi**
+If you are using the Sass version you can personalize **Super GiGi** by
 simply changing the value of its variables before importing `main.scss`. 
 
 For the size variables, you would like to have the [`rem/em-calc()`](#rem-calc)
@@ -36,10 +36,8 @@ If you want to use rem on your site, set the font-size of your `html` tag to `re
 default: `$rem-base` - type: `unit`  
 
 This is the default value for all the
-[units functions](#functions), is useful when you have a pixel based design mockup and you want to convert al the measurements in rem / em. By default has the same value of `$rem-base`, but in some cases you may want change it. 
+[units functions](#functions), it is useful when you have a pixel based design mockup and you want to convert all of the measurements in rem / em. By default this has the same value of `$rem-base`, but in some cases you may want change it. 
 
-
-  
 
 ### $row-width
 default: `rem-calc(1920)` - type: `unit` 
@@ -47,12 +45,11 @@ default: `rem-calc(1920)` - type: `unit`
 This is the `max-width` of our row objects. The default value is 1920 pixels 
 converted in rems via [`rem-calc()`](#rem-calc) function.
 
-
   
 ### $column-gutter
 default: `rem-calc(30)` - type: `unit` 
 
-This is the space between our columns. The default value is 30 pixels converted in rems via [`rem-calc()`](#rem-calc) function. 
+This is the space between our columns, also known as gutter. The default value is 30 pixels converted in rems via [`rem-calc()`](#rem-calc) function. 
 
   
 ### $grid-columns
@@ -79,7 +76,6 @@ Set this variable to true if you want to generate placeholders to us like:
   @extend %large-12;
 }
 ```
-
   
 ### $row-name
 default: `row` - type: `string` 
@@ -121,8 +117,8 @@ If true, all the grid will be passed by [`dry-it()`](#dry-it) mixin.
 default: `false` - type: `boolean` 
 
 With big applications and semantic BEM selectors, it is difficult to understand 
-what kind of properties a determinate DOM element has. If you set this 
-variable to `true`, **Super GiGi** will add a content property that will be 
+what kind of properties a DOM element has. If you set this 
+variable to `true`, **Super GiGi** will add a "content" property that will be 
 useful when we inspect the elements.
 
 **Example:**
@@ -163,20 +159,21 @@ default: ```(
   )```
   - type: `map`
 
-Ok, this is a little complicated :) but we want to have this settings 
-in only one place. This is a 
+Ok, this might look a little complicated :) but we wanted to have an easily accessible setting
+in one place. This is a 
 <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps" target="_blank">Sass map</a>, 
-and is used to define all our mediaqueries.
+and is used to define all of our mediaqueries.
 
 The **keys** are used to define the name of our breakpoints and will be passed 
-to our classes generator or to our mixins. For example if you use the classes 
-and youchange this object like this: 
+to our classes generator or to our mixins. 
+
+As an example, the following...
 
 ```scss
 $breakpoints: (sml: 0em, mdm: 40em, lrg: 60em);
 ```
 
-you will generate this kind of css:
+... will generate this css:
 
 ```css
 @media (min-width: 40em) {
@@ -187,7 +184,8 @@ you will generate this kind of css:
     width: 25%; }}
     
 ```
-In the same way you have to change how you refer to breakpoints in all your mixins:
+
+If you decide to change class names like in the example above, then just in the same way you have to change how you refer to breakpoints in all of your mixins:
 
 ```scss
 .foo {
@@ -226,7 +224,6 @@ develop in graceful decadency. To do this you can set
 `$query-direction: (max-width, min-width)`. The media-queries will be reverted
 and all the queries will go from the largest query to the smallest one.
 
-  
 
 ## Mixins
 If you're using the Sass version of Super-GiGi you'll can use the following Mixins. Here you can found extended documentation for Grid and Visibility mixins too.
@@ -254,6 +251,7 @@ in the [`$breakpoints`](#breakpoints) variable.
 
 If you want to trigger only a range you can pass `$until` parameter to your mixin implementation. 
 `$until` accepts `only` or a [`$breakpoints`](#breakpoints) key value.
+
 Example: 
 ```scss
 .sausage {
@@ -279,12 +277,12 @@ will generate:
     content: "small to large;"; } }
 ```
 
-You can choose between classical 
+You can choose between the classical 
 <a href="http://www.w3.org/TR/css3-mediaqueries/" target="_blank">media query</a> 
-or to use <a href="https://github.com/snugug/eq.js" target="_blank">element query</a>. 
+or the JavaScript powered <a href="https://github.com/snugug/eq.js" target="_blank">element query</a>. 
 You don't have to specify this setting everytime, **Super GiGi** provides a 
-[global $eq-grid](#eq-grid) variable, but sometime is useful to mix media end 
-element query.
+[global $eq-grid](#eq-grid) variable, but it might be handy to mix media end 
+element queries.
 
 ### grid-space()
 arguments: `$property`, `$attr`
@@ -298,10 +296,10 @@ arguments: `$property`, `$attr`
   - type: `list`
 
 When you are writing css in a grid, it's difficult to manage 
-the measures sometime. `grid-space()` comes to help us in this ungrateful task! 
+the measures sometime. `grid-space()` comes to help us in this ungrateful task!
 You must declare the property you want to set (for example: 
-`margin-left`) changing the `$property` argument. 
-After that you can pass how many column of the grid you want to take. 
+`margin-left`) by changing the `$property` argument. 
+You then have to pass how many column of the grid you want that property to take. 
 For example assuming that we have `12` [`$grid-columns`](#grid-columns):
 
 ```scss
@@ -424,11 +422,11 @@ will generate:
   } 
 }
 ```
-**note:** you see repeted properties, because we set pull and push for 
+**note:** you see repeated properties, because we set pull and push for 
 the same element. 
 
 <div id="gcwidthoffsetpushpull"></div>
-`$width`, `$offset`, `$push` and `$pull` have similar behaviors. They can be used in three different way.
+`$width`, `$offset`, `$push` and `$pull` have similar behaviors. They can be used in three different ways.
 
 **1 - Passing an integer**
 ```scss
@@ -514,8 +512,9 @@ We've seen that you can pass to `$width` essentialy a number. When you do that,
 `Super GiGi` will add to your css: `flex: 0 0 auto`. This is essential to our flex grid to work. 
 
 But you can set `$width` to `auto`, that will set the `width` css property to `auto` and the `flex` property to `1 1 0%`. 
-With this option you can have columns that will take all the space available on
-the row. If you have one column, that will take 100% of the space, if two that will take half each one and so on.
+With this option you can have columns that will take all of the available space on
+a given row. 
+If you have one column, it will take 100% of the space, if you have two then they both will take 50% each, and so on.
 
 Another important option is to set `$width` to `0`. **This will not set `width` to 0%** (a column must have a minimun width). But the width will be `auto`.
 In this way you can have a column with the width decided from the content.
@@ -643,7 +642,7 @@ arguments: `$query`
   - default: `null`
   - type: `string`
 
-In this case the element is hided by  `display: none;` and will have 
+In this case the element is hidden by  `display: none;` and will have 
 the property: `display: inherit` only for the selected media query range. 
 Example:
 
@@ -663,7 +662,7 @@ will generate:
   } 
 }
  ```
-  
+
 
 ### hide-for()
 arguments: `$query`
@@ -703,9 +702,9 @@ arguments: `$id`
 **NOTE**: This mixin will change the order of your generated css.
 
 One of the bad thing that we have in developing a grid without a default classes
-schema is that our result css code will be semantic... but not dry... You can 
-serve the css with gzip, but you know that we will have a lot of redundant 
-code...
+schema is that the resulting css code will be semantic, but not dry. 
+You can (and you should) use gzip to serve your css, but there will still be redundant css code.
+
 **Example:**
 ```scss
 .foo {
@@ -747,12 +746,13 @@ will generate this css:
   } 
 }
 ```
-The same code for two identical classes. 
-Sass comes in our help with placeholders, but we must extend too many selector to
+We just generated the same code for two identical classes. 
+Sass helps with placeholders, but still we will need to extend too many selector to
 have a dry behavior. What if we can generate placeholders on fly? 
-That is exactly what `dry-it()` does. You don't have to use it, this is already
-in all our mixins seen before. For use it you must only set to `true` the 
-[`$use-dry`](#use-dry) variable. And that is what will happen:
+That is exactly what `dry-it()` does. To use it you just need to set [`$use-dry`](#use-dry) to `true`.
+
+The result will be like this:
+
 ```scss
 .foo {
   @include grid-column((small: 12, large: 6));
@@ -783,7 +783,7 @@ will generate this css:
 }
 ```
 
-***IMPORTANT*** To use this option is preferable to order your media query smaller to larger.
+***IMPORTANT*** To use this option it is preferable to order your media query smaller to larger.
 I know, that is a very boring thing to do manually, but fortunally:
 <a href="https://github.com/hail2u/node-css-mqpacker" target="_blankW">
 PostCSS mqpacker
@@ -809,10 +809,9 @@ module.exports = function() {
 
 You can find a complete gulp file in `gulp/tasks/sass.js`.
 
-  
 
 ## Functions
-We love [Foundation](http://foundation.zurb.com) and we used it a lot. These 
+We love [Foundation](http://foundation.zurb.com) and we've been using it a lot. These 
 functions are based on our preferred Foundation functions that we want to 
 continue to use in our projects.
 
@@ -822,7 +821,7 @@ arguments: `$value`
   - required
   - type: `list`
 
-remove the unit from a value
+removes the unit from a value
 **Example**
 ```scss
 $foo: remove-unit(10px); //will return 10
@@ -914,22 +913,19 @@ will return:
 }
 ```
 
-  
-
 ## Extras
 
 ### Run it
-Do you want to collaborate? It's dangerous to go alone take this:
+Would you like to collaborate? Here are some useful npm tasks:
 
-`$ npm run dev` -> Compile sources, serve the dev folder and start watchers
+`$ npm run dev` -> Compiles sources, serves the dev folder and starts watchers
 
-`$ npm run compile` -> Compile the sources for development
+`$ npm run compile` -> Compiles the sources for development
 
-`$ npm run build` -> Compile for distribution
+`$ npm run build` -> Compiles for distribution
 
 we have added unit tests recently. You can run it with Mocha. 
 
-  
 
 ## BROWSER SUPPORT
 Super GiGi is built in flex. So the browser support is 
