@@ -92,8 +92,8 @@ in the <a href="#breakpoints"><code>$breakpoints</code></a> variable.
 <strong>Super GiGi</strong> is developed mobile first, so if you write 
 <code>@include mediaquery(small){...}</code> you will target all the queries <strong>from</strong> <code>small</code>. </p>
 <p>If you want to trigger only a range you can pass <code>$until</code> parameter to your mixin implementation. 
-<code>$until</code> accepts <code>only</code> or a <a href="#breakpoints"><code>$breakpoints</code></a> key value.
-Example: </p>
+<code>$until</code> accepts <code>only</code> or a <a href="#breakpoints"><code>$breakpoints</code></a> key value.</p>
+<p>Example: </p>
 <pre><code class="lang-scss">.sausage {
   @include media-query(small, only) {
     content: &quot;small only;&quot;
@@ -115,12 +115,12 @@ Example: </p>
   .eggplant {
     content: &quot;small to large;&quot;; } }
 </code></pre>
-<p>You can choose between classical 
+<p>You can choose between the classical 
 <a href="http://www.w3.org/TR/css3-mediaqueries/" target="_blank">media query</a> 
-or to use <a href="https://github.com/snugug/eq.js" target="_blank">element query</a>. 
+or the JavaScript powered <a href="https://github.com/snugug/eq.js" target="_blank">element query</a>. 
 You don&#39;t have to specify this setting everytime, <strong>Super GiGi</strong> provides a 
-<a href="#eq-grid">global $eq-grid</a> variable, but sometime is useful to mix media end 
-element query.</p>
+<a href="#eq-grid">global $eq-grid</a> variable, but it might be handy to mix media end 
+element queries.</p>
 <h3 id="grid-space-">grid-space()</h3>
 <p>arguments: <code>$property</code>, <code>$attr</code></p>
 <ul>
@@ -138,10 +138,10 @@ element query.</p>
 </li>
 </ul>
 <p>When you are writing css in a grid, it&#39;s difficult to manage 
-the measures sometime. <code>grid-space()</code> comes to help us in this ungrateful task! 
+the measures sometime. <code>grid-space()</code> comes to help us in this ungrateful task!
 You must declare the property you want to set (for example: 
-<code>margin-left</code>) changing the <code>$property</code> argument. 
-After that you can pass how many column of the grid you want to take. 
+<code>margin-left</code>) by changing the <code>$property</code> argument. 
+You then have to pass how many column of the grid you want that property to take. 
 For example assuming that we have <code>12</code> <a href="#grid-columns"><code>$grid-columns</code></a>:</p>
 <pre><code class="lang-scss">.foo {
   @include grid-space(margin-left, 5)
@@ -272,10 +272,10 @@ that you will use more. Let&#39;s take a look at how it works:</p>
   } 
 }
 </code></pre>
-<p><strong>note:</strong> you see repeted properties, because we set pull and push for 
+<p><strong>note:</strong> you see repeated properties, because we set pull and push for 
 the same element. </p>
 <p><div id="gcwidthoffsetpushpull"></div>
-<code>$width</code>, <code>$offset</code>, <code>$push</code> and <code>$pull</code> have similar behaviors. They can be used in three different way.</p>
+<code>$width</code>, <code>$offset</code>, <code>$push</code> and <code>$pull</code> have similar behaviors. They can be used in three different ways.</p>
 <p><strong>1 - Passing an integer</strong></p>
 <pre><code class="lang-scss">.foo {
   @include grid-column($width: 1);
@@ -346,8 +346,9 @@ As said before <code>$width</code>, <code>$offset</code>, <code>$push</code> and
 <p>We&#39;ve seen that you can pass to <code>$width</code> essentialy a number. When you do that,
 <code>Super GiGi</code> will add to your css: <code>flex: 0 0 auto</code>. This is essential to our flex grid to work. </p>
 <p>But you can set <code>$width</code> to <code>auto</code>, that will set the <code>width</code> css property to <code>auto</code> and the <code>flex</code> property to <code>1 1 0%</code>. 
-With this option you can have columns that will take all the space available on
-the row. If you have one column, that will take 100% of the space, if two that will take half each one and so on.</p>
+With this option you can have columns that will take all of the available space on
+a given row. 
+If you have one column, it will take 100% of the space, if you have two then they both will take 50% each, and so on.</p>
 <p>Another important option is to set <code>$width</code> to <code>0</code>. <strong>This will not set <code>width</code> to 0%</strong> (a column must have a minimun width). But the width will be <code>auto</code>.
 In this way you can have a column with the width decided from the content.</p>
 <p><strong>Note</strong> we are preparing a visual example. Stay tuned.</p>
@@ -468,7 +469,7 @@ display: none;
 </ul>
 </li>
 </ul>
-<p>In this case the element is hided by  <code>display: none;</code> and will have 
+<p>In this case the element is hidden by  <code>display: none;</code> and will have 
 the property: <code>display: inherit</code> only for the selected media query range. 
 Example:</p>
 <pre><code class="lang-scss">.foo {
@@ -523,10 +524,9 @@ Example:</p>
 </ul>
 <p><strong>NOTE</strong>: This mixin will change the order of your generated css.</p>
 <p>One of the bad thing that we have in developing a grid without a default classes
-schema is that our result css code will be semantic... but not dry... You can 
-serve the css with gzip, but you know that we will have a lot of redundant 
-code...
-<strong>Example:</strong></p>
+schema is that the resulting css code will be semantic, but not dry. 
+You can (and you should) use gzip to serve your css, but there will still be redundant css code.</p>
+<p><strong>Example:</strong></p>
 <pre><code class="lang-scss">.foo {
   @include grid-column((small: 12, large: 6));
 }
@@ -565,12 +565,11 @@ code...
   } 
 }
 </code></pre>
-<p>The same code for two identical classes. 
-Sass comes in our help with placeholders, but we must extend too many selector to
+<p>We just generated the same code for two identical classes. 
+Sass helps with placeholders, but still we will need to extend too many selector to
 have a dry behavior. What if we can generate placeholders on fly? 
-That is exactly what <code>dry-it()</code> does. You don&#39;t have to use it, this is already
-in all our mixins seen before. For use it you must only set to <code>true</code> the 
-<a href="#use-dry"><code>$use-dry</code></a> variable. And that is what will happen:</p>
+That is exactly what <code>dry-it()</code> does. To use it you just need to set <a href="#use-dry"><code>$use-dry</code></a> to <code>true</code>.</p>
+<p>The result will be like this:</p>
 <pre><code class="lang-scss">.foo {
   @include grid-column((small: 12, large: 6));
 }
@@ -598,7 +597,7 @@ in all our mixins seen before. For use it you must only set to <code>true</code>
   } 
 }
 </code></pre>
-<p><strong><em>IMPORTANT</em></strong> To use this option is preferable to order your media query smaller to larger.
+<p><strong><em>IMPORTANT</em></strong> To use this option it is preferable to order your media query smaller to larger.
 I know, that is a very boring thing to do manually, but fortunally:
 <a href="https://github.com/hail2u/node-css-mqpacker" target="_blankW">
 PostCSS mqpacker

@@ -58,12 +58,12 @@
     <div class="KitchenSinkBody">
       <div class="KitchenSinkBody__section">
         <div class="KitchenSinkBody__aside">
-          <nav class="KitchenSinkNav"><a href="#-rem-base" class="KitchenSinkNav__link">Rem base</a><a href="#-design-base" class="KitchenSinkNav__link">Design base</a><a href="#-row-width" class="KitchenSinkNav__link">Row width</a><a href="#-column-gutter" class="KitchenSinkNav__link">Column gutter</a><a href="#-grid-columns" class="KitchenSinkNav__link">Grid columns</a><a href="#-use-classes" class="KitchenSinkNav__link">Use classes</a><a href="#-use-placeholders" class="KitchenSinkNav__link">Use placeholders</a><a href="#-row-name" class="KitchenSinkNav__link">Row name</a><a href="#-column-name" class="KitchenSinkNav__link">Column name</a><a href="#-use-bem" class="KitchenSinkNav__link">Use BEM</a><a href="#-bem-separator" class="KitchenSinkNav__link">BEM separator</a><a href="#-grid-start" class="KitchenSinkNav__link">Grid Start</a><a href="#-use-dry" class="KitchenSinkNav__link">Use dry</a><a href="#-debug" class="KitchenSinkNav__link">Debug</a><a href="#-eq-grid-experimental-" class="KitchenSinkNav__link">EQ Grid</a><a href="#-breakpoints" class="KitchenSinkNav__link">Breakpoints</a><a href="#-use-flex-experimental-" class="KitchenSinkNav__link">Use flex</a><a href="#-query-direction-experimental-" class="KitchenSinkNav__link">Query direction</a></nav>
+          <nav class="KitchenSinkNav"><a href="#-rem-base" class="KitchenSinkNav__link">Rem base</a><a href="#-design-base" class="KitchenSinkNav__link">Design base</a><a href="#-row-width" class="KitchenSinkNav__link">Row width</a><a href="#-column-gutter" class="KitchenSinkNav__link">Column gutter</a><a href="#-grid-columns" class="KitchenSinkNav__link">Grid columns</a><a href="#-use-classes" class="KitchenSinkNav__link">Use classes</a><a href="#-use-placeholders" class="KitchenSinkNav__link">Use placeholders</a><a href="#-row-name" class="KitchenSinkNav__link">Row name</a><a href="#-column-name" class="KitchenSinkNav__link">Column name</a><a href="#-use-bem" class="KitchenSinkNav__link">Use BEM</a><a href="#-bem-separator" class="KitchenSinkNav__link">BEM separator</a><a href="#-grid-start" class="KitchenSinkNav__link">Grid Start</a><a href="#-use-dry" class="KitchenSinkNav__link">Use dry</a><a href="#-debug" class="KitchenSinkNav__link">Debug</a><a href="#-eq-grid-experimental-" class="KitchenSinkNav__link">EQ Grid</a><a href="#-breakpoints" class="KitchenSinkNav__link">Breakpoints</a><a href="#-use-flex-experimental-" class="KitchenSinkNav__link">Use flex</a><a href="#-use-float-experimental-" class="KitchenSinkNav__link">Use float</a><a href="#-query-direction-experimental-" class="KitchenSinkNav__link">Query direction</a></nav>
         </div>
         <div class="KitchenSinkBody__content">
           <div class="MarkDownGenerated">
             <div class="MarkDownGenerated__content"><h2 id="options">Options</h2>
-<p>If you are using the Sass version you can personalize <strong>Super GiGi</strong>
+<p>If you are using the Sass version you can personalize <strong>Super GiGi</strong> by
 simply changing the value of its variables before importing <code>main.scss</code>. </p>
 <p>For the size variables, you would like to have the <a href="#rem-calc"><code>rem/em-calc()</code></a>
 functions available. To achieve that remember to import the <code>_functions.scss</code> partial
@@ -73,14 +73,14 @@ before.</p>
 <h3 id="-design-base">$design-base</h3>
 <p>default: <code>$rem-base</code> - type: <code>unit</code>  </p>
 <p>This is the default value for all the
-<a href="#functions">units functions</a>, is useful when you have a pixel based design mockup and you want to convert al the measurements in rem / em. By default has the same value of <code>$rem-base</code>, but in some cases you may want change it. </p>
+<a href="#functions">units functions</a>, it is useful when you have a pixel based design mockup and you want to convert all of the measurements in rem / em. By default this has the same value of <code>$rem-base</code>, but in some cases you may want change it. </p>
 <h3 id="-row-width">$row-width</h3>
 <p>default: <code>rem-calc(1920)</code> - type: <code>unit</code> </p>
 <p>This is the <code>max-width</code> of our row objects. The default value is 1920 pixels 
 converted in rems via <a href="#rem-calc"><code>rem-calc()</code></a> function.</p>
 <h3 id="-column-gutter">$column-gutter</h3>
 <p>default: <code>rem-calc(30)</code> - type: <code>unit</code> </p>
-<p>This is the space between our columns. The default value is 30 pixels converted in rems via <a href="#rem-calc"><code>rem-calc()</code></a> function. </p>
+<p>This is the space between our columns, also known as gutter. The default value is 30 pixels converted in rems via <a href="#rem-calc"><code>rem-calc()</code></a> function. </p>
 <h3 id="-grid-columns">$grid-columns</h3>
 <p>default: <code>12</code> - type: <code>number</code> </p>
 <p>The number of columns used in our layout.</p>
@@ -117,8 +117,8 @@ converted in rems via <a href="#rem-calc"><code>rem-calc()</code></a> function.<
 <h3 id="-debug">$debug</h3>
 <p>default: <code>false</code> - type: <code>boolean</code> </p>
 <p>With big applications and semantic BEM selectors, it is difficult to understand 
-what kind of properties a determinate DOM element has. If you set this 
-variable to <code>true</code>, <strong>Super GiGi</strong> will add a content property that will be 
+what kind of properties a DOM element has. If you set this 
+variable to <code>true</code>, <strong>Super GiGi</strong> will add a &quot;content&quot; property that will be 
 useful when we inspect the elements.</p>
 <p><strong>Example:</strong></p>
 <pre><code class="lang-css">.fooColumn {
@@ -152,16 +152,16 @@ useful when we inspect the elements.</p>
 <ul>
 <li>type: <code>map</code></li>
 </ul>
-<p>Ok, this is a little complicated :) but we want to have this settings 
-in only one place. This is a 
+<p>Ok, this might look a little complicated :) but we wanted to have an easily accessible setting
+in one place. This is a 
 <a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html#maps" target="_blank">Sass map</a>, 
-and is used to define all our mediaqueries.</p>
+and is used to define all of our mediaqueries.</p>
 <p>The <strong>keys</strong> are used to define the name of our breakpoints and will be passed 
-to our classes generator or to our mixins. For example if you use the classes 
-and youchange this object like this: </p>
+to our classes generator or to our mixins. </p>
+<p>As an example, the following...</p>
 <pre><code class="lang-scss">$breakpoints: (sml: 0em, mdm: 40em, lrg: 60em);
 </code></pre>
-<p>you will generate this kind of css:</p>
+<p>... will generate this css:</p>
 <pre><code class="lang-css">@media (min-width: 40em) {
   .mdm-3 {
     width: 25%; } }
@@ -169,7 +169,7 @@ and youchange this object like this: </p>
   .lrg-3 {
     width: 25%; }}
 </code></pre>
-<p>In the same way you have to change how you refer to breakpoints in all your mixins:</p>
+<p>If you decide to change class names like in the example above, then just in the same way you have to change how you refer to breakpoints in all of your mixins:</p>
 <pre><code class="lang-scss">.foo {
   @include grid-row(false);
   &amp;__bar {
@@ -191,7 +191,13 @@ and youchange this object like this: </p>
 <p>default: <code>true</code> - type: <code>boolean</code> </p>
 <p><strong>Super GiGi</strong> is developed with CSS3 Flexbox, but there is an untested 
 version in float. 
-Set this option to <code>false</code>, to try it.</p>
+Set this option to <code>false</code>, to don&#39;t use the flex properties.</p>
+<h3 id="-use-float-experimental-">$use-float <code>EXPERIMENTAL</code></h3>
+<p>default: <code>true</code> - type: <code>boolean</code> </p>
+<p><strong>Super GiGi</strong> is developed with CSS3 Flexbox, but there is an untested 
+version in float. 
+Set this option to <code>true</code>, to use the float properties.
+You can use both options to provide fallback for the old browsers.</p>
 <h3 id="-query-direction-experimental-">$query-direction <code>EXPERIMENTAL</code></h3>
 <p>default: <code>(min-width, max-width)</code> - type: <code>list</code> </p>
 <p><strong>Super GiGi</strong> is developed mobile first, but in some cases you would like to 
