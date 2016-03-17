@@ -215,8 +215,16 @@ default: `true` - type: `boolean`
 
 **Super GiGi** is developed with CSS3 Flexbox, but there is an untested 
 version in float. 
-Set this option to `false`, to try it.
+Set this option to `false`, to don't use the flex properties.
+  
 
+### $use-float `EXPERIMENTAL`
+default: `true` - type: `boolean` 
+
+**Super GiGi** is developed with CSS3 Flexbox, but there is an untested 
+version in float. 
+Set this option to `true`, to use the float properties.
+You can use both options to provide fallback for the old browsers.
   
 ### $query-direction `EXPERIMENTAL`
 default: `(min-width, max-width)` - type: `list` 
@@ -934,7 +942,7 @@ we have added unit tests recently. You can run it with Mocha.
 ## BROWSER SUPPORT
 Super GiGi is built in flex. So the browser support is 
 <a href="http://caniuse.com/#feat=flexbox;" target="_blank">
-the same of the flexbox property</a>.
+the same of the flexbox property</a>. You can use the `$use-float` setting variable to provide a fallback for the old browsers. It works fine for classical grid, but the `auto` column don't work obviously.
 
 If you use the sass version, we suggest you to take a look to 
 <a href="https://github.com/postcss/autoprefixer" target="_blank">
