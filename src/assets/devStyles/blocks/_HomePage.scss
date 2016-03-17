@@ -77,13 +77,17 @@
     background-size: contain;
     flex: 1;
     height: auto;
-    margin-bottom: 3rem;
-    margin-top: 3rem;
     min-height: rem-calc(140);
 
     @include media-query(xsmall) {
       background-position: 20% center;
       background-size: 50%;
+      min-height: rem-calc(80);
+    }
+
+    @include media-query(xlarge) {
+      background-position: 20% center;
+      background-size: 40%;
       min-height: rem-calc(80);
     }
   }

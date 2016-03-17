@@ -1004,8 +1004,6 @@ body {
       -ms-flex: 1;
           flex: 1;
   height: auto;
-  margin-bottom: 3rem;
-  margin-top: 3rem;
   min-height: 8.75rem; }
 
 .HomePage__description {
@@ -6408,7 +6406,12 @@ body {
     -webkit-box-ordinal-group: 13;
     -webkit-order: 12;
     -ms-flex-order: 12;
-    order: 12; } }
+    order: 12; }
+
+  .HomePage__logo {
+    background-position: 20% center;
+    background-size: 40%;
+    min-height: 5rem; } }
   @media only screen and (min-width: 80em) and (max-width: 89.9375em) {
 
   .show-for-xlarge-only {
