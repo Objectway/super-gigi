@@ -96,11 +96,20 @@
       width: 100%;
     }
 
+    @if $use-float {
+      &:after {
+        clear: both;
+        content: '';
+        display: table;
+      }
+    }
+
     @if $use-flex {
       box-sizing: border-box;
       display: flex;
       flex-wrap: wrap;
     }
+
   }
 
   @if $vertical and $use-flex {
@@ -147,7 +156,9 @@
       @if $use-flex {
         display: flex;
         flex-direction: column;
-      } @else {
+      }
+
+      @if $use-float {
         float: $grid-start;
       }
     }
