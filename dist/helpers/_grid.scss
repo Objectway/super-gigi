@@ -81,6 +81,7 @@
   }
 
   @include dry-it('row#{$nested}') {
+    box-sizing: border-box;
 
     @if $grid-start != left and $use-flex {
       flex-direction: row-reverse;
@@ -96,6 +97,10 @@
       width: 100%;
     }
 
+    @if $use-table {
+      display: table;
+    }
+
     @if $use-float {
       &:after {
         clear: both;
@@ -105,7 +110,6 @@
     }
 
     @if $use-flex {
-      box-sizing: border-box;
       display: flex;
       flex-wrap: wrap;
     }
@@ -156,6 +160,10 @@
       @if $use-flex {
         display: flex;
         flex-direction: column;
+      }
+
+      @if $use-table {
+        display: table-cell;
       }
 
       @if $use-float {
