@@ -210,21 +210,22 @@ In the same way you have to change how you refer to breakpoints in all your mixi
 ```
 
   
-### $use-flex `EXPERIMENTAL`
+### $use-flex
 default: `true` - type: `boolean` 
 
-**Super GiGi** is developed with CSS3 Flexbox, but there is an untested 
-version in float. 
+**Super GiGi** is developed with CSS3 Flexbox, but there are fallback options with `float` and `display: table`. 
 Set this option to `false`, to don't use the flex properties.
   
+
+### $use-table `EXPERIMENTAL`
+default: `true` - type: `boolean` 
+
+**Super GiGi** is developed with CSS3 Flexbox, but there is a fallback in table. Set this option to `true`, to use the float properties.
 
 ### $use-float `EXPERIMENTAL`
 default: `true` - type: `boolean` 
 
-**Super GiGi** is developed with CSS3 Flexbox, but there is an untested 
-version in float. 
-Set this option to `true`, to use the float properties.
-You can use both options to provide fallback for the old browsers.
+**Super GiGi** is developed with CSS3 Flexbox, but there is a fallback in float. Set this option to `true`, to use the float properties.
   
 ### $query-direction `EXPERIMENTAL`
 default: `(min-width, max-width)` - type: `list` 
