@@ -943,7 +943,7 @@ we have added unit tests recently. You can run it with Mocha.
 ## BROWSER SUPPORT
 Super GiGi is built in flex. So the browser support is 
 <a href="http://caniuse.com/#feat=flexbox;" target="_blank">
-the same of the flexbox property</a>. You can use the `$use-float` setting variable to provide a fallback for the old browsers. It works fine for classical grid, but the `auto` column don't work obviously.
+the same of the flexbox property</a>. You can use the `$use-float` or `$use-table` setting variable to provide a fallback for the old browsers. It works fine for base case, you could use <a href="https://modernizr.com/" target="_blank">Modernizr</a> for advanced one.
 
 If you use the sass version, we suggest you to take a look to 
 <a href="https://github.com/postcss/autoprefixer" target="_blank">
