@@ -47,10 +47,10 @@
   display: inherit !important; }
 
 *.row {
+  box-sizing: border-box;
   margin: 0 auto;
   max-width: 120rem;
   width: 100%;
-  box-sizing: border-box;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
