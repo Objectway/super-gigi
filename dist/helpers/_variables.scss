@@ -4,31 +4,51 @@
 // If you want to overwrite the Super GiGi's variables you must declare them
 // before the import.
 // For the size variables, you would like to have the em/rem-calc function.
-// To achieve that remember to import the _functions.scss partial before.
+// To achieve that, remember to import the _functions.scss partial before.
 // -----------------------------------------------------------------------------
 
-// -----------------------------------------------------------------------------
-// DAFAULT VARIABLES
-// -----------------------------------------------------------------------------
 $use-flex: true !default;
+
+// -----------------------------------------------------------------------------
+//- Fallbacks for older browsers
+// -----------------------------------------------------------------------------
 $use-float: false !default;
+$use-table: false !default;
+
+// -----------------------------------------------------------------------------
+// Dimensions
+// -----------------------------------------------------------------------------
 $rem-base: 16px !default;
 $row-width: rem-calc(1920) !default;
 $column-gutter: rem-calc(30) !default;
+
+// -----------------------------------------------------------------------------
+// Grid options
+// -----------------------------------------------------------------------------
 $grid-columns: 12 !default;
-$use-classes: false !default;
 $use-placeholders: false !default;
+$grid-start: left !default;
+$grid-end: if($grid-start == left, right, left) !default;
+
+// -----------------------------------------------------------------------------
+// Class-based output options
+// -----------------------------------------------------------------------------
+$use-classes: false !default;
 $row-name: row !default;
 $column-name: column !default;
 $use-bem: false !default;
 $bem-separator: '--' !default;
-$grid-start: left !default;
-$grid-end: if($grid-start == left, right, left) !default;
+
+// -----------------------------------------------------------------------------
+// Extra features
+// -----------------------------------------------------------------------------
 $use-dry: false !default;
 $eq-grid: false !default;
 $debug: false !default;
 
-// USED MEDIAQUERIES
+// -----------------------------------------------------------------------------
+// Mediaqueries breakpoints
+// -----------------------------------------------------------------------------
 $breakpoints: (
   xxsmall: 0em,
   xsmall: em-calc(480),
