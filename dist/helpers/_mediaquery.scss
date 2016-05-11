@@ -29,7 +29,7 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
 
   //inmedia variable, tell us if we are in a mediaquery.
   //useful to generate warning, debug and testing.
-  $inmedia: true !global;
+  $inmedia: ('query': $query, 'until': $until, 'eq-grid': $eq-grid) !global;
   @if $eq-grid {
     @if $only {
       [data-eq-state$="#{$query}"] & {
