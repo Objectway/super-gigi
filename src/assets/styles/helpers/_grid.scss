@@ -46,7 +46,7 @@
     @each $query, $value in $attr {
       $set: #{$query}#{$value}#{$eq-grid};
 
-      @if $inmedia {
+      @if $inmedia != false{
         @include dry-it('#{$property}-#{$set}') {
           @include grid-calc($property, $value);
         }
