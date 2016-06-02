@@ -1,9 +1,9 @@
 {
   "name": "super-gigi",
-  "version": "1.11.1",
+  "version": "1.11.2",
   "homepage": "http://objectway.github.io/super-gigi/",
   "authors": [
-    "Objectway <DWX Sviluppo <dwxsviluppo@objectway.it>"
+    "MakhBeth <Davide Di Pumpo <davidemak@gmail.com>"
   ],
   "description": "A customizable grid system based on CSS3 Flexbox",
   "main": [

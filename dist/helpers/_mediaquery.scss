@@ -1,5 +1,3 @@
-// - CONFIGURATION - //
-
 // Global
 $min-unit: em-calc(1) !default;
 $inmedia: false !default;
@@ -7,23 +5,19 @@ $query-direction: (min-width, max-width) !default;
 $query-start: nth($query-direction, 1);
 $query-end: nth($query-direction, 2);
 
-// Var declaration
-$cur-bp: false !default;
-$next-bp: false !default;
-
-// Initializing $map-position variable
-$map-position: 0;
-
 // - MEDIAQUERIES SETTINGS
-// Screens
 $screen: 'only screen' !default;
 $landscape: "#{$screen} and (orientation: landscape)" !default;
 $portrait: "#{$screen} and (orientation: portrait)" !default;
 
-// - MEDIAQUERY MIXINS - //
 
 // - Generate Media Query
 @mixin media-query($query: xxsmall, $until: false, $eq-grid: $eq-grid) {
+
+  // Local var declaration
+  $cur-bp: false !default;
+  $next-bp: false !default;
+  $map-position: 0;
 
   $only: ($until == true or $until == only);
 
