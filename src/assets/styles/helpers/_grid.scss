@@ -1,6 +1,6 @@
 @function sg-dimension($dividend, $divisor: $grid-columns, $margin: false) {
 
-  @if quote($dividend) == 'auto' {
+  @if $dividend == auto {
     @return auto;
   }
 
@@ -18,7 +18,7 @@
 @mixin grid-calc($property, $attr, $margin: false, $query: false) {
 
   @if $property == width { // Width property needs flex attributes
-    @if quote($attr) == 'auto' {
+    @if $attr == auto {
       flex: 1 1 0%;
 
     } @else {
@@ -26,7 +26,7 @@
     }
 
     @if $attr == 0 {
-      $attr: 'auto';
+      $attr: auto;
     }
   }
 
@@ -44,7 +44,7 @@
 
 }
 
-@mixin grid-space($property: width, $attr: 'auto', $eq-grid: $eq-grid, $margin: false) {
+@mixin grid-space($property: width, $attr: auto, $eq-grid: $eq-grid, $margin: false) {
 
   @if type-of($attr) != map {
     @include dry-it('#{$property}-#{$attr}') {
