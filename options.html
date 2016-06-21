@@ -135,7 +135,13 @@ useful when we inspect the elements.</p>
     } 
   }
 </code></pre>
-<h3 id="-eq-grid-experimental-">$eq-grid <code>EXPERIMENTAL</code></h3>
+<h3 id="-sg-collapse">$sg-collapse</h3>
+<p>default: <code>false</code> - type: <code>boolean</code> </p>
+<p>By default, <strong>Super GiGi</strong> columns have a <a href="#column-gutter"><code>$column-gutter</code></a> made with padding. If you want to remove that gutter to all your columns, set this option to <code>true</code></p>
+<h3 id="-sg-use-margin-experimental-">$sg-use-margin <code>EXPERIMENTAL</code></h3>
+<p>default: <code>false</code> - type: <code>boolean</code> </p>
+<p>It is possible to use margins as additional column-gutter between columns. This <em>is not mutual esclusive</em> to the padding -to do that, see the <code>$collapse</code> option inside the <a href="#grid-column"><code>grid-column</code></a> mixin or the <a href="#sg-collapse"><code>$sg-collapse</code></a> option-, but it will <em>add</em> another column-gutter to your column. This is the general option for all your columns. You can set this option to a single column by the <a href="#gridcolumnmargin"><code>$margin</code></a> option of the <code>grid-column</code> mixin.</p>
+<h3 id="-eq-grid">$eq-grid</h3>
 <p>default: <code>false</code> - type: <code>boolean</code> </p>
 <p><strong>Super GiGi</strong> supports <a href="https://github.com/Snugug/eq.js">EQJS</a>. Turn this option to
 <code>true</code> to use element queries css instead of classical mediaqueries. See the <a href="#media-query"><code>media-query()</code></a> mixin for other infos. </p>
@@ -182,9 +188,9 @@ to our classes generator or to our mixins. </p>
     );
   }
   &amp;foo {
-      @include media-query(lrg) {
-        background: red
-      }
+    @include media-query(lrg) {
+      background: red
+    }
   }
 </code></pre>
 <h3 id="-use-flex">$use-flex</h3>

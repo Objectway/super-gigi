@@ -136,6 +136,12 @@ element queries.</p>
 <li>type: <code>list</code></li>
 </ul>
 </li>
+<li><strong>$margin</strong><ul>
+<li>optional</li>
+<li>default: <code>false</code></li>
+<li>type: <code>boolean</code></li>
+</ul>
+</li>
 </ul>
 <p>When you are writing css in a grid, it&#39;s difficult to manage 
 the measures sometime. <code>grid-space()</code> comes to help us in this ungrateful task!
@@ -164,6 +170,7 @@ that: <code>$column</code> <strong><code>of</code></strong> <code>$columns</code
   margin-left: 50%
 }
 </code></pre>
+<p>For infos about <code>$margin</code> option, see the <a href="#gridcolumnmargin"><code>margin</code></a> section.</p>
 <h3 id="grid-row-">grid-row()</h3>
 <p>arguments: <code>$nested</code>, <code>$vertical</code></p>
 <ul>
@@ -224,6 +231,12 @@ The other option <code>$vertical</code> will simply add the CSS3
 <li>type: <code>boolean</code></li>
 </ul>
 </li>
+<li><a href="#gridcolumnmargin"><strong>$margin</strong></a> <code>EXPERIMENTAL</code><ul>
+<li>optional</li>
+<li>default: <a href="#sg-use-margin"><code>$sg-use-margin</code></a></li>
+<li>type: <code>boolean</code></li>
+</ul>
+</li>
 <li><a href="#eq-grid"><strong>$eq-grid</strong></a><ul>
 <li>optional</li>
 <li>default: <code>false</code></li>
@@ -274,8 +287,9 @@ that you will use more. Let&#39;s take a look at how it works:</p>
 </code></pre>
 <p><strong>note:</strong> you see repeated properties, because we set pull and push for 
 the same element. </p>
-<p><div id="gcwidthoffsetpushpull"></div>
-<code>$width</code>, <code>$offset</code>, <code>$push</code> and <code>$pull</code> have similar behaviors. They can be used in three different ways.</p>
+<p><div id="gcwidthoffsetpushpull"></div></p>
+<h3 id="-width-offset-push-"><code>$width</code>, <code>$offset</code>, <code>$push</code></h3>
+<p><code>$width</code>, <code>$offset</code>, <code>$push</code> and <code>$pull</code> have similar behaviors. They can be used in three different ways.</p>
 <p><strong>1 - Passing an integer</strong></p>
 <pre><code class="lang-scss">.foo {
   @include grid-column($width: 1);
@@ -352,7 +366,8 @@ If you have one column, it will take 100% of the space, if you have two then the
 <p>Another important option is to set <code>$width</code> to <code>0</code>. <strong>This will not set <code>width</code> to 0%</strong> (a column must have a minimun width). But the width will be <code>auto</code>.
 In this way you can have a column with the width decided from the content.</p>
 <p><strong>Note</strong> we are preparing a visual example. Stay tuned.</p>
-<p><div id="gcorder"></div>
+<p><div id="gcorder"></div></p>
+<p>###<code>$order</code>
 <strong>$order</strong> is similar, you can set it only in two ways, 
 via <code>integer</code> or via <code>map</code>.
 It will set the css3 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order" target="_blank"><code>order</code></a>. 
@@ -397,8 +412,9 @@ Let see an example:</p>
   } 
 }
 </code></pre>
-<p><div id="gccollapseglobal"></div>
-<strong>$collapse</strong> and <strong>$global</strong> are very simple. The first one if <code>false</code> will 
+<p><div id="gccollapseglobal"></div></p>
+<h3 id="-collapse-and-global-"><code>$collapse</code> and <code>$global</code></h3>
+<p><strong>$collapse</strong> and <strong>$global</strong> are very simple. The first one if <code>false</code> will 
 generate the padding of our columns <code>padding: 0 0.9375rem;</code>, the second one 
 will generate this css:</p>
 <pre><code class="lang-css">  box-sizing: border-box;
@@ -407,6 +423,9 @@ will generate this css:</p>
 </code></pre>
 <p>aka the common properties that defines our columns. 
 <br /></p>
+<p><div id="gridcolumnmargin"></div></p>
+<h3 id="-margin-"><code>$margin</code></h3>
+<p>It is possible to use margins as additional column-gutter to a column. This <strong>is not mutual esclusive</strong> to the padding (to do that, see the <code>$collapse</code> option or the global <a href="#sg-collapse"><code>$sg-collapse</code></a> variable). Set this parameter to <code>true</code> to <strong>add</strong> another column-gutter to this column.</p>
 <h3 id="show-from-">show-from()</h3>
 <p>arguments: <code>$query</code></p>
 <ul>
