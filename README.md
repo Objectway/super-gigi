@@ -141,12 +141,22 @@ useful when we inspect the elements.
 ```
 
   
-### $eq-grid `EXPERIMENTAL`
+### $eq-grid
 default: `false` - type: `boolean` 
 
 **Super GiGi** supports [EQJS](https://github.com/Snugug/eq.js). Turn this option to
 `true` to use element queries css instead of classical mediaqueries. See the [`media-query()`](#media-query) mixin for other infos. 
 
+  
+### $sg-collapse `EXPERIMENTAL`
+default: `false` - type: `boolean` 
+
+By default, **Super GiGi** columns have a [`$column-gutter`](#column-gutter) made with padding. If you want to remove that gutter to all your columns, set this option to `true`
+  
+### $sg-use-margin `EXPERIMENTAL`
+default: `false` - type: `boolean` 
+
+It is possible to use margins as additional column-gutter between columns. This **is not mutual esclusive** to the padding (to do that, see the `$collapse` option inside the [`grid-column`](#grid-column) mixin or the [`$sg-collapse`](#sg-collapse) option), but it will **add** another column-gutter to your column. This is the general option for all your columns. You can set this option to a single column by the [`$margin`](#grid-column-margin) option of the `grid-column` mixin.
   
 ### $breakpoints
 default: ```(
@@ -376,7 +386,7 @@ arguments: `$width`, `$offset`, `$push`, `$pull`, `$order`, `$collapse`, `$globa
   - default: `null`
 - [**$collapse**](#gccollapseglobal)
   - optional
-  - default: `null`
+  - default: [`$sg-collapse`](#sg-collapse)
   - type: `boolean`
 - [**$global**](#gccollapseglobal)
   - optional
@@ -385,6 +395,10 @@ arguments: `$width`, `$offset`, `$push`, `$pull`, `$order`, `$collapse`, `$globa
 - [**$eq-grid**](#eq-grid)
   - optional
   - default: `false`
+  - type: `boolean`
+- [**$margin**](#grid-column-margin) `EXPERIMENTAL`
+  - optional
+  - default: [`$sg-use-margin`](#sg-use-margin)
   - type: `boolean`
 
 
@@ -590,6 +604,10 @@ will generate this css:
 ```
 aka the common properties that defines our columns. 
 <br />
+
+<div id="grid-column-margin"></div>
+
+It is possible to use margins as additional column-gutter to a column. This **is not mutual esclusive** to the padding (to do that, see the `$collapse` option or the global [`$sg-collapse`](#sg-collapse) variable). Set this parameter to `true` to **add** another column-gutter to this column.
  
 ### show-from()
 arguments: `$query`

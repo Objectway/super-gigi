@@ -29,6 +29,8 @@ $grid-columns: 12 !default;
 $use-placeholders: false !default;
 $grid-start: left !default;
 $grid-end: if($grid-start == left, right, left) !default;
+$sg-collapse: false;
+$sg-use-margin: false !default;
 
 // -----------------------------------------------------------------------------
 // Class-based output options
