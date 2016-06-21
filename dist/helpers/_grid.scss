@@ -1,44 +1,54 @@
-// -----------------------------------------------------------------------------
-// GRID SPACE CALCULATOR
-// -----------------------------------------------------------------------------
-@mixin grid-calc($property, $attr, $query: false) {
-  @if $attr == 'auto' {
-    #{$property}: auto;
+@function sg-dimension($dividend, $divisor: $grid-columns, $margin: false) {
 
-    @if $property == width {
-      flex: 1 1 0%;
-    }
-  } @else if length($attr) == 1 {
+  @if quote($dividend) == 'auto' {
+    @return auto;
+  }
 
-    @if $property == width {
-      @if $attr > 0 {
-        #{$property}: unquote(nth($attr, 1) / $grid-columns * 100 + '%');
-      } @else {
-        width: auto;
-      }
-      flex: 0 0 auto;
-    } @else {
-      #{$property}: unquote(nth($attr, 1) / $grid-columns * 100 + '%');
-    }
+  @if $margin {
+    @return calc(#{($dividend / $divisor * 100%)} - #{$column-gutter});
 
-  } @else if length($attr) == 3 and nth($attr, 2) == 'of' {
-    @if $query and $use-dry {
-      @error 'You can\'t use n of N syntax in query. Use mixin mediaquery instead';
-    } @else {
-      #{$property}: unquote(nth($attr, 1) / nth($attr, 3) * 100 + '%');
-
-      @if $property == width {
-        flex: 0 0 auto;
-      }
-    }
+  } @else {
+    @return $dividend / $divisor * 100%;
   }
 }
 
-@mixin grid-space($property: width, $attr: 'auto', $eq-grid: $eq-grid) {
+// -----------------------------------------------------------------------------
+// GRID SPACE CALCULATOR
+// -----------------------------------------------------------------------------
+@mixin grid-calc($property, $attr, $margin: false, $query: false) {
+
+  @if $property == width { // Width property needs flex attributes
+    @if quote($attr) == 'auto' {
+      flex: 1 1 0%;
+
+    } @else {
+      flex: 0 0 auto;
+    }
+
+    @if $attr == 0 {
+      $attr: 'auto';
+    }
+  }
+
+  @if length($attr) == 3 and nth($attr, 2) == 'of' { // (N of X) syntax
+    @if $query and $use-dry {
+      @error "You can't use n of N syntax in query. Use mediaquery mixin!";
+
+    } @else {
+      #{$property}: sg-dimension(nth($attr, 1), nth($attr, 3), $margin);
+    }
+
+  } @else { // Standard syntax
+    #{$property}: sg-dimension(nth($attr, 1), $margin: $margin);
+  }
+
+}
+
+@mixin grid-space($property: width, $attr: 'auto', $eq-grid: $eq-grid, $margin: false) {
 
   @if type-of($attr) != map {
-    @include dry-it(#{$property}-#{$attr}){
-      @include grid-calc($property, $attr);
+    @include dry-it('#{$property}-#{$attr}') {
+      @include grid-calc($property, $attr, $margin);
     }
 
   } @else {
@@ -48,7 +58,7 @@
 
       @if $inmedia != false{
         @include dry-it('#{$property}-#{$set}') {
-          @include grid-calc($property, $value);
+          @include grid-calc($property, $value, $margin);
         }
 
       } @else {
@@ -56,7 +66,7 @@
         @include media-query($query, $eq-grid: $eq-grid) {
 
           @include dry-it('#{$property}-#{$set}') {
-            @include grid-calc($property, $value);
+            @include grid-calc($property, $value, $margin);
           }
 
         }
@@ -127,13 +137,14 @@
 // -----------------------------------------------------------------------------
 @mixin grid-column(
   $width: null,
-  $collapse: null,
+  $collapse: $sg-collapse,
   $offset: null,
   $push: null,
   $pull: null,
   $order: null,
   $global: true,
-  $eq-grid: $eq-grid
+  $eq-grid: $eq-grid,
+  $margin: $sg-use-margin
 ) {
 
   // DEBUG -------------
@@ -147,6 +158,7 @@
     $column-setting: $column-setting + if($order, #{order ':' inspect($order) '| '}, '');
     $column-setting: $column-setting + if($global, #{global ':' inspect($global) '| '}, '');
     $column-setting: $column-setting + if($eq-grid, #{eq-grid ':' inspect($eq-grid)}, '');
+    $column-setting: $column-setting + if($margin, #{margin ':' inspect($margin)}, '');
 
     content: $column-setting;
   }
@@ -185,7 +197,12 @@
 
   // Width -------------
   @if $width != null {
-    @include grid-space(width, $width, $eq-grid);
+    @include grid-space(width, $width, $eq-grid, $margin);
+  }
+
+  // Margin ------------
+  @if $margin {
+    margin: 0 ($column-gutter / 2);
   }
 
   // Offset -------------
@@ -230,5 +247,4 @@
       order: $order;
     }
   }
-
 }
