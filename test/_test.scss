@@ -154,6 +154,34 @@
         margin-left: 25%;
       }
     }
+
+    @include assert(
+      'Test case for columns with margin option actived and n to N syntax'
+    ) {
+
+      @include input {
+        @include grid-calc(width, 1 of 4, $margin: true);
+      }
+
+      @include expect {
+        width: calc(25% - 1.875rem);
+        flex: 0 0 auto;
+      }
+    }
+
+    @include assert(
+      'Test case for columns with margin option actived'
+    ) {
+
+      @include input {
+        @include grid-calc(width, 2, $margin: true);
+      }
+
+      @include expect {
+        width: calc(16.66667% - 1.875rem);
+        flex: 0 0 auto;
+      }
+    }
   }
   // GRID SPACE
   @include test('grid-space') {
