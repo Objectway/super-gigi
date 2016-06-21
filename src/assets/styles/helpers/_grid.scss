@@ -44,17 +44,22 @@
 
 }
 
-@mixin grid-space($property: width, $attr: auto, $eq-grid: $eq-grid, $margin: false) {
+@mixin grid-space(
+  $property: width,
+  $attr: auto,
+  $eq-grid: $eq-grid,
+  $margin: false
+) {
 
   @if type-of($attr) != map {
-    @include dry-it('#{$property}-#{$attr}') {
+    @include dry-it('#{$property}-#{$attr}-#{$margin}') {
       @include grid-calc($property, $attr, $margin);
     }
 
   } @else {
 
     @each $query, $value in $attr {
-      $set: #{$query}#{$value}#{$eq-grid};
+      $set: #{$query}#{$value}#{$eq-grid}-#{$margin};
 
       @if $inmedia != false{
         @include dry-it('#{$property}-#{$set}') {
@@ -65,7 +70,7 @@
 
         @include media-query($query, $eq-grid: $eq-grid) {
 
-          @include dry-it('#{$property}-#{$set}') {
+          @include dry-it('#{$property}-#{$set}-#{$margin}') {
             @include grid-calc($property, $value, $margin);
           }
 
@@ -202,7 +207,9 @@
 
   // Margin ------------
   @if $margin {
-    margin: 0 ($column-gutter / 2);
+    @include dry-it('marginGlob') {
+      margin: 0 ($column-gutter / 2);
+    }
   }
 
   // Offset -------------
