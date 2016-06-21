@@ -114,8 +114,8 @@
       }
 
       @include expect {
-        width: auto;
         flex: 1 1 0%;
+        width: auto;
       }
     }
 
@@ -128,8 +128,8 @@
       }
 
       @include expect {
-        width: 50%;
         flex: 0 0 auto;
+        width: 50%;
       }
     }
 
@@ -164,8 +164,8 @@
       }
 
       @include expect {
-        width: calc(25% - 1.875rem);
         flex: 0 0 auto;
+        width: calc(25% - 1.875rem);
       }
     }
 
@@ -178,8 +178,8 @@
       }
 
       @include expect {
-        width: calc(16.66667% - 1.875rem);
         flex: 0 0 auto;
+        width: calc(16.66667% - 1.875rem);
       }
     }
   }
@@ -193,8 +193,8 @@
       }
 
       @include expect {
-        width: auto;
         flex: 1 1 0%;
+        width: auto;
       }
     }
 
@@ -205,8 +205,8 @@
       }
 
       @include expect {
-        width: 10%;
         flex: 0 0 auto;
+        width: 10%;
       }
     }
 
@@ -217,8 +217,8 @@
       }
 
       @include expect {
-        width: 50%;
         flex: 0 0 auto;
+        width: 50%;
       }
     }
 
