@@ -140,15 +140,7 @@ useful when we inspect the elements.
   }
 ```
 
-  
-### $eq-grid
-default: `false` - type: `boolean` 
-
-**Super GiGi** supports [EQJS](https://github.com/Snugug/eq.js). Turn this option to
-`true` to use element queries css instead of classical mediaqueries. See the [`media-query()`](#media-query) mixin for other infos. 
-
-  
-### $sg-collapse `EXPERIMENTAL`
+### $sg-collapse
 default: `false` - type: `boolean` 
 
 By default, **Super GiGi** columns have a [`$column-gutter`](#column-gutter) made with padding. If you want to remove that gutter to all your columns, set this option to `true`
@@ -156,7 +148,15 @@ By default, **Super GiGi** columns have a [`$column-gutter`](#column-gutter) mad
 ### $sg-use-margin `EXPERIMENTAL`
 default: `false` - type: `boolean` 
 
-It is possible to use margins as additional column-gutter between columns. This **is not mutual esclusive** to the padding (to do that, see the `$collapse` option inside the [`grid-column`](#grid-column) mixin or the [`$sg-collapse`](#sg-collapse) option), but it will **add** another column-gutter to your column. This is the general option for all your columns. You can set this option to a single column by the [`$margin`](#grid-column-margin) option of the `grid-column` mixin.
+It is possible to use margins as additional column-gutter between columns. This *is not mutual esclusive* to the padding -to do that, see the `$collapse` option inside the [`grid-column`](#grid-column) mixin or the [`$sg-collapse`](#sg-collapse) option-, but it will *add* another column-gutter to your column. This is the general option for all your columns. You can set this option to a single column by the [`$margin`](#gridcolumnmargin) option of the `grid-column` mixin.
+  
+  
+### $eq-grid
+default: `false` - type: `boolean` 
+
+**Super GiGi** supports [EQJS](https://github.com/Snugug/eq.js). Turn this option to
+`true` to use element queries css instead of classical mediaqueries. See the [`media-query()`](#media-query) mixin for other infos. 
+
   
 ### $breakpoints
 default: ```(
@@ -211,9 +211,9 @@ If you decide to change class names like in the example above, then just in the 
     );
   }
   &foo {
-  	@include media-query(lrg) {
-  	  background: red
-  	}
+    @include media-query(lrg) {
+      background: red
+    }
   }
   
 ```
@@ -314,6 +314,11 @@ arguments: `$property`, `$attr`
   - optional
   - default: `auto`
   - type: `list`
+- **$margin**
+  - optional
+  - default: `false`
+  - type: `boolean`
+
 
 When you are writing css in a grid, it's difficult to manage 
 the measures sometime. `grid-space()` comes to help us in this ungrateful task!
@@ -348,6 +353,7 @@ will return
   margin-left: 50%
 }
 ```
+For infos about `$margin` option, see the [`margin`](#gridcolumnmargin) section.
 
   
 ### grid-row()
@@ -386,19 +392,19 @@ arguments: `$width`, `$offset`, `$push`, `$pull`, `$order`, `$collapse`, `$globa
   - default: `null`
 - [**$collapse**](#gccollapseglobal)
   - optional
-  - default: [`$sg-collapse`](#sg-collapse)
+  - default: `null`
   - type: `boolean`
 - [**$global**](#gccollapseglobal)
   - optional
   - default: `true`
   - type: `boolean`
+- [**$margin**](#gridcolumnmargin) `EXPERIMENTAL`
+  - optional
+  - default: [`$sg-use-margin`](#sg-use-margin)
+  - type: `boolean`
 - [**$eq-grid**](#eq-grid)
   - optional
   - default: `false`
-  - type: `boolean`
-- [**$margin**](#grid-column-margin) `EXPERIMENTAL`
-  - optional
-  - default: [`$sg-use-margin`](#sg-use-margin)
   - type: `boolean`
 
 
@@ -450,6 +456,7 @@ will generate:
 the same element. 
 
 <div id="gcwidthoffsetpushpull"></div>
+### `$width`, `$offset`, `$push`
 `$width`, `$offset`, `$push` and `$pull` have similar behaviors. They can be used in three different ways.
 
 **1 - Passing an integer**
@@ -546,6 +553,7 @@ In this way you can have a column with the width decided from the content.
 **Note** we are preparing a visual example. Stay tuned.
 
 <div id="gcorder"></div>
+###`$order`
 **$order** is similar, you can set it only in two ways, 
 via `integer` or via `map`.
 It will set the css3 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order" target="_blank">`order`</a>. 
@@ -594,6 +602,7 @@ will compile in:
 }
 ```
 <div id="gccollapseglobal"></div>
+### `$collapse` and `$global`
 **$collapse** and **$global** are very simple. The first one if `false` will 
 generate the padding of our columns `padding: 0 0.9375rem;`, the second one 
 will generate this css:
@@ -605,8 +614,10 @@ will generate this css:
 aka the common properties that defines our columns. 
 <br />
 
-<div id="grid-column-margin"></div>
 
+  
+<div id="gridcolumnmargin"></div>
+### `$margin`
 It is possible to use margins as additional column-gutter to a column. This **is not mutual esclusive** to the padding (to do that, see the `$collapse` option or the global [`$sg-collapse`](#sg-collapse) variable). Set this parameter to `true` to **add** another column-gutter to this column.
  
 ### show-from()
