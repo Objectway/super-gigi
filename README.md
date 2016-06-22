@@ -1,5 +1,5 @@
 # Super GiGi
-**Super GiGi** is a CSS3 flex based grid system. 
+**Super GiGi** is a customizable Sass Grid Generator based on CSS3 Flex-box. 
 
 It has been developed with modern web applications in mind and its first purpose is 
 to make it easier to manage responsive layouts.
