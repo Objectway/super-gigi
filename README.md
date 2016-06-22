@@ -1,4 +1,10 @@
+
 # Super GiGi
+
+<img src="https://badge.fury.io/gh/objectway%2Fsuper-gigi.svg" alt="git v">
+<img src="https://badge.fury.io/js/super-gigi.svg" alt="npm version" />
+<img src="https://badge.fury.io/bo/super-gigi.svg" alt="bower version" />
+
 **Super GiGi** is a customizable Sass Grid Generator based on CSS3 Flex-box. 
 
 It has been developed with modern web applications in mind and its first purpose is 
