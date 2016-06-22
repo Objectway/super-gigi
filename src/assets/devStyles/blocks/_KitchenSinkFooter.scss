@@ -1,7 +1,22 @@
 .KitchenSinkFooter {
+  @include grid-row(false);
   background-color: $midnight-blue;
   color: $white;
   padding: rem-calc(20);
   position: relative;
+  max-width: 100%;
   z-index: 2;
+
+  &__paragraph {
+    @include grid-column(auto);
+  }
+
+  &__versions {
+    @include grid-column(0);
+    display: none;
+
+    @include media-query(medium) {
+      display: block;
+    }
+  }
 }

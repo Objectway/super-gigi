@@ -1261,11 +1261,61 @@ body {
     padding: 0 0.9375rem; }
 
 .KitchenSinkFooter {
+  content: "ROW nested: false, vertical false";
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 120rem;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
   background-color: #2c3e50;
   color: #fff;
   padding: 1.25rem;
   position: relative;
+  max-width: 100%;
   z-index: 2; }
+  .KitchenSinkFooter__paragraph {
+    content: "COLUMN: width : auto | global : true | ";
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 0 0.9375rem;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 0%;
+        -ms-flex: 1 1 0%;
+            flex: 1 1 0%;
+    width: auto; }
+  .KitchenSinkFooter__versions {
+    content: "COLUMN: width : 0 | global : true | ";
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 0 0.9375rem;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    width: auto;
+    display: none; }
 
 .CodeExampleBox, .DocumentationSection--variables {
   background: #fff !important;
@@ -4934,6 +4984,9 @@ body {
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     width: 33.33333%; }
+
+  .KitchenSinkFooter__versions {
+    display: block; }
 
   .DocumentationSection__description--variables {
     -webkit-box-flex: 0;
