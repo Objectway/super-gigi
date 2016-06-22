@@ -32,3 +32,4 @@ src
 backstop.json
 package.json
 gulpfile.js
+bower.json
