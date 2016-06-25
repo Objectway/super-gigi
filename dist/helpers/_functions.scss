@@ -7,13 +7,13 @@
 
 // - EXAMPLES
 //
-//  width: rem-calc(16 8 16 8)
-//  will return
-//  width: 1rem 0.5rem 1rem 0.5rem
+// width: rem-calc(16 8 16 8)
+// will return
+// width: 1rem 0.5rem 1rem 0.5rem
 //
-//  width: rem-calc(8)
-//  will return
-//  width: 1rem
+// width: rem-calc(8)
+// will return
+// width: 1rem
 
 $rem-base: 16px !default;
 $design-base: $rem-base !default;
