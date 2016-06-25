@@ -1,15 +1,24 @@
+// -----------------------------------------------------------------------------
+// Simply math here. If the value is auto we will return auto, otherwise this
+// function will do the simple math. Here you can also set te exception
+// (for example for the margins or so on). Keep it simple plz.
+// -----------------------------------------------------------------------------
 @function sg-dimension($dividend, $divisor: $grid-columns, $margin: false) {
 
   @if $dividend == auto {
     @return auto;
   }
 
-  @if $margin {
+  @if $margin == 'width' {
     @return calc(#{($dividend / $divisor * 100%)} - #{$column-gutter});
-
-  } @else {
-    @return $dividend / $divisor * 100%;
   }
+
+  @if $margin == 'offset' {
+    @return calc(#{($dividend / $divisor * 100%)} + #{$column-gutter / 2});
+  }
+
+  @return $dividend / $divisor * 100%;
+
 }
 
 // -----------------------------------------------------------------------------
@@ -44,6 +53,11 @@
 
 }
 
+// -----------------------------------------------------------------------------
+// Grid space mixin. It will simple dry everything if necessary and consider
+// if we are in a media query and of what type. After that everything is passed
+// to the grid calc mixin.
+// -----------------------------------------------------------------------------
 @mixin grid-space(
   $property: width,
   $attr: auto,
@@ -132,6 +146,8 @@
   }
 
   @if $vertical and $use-flex {
+    @warn 'This is deprecated, it could be removed soon.';
+    @warn 'Please use `flex-direction: column` instead';
     flex-direction: column;
   }
 
@@ -202,7 +218,7 @@
 
   // Width -------------
   @if $width != null {
-    @include grid-space(width, $width, $eq-grid, $margin);
+    @include grid-space(width, $width, $eq-grid, $margin: 'width');
   }
 
   // Margin ------------
@@ -214,7 +230,9 @@
 
   // Offset -------------
   @if $offset != null {
-    @include grid-space(margin-#{$grid-start}, $offset, $eq-grid);
+    @include grid-space(
+      margin-#{$grid-start}, $offset, $eq-grid, $margin: 'offset'
+    );
   }
 
   // Push -------------
