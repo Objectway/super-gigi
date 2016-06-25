@@ -10,11 +10,10 @@
   }
 
   @if $margin == 'width' {
-    @debug $margin;
     @return calc(#{($dividend / $divisor * 100%)} - #{$column-gutter});
   }
 
-  @if $margin == 'offset' {
+  @if $margin == 'margin-#{$grid-start}' {
     @return calc(#{($dividend / $divisor * 100%)} + #{$column-gutter / 2});
   }
 
@@ -30,7 +29,8 @@
 // -----------------------------------------------------------------------------
 @mixin grid-calc($property, $attr, $margin: false, $query: false) {
 
-  @if $property == width { // Width property needs flex attributes
+  // Width property needs flex attributes
+  @if $property == width {
     @if $attr == auto {
       flex: 1 1 0%;
 
@@ -43,15 +43,20 @@
     }
   }
 
-  @if length($attr) == 3 and nth($attr, 2) == 'of' { // (N of X) syntax
+  // Manage margins exception
+  $margin: if($margin, $property, false);
+
+  // (N of X) syntax
+  @if length($attr) == 3 and nth($attr, 2) == 'of' {
     @if $query and $use-dry {
-      @error "You can't use n of N syntax in query. Use mediaquery mixin!";
+      @error "You can't use n of N syntax with query parameter. Use mediaquery mixin instead!";
 
     } @else {
       #{$property}: sg-dimension(nth($attr, 1), nth($attr, 3), $margin);
     }
 
-  } @else { // Standard syntax
+  // Standard syntax
+  } @else {
     #{$property}: sg-dimension(nth($attr, 1), $margin: $margin);
   }
 
@@ -223,7 +228,7 @@
   // Width -------------
   @if $width != null {
     @include grid-space(
-      width, $width, $eq-grid, $margin: if($margin, 'width', false)
+      width, $width, $eq-grid, $margin: $margin
     )
   }
 
@@ -240,7 +245,7 @@
       margin-#{$grid-start},
       $offset,
       $eq-grid,
-      $margin: if($margin, 'offset', false)
+      $margin: $margin
     );
   }
 
