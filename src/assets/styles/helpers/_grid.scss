@@ -10,6 +10,7 @@
   }
 
   @if $margin == 'width' {
+    @debug $margin;
     @return calc(#{($dividend / $divisor * 100%)} - #{$column-gutter});
   }
 
@@ -22,7 +23,10 @@
 }
 
 // -----------------------------------------------------------------------------
-// GRID SPACE CALCULATOR
+// GRID SPACE CALCULATOR. It forks the two different syntax (number of columns
+// or the n of N syntax) and it will pass them to the sg-dimension function.
+// If the property is the width, it will add the relative flex properties to
+// the returned block.
 // -----------------------------------------------------------------------------
 @mixin grid-calc($property, $attr, $margin: false, $query: false) {
 
@@ -218,7 +222,9 @@
 
   // Width -------------
   @if $width != null {
-    @include grid-space(width, $width, $eq-grid, $margin: 'width');
+    @include grid-space(
+      width, $width, $eq-grid, $margin: if($margin, 'width', false)
+    )
   }
 
   // Margin ------------
@@ -231,7 +237,10 @@
   // Offset -------------
   @if $offset != null {
     @include grid-space(
-      margin-#{$grid-start}, $offset, $eq-grid, $margin: 'offset'
+      margin-#{$grid-start},
+      $offset,
+      $eq-grid,
+      $margin: if($margin, 'offset', false)
     );
   }
 
