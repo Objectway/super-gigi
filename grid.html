@@ -104,7 +104,7 @@
           <div class="DocumentationSection__scss">
             <pre class="CodeExampleBox"><code class="language-scss">.RoastedRibs{
   @include grid-row();
-  // Equivalent to grid-row($nested: true, $vertical: false)
+  // Equivalent to grid-row($nested: true)
 
   &__element {
     &--first {
@@ -124,10 +124,10 @@
         <div class="DocumentationSection">
           <div class="DocumentationSection__description">
             <div class="DocumentationSection__title">
-              <h3 class="Typo__h3">Nested and vertical row</h3>
+              <h3 class="Typo__h3">Nested row</h3>
             </div>
             <div class="DocumentationSection__text">
-              <p class="Typo__p">You can nest the grids and remove unnecessary padding between them, set the property nested to true and it will set negative margin to the row to reset the padding of a parent row container. Setting vertical to true will add the property flex-direction to column to create a vertical block.</p><a href="https://github.com/Objectway/super-gigi#grid-row" target="_blank" class="Typo__a">grid-row()</a>
+              <p class="Typo__p">You can nest the grids and remove unnecessary padding between them, set the property nested to true and it will set negative margin to the row to reset the padding of a parent row container.</p><a href="https://github.com/Objectway/super-gigi#grid-row" target="_blank" class="Typo__a">grid-row()</a>
             </div>
           </div>
           <div class="DocumentationSection__example">
@@ -161,7 +161,7 @@
           </div>
           <div class="DocumentationSection__scss">
             <pre class="CodeExampleBox"><code class="language-scss">.FriedChips {
-  @include grid-row($nested: true, $vertical: true);
+  @include grid-row($nested: true);
 
   &__element {
     &--first {

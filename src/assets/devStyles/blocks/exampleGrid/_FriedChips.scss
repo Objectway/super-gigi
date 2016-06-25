@@ -1,6 +1,6 @@
 .FriedChips {
   @extend %Line;
-  @include grid-row($nested: true, $vertical: true);
+  @include grid-row($nested: true);
 
   &__element {
     &--first {

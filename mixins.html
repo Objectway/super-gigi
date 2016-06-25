@@ -180,7 +180,7 @@ that: <code>$column</code> <strong><code>of</code></strong> <code>$columns</code
 <li>type: <code>boolean</code></li>
 </ul>
 </li>
-<li><strong>$vertical</strong><ul>
+<li><strong>$vertical</strong> <code>DEPRECATED</code><ul>
 <li>optional</li>
 <li>default: <code>false</code></li>
 <li>type: <code>boolean</code></li>
@@ -189,8 +189,7 @@ that: <code>$column</code> <strong><code>of</code></strong> <code>$columns</code
 </ul>
 <p>This mixin will generate the <strong>row element</strong> of the grid. It&#39;s real simple, 
 you may specify if the row is nested in another row (to reset the padding). 
-The other option <code>$vertical</code> will simply add the CSS3 
-<code>flex-direction: row-reverse</code> property to the element.</p>
+The option <code>$vertical</code> will only add the CSS3 <code>flex-direction: column</code> property to the element, so it&#39;s deprecated. It would be removed soon.</p>
 <h3 id="grid-column-">grid-column()</h3>
 <p>arguments: <code>$width</code>, <code>$offset</code>, <code>$push</code>, <code>$pull</code>, <code>$order</code>, <code>$collapse</code>, <code>$global</code></p>
 <ul>
