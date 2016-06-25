@@ -1,23 +1,36 @@
+// -----------------------------------------------------------------------------
+// Simply math here. If the value is auto we will return auto, otherwise this
+// function will do the simple math. Here you can also set te exception
+// (for example for the margins or so on). Keep it simple plz.
+// -----------------------------------------------------------------------------
 @function sg-dimension($dividend, $divisor: $grid-columns, $margin: false) {
 
   @if $dividend == auto {
     @return auto;
   }
 
-  @if $margin {
+  @if $margin == 'width' {
     @return calc(#{($dividend / $divisor * 100%)} - #{$column-gutter});
-
-  } @else {
-    @return $dividend / $divisor * 100%;
   }
+
+  @if $margin == 'margin-#{$grid-start}' {
+    @return calc(#{($dividend / $divisor * 100%)} + #{$column-gutter / 2});
+  }
+
+  @return $dividend / $divisor * 100%;
+
 }
 
 // -----------------------------------------------------------------------------
-// GRID SPACE CALCULATOR
+// GRID SPACE CALCULATOR. It forks the two different syntax (number of columns
+// or the n of N syntax) and it will pass them to the sg-dimension function.
+// If the property is the width, it will add the relative flex properties to
+// the returned block.
 // -----------------------------------------------------------------------------
 @mixin grid-calc($property, $attr, $margin: false, $query: false) {
 
-  @if $property == width { // Width property needs flex attributes
+  // Width property needs flex attributes
+  @if $property == width {
     @if $attr == auto {
       flex: 1 1 0%;
 
@@ -30,20 +43,30 @@
     }
   }
 
-  @if length($attr) == 3 and nth($attr, 2) == 'of' { // (N of X) syntax
+  // Manage margins exception
+  $margin: if($margin, $property, false);
+
+  // (N of X) syntax
+  @if length($attr) == 3 and nth($attr, 2) == 'of' {
     @if $query and $use-dry {
-      @error "You can't use n of N syntax in query. Use mediaquery mixin!";
+      @error "You can't use n of N syntax with query parameter. Use mediaquery mixin instead!";
 
     } @else {
       #{$property}: sg-dimension(nth($attr, 1), nth($attr, 3), $margin);
     }
 
-  } @else { // Standard syntax
+  // Standard syntax
+  } @else {
     #{$property}: sg-dimension(nth($attr, 1), $margin: $margin);
   }
 
 }
 
+// -----------------------------------------------------------------------------
+// Grid space mixin. It will simple dry everything if necessary and consider
+// if we are in a media query and of what type. After that everything is passed
+// to the grid calc mixin.
+// -----------------------------------------------------------------------------
 @mixin grid-space(
   $property: width,
   $attr: auto,
@@ -132,6 +155,8 @@
   }
 
   @if $vertical and $use-flex {
+    @warn 'This is deprecated, it could be removed soon.';
+    @warn 'Please use `flex-direction: column` instead';
     flex-direction: column;
   }
 
@@ -202,7 +227,9 @@
 
   // Width -------------
   @if $width != null {
-    @include grid-space(width, $width, $eq-grid, $margin);
+    @include grid-space(
+      width, $width, $eq-grid, $margin: $margin
+    )
   }
 
   // Margin ------------
@@ -214,7 +241,12 @@
 
   // Offset -------------
   @if $offset != null {
-    @include grid-space(margin-#{$grid-start}, $offset, $eq-grid);
+    @include grid-space(
+      margin-#{$grid-start},
+      $offset,
+      $eq-grid,
+      $margin: $margin
+    );
   }
 
   // Push -------------

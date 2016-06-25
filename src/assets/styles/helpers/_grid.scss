@@ -13,7 +13,7 @@
     @return calc(#{($dividend / $divisor * 100%)} - #{$column-gutter});
   }
 
-  @if $margin == 'offset' {
+  @if $margin == 'margin-#{$grid-start}' {
     @return calc(#{($dividend / $divisor * 100%)} + #{$column-gutter / 2});
   }
 
@@ -22,11 +22,15 @@
 }
 
 // -----------------------------------------------------------------------------
-// GRID SPACE CALCULATOR
+// GRID SPACE CALCULATOR. It forks the two different syntax (number of columns
+// or the n of N syntax) and it will pass them to the sg-dimension function.
+// If the property is the width, it will add the relative flex properties to
+// the returned block.
 // -----------------------------------------------------------------------------
 @mixin grid-calc($property, $attr, $margin: false, $query: false) {
 
-  @if $property == width { // Width property needs flex attributes
+  // Width property needs flex attributes
+  @if $property == width {
     @if $attr == auto {
       flex: 1 1 0%;
 
@@ -39,15 +43,20 @@
     }
   }
 
-  @if length($attr) == 3 and nth($attr, 2) == 'of' { // (N of X) syntax
+  // Manage margins exception
+  $margin: if($margin, $property, false);
+
+  // (N of X) syntax
+  @if length($attr) == 3 and nth($attr, 2) == 'of' {
     @if $query and $use-dry {
-      @error "You can't use n of N syntax in query. Use mediaquery mixin!";
+      @error "You can't use n of N syntax with query parameter. Use mediaquery mixin instead!";
 
     } @else {
       #{$property}: sg-dimension(nth($attr, 1), nth($attr, 3), $margin);
     }
 
-  } @else { // Standard syntax
+  // Standard syntax
+  } @else {
     #{$property}: sg-dimension(nth($attr, 1), $margin: $margin);
   }
 
@@ -218,7 +227,9 @@
 
   // Width -------------
   @if $width != null {
-    @include grid-space(width, $width, $eq-grid, $margin: 'width');
+    @include grid-space(
+      width, $width, $eq-grid, $margin: $margin
+    )
   }
 
   // Margin ------------
@@ -231,7 +242,10 @@
   // Offset -------------
   @if $offset != null {
     @include grid-space(
-      margin-#{$grid-start}, $offset, $eq-grid, $margin: 'offset'
+      margin-#{$grid-start},
+      $offset,
+      $eq-grid,
+      $margin: $margin
     );
   }
 
