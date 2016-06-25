@@ -319,6 +319,26 @@
       }
     }
 
+    @include assert('Offset, with use-margin') {
+
+      @include input {
+        @include grid-column(
+          $offset: 5,
+          $margin: true,
+          $collapse: true
+        );
+      }
+
+      @include expect {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin: 0 0.9375rem;
+        margin-left: calc(41.66667% + 0.9375rem);
+      }
+    }
+
     @include assert('Order') {
 
       @include input {
