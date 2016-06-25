@@ -368,15 +368,14 @@ arguments: `$nested`, `$vertical`
   - optional
   - default: `true`
   - type: `boolean`
-- **$vertical**
+- **$vertical** `DEPRECATED`
   - optional
   - default: `false`
   - type: `boolean`
 
 This mixin will generate the **row element** of the grid. It's real simple, 
 you may specify if the row is nested in another row (to reset the padding). 
-The other option `$vertical` will simply add the CSS3 
-`flex-direction: row-reverse` property to the element.
+The option `$vertical` will only add the CSS3 `flex-direction: column` property to the element, so it's deprecated. It would be removed soon.
 
   
 ### grid-column()
