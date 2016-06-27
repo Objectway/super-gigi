@@ -216,9 +216,17 @@
 
   // Collapse -------------
   @if $collapse == true {
+    //- Padding
     @include dry-it('collapseGlob') {
       padding: 0;
     }
+    //- Margin if glob
+    @if $sg-use-margin {
+      @include dry-it('marginCollapseGlob') {
+        margin: 0;
+      }
+    }
+
   } @else {
     @include dry-it('paddingGlob') {
       padding: 0 ($column-gutter / 2);
