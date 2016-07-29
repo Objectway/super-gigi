@@ -35,9 +35,11 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+.idea
 
 # Project dependencies #
 ########################
 node_modules
 bower_components
+development
 *.orig

@@ -218,18 +218,21 @@
   @if $collapse == true {
     //- Padding
     @include dry-it('collapseGlob') {
-      padding: 0;
+      padding-left: 0;
+      padding-right: 0;
     }
     //- Margin if glob
     @if $sg-use-margin {
       @include dry-it('marginCollapseGlob') {
-        margin: 0;
+        margin-left: 0;
+        margin-right: 0;
       }
     }
 
   } @else {
     @include dry-it('paddingGlob') {
-      padding: 0 ($column-gutter / 2);
+      padding-left: ($column-gutter / 2);
+      padding-right: ($column-gutter / 2);
     }
   }
 
@@ -243,7 +246,8 @@
   // Margin ------------
   @if $margin {
     @include dry-it('marginGlob') {
-      margin: 0 ($column-gutter / 2);
+      margin-left: ($column-gutter / 2);
+      margin-right: ($column-gutter / 2);
     }
   }
 
