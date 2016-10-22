@@ -12,33 +12,44 @@
 
   &__logoWrapper {
     @include grid-row($nested: false);
+    flex-direction: column-reverse;
     background: $primary-color;
+    justify-content: center;
     max-width: none;
-    min-height: 100vh;
+    min-height: calc(100vh - #{rem-calc(75)});
     width: 100%;
+    position: relative;
 
-    @include media-query(large) {
-      min-height: 50vh;
+    &::after {
+      content: '';
+      display: block;
+      height: 0;
+      border-width: rem-calc(10 10 0 10);
+      border-color: $primary-color transparent transparent transparent;
+      border-style: solid;
+      width: 0;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
     }
   }
 
   &__titleSection {
-    @include grid-column((xxsmall: 12, xsmall: 6));
+    @include grid-column(12);
     align-items: center;
     align-self: flex-start;
     justify-content: center;
-    order: 1;
+    text-align: center;
 
     @include media-query(xsmall) {
-      align-items: flex-end;
+      align-items: center;
       align-self: auto;
-      order: 0;
     }
   }
 
   &__logoContainer {
-    @include grid-column((xxsmall: 12, xsmall: 6));
-    padding: $column-gutter/2;
+    @include grid-column(12);
   }
 
   &__title {
@@ -46,7 +57,7 @@
     font-family: Helvetica;
     font-size: rem-calc(40);
     font-weight: 400;
-    margin-bottom: $column-gutter/2;
+    margin-bottom: $column-gutter / 2;
 
     @include media-query(large) {
       font-size: rem-calc(70);
@@ -73,23 +84,11 @@
   }
 
   &__logo {
-    background: $primary-color url('../images/SGG-logo800x800.png') no-repeat center center;
-    background-size: contain;
+    flex-direction: column;
+    display: flex;
     flex: 1;
+    max-height: 65vh;
     height: auto;
-    min-height: rem-calc(140);
-
-    @include media-query(xsmall) {
-      background-position: 20% center;
-      background-size: 50%;
-      min-height: rem-calc(80);
-    }
-
-    @include media-query(xlarge) {
-      background-position: 20% center;
-      background-size: 40%;
-      min-height: rem-calc(80);
-    }
   }
 
   &__description {
