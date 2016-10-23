@@ -290,7 +290,8 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        padding: 0;
+        padding-left: 0;
+        padding-right: 0;
       }
     }
 
@@ -308,7 +309,8 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        padding: 0 0.9375rem;
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem;
         margin-left: 41.66667%;
         position: relative;
         right: auto;
@@ -333,8 +335,10 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        padding: 0;
-        margin: 0 0.9375rem;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0.9375rem;
+        margin-right: 0.9375rem;
         margin-left: calc(41.66667% + 0.9375rem);
       }
     }
@@ -349,7 +353,8 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        padding: 0 ($column-gutter / 2);
+        padding-left: 0.9375rem;
+        padding-right: 0.9375rem;
         order: 5;
       }
     }

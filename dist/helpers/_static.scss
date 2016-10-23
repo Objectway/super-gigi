@@ -103,7 +103,8 @@ $type: if($use-classes, '.', '%');
   //column modificators
   @if $use-flex and $use-classes {
     &#{grid-class-name(collapse, $query, &)} {
-      padding: 0;
+      padding-left: 0;
+      padding-right: 0;
     }
 
     &#{grid-class-name(top, $query, &)} {
@@ -136,34 +137,39 @@ $type: if($use-classes, '.', '%');
     }
   }
 
-  $q: if($query != '', ($query: auto), auto);
+  $q: if($query != '', ($query: 'auto'), 'auto');
+
   &#{grid-class-name(auto, $query, &)} {
-    @include grid-column($width: $q, $global: null);
+    @include grid-column($width: $q, $collapse: true, $global: null);
   }
 
   $divider: if($use-bem, '', '-');
 
-  @for $i from 0 through $grid-columns {
-    $q: if($query != '', ($query: $i), $i);
-    &#{grid-class-name(if($use-bem, span#{$i}, #{$i}), $query)} {
-      @include grid-column($width: $q, $global: null);
-    }
+  @if $query != '' {
 
-    &#{grid-class-name(offset#{$divider}#{$i}, $query)} {
-      @include grid-column($offset: $q, $width: null, $global: null);
-    }
+    @for $i from 0 through $grid-columns {
+      $q: if($query != '', ($query: $i), $i);
 
-    &#{grid-class-name(push#{$divider}#{$i}, $query)} {
-      @include grid-column($push: $q, $width: null, $global: null);
-    }
+      &#{grid-class-name(if($use-bem, span#{$i}, #{$i}), $query)} {
+        @include grid-column($width: $q, $collapse: true, $global: null);
+      }
 
-    &#{grid-class-name(pull#{$divider}#{$i}, $query)} {
-      @include grid-column($pull: $q, $width: null, $global: null);
-    }
+      &#{grid-class-name(offset#{$divider}#{$i}, $query)} {
+        @include grid-column($offset: $q, $width: null, $collapse: true, $global: null);
+      }
 
-    @if $use-flex {
-      &#{grid-class-name(order#{$divider}#{$i}, $query)} {
-        @include grid-column($order: $i, $width: null, $global: null);
+      &#{grid-class-name(push#{$divider}#{$i}, $query)} {
+        @include grid-column($push: $q, $width: null, $collapse: true, $global: null);
+      }
+
+      &#{grid-class-name(pull#{$divider}#{$i}, $query)} {
+        @include grid-column($pull: $q, $width: null, $collapse: true, $global: null);
+      }
+
+      @if $use-flex {
+        &#{grid-class-name(order#{$divider}#{$i}, $query)} {
+          @include grid-column($order: $i, $width: null, $collapse: true, $global: null);
+        }
       }
     }
   }
@@ -194,9 +200,11 @@ $type: if($use-classes, '.', '%');
       // Generate placeholders for dryer
       @if $use-classes == false {
         $eq-grid: if($eq-grid, false, true) !global;
+
         @include media-query($query) {
           @include row-generate-classes(#{$query});
         }
+
         $eq-grid: if($eq-grid, true, false) !global;
       }
 
@@ -223,12 +231,52 @@ $type: if($use-classes, '.', '%');
       // Generate placeholders for dryer
       @if $use-classes == false {
         $eq-grid: if($eq-grid, false, true) !global;
+
         @include media-query($query) {
           @include column-generate-classes(#{$query});
         }
+
         $eq-grid: if($eq-grid, true, false) !global;
       }
     }
   }
 }
 
+@if $use-classes {
+  $type: '.';
+} @else {
+  $type: '%';
+}
+
+
+@function utility-class-name($util, $query, $only) {
+  $name: #{$util}-#{$query}#{if($only, -only, -up)};
+
+  @if $use-bem {
+    $name: u-#{$util};
+    @if $query != '' {
+      $name: #{$name}\@#{$query}#{if($only, -only, '')};
+    }
+  }
+
+  @return $name;
+}
+
+
+@each $query, $breakpoint in $breakpoints {
+  #{$type}#{utility-class-name('show-from', $query, false)} {
+    @include show-from($query);
+  }
+
+  #{$type}#{utility-class-name('hide-from', $query, false)} {
+    @include hide-from($query);
+  }
+
+  #{$type}#{utility-class-name('show-for', $query, true)} {
+    @include show-for($query);
+  }
+
+  #{$type}#{utility-class-name('hide-for', $query, true)} {
+    @include hide-for($query);
+  }
+}

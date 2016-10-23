@@ -215,24 +215,27 @@
   }
 
   // Collapse -------------
-  @if $collapse == true {
-    //- Padding
-    @include dry-it('collapseGlob') {
-      padding-left: 0;
-      padding-right: 0;
-    }
+  @if $collapse == true and $global == true {
     //- Margin if glob
     @if $sg-use-margin {
       @include dry-it('marginCollapseGlob') {
         margin-left: 0;
         margin-right: 0;
       }
+    } @else {
+      //- Padding
+      @include dry-it('collapseGlob') {
+        padding-left: 0;
+        padding-right: 0;
+      }
     }
 
   } @else {
-    @include dry-it('paddingGlob') {
-      padding-left: ($column-gutter / 2);
-      padding-right: ($column-gutter / 2);
+    @if $global == true {
+      @include dry-it('paddingGlob') {
+        padding-left: ($column-gutter / 2);
+        padding-right: ($column-gutter / 2);
+      }
     }
   }
 
