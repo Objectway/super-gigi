@@ -30,10 +30,10 @@ $placeholders: ();
       $placeholder-name: $unique-id;
       $placeholders: map-merge($placeholders, ($id: $unique-id)) !global;
 
-      // * is here for a libsass bug:
+      // #{' '} is here for a libsass bug:
       // https://github.com/sass/libsass/issues/1210
 
-      @at-root * {
+      @at-root #{''} {
         &%#{$unique-id} {
           @content;
         }
