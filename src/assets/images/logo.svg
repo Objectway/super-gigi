@@ -16,7 +16,7 @@
 
   @keyframes ears {
    50% {
-      transform: translateY(15%);
+      transform: translateY(10%);
    }
   }
 
