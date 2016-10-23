@@ -1,7 +1,7 @@
-
+<div style="text-align:center"><img width="200" src="http://objectway.github.io/super-gigi/src/assets/images/logosmall.svg" alt="Logo Super Gigi" /></div>
 # Super GiGi
 
-<img src="https://badge.fury.io/gh/objectway%2Fsuper-gigi.svg" alt="git v">
+<img src="https://badge.fury.io/gh/objectway%2Fsuper-gigi.svg" alt="git v" />
 <img src="https://badge.fury.io/js/super-gigi.svg" alt="npm version" />
 <img src="https://badge.fury.io/bo/super-gigi.svg" alt="bower version" />
 
