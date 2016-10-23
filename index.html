@@ -81,9 +81,9 @@
    }
   }
 
-  @keyframes gote {
+  @keyframes ears {
    50% {
-      transform: translateY(30%);
+      transform: translateY(15%);
    }
   }
 
@@ -131,11 +131,15 @@
   #face {
     animation:  down1 10s 3s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
-  #moustache, #ears {
+  #moustache {
     animation:  down2 10s 3s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
   #gote {
-    animation: gote 10s 6s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation: down2 10s 6s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+  }
+
+  #ears {
+    animation: ears 10s 6s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
 
   #gote1, #gote2 {
