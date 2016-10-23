@@ -57,43 +57,43 @@
   }
 
   #mouth {
-    animation: mouth 10s 5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation: mouth 10s 3s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
     transform-origin: center;
   }
 
   #face {
-    animation:  down1 10s 5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation:  down1 10s 3s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
   #moustache, #ears {
-    animation:  down2 10s 5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation:  down2 10s 3s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
   #gote {
-    animation: gote 10s 8s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation: gote 10s 6s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
 
   #gote1, #gote2 {
     transform-origin: center;
-    animation: gotez 10s 5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation: gotez 10s 3s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
 
   #hat {
     transform-origin: center;
-    animation: hat 10s 5.5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation: hat 10s 3.5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
 
   #hair {
     transform-origin: center;
-    animation: hair 10s 5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation: hair 10s 3s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
 
   #basettar {
     transform-origin: center;
-    animation: basettar 10s 5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation: basettar 10s 3s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
 
   #basettal {
     transform-origin: center;
-    animation: basettal 10s 5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation: basettal 10s 3s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
 
   #haiar {
