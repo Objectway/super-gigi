@@ -1,5 +1,5 @@
-<div style="text-align:center"><img width="200" src="http://objectway.github.io/super-gigi/src/assets/images/logosmall.svg" alt="Logo Super Gigi" /></div>
-# Super GiGi
+<div style="text-align: center; display: flex; justify-content: center;"><img src="http://objectway.github.io/super-gigi/src/assets/images/logosmall.svg" alt="Logo Super Gigi" width="200" /></div>
+# 
 
 <img src="https://badge.fury.io/gh/objectway%2Fsuper-gigi.svg" alt="git v" />
 <img src="https://badge.fury.io/js/super-gigi.svg" alt="npm version" />
