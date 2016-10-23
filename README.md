@@ -1,8 +1,6 @@
 <p align="center">
-<img src="http://objectway.github.io/super-gigi/src/assets/images/logosmall.svg" alt="Logo Super Gigi" width="200" />
-</p>
-<h1 align="center">Super Gigi</h1>
-<p align="center">
+<img src="http://objectway.github.io/super-gigi/src/assets/images/logo.svg" alt="Logo Super Gigi" width="200" />
+<br />
 <img src="https://badge.fury.io/gh/objectway%2Fsuper-gigi.svg" alt="git v" />
 <img src="https://badge.fury.io/js/super-gigi.svg" alt="npm version" />
 <img src="https://badge.fury.io/bo/super-gigi.svg" alt="bower version" />
