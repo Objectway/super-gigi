@@ -22,7 +22,7 @@
 
   @keyframes mouth {
    50% {
-      transform: scale(1.05) translateY(5%);
+      transform: scale(1.1) translateY(5%);
    }
   }
 
@@ -32,26 +32,74 @@
    }
   }
 
+  @keyframes hat {
+   50% {
+     transform: translateY(20%) scale(0.95);
+   }
+  }
+
+  @keyframes hair {
+   50% {
+     transform: translateY(10%) scale(0.99);
+   }
+  }
+
+  @keyframes basettar {
+   50% {
+     transform: translate(-15%, 70%);
+   }
+  }
+
+  @keyframes basettal {
+   50% {
+     transform: translate(15%, 70%);
+   }
+  }
+
   #mouth {
-    animation: mouth 4s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation: mouth 10s 5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
     transform-origin: center;
   }
 
   #face {
-    animation:  down1 10s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation:  down1 10s 5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
-  #moustache {
-    animation:  down2 10s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+  #moustache, #ears {
+    animation:  down2 10s 5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
   #gote {
-    animation: gote 10s 3s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation: gote 10s 8s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
 
   #gote1, #gote2 {
     transform-origin: center;
-    animation: gotez 10s 0s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation: gotez 10s 5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
 
+  #hat {
+    transform-origin: center;
+    animation: hat 10s 5.5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+  }
+
+  #hair {
+    transform-origin: center;
+    animation: hair 10s 5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+  }
+
+  #basettar {
+    transform-origin: center;
+    animation: basettar 10s 5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+  }
+
+  #basettal {
+    transform-origin: center;
+    animation: basettal 10s 5s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+  }
+
+  #haiar {
+    transform: scale(1.005);
+    transform-origin: center;
+  }
   .st0{fill:#FFFFFF;}
   .st1{fill:#4C1D12;}
   .st2{fill:#F5CF8B;}
@@ -152,7 +200,7 @@
         </g>
       </g>
 
-  <g>
+  <g id="ears">
     <circle class="st2" cx="126.5" cy="120.3" r="7.3"/>
     <circle class="st2" cx="19.4" cy="120.3" r="7.3"/>
     <g class="st3">
@@ -160,31 +208,30 @@
       <circle class="st1" cx="19.4" cy="120.3" r="4.6"/>
     </g>
   </g>
-  <path class="st1" d="M21.8,139.5c3.5,0,6.2-3,5.9-6.5c-0.2-1.5-0.2-3.1-0.2-4.7c0-46.9,19.1-32.2,44.3-32.2s47-14.7,47,32.2
+  <path id="haiar" class="st1" d="M21.8,139.5c3.5,0,6.2-3,5.9-6.5c-0.2-1.5-0.2-3.1-0.2-4.7c0-46.9,19.1-32.2,44.3-32.2s47-14.7,47,32.2
+    c0,1.6-0.1,3.1-0.2,4.7c-0.4,3.5,2.4,6.5,5.9,6.5h2c0.8-3.6,1.2-7.4,1.1-11.3c-0.1-30.3-25.4-55-55.6-54.3
+    c-29.5,0.7-53.2,24.8-53.2,54.4c0,3.8,0.4,7.6,1.1,11.1H21.8z"/>
+  <path id="hair" class="st1" d="M21.8,139.5c3.5,0,6.2-3,5.9-6.5c-0.2-1.5-0.2-3.1-0.2-4.7c0-46.9,19.1-32.2,44.3-32.2s47-14.7,47,32.2
     c0,1.6-0.1,3.1-0.2,4.7c-0.4,3.5,2.4,6.5,5.9,6.5h2c0.8-3.6,1.2-7.4,1.1-11.3c-0.1-30.3-25.4-55-55.6-54.3
     c-29.5,0.7-53.2,24.8-53.2,54.4c0,3.8,0.4,7.6,1.1,11.1H21.8z"/>
   <path class="st4" d="M109.7,88.3c8.8,9.7,14.1,22.5,14.1,36.6c0,30.1-24.4,54.4-54.4,54.4c-14.1,0-26.9-5.4-36.6-14.1
     c10,10.9,24.3,17.8,40.3,17.8c30.1,0,54.4-24.4,54.4-54.4C127.5,112.6,120.6,98.2,109.7,88.3z"/>
-  <g>
+  <g id="basettar">
     <path class="st1" d="M125.3,143.5l-2.6-0.3c-2.2-0.2-4.2-1.3-5.5-3c-0.2-0.2-0.2-0.6,0.1-0.8l0,0c0.2-0.2,0.6-0.1,0.8,0.1
       c1.2,1.4,2.9,2.4,4.8,2.6l2.7,0.3L125.3,143.5z"/>
-  </g>
-  <g>
     <path class="st1" d="M124.1,147.4l-2.4-0.3c-2.2-0.2-4.2-1.3-5.5-3c-0.2-0.2-0.2-0.6,0.1-0.8l0,0c0.2-0.2,0.6-0.1,0.8,0.1
       c1.2,1.4,2.9,2.4,4.8,2.6l2.6,0.3L124.1,147.4z"/>
   </g>
-  <g>
+  <g id="basettal">
     <path class="st1" d="M20.7,143.5l2.6-0.3c2.2-0.2,4.2-1.3,5.5-3c0.2-0.2,0.2-0.6-0.1-0.8h0c-0.2-0.2-0.6-0.1-0.8,0.1
       c-1.2,1.4-2.9,2.4-4.8,2.6l-2.7,0.3L20.7,143.5z"/>
-  </g>
-  <g>
     <path class="st1" d="M22,147.2l2.4-0.3c2.2-0.2,4.2-1.3,5.5-3c0.2-0.2,0.2-0.6-0.1-0.8l0,0c-0.2-0.2-0.6-0.1-0.8,0.1
       c-1.2,1.4-2.9,2.4-4.8,2.6l-2.6,0.3L22,147.2z"/>
   </g>
   <path class="st5" d="M115.2,33.7c-3.4,0-6.7,0.8-9.6,2.1C100.8,21.9,87.6,11.9,72,11.9c-15.6,0-28.8,10-33.7,23.9
     c-2.9-1.4-6.2-2.1-9.6-2.1c-12.6,0-22.9,10.2-22.9,22.9s10.2,22.9,22.9,22.9c6.8,0,12.9-3,17.1-7.7c6.5,7,15.8,11.4,26.1,11.4
     s19.6-4.4,26.1-11.4c4.2,4.7,10.3,7.7,17.1,7.7c12.6,0,22.9-10.2,22.9-22.9S127.9,33.7,115.2,33.7z"/>
-  <path class="st5" d="M73.4,89.1L73.4,89.1c-16.3,0-30.5-2.3-34-5.5l-7.5-27.8h83.3l-8,27.9C103.7,86.9,89.6,89.1,73.4,89.1z"/>
+  <path id="hat" class="st5" d="M73.4,89.1L73.4,89.1c-16.3,0-30.5-2.3-34-5.5l-7.5-27.8h83.3l-8,27.9C103.7,86.9,89.6,89.1,73.4,89.1z"/>
   <path class="st6" d="M98.1,71.8c6-6.4,9.7-15,9.7-24.5c0-0.6,0-1.2,0-1.8c-0.9,19-16.6,34.1-35.9,34.1C52.7,79.6,37,64.5,36,45.5
     c0,0.6,0,1.2,0,1.8c0,9.5,3.7,18.2,9.8,24.6c-2.2,2.4-4.9,4.4-7.9,5.7l1.1,4.1c2.7-1.3,5-3.1,7-5.3c6.5,7,15.8,11.4,26.1,11.4
     s19.6-4.4,26.1-11.4c2.5,2.9,5.8,5.1,9.5,6.4l1.2-4.2C104.6,77.3,100.9,74.9,98.1,71.8z"/>
