@@ -72,7 +72,7 @@
   }
 
   #ears {
-    animation: ears 10s 6s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+    animation: ears 10s 3s cubic-bezier(.49,.05,.32,1.04) infinite alternate;
   }
 
   #gote1, #gote2 {
