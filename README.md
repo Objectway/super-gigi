@@ -1,9 +1,10 @@
-<div style="text-align: center; display: flex; justify-content: center;"><img src="http://objectway.github.io/super-gigi/src/assets/images/logosmall.svg" alt="Logo Super Gigi" width="200" /></div>
-# 
-
+<p align="center">
+<img src="http://objectway.github.io/super-gigi/src/assets/images/logosmall.svg" alt="Logo Super Gigi" width="200" />
+<h1 align="center">Super Gigi</h1>
 <img src="https://badge.fury.io/gh/objectway%2Fsuper-gigi.svg" alt="git v" />
 <img src="https://badge.fury.io/js/super-gigi.svg" alt="npm version" />
 <img src="https://badge.fury.io/bo/super-gigi.svg" alt="bower version" />
+</p>
 
 **Super GiGi** is a customizable Sass Grid Generator based on CSS3 Flex-box. 
 
