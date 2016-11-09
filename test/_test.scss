@@ -359,6 +359,45 @@
       }
     }
   }
+
+  @include test-module('EQJS') {
+
+  @include test('eq-element') {
+
+    @include assert(
+      'Test if the element-query element is well setupped'
+    ) {
+
+      @include input {
+        @include eq-element;
+      }
+
+      @include expect {
+        content: "xxsmall: 0, xsmall: 480, small: 640, medium: 720, large: 1024, xlarge: 1280, xxlarge: 1440";
+        display: none;
+      }
+    }
+  }
+
+  @include test('eq-html') {
+
+    @include assert(
+      'Test if the html has the correct eq-js querystring'
+    ) {
+
+      @include input {
+        .test {
+          @include eq-html;
+        }
+      }
+
+      @include expect {
+        content: '[data-module="EQJS"] [data-test="eq-element"] [data-assert="Test if the element-query element is well setupped"] .input';
+        display: none;
+      }
+    }
+  }
+};
 };
 
 // MEDIA QUERIES AND VISIBILITY ARE NOT TESTABLE, WE ARE WORKING ON IT!
