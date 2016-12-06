@@ -199,17 +199,17 @@
     @include dry-it('colGlob') {
       box-sizing: border-box;
 
-      @if $use-flex {
-        display: flex;
-        flex-direction: column;
-      }
-
       @if $use-table {
         display: table-cell;
       }
 
       @if $use-float {
         float: $grid-start;
+      }
+
+      @if $use-flex {
+        display: flex;
+        flex-direction: column;
       }
     }
   }
