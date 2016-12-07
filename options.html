@@ -78,9 +78,42 @@ before.</p>
 <p>default: <code>rem-calc(1920)</code> - type: <code>unit</code> </p>
 <p>This is the <code>max-width</code> of our row objects. The default value is 1920 pixels 
 converted in rems via <a href="#rem-calc"><code>rem-calc()</code></a> function.</p>
+<div id="column-gutter"></div>
+
 <h3 id="-column-gutter">$column-gutter</h3>
 <p>default: <code>rem-calc(30)</code> - type: <code>unit</code> </p>
 <p>This is the space between our columns, also known as gutter. The default value is 30 pixels converted in rems via <a href="#rem-calc"><code>rem-calc()</code></a> function. </p>
+<p>If you prefer, there is a <code>EXPERIMENTAL</code> option that you can use to have a responsive gutter using a map similar to the <a href="#breakpoints"><code>breakpoints</code></a> one.</p>
+<pre><code class="lang-scss">$column-gutter: (
+  &#39;xxsmall&#39;: 0.5em,
+  &#39;medium&#39;: 1em,
+  &#39;xlarge&#39;: 1.5em,
+);
+</code></pre>
+<p>Doing that, all the grid mixins will generate responsive gutter:</p>
+<pre><code class="lang-scss">.foo {
+  @include grid-column;
+}
+</code></pre>
+<p>and tadà:</p>
+<pre><code class="lang-css">.foo {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column; 
+}
+@media only screen and (min-width: 0em) {
+  .foo {
+    padding-left: 0.25em;
+    padding-right: 0.25em; } }
+@media only screen and (min-width: 45em) {
+  .foo {
+    padding-left: 0.5em;
+    padding-right: 0.5em; } }
+@media only screen and (min-width: 80em) {
+  .foo {
+    padding-left: 0.75em;
+    padding-right: 0.75em; } }
+</code></pre>
 <h3 id="-grid-columns">$grid-columns</h3>
 <p>default: <code>12</code> - type: <code>number</code> </p>
 <p>The number of columns used in our layout.</p>
@@ -145,6 +178,8 @@ useful when we inspect the elements.</p>
 <p>default: <code>false</code> - type: <code>boolean</code> </p>
 <p><strong>Super GiGi</strong> supports <a href="https://github.com/Snugug/eq.js">EQJS</a>. Turn this option to
 <code>true</code> to use element queries css instead of classical mediaqueries. See the <a href="#media-query"><code>media-query()</code></a> mixin for other infos. </p>
+<div id="breakpoints"></div>  
+
 <h3 id="-breakpoints">$breakpoints</h3>
 <p>default: <code>(
   xxsmall: 0em, 

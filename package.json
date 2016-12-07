@@ -49,6 +49,7 @@
     "gulp-watch": "4.2.4",
     "gulp.spritesmith": "3.8.2",
     "lodash": "3.9.3",
+    "marked": "^0.3.6",
     "mocha": "2.2.5",
     "sass-convert": "0.5.1",
     "sass-true": "2.0.2",

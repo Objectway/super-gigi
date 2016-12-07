@@ -58,7 +58,7 @@
     <div class="KitchenSinkBody">
       <div class="KitchenSinkBody__section">
         <div class="KitchenSinkBody__aside">
-          <nav class="KitchenSinkNav"><a href="#media-query-" class="KitchenSinkNav__link">Media Query</a><a href="#grid-space-" class="KitchenSinkNav__link">Grid space</a><a href="#grid-row-" class="KitchenSinkNav__link">Grid row</a><a href="#grid-column-" class="KitchenSinkNav__link">Grid column</a><a href="#show-from-" class="KitchenSinkNav__link">Show from</a><a href="#hide-from-" class="KitchenSinkNav__link">Hide from</a><a href="#show-for-" class="KitchenSinkNav__link">Show for</a><a href="#hide-for-" class="KitchenSinkNav__link">Hide for</a><a href="#dry-it-" class="KitchenSinkNav__link">Dry it</a></nav>
+          <nav class="KitchenSinkNav"><a href="#media-query-" class="KitchenSinkNav__link">Media Query</a><a href="#grid-space-" class="KitchenSinkNav__link">Grid space</a><a href="#grid-row-" class="KitchenSinkNav__link">Grid row</a><a href="#grid-column-" class="KitchenSinkNav__link">Grid column</a><a href="#show-from-" class="KitchenSinkNav__link">Show from</a><a href="#hide-from-" class="KitchenSinkNav__link">Hide from</a><a href="#show-for-" class="KitchenSinkNav__link">Show for</a><a href="#hide-for-" class="KitchenSinkNav__link">Hide for</a><a href="#responsive-gutter" class="KitchenSinkNav__link">Responsive gutter</a><a href="#dry-it-" class="KitchenSinkNav__link">Dry it</a></nav>
         </div>
         <div class="KitchenSinkBody__content">
           <div class="MarkDownGenerated">
@@ -162,12 +162,12 @@ For example assuming that we have <code>12</code> <a href="#grid-columns"><code>
 passing to <code>$attr</code> a sass list composed like 
 that: <code>$column</code> <strong><code>of</code></strong> <code>$columns</code>. For example:</p>
 <pre><code class="lang-scss">.foo {
-  @include grid-space(margin-left, 1 of 2)
+  @include grid-space(margin-left, 1 of 2);
 }
 </code></pre>
 <p>will return</p>
 <pre><code class="lang-css">.foo {
-  margin-left: 50%
+  margin-left: 50%;
 }
 </code></pre>
 <p>For infos about <code>$margin</code> option, see the <a href="#gridcolumnmargin"><code>margin</code></a> section.</p>
@@ -286,7 +286,8 @@ that you will use more. Let&#39;s take a look at how it works:</p>
 </code></pre>
 <p><strong>note:</strong> you see repeated properties, because we set pull and push for 
 the same element. </p>
-<p><div id="gcwidthoffsetpushpull"></div></p>
+<div id="gcwidthoffsetpushpull"></div>
+
 <h3 id="-width-offset-push-"><code>$width</code>, <code>$offset</code>, <code>$push</code></h3>
 <p><code>$width</code>, <code>$offset</code>, <code>$push</code> and <code>$pull</code> have similar behaviors. They can be used in three different ways.</p>
 <p><strong>1 - Passing an integer</strong></p>
@@ -354,8 +355,8 @@ relevant part is <code>width: 33.33333%</code>. This is calculated via
 <p>As before, the first four properties are the common rules of our column, 
 the relevant part are these in the media query. How you can see we have 
 the widths of the column set in a responsive way.</p>
-<p><strong>4 - Width</strong>
-As said before <code>$width</code>, <code>$offset</code>, <code>$push</code> and <code>$pull</code> have similar behaviors, but <code>$width</code> is obviously a bit different.</p>
+<p><strong>4 - Width</strong></p>
+<p>As said before <code>$width</code>, <code>$offset</code>, <code>$push</code> and <code>$pull</code> have similar behaviors, but <code>$width</code> is obviously a bit different.</p>
 <p>We&#39;ve seen that you can pass to <code>$width</code> essentialy a number. When you do that,
 <code>Super GiGi</code> will add to your css: <code>flex: 0 0 auto</code>. This is essential to our flex grid to work. </p>
 <p>But you can set <code>$width</code> to <code>auto</code>, that will set the <code>width</code> css property to <code>auto</code> and the <code>flex</code> property to <code>1 1 0%</code>. 
@@ -365,7 +366,8 @@ If you have one column, it will take 100% of the space, if you have two then the
 <p>Another important option is to set <code>$width</code> to <code>0</code>. <strong>This will not set <code>width</code> to 0%</strong> (a column must have a minimun width). But the width will be <code>auto</code>.
 In this way you can have a column with the width decided from the content.</p>
 <p><strong>Note</strong> we are preparing a visual example. Stay tuned.</p>
-<p><div id="gcorder"></div></p>
+<div id="gcorder"></div>
+
 <p>###<code>$order</code>
 <strong>$order</strong> is similar, you can set it only in two ways, 
 via <code>integer</code> or via <code>map</code>.
@@ -411,7 +413,8 @@ Let see an example:</p>
   } 
 }
 </code></pre>
-<p><div id="gccollapseglobal"></div></p>
+<div id="gccollapseglobal"></div>
+
 <h3 id="-collapse-and-global-"><code>$collapse</code> and <code>$global</code></h3>
 <p><strong>$collapse</strong> and <strong>$global</strong> are very simple. The first one if <code>false</code> will 
 generate the padding of our columns <code>padding: 0 0.9375rem;</code>, the second one 
@@ -422,7 +425,8 @@ will generate this css:</p>
 </code></pre>
 <p>aka the common properties that defines our columns. 
 <br /></p>
-<p><div id="gridcolumnmargin"></div></p>
+<div id="gridcolumnmargin"></div>
+
 <h3 id="-margin-"><code>$margin</code></h3>
 <p>It is possible to use margins as additional column-gutter to a column. This <strong>is not mutual esclusive</strong> to the padding (to do that, see the <code>$collapse</code> option or the global <a href="#sg-collapse"><code>$sg-collapse</code></a> variable). Set this parameter to <code>true</code> to <strong>add</strong> another column-gutter to this column.</p>
 <h3 id="show-from-">show-from()</h3>
@@ -530,7 +534,86 @@ Example:</p>
   } 
 }
 </code></pre>
-<p><div id="dry-it"></div></p>
+<div id="responsive-gutter"></div>
+
+<h3 id="responsive-gutter-experimental-">responsive-gutter() <code>EXPERIMENTAL</code></h3>
+<p>By default SuperGiGi has a fixed <a href="#column-gutter"><code>$column-gutter</code></a> that is the 
+same for each breakpoint in the <a href="#breakpoints"><code>$breakpoints</code></a> variable. If you 
+want to have a different gutter based on breakpoints, you can set a map as seen 
+on <a href="#column-gutter"><code>$column-gutter</code></a>.
+If you need to manage the responsive gutter, you can use this mixin:</p>
+<pre><code class="lang-scss">$column-gutter: (
+  &#39;xxsmall&#39;: 0.5em,
+  &#39;medium&#39;: 1em,
+  &#39;xlarge&#39;: 1.5em,
+);
+
+.bar {
+  @include responsive-gutter {
+    margin-top: $column-gutter;
+  };
+}
+</code></pre>
+<p>It will result in:</p>
+<pre><code class="lang-css">@media only screen and (min-width: 0em) {
+  .bar {
+    margin-top: 0.5em
+  }
+}
+@media only screen and (min-width: 45em) {
+  .bar {
+    margin-top: 1em
+  }
+}
+@media only screen and (min-width: 80em) {
+  .bar {
+    margin-top: 1.5em
+  }
+}
+</code></pre>
+<p>If you are already in a mediaquery, the mixin will take only the current
+breakpoint, as shown below</p>
+<pre><code class="lang-scss">.foobar {
+  @include media-query(&#39;medium&#39;) {
+    color: red;
+
+    @include responsive-gutter {
+      left: $column-gutter;
+    }
+  }
+}
+</code></pre>
+<p>will become:</p>
+<pre><code class="lang-css">@media only screen and (min-width: 45em) {
+  .foobar {
+    color: red;
+    left: 1em
+  }
+}
+</code></pre>
+<p>Obviously it will work with math operation too:</p>
+<pre><code class="lang-scss">.foobar {
+  @include media-query(&#39;xxsmall&#39;) {
+    @include responsive-gutter {
+      top: $column-gutter;
+      left: ($column-gutter / 2);
+      bottom: ($column-gutter * 2);
+      right: ($column-gutter + 2);
+    }
+  }
+}
+</code></pre>
+<pre><code class="lang-css">@media only screen and (min-width: 0em) {
+    .foobar {
+        top: 0.5em;
+        left: 0.25em;
+        bottom: 1em;
+        right: 2.5em
+    }
+}
+</code></pre>
+<div id="dry-it"></div>
+
 <h3 id="dry-it-">dry-it()</h3>
 <p>arguments: <code>$id</code></p>
 <ul>

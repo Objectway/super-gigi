@@ -1,7 +1,8 @@
 .row {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;
@@ -459,7 +460,8 @@ body {
 .HomePage__section {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;
@@ -479,7 +481,8 @@ body {
 .HomePage__logoWrapper {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;
@@ -641,7 +644,8 @@ body {
   .KitchenSinkNavBar__menuBar {
     content: "ROW nested: false, vertical false";
     box-sizing: border-box;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 120rem;
     width: 100%;
     display: -webkit-box;
@@ -790,7 +794,8 @@ body {
   .KitchenSinkBody__section {
     content: "ROW nested: false, vertical false";
     box-sizing: border-box;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     max-width: 120rem;
     width: 100%;
     display: -webkit-box;
@@ -834,7 +839,8 @@ body {
 .KitchenSinkFooter {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;
@@ -894,7 +900,8 @@ body {
 .DocumentationSection {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;
@@ -1095,7 +1102,8 @@ body {
 .RoastedRibs {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;
@@ -1131,7 +1139,8 @@ body {
 .Ribs {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;
@@ -1192,11 +1201,12 @@ body {
 .FriedChips {
   content: "ROW nested: true, vertical false";
   box-sizing: border-box;
+  margin-left: -0.9375rem;
+  margin-right: -0.9375rem;
+  width: calc(100% + 1.875rem);
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
-  margin: 0 -0.9375rem;
-  width: calc(100% + 1.875rem);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1238,7 +1248,8 @@ body {
 .Tomatoes {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;
@@ -1294,7 +1305,8 @@ body {
 .Steak {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;
@@ -1338,7 +1350,8 @@ body {
 .Pepperoni {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;
@@ -1407,7 +1420,8 @@ body {
 .Sausages {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;
@@ -1483,7 +1497,8 @@ body {
 .ChickenWings {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;
@@ -1555,7 +1570,8 @@ body {
 .BarbecueSauce {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;
@@ -1615,7 +1631,8 @@ body {
 .Eggplant {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;
@@ -1691,7 +1708,8 @@ body {
 .Bacon {
   content: "ROW nested: false, vertical false";
   box-sizing: border-box;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 120rem;
   width: 100%;
   display: -webkit-box;

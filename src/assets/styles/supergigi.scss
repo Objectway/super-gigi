@@ -1,14 +1,4 @@
-$use-classes: false;
-$use-dry: false;
-
-$column-gutter: (
-  'xxsmall': 0.5em,
-  'medium': 1em,
-  'xlarge': 1.5em,
-);
+$use-classes: true;
+$use-dry: true;
 
 @import 'main';
-
-.foo {
-  @include grid-column;
-}

@@ -498,6 +498,7 @@ will generate:
 the same element. 
 
 <div id="gcwidthoffsetpushpull"></div>
+
 ### `$width`, `$offset`, `$push`
 `$width`, `$offset`, `$push` and `$pull` have similar behaviors. They can be used in three different ways.
 
@@ -579,6 +580,7 @@ the relevant part are these in the media query. How you can see we have
 the widths of the column set in a responsive way.
 
 **4 - Width**
+
 As said before `$width`, `$offset`, `$push` and `$pull` have similar behaviors, but `$width` is obviously a bit different.
 
 We've seen that you can pass to `$width` essentialy a number. When you do that,
@@ -595,6 +597,7 @@ In this way you can have a column with the width decided from the content.
 **Note** we are preparing a visual example. Stay tuned.
 
 <div id="gcorder"></div>
+
 ###`$order`
 **$order** is similar, you can set it only in two ways, 
 via `integer` or via `map`.
@@ -644,6 +647,7 @@ will compile in:
 }
 ```
 <div id="gccollapseglobal"></div>
+
 ### `$collapse` and `$global`
 **$collapse** and **$global** are very simple. The first one if `false` will 
 generate the padding of our columns `padding: 0 0.9375rem;`, the second one 
@@ -659,6 +663,7 @@ aka the common properties that defines our columns.
 
   
 <div id="gridcolumnmargin"></div>
+
 ### `$margin`
 It is possible to use margins as additional column-gutter to a column. This **is not mutual esclusive** to the padding (to do that, see the `$collapse` option or the global [`$sg-collapse`](#sg-collapse) variable). Set this parameter to `true` to **add** another column-gutter to this column.
  
