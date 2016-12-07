@@ -1,10 +1,11 @@
 // -----------------------------------------------------------------------------
 // E X P E R I M E N T A L
 // -----------------------------------------------------------------------------
-// DRY MIXIN!!! What is that? Is simple, we will creat now some mixin
+// DRY MIXIN!!! What is that? It's simple, we will creat now some mixin
 // that will define our column. For example i want to use:
-// .column-4
-//   +grid-column((small: 12, large: 6))
+// .column-4 {
+//   @include grid-column((small: 12, large: 6));
+//  }
 // it will generate some css. But it will generate this css everytime.
 // Yes we may use place holder, but placeholder are too difficult to
 // manage for big project. The idea is, why not generate placeholder

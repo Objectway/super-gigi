@@ -1,0 +1,37 @@
+//------------------------------------------------------------------------------
+// The column gutter can be responsive, so we need a mixin to calculate it.
+//              ! ! ! E X P E R I M E N T A L ! ! !
+//------------------------------------------------------------------------------
+
+@mixin responsive-gutter {
+  @if type-of($column-gutter) == 'map' {
+
+    @if $inmedia {
+      $cur-bp: map-get($inmedia, 'query');
+
+      @if not map-has-key($column-gutter, $cur-bp) {
+        @error "$column-gutter variable doesn't have '#{$cur-bp}' breakpoint"
+      }
+
+      $global-gutter: $column-gutter;
+      $column-gutter: map-get($column-gutter, $cur-bp) !global;
+      @content;
+      $column-gutter: $global-gutter !global;
+    }
+
+    @else {
+      @each $query, $gutter in $column-gutter {
+        $global-gutter: $column-gutter;
+        $column-gutter: $gutter !global;
+        @include media-query($query) {
+          @content;
+        }
+        $column-gutter: $global-gutter !global;
+      }
+    };
+  }
+
+  @else {
+    @content;
+  }
+}
