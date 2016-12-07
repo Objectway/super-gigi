@@ -12,7 +12,11 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
 
 
 // - Generate Media Query
-@mixin media-query($query: xxsmall, $until: false, $eq-grid: $eq-grid) {
+@mixin media-query($query, $until: false, $eq-grid: $eq-grid) {
+
+  @if not map-has-key($breakpoints, $query) {
+    @error 'Breakpoint "#{$query}" is not present in $breakpoints variable';
+  };
 
   // Local var declaration
   $cur-bp: false !default;

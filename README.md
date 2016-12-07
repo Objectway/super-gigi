@@ -53,13 +53,48 @@ default: `rem-calc(1920)` - type: `unit`
 This is the `max-width` of our row objects. The default value is 1920 pixels 
 converted in rems via [`rem-calc()`](#rem-calc) function.
 
+<div id="column-gutter"></div>
   
 ### $column-gutter
 default: `rem-calc(30)` - type: `unit` 
 
 This is the space between our columns, also known as gutter. The default value is 30 pixels converted in rems via [`rem-calc()`](#rem-calc) function. 
 
-  
+If you prefer, there is a `EXPERIMENTAL` option that you can use to have a responsive gutter using a map similar to the [`breakpoints`](#breakpoints) one.
+```scss
+$column-gutter: (
+  'xxsmall': 0.5em,
+  'medium': 1em,
+  'xlarge': 1.5em,
+);
+```
+Doing that, all the grid mixins will generate responsive gutter:
+```scss
+.foo {
+  @include grid-column;
+}
+```
+and tadà:
+```css
+.foo {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column; 
+}
+@media only screen and (min-width: 0em) {
+  .foo {
+    padding-left: 0.25em;
+    padding-right: 0.25em; } }
+@media only screen and (min-width: 45em) {
+  .foo {
+    padding-left: 0.5em;
+    padding-right: 0.5em; } }
+@media only screen and (min-width: 80em) {
+  .foo {
+    padding-left: 0.75em;
+    padding-right: 0.75em; } }
+```
+
 ### $grid-columns
 default: `12` - type: `number` 
 
@@ -164,7 +199,8 @@ default: `false` - type: `boolean`
 **Super GiGi** supports [EQJS](https://github.com/Snugug/eq.js). Turn this option to
 `true` to use element queries css instead of classical mediaqueries. See the [`media-query()`](#media-query) mixin for other infos. 
 
-  
+<div id="breakpoints"></div>  
+
 ### $breakpoints
 default: ```(
   xxsmall: 0em, 
@@ -351,13 +387,13 @@ that: `$column` **`of`** `$columns`. For example:
  
 ```scss
 .foo {
-  @include grid-space(margin-left, 1 of 2)
+  @include grid-space(margin-left, 1 of 2);
 }
 ```
 will return
 ```css
 .foo {
-  margin-left: 50%
+  margin-left: 50%;
 }
 ```
 For infos about `$margin` option, see the [`margin`](#gridcolumnmargin) section.
@@ -737,7 +773,96 @@ will generate:
  ```
   
 
+<div id="responsive-gutter"></div>
+
+### responsive-gutter() `EXPERIMENTAL`
+By default SuperGiGi has a fixed [`$column-gutter`](#column-gutter) that is the 
+same for each breakpoint in the [`$breakpoints`](#breakpoints) variable. If you 
+want to have a different gutter based on breakpoints, you can set a map as seen 
+on [`$column-gutter`](#column-gutter).
+If you need to manage the responsive gutter, you can use this mixin:
+
+```scss
+$column-gutter: (
+  'xxsmall': 0.5em,
+  'medium': 1em,
+  'xlarge': 1.5em,
+);
+
+.bar {
+  @include responsive-gutter {
+    margin-top: $column-gutter;
+  };
+}
+```
+It will result in:
+```css
+@media only screen and (min-width: 0em) {
+  .bar {
+    margin-top: 0.5em
+  }
+}
+@media only screen and (min-width: 45em) {
+  .bar {
+    margin-top: 1em
+  }
+}
+@media only screen and (min-width: 80em) {
+  .bar {
+    margin-top: 1.5em
+  }
+}
+```
+
+If you are already in a mediaquery, the mixin will take only the current
+breakpoint, as shown below
+```scss
+.foobar {
+  @include media-query('medium') {
+    color: red;
+
+    @include responsive-gutter {
+      left: $column-gutter;
+    }
+  }
+}
+```
+will become:
+```css
+@media only screen and (min-width: 45em) {
+  .foobar {
+    color: red;
+    left: 1em
+  }
+}
+```
+
+Obviously it will work with math operation too:
+```scss
+.foobar {
+  @include media-query('xxsmall') {
+    @include responsive-gutter {
+      top: $column-gutter;
+      left: ($column-gutter / 2);
+      bottom: ($column-gutter * 2);
+      right: ($column-gutter + 2);
+    }
+  }
+}
+```
+```css
+@media only screen and (min-width: 0em) {
+    .foobar {
+        top: 0.5em;
+        left: 0.25em;
+        bottom: 1em;
+        right: 2.5em
+    }
+}
+```
+
 <div id="dry-it"></div>
+
 ### dry-it()
 arguments: `$id`
 - **$id**
@@ -981,7 +1106,7 @@ If you use the sass version, we suggest you to take a look to
 <a href="https://github.com/postcss/autoprefixer" target="_blank">
 AutoPrefixer</a>, to generate the vendor prefixes.
 
-If you have to support old browsers you can try <a href="http://flexiejs.com">.
+If you have to support old browsers you can try <a href="http://flexiejs.com">
 Flexie</a>
 
 ## DISTRIBUTED UNDER THE MIT LICENSE

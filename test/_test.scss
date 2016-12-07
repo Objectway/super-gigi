@@ -101,6 +101,23 @@
       }
     }
   }
+
+  @include test('Responsive gutter') {
+
+    @include assert(
+      'Test basic responsive gutter mixin'
+    ) {
+      @include input {
+        @include responsive-gutter() {
+          margin-top: $column-gutter;
+        };
+      }
+
+      @include expect {
+        margin-top: $column-gutter;
+      }
+    }
+  }
 };
 
 @include test-module('Grid mixins') {
@@ -252,9 +269,10 @@
 
       @include expect {
         box-sizing: border-box;
-        flex: 1 0 auto;
-        margin: 0 (-$column-gutter / 2);
+        margin-left: (-$column-gutter / 2);
+        margin-right: (-$column-gutter / 2);
         width: calc(100% + #{$column-gutter});
+        flex: 1 0 auto;
         display: flex;
         flex-wrap: wrap;
       }
@@ -267,7 +285,8 @@
 
       @include expect {
         box-sizing: border-box;
-        margin: 0 auto;
+        margin-left: auto;
+        margin-right: auto;
         max-width: $row-width;
         width: 100%;
         display: flex;
@@ -399,6 +418,7 @@
   }
 };
 };
+
 
 // MEDIA QUERIES AND VISIBILITY ARE NOT TESTABLE, WE ARE WORKING ON IT!
 
