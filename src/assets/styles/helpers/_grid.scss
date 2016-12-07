@@ -1,6 +1,6 @@
 // -----------------------------------------------------------------------------
 // Simply math here. If the value is auto we will return auto, otherwise this
-// function will do the simple math. Here you can also set te exception
+// function will do the simple calc. Here you can also set te exception
 // (for example for the margins or so on). Keep it simple plz.
 // -----------------------------------------------------------------------------
 @function sg-dimension($dividend, $divisor: $grid-columns, $margin: false) {
@@ -52,12 +52,16 @@
       @error "You can't use n of N syntax with query parameter. Use mediaquery mixin instead!";
 
     } @else {
-      #{$property}: sg-dimension(nth($attr, 1), nth($attr, 3), $margin);
+      @include responsive-gutter {
+        #{$property}: sg-dimension(nth($attr, 1), nth($attr, 3), $margin);
+      }
     }
 
   // Standard syntax
   } @else {
-    #{$property}: sg-dimension(nth($attr, 1), $margin: $margin);
+    @include responsive-gutter {
+      #{$property}: sg-dimension(nth($attr, 1), $margin: $margin);
+    }
   }
 
 }
@@ -126,11 +130,17 @@
     }
 
     @if $nested {
+      @include responsive-gutter {
+        margin-left: (-$column-gutter / 2);
+        margin-right: (-$column-gutter / 2);
+        width: calc(100% + #{$column-gutter});
+      }
       flex: 1 0 auto;
-      margin: 0 (-$column-gutter / 2);
-      width: calc(100% + #{$column-gutter});
     } @else {
-      margin: 0 auto;
+      @include responsive-gutter {
+        margin-left: auto;
+        margin-right: auto;
+      }
       max-width: $row-width;
       width: 100%;
     }
@@ -233,8 +243,10 @@
   } @else {
     @if $global == true {
       @include dry-it('paddingGlob') {
-        padding-left: ($column-gutter / 2);
-        padding-right: ($column-gutter / 2);
+        @include responsive-gutter {
+          padding-left: ($column-gutter / 2);
+          padding-right: ($column-gutter / 2);
+        }
       }
     }
   }
@@ -249,8 +261,10 @@
   // Margin ------------
   @if $margin {
     @include dry-it('marginGlob') {
-      margin-left: ($column-gutter / 2);
-      margin-right: ($column-gutter / 2);
+      @include responsive-gutter{
+        margin-left: ($column-gutter / 2);
+        margin-right: ($column-gutter / 2);
+      }
     }
   }
 

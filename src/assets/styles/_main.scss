@@ -3,8 +3,9 @@
 
 // Helpers
 @import 'helpers/variables';
-@import 'helpers/mixins';
+@import 'helpers/dryit';
 @import 'helpers/mediaquery';
+@import 'helpers/responsivegutter';
 @import 'helpers/grid';
 @import 'helpers/visibility';
 @import 'helpers/static';
