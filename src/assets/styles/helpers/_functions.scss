@@ -65,3 +65,67 @@ $design-base: $rem-base !default;
     @return $px-values;
   }
 }
+
+/// An equivalent of `zip` function but for maps.
+/// Takes two lists, the first for keys, second for values.
+/// From: https://www.sitepoint.com/extra-map-functions-sass/
+/// @param {List} $keys - Keys for map
+/// @param {List} $values - Values for map
+/// @return {Map} Freshly created map
+/// @see http://sass-lang.com/documentation/Sass/Script/Functions.html#zip-instance_method
+@function map-zip($keys, $values) {
+  $l-keys: length($keys);
+  $l-values: length($values);
+  $min: min($l-keys, $l-values);
+  $map: ();
+
+  @if $l-keys != $l-values {
+    @warn "There are #{$l-keys} key(s) for #{$l-values} value(s) in the map for `map-zip`. "
+        + "Resulting map will only have #{$min} pairs.";
+  }
+
+  @if $min == 0 {
+    @return $map;
+  }
+
+  @for $i from 1 through $min {
+    $map: map-merge($map, (nth($keys, $i): nth($values, $i)));
+  }
+
+  @return $map;
+}
+
+//From: http://thesassway.com/advanced/implementing-bubble-sort-with-sass
+@function swap($list, $index-a, $index-b) {
+  @if abs($index-a) > length($list) or abs($index-b) > length($list) {
+    @return $list;
+  }
+  $tmp: nth($list, $index-a);
+  $list: set-nth($list, $index-a, nth($list, $index-b));
+  $list: set-nth($list, $index-b, $tmp);
+  @return $list;
+}
+
+@function map-sort-by-value($map, $asc: true) {
+  $keys: map-keys($map);
+  $values: map-values($map);
+  @for $i from 1 through length($map) {
+    @for $z from $i * -1 through -1 {
+      $z: abs($z);
+      $order-type: false;
+
+      @if $asc {
+        $order-type: $z > 1 and (nth($values, $z)) < (nth($values, $z - 1));
+      } @else {
+        $order-type: $z > 1 and (nth($values, $z)) > (nth($values, $z - 1));
+      }
+
+      @if $order-type {
+        $keys: swap($keys, $z, $z - 1);
+        $values: swap($values, $z, $z - 1);
+      }
+    }
+  }
+  $map: map-zip($keys, $values);
+  @return $map;
+}

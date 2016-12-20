@@ -55,6 +55,34 @@
       'em-calc with different rem-base');
   }
 
+  @include test('map-zip') {
+    $test: map-zip(('key1', 'key2', 'key3'), ('value1', 'value2', 'value3'));
+    $expect: ('key1': 'value1', 'key2': 'value2', 'key3': 'value3');
+    @include assert-equal($test, $expect,
+      'Transform two list in one map, first the keys, second the values');
+  }
+
+  @include test('swap') {
+    $test: swap((1,3,2), 2, 3);
+    $expect: (1,2,3);
+    @include assert-equal($test, $expect,
+      'Swap two elements in a list');
+  }
+
+  @include test('map-sort-by-value') {
+    $map: map-sort-by-value(('c': 3, 'a': 1, 'd': 4, 'b': 2, 'e': 5));
+    $test: nth($map, 1);
+    $expect: ('a' 1);
+    $map2: map-sort-by-value(('c': 3, 'a': 1, 'd': 4, 'b': 2, 'e': 5), false);
+    $test2: nth($map2, 1);
+    $expect2: ('e' 5);
+    @include assert-equal($test, $expect,
+      'Sort a map based on numeric value');
+    @include assert-equal($test2, $expect2,
+      'Sort a map based on numeric value, order desc');
+  }
+
+
 }
 
 

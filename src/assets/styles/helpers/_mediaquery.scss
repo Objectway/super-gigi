@@ -1,15 +1,7 @@
 // Global
-$min-unit: em-calc(1) !default;
 $inmedia: false !default;
-$query-direction: (min-width, max-width) !default;
 $query-start: nth($query-direction, 1);
 $query-end: nth($query-direction, 2);
-
-// - MEDIAQUERIES SETTINGS
-$screen: 'only screen' !default;
-$landscape: "#{$screen} and (orientation: landscape)" !default;
-$portrait: "#{$screen} and (orientation: portrait)" !default;
-
 
 // - Generate Media Query
 @mixin media-query($query, $until: false, $eq-grid: $eq-grid) {

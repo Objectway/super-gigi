@@ -785,7 +785,7 @@ By default SuperGiGi has a fixed [`$column-gutter`](#column-gutter) that is the
 same for each breakpoint in the [`$breakpoints`](#breakpoints) variable. If you 
 want to have a different gutter based on breakpoints, you can set a map as seen 
 on [`$column-gutter`](#column-gutter).
-If you need to manage the responsive gutter, you can use this mixin:
+If you need to manage the responsive gutter, you can use this mixin
 
 ```scss
 $column-gutter: (
@@ -800,7 +800,7 @@ $column-gutter: (
   };
 }
 ```
-It will result in:
+And the CSS will be:
 ```css
 @media only screen and (min-width: 0em) {
   .bar {
@@ -842,7 +842,7 @@ will become:
 }
 ```
 
-Obviously it will work with math operation too:
+Obviously it will work with math operations too:
 ```scss
 .foobar {
   @include media-query('xxsmall') {
