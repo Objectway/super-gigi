@@ -1,22 +1,71 @@
 //------------------------------------------------------------------------------
-// The column gutter can be responsive, so we need a mixin to calculate it.
-//              ! ! ! E X P E R I M E N T A L ! ! !
+//   The column gutter can be responsive, so we need a mixin to calculate it.
+//                  ! ! ! E X P E R I M E N T A L ! ! !
 //------------------------------------------------------------------------------
 
-@mixin responsive-gutter {
+@mixin responsive-gutter($property: false, $multiplier: 1) {
   @if type-of($column-gutter) == 'map' {
-
     @if $inmedia {
+      // inmedia variables
       $cur-bp: map-get($inmedia, 'query');
+      $cur-until: map-get($inmedia, 'until');
+      $breakpoints-keys: map-keys($breakpoints);
 
-      @if not map-has-key($column-gutter, $cur-bp) {
-        @error "$column-gutter variable doesn't have '#{$cur-bp}' breakpoint"
+      @while not map-has-key($column-gutter, $cur-bp) {
+        $map-position: index($breakpoints-keys, $cur-bp);
+        @if $map-position > 1 {
+          $cur-bp: nth($breakpoints-keys, $map-position - 1);
+        } @else {
+          @error "There isn't a valid $column-gutter value for " +
+            "'#{map-get($inmedia, 'query')}' breakpoint, " +
+            "set a value for '#{nth($breakpoints-keys, 1)}' breakpoint "+
+            "at least!"
+        }
+      };
+
+      // Map navigation variables
+      $map-position: index(map-keys($column-gutter), $cur-bp);
+      $next-gutter: false;
+      @if $map-position != length($column-gutter) and $map-position {
+        $next-gutter: nth(map-keys($column-gutter), $map-position + 1);
       }
 
+      // we temporary change the global $column-gutter to single value
+      // to manage $column-gutter inside a mediaquery
       $global-gutter: $column-gutter;
       $column-gutter: map-get($column-gutter, $cur-bp) !global;
-      @content;
+
+
+      // check mixin syntax
+      @if $property {
+        #{$property}: ($column-gutter * $multiplier);
+      } @else {
+        @content;
+      }
       $column-gutter: $global-gutter !global;
+
+      //check to avoid absurd range mediaquery
+      $absurd-query: false;
+      @if $next-gutter and $cur-until and $cur-until != 'only' {
+        $next-gutter-val: map-get($breakpoints, $next-gutter);
+        $cur-until-val: map-get($breakpoints, $cur-until);
+
+        @if $query-start == "min-width" {
+          $absurd-query: ($next-gutter-val > $cur-until-val);
+        } @else {
+          $absurd-query: ($next-gutter-val < $cur-until-val);
+        }
+      }
+
+      @if $next-gutter and $cur-until != 'only' and not $absurd-query {
+        @at-root (with: rule) {
+          @include media-query($next-gutter, $cur-until) {
+            @include responsive-gutter($property, $multiplier) {
+              @content;
+            }
+          }
+        }
+      }
     }
 
     @else {
@@ -24,7 +73,11 @@
         $global-gutter: $column-gutter;
         $column-gutter: $gutter !global;
         @include media-query($query) {
-          @content;
+          @if $property {
+            #{$property}: ($column-gutter * $multiplier);
+          } @else {
+            @content;
+          }
         }
         $column-gutter: $global-gutter !global;
       }
