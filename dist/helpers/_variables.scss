@@ -62,12 +62,12 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
 // Breakpoints
 // -----------------------------------------------------------------------------
 $breakpoints: (
-  xxsmall: 0em,
-  xsmall: em-calc(480),
-  small: em-calc(640),
   medium: em-calc(720),
-  large: em-calc(1024),
+  xxsmall: 0em,
+  small: em-calc(640),
   xlarge: em-calc(1280),
+  large: em-calc(1024),
+  xsmall: em-calc(480),
   xxlarge: em-calc(1440)
 ) !default;
 
@@ -75,6 +75,7 @@ $breakpoints: (
 // Breakpoints and columns gutter will always be ordered based
 // on $query-direction variable
 //------------------------------------------------------------------------------
+@debug $breakpoints;
 @if ($query-direction == (min-width, max-width)) {
   $breakpoints: map-sort-by-value($breakpoints);
   @if type-of($column-gutter) == 'map' {
@@ -87,5 +88,5 @@ $breakpoints: (
     $column-gutter: map-sort-by-value($column-gutter, false);
   }
 }
-
+@debug $breakpoints;
 
