@@ -75,6 +75,7 @@ $breakpoints: (
 // Breakpoints and columns gutter will always be ordered based
 // on $query-direction variable
 //------------------------------------------------------------------------------
+
 @if ($query-direction == (min-width, max-width)) {
   $breakpoints: map-sort-by-value($breakpoints);
   @if type-of($column-gutter) == 'map' {
@@ -87,5 +88,3 @@ $breakpoints: (
     $column-gutter: map-sort-by-value($column-gutter, false);
   }
 }
-
-

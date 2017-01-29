@@ -95,37 +95,52 @@ $design-base: $rem-base !default;
   @return $map;
 }
 
-//From: http://thesassway.com/advanced/implementing-bubble-sort-with-sass
-@function swap($list, $index-a, $index-b) {
-  @if abs($index-a) > length($list) or abs($index-b) > length($list) {
-    @return $list;
-  }
-  $tmp: nth($list, $index-a);
-  $list: set-nth($list, $index-a, nth($list, $index-b));
-  $list: set-nth($list, $index-b, $tmp);
-  @return $list;
-}
-
+//- Based on: Quick sort @author Sam Richards
 @function map-sort-by-value($map, $asc: true) {
   $keys: map-keys($map);
   $values: map-values($map);
-  @for $i from 1 through length($map) {
-    @for $z from $i * -1 through -1 {
-      $z: abs($z);
-      $order-type: false;
+  $k-less:  ();
+  $k-equal: ();
+  $k-more: ();
+  $v-less:  ();
+  $v-equal: ();
+  $v-more: ();
 
-      @if $asc {
-        $order-type: $z > 1 and (nth($values, $z)) < (nth($values, $z - 1));
-      } @else {
-        $order-type: $z > 1 and (nth($values, $z)) > (nth($values, $z - 1));
-      }
+  @if length($values) > 1 {
+    $seed: nth($values, ceil(length($values) / 2));
 
-      @if $order-type {
-        $keys: swap($keys, $z, $z - 1);
-        $values: swap($values, $z, $z - 1);
+    @each $key, $value in $map {
+      @if ($value == $seed) {
+        $k-equal: append($k-equal, $key);
+        $v-equal: append($v-equal, $value);
+      } @else if ($value < $seed) {
+        @if($asc) {
+          $k-less: append($k-less, $key);
+          $v-less: append($v-less, $value);
+        } @else {
+          $k-more: append($k-more, $key);
+          $v-more: append($v-more, $value);
+        }
+      } @else if ($value > $seed) {
+        @if($asc) {
+          $k-more: append($k-more, $key);
+          $v-more: append($v-more, $value);
+        } @else {
+          $k-less: append($k-less, $key);
+          $v-less: append($v-less, $value);
+        }
       }
     }
+
+    $less: map-zip($k-less, $v-less);
+    $equal: map-zip($k-equal, $v-equal);
+    $more: map-zip($k-more, $v-more);
+
+    @return map-merge(
+      map-merge(map-sort-by-value($less, $asc), $equal),
+      map-sort-by-value($more, $asc)
+    );
   }
-  $map: map-zip($keys, $values);
+
   @return $map;
 }
