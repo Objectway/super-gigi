@@ -62,13 +62,6 @@
       'Transform two list in one map, first the keys, second the values');
   }
 
-  @include test('swap') {
-    $test: swap((1,3,2), 2, 3);
-    $expect: (1,2,3);
-    @include assert-equal($test, $expect,
-      'Swap two elements in a list');
-  }
-
   @include test('map-sort-by-value') {
     $map: map-sort-by-value(('c': 3, 'a': 1, 'd': 4, 'b': 2, 'e': 5));
     $test: nth($map, 1);
