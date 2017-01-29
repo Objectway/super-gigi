@@ -130,10 +130,14 @@
     }
 
     @if $nested {
-      @include responsive-gutter {
-        margin-left: (-$column-gutter / 2);
-        margin-right: (-$column-gutter / 2);
-        width: calc(100% + #{$column-gutter});
+      @if not $sg-collapse {
+        @include responsive-gutter {
+          margin-left: (-$column-gutter / 2);
+          margin-right: (-$column-gutter / 2);
+          width: calc(100% + #{$column-gutter});
+        }
+      } @else {
+        width: 100%;
       }
       flex: 1 0 auto;
     } @else {
