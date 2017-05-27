@@ -52,7 +52,6 @@ $debug: false !default;
 //------------------------------------------------------------------------------
 // Mediaqueries settings
 //------------------------------------------------------------------------------
-$min-unit: em-calc(1) !default; // value to compute 1px before next mediaquery
 $query-direction: (min-width, max-width) !default;
 $screen: 'only screen' !default;
 $landscape: "#{$screen} and (orientation: landscape)" !default;
@@ -62,29 +61,11 @@ $portrait: "#{$screen} and (orientation: portrait)" !default;
 // Breakpoints
 // -----------------------------------------------------------------------------
 $breakpoints: (
-  xxsmall: 0em,
-  xsmall: em-calc(480),
-  small: em-calc(640),
-  medium: em-calc(720),
-  large: em-calc(1024),
-  xlarge: em-calc(1280),
-  xxlarge: em-calc(1440)
+  xxsmall: 0,
+  xsmall: 480,
+  small: 640,
+  medium: 720,
+  large: 1024,
+  xlarge: 1280,
+  xxlarge: 1440
 ) !default;
-
-//------------------------------------------------------------------------------
-// Breakpoints and columns gutter will always be ordered based
-// on $query-direction variable
-//------------------------------------------------------------------------------
-
-@if ($query-direction == (min-width, max-width)) {
-  $breakpoints: map-sort-by-value($breakpoints);
-  @if type-of($column-gutter) == 'map' {
-    $column-gutter: map-sort-by-value($column-gutter);
-  }
-}
-@if ($query-direction == (max-width, min-width)) {
-  $breakpoints: map-sort-by-value($breakpoints, false);
-  @if type-of($column-gutter) == 'map' {
-    $column-gutter: map-sort-by-value($column-gutter, false);
-  }
-}

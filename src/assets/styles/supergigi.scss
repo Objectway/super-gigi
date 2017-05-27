@@ -1,8 +1,4 @@
-$use-classes: false;
+$use-classes: true;
 $use-dry: true;
 
 @import 'main';
-
-body {
-  width: nth(map-values($breakpoints), 1)
-}
