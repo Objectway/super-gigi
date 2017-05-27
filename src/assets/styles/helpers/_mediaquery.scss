@@ -1,3 +1,44 @@
+//------------------------------------------------------------------------------
+// Breakpoints and columns gutter will always be ordered based
+// on $query-direction variable
+//------------------------------------------------------------------------------
+
+@if ($query-direction == (min-width, max-width)) {
+  $breakpoints: map-sort-by-value($breakpoints);
+  @if type-of($column-gutter) == 'map' {
+    $column-gutter: map-sort-by-value($column-gutter);
+  }
+}
+@if ($query-direction == (max-width, min-width)) {
+  $breakpoints: map-sort-by-value($breakpoints, false);
+  @if type-of($column-gutter) == 'map' {
+    $column-gutter: map-sort-by-value($column-gutter, false);
+  }
+}
+
+//------------------------------------------------------------------------------
+//
+//------------------------------------------------------------------------------
+@if not variable-exists(min-unit) {
+  $unit: unit(nth(map-values($breakpoints), 1));
+
+  $min-unit: em-calc(1, $rem-base) !global;
+
+  @if $unit == "rem" {
+    $min-unit: rem-calc(1) !global;
+  }
+
+  @if $unit == "px" {
+    $min-unit: 1px !global;
+  }
+
+  @if $unit == "" {
+    @each $breakpoint, $value in $breakpoints {
+      $breakpoints: map-merge($breakpoints , ($breakpoint: em-calc($value)));
+    }
+  }
+}
+
 // Global
 $inmedia: false !default;
 $query-start: nth($query-direction, 1);
