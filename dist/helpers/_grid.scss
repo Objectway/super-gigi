@@ -167,8 +167,7 @@
   }
 
   @if $vertical and $use-flex {
-    @warn 'This is deprecated, it could be removed soon.';
-    @warn 'Please use `flex-direction: column` instead';
+    @warn 'Deprecated! Please use `flex-direction: column` instead';
     flex-direction: column;
   }
 

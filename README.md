@@ -33,10 +33,6 @@ in your sass file `[path to super-gigi]/dist/_main.scss`.
 If you are using the Sass version you can personalize **Super GiGi** by
 simply changing the value of its variables before importing `main.scss`. 
 
-For the size variables, you would like to have the [`rem/em-calc()`](#rem-calc)
-functions available. To achieve that remember to import the `_functions.scss` partial
-before.
-
 ### $rem-base
 If you want to use rem on your site, set the font-size of your `html` tag to `rem-base`. 
 
@@ -203,13 +199,13 @@ default: `false` - type: `boolean`
 
 ### $breakpoints
 default: ```(
-  xxsmall: 0em, 
-  xsmall: em-calc(480), 
-  small: em-calc(640), 
-  medium: em-calc(720), 
-  large: em-calc(1024), 
-  xlarge: em-calc(1280), 
-  xxlarge: em-calc(1440)
+  xxsmall: 0, 
+  xsmall: 480, 
+  small: 640, 
+  medium: 720, 
+  large: 1024, 
+  xlarge: 1280, 
+  xxlarge: 1440
   )```
   - type: `map`
 
@@ -259,6 +255,74 @@ If you decide to change class names like in the example above, then just in the 
     }
   }
   
+```
+
+### *Note*
+As values you can pass unitless values (like in the default setting), those will
+be converted in em. If you want you can pass the *unit too* like:
+
+```scss
+$breakpoints: (
+  small: 300px,
+  large: 900px
+);
+
+@import 'main';
+
+.example {
+  @include media-query(small, only) {
+    content: 'yeah';
+  }
+}
+
+// Will generate
+// @media only screen and (min-width: 300px) and (max-width: 899px) {
+//     .example {
+//         content: 'yeah'
+//     }
+// }
+```
+```scss
+$breakpoints: (
+  small: 20rem,
+  large: 40rem
+);
+
+@import 'main';
+
+.example {
+  @include media-query(small, only) {
+    content: 'yeah';
+  }
+}
+
+// Will generate
+// @media only screen and (min-width: 20rem) and (max-width: 39.9375rem) {
+//     .example {
+//         content: 'yeah'
+//     }
+// }
+```
+```scss
+$breakpoints: (
+  small: 300,
+  large: 900
+);
+
+@import 'main';
+
+.example {
+  @include media-query(small, only) {
+    content: 'yeah';
+  }
+}
+
+// Will generate
+// @media only screen and (min-width: 18.75em) and (max-width: 56.1875em) {
+//     .example {
+//         content: 'yeah'
+//     }
+// }
 ```
 
   
