@@ -128,7 +128,11 @@ $query-end: nth($query-direction, 2);
         @content;
       }
     } @else {
-      @media #{$screen} and (#{$query-start}: #{$cur-bp}) {
+      @if index(map-keys($breakpoints), $query) != 1 {
+        @media #{$screen} and (#{$query-start}: #{$cur-bp}) {
+          @content;
+        }
+      } @else {
         @content;
       }
     }
