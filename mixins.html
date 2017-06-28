@@ -541,7 +541,7 @@ Example:</p>
 same for each breakpoint in the <a href="#breakpoints"><code>$breakpoints</code></a> variable. If you 
 want to have a different gutter based on breakpoints, you can set a map as seen 
 on <a href="#column-gutter"><code>$column-gutter</code></a>.
-If you need to manage the responsive gutter, you can use this mixin:</p>
+If you need to manage the responsive gutter, you can use this mixin</p>
 <pre><code class="lang-scss">$column-gutter: (
   &#39;xxsmall&#39;: 0.5em,
   &#39;medium&#39;: 1em,
@@ -554,7 +554,7 @@ If you need to manage the responsive gutter, you can use this mixin:</p>
   };
 }
 </code></pre>
-<p>It will result in:</p>
+<p>And the CSS will be:</p>
 <pre><code class="lang-css">@media only screen and (min-width: 0em) {
   .bar {
     margin-top: 0.5em
@@ -591,7 +591,7 @@ breakpoint, as shown below</p>
   }
 }
 </code></pre>
-<p>Obviously it will work with math operation too:</p>
+<p>Obviously it will work with math operations too:</p>
 <pre><code class="lang-scss">.foobar {
   @include media-query(&#39;xxsmall&#39;) {
     @include responsive-gutter {
@@ -727,7 +727,7 @@ module.exports = function() {
       </div>
     </div>
     <div class="KitchenSinkFooter">
-      <p class="KitchenSinkFooter__paragraph"><a href="http://http://www.objectway.it/IT/default.asp">© 2016 - Objectway Financial Software S.p.a.</a></p>
+      <p class="KitchenSinkFooter__paragraph"><a href="http://www.objectway.it/">Objectway Financial Software S.p.a.</a></p>
       <div class="KitchenSinkFooter__versions">
         <img src="https://badge.fury.io/gh/objectway%2Fsuper-gigi.svg" alt="git v" />
         <img src="https://badge.fury.io/js/super-gigi.svg" alt="npm version" />
