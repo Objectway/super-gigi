@@ -123,7 +123,9 @@
   }
 
   @include dry-it('row#{$nested}') {
-    box-sizing: border-box;
+    @if $sg-use-box-sizing {
+      box-sizing: border-box;
+    }
 
     @if $grid-start != left and $use-flex {
       flex-direction: row-reverse;
@@ -208,7 +210,9 @@
   // Global -------------
   @if $global {
     @include dry-it('colGlob') {
-      box-sizing: border-box;
+      @if $sg-use-box-sizing {
+        box-sizing: border-box;
+      }
 
       @if $use-table {
         display: table-cell;
