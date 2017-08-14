@@ -27,7 +27,7 @@
 // If the property is the width, it will add the relative flex properties to
 // the returned block.
 // -----------------------------------------------------------------------------
-@mixin grid-calc($property, $attr, $margin: false, 1$query: false) {
+@mixin grid-calc($property, $attr, $margin: false, $query: false) {
 
   // Width property needs flex attributes
   @if $property == width {
