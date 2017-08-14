@@ -191,7 +191,7 @@ It is possible to use margins as additional column-gutter between columns. This 
 ### $sg-include-box-sizing
 default: `true` - type: `boolean`
 
-By default, **Super GiGi** columns and rows have a `box-sizing: inner-box` applied to them. If you have already globally defined `box-sizing: inner-box` within your project and want to remove the redundanct, set this option to `false`.
+By default, **Super GiGi** columns and rows have a `box-sizing: border-box` applied to them. If you have already globally defined `box-sizing: border-box` within your project and want to remove the redundancy, set this option to `false`.
 
   
 ### $eq-grid
