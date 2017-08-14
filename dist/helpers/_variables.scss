@@ -32,6 +32,7 @@ $grid-start: left !default;
 $grid-end: if($grid-start == left, right, left) !default;
 $sg-collapse: false !default;
 $sg-use-margin: false !default;
+$sg-use-box-sizing: true !default;
 
 // -----------------------------------------------------------------------------
 // Class-based output options
