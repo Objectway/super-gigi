@@ -187,7 +187,12 @@ By default, **Super GiGi** columns have a [`$column-gutter`](#column-gutter) mad
 default: `false` - type: `boolean` 
 
 It is possible to use margins as additional column-gutter between columns. This *is not mutual esclusive* to the padding -to do that, see the `$collapse` option inside the [`grid-column`](#grid-column) mixin or the [`$sg-collapse`](#sg-collapse) option-, but it will *add* another column-gutter to your column. This is the general option for all your columns. You can set this option to a single column by the [`$margin`](#gridcolumnmargin) option of the `grid-column` mixin.
-  
+
+### $sg-include-box-sizing
+default: `true` - type: `boolean`
+
+By default, **Super GiGi** columns and rows have a `box-sizing: border-box` applied to them. If you have already globally defined `box-sizing: border-box` within your project and want to remove the redundancy, set this option to `false`.
+
   
 ### $eq-grid
 default: `false` - type: `boolean` 
