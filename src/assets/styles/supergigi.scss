@@ -1,8 +1,5 @@
-$use-classes: false;
-$use-dry: false;
+$use-classes: true;
+$use-dry: true;
 
 @import 'main';
 
-.pippo {
-  @include grid-column(14)
-}
