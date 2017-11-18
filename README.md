@@ -169,7 +169,8 @@ useful when we inspect the elements.
     .fooColumn {
       left: 8.33333%;
       right: 8.33333%;
-      padding: 0 0.9375rem;
+      padding-left: calc(1.875rem / 2);
+      padding-right: calc(1.875rem / 2);
       order: 0;
       
       content: "COLUMN: width : (xxsmall: 6, large: 6) | push : 1 | pull : 1 | order : 0 | global : true"; 
@@ -539,7 +540,8 @@ will generate:
 ```css
 .foo {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -547,7 +549,8 @@ will generate:
   position: relative;
   left: auto;
   right: 8.33333%;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   order: 0;
 }
 @media only screen and (min-width: 0em) {
@@ -580,7 +583,8 @@ will return:
 ```css
 .foo {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
   width: 8.33333%;
@@ -601,7 +605,8 @@ will return:
 ```css
 .foo {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
   width: 33.33333%;
@@ -623,7 +628,8 @@ will generate:
 ```css
 .foo {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
 }
@@ -682,7 +688,8 @@ will compile in:
 ```css
  .foo {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
   width: auto;
@@ -691,7 +698,8 @@ will compile in:
 
 .bar {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
   width: auto;
@@ -715,7 +723,8 @@ will compile in:
 <div id="gccollapseglobal"></div>
 ### `$collapse` and `$global`
 **$collapse** and **$global** are very simple. The first one if `false` will 
-generate the padding of our columns `padding: 0 0.9375rem;`, the second one 
+generate the padding of our columns `padding-left: calc(1.875rem / 2);`, the second one 
+generate the padding of our columns `padding-right: calc(1.875rem / 2);`, the second one 
 will generate this css:
 ```css
   box-sizing: border-box;
@@ -957,7 +966,8 @@ will generate this css:
 ```css
 .foo {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
 }
@@ -970,7 +980,8 @@ will generate this css:
 
 .bar {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
 }
@@ -1004,7 +1015,8 @@ will generate this css:
 ```css
 *.foo, *.bar {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column; 
 }
