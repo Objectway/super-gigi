@@ -3,7 +3,6 @@
 <br />
 <img src="https://badge.fury.io/gh/objectway%2Fsuper-gigi.svg" alt="git v" />
 <img src="https://badge.fury.io/js/super-gigi.svg" alt="npm version" />
-<img src="https://badge.fury.io/bo/super-gigi.svg" alt="bower version" />
 </p>
 
 **Super GiGi** is a customizable Sass Grid Generator based on CSS3 Flex-box. 
@@ -20,7 +19,6 @@ You can choose different ways to install **Super GiGi**:
 
 - [Download the latest release](https://github.com/Objectway/super-gigi/zipball/master).
 - Clone the repo: `https://github.com/Objectway/super-gigi.git`.
-- Install with [Bower](http://bower.io): `bower install super-gigi -S`.
 - Install with [npm](https://www.npmjs.com): `npm install super-gigi -D`.
 
 After the download you can use the CSS compiled version by importing `[path to super-gigi]/dist/supergigi.css`.
