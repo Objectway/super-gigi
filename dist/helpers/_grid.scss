@@ -14,7 +14,7 @@
   }
 
   @if $margin == 'margin-#{$grid-start}' {
-    @return calc(#{($dividend / $divisor * 100%)} + #{$column-gutter / 2});
+    @return calc(#{($dividend / $divisor * 100%)} + (#{$column-gutter} / 2));
   }
 
   @return $dividend / $divisor * 100%;
@@ -27,17 +27,20 @@
 // If the property is the width, it will add the relative flex properties to
 // the returned block.
 // -----------------------------------------------------------------------------
-@mixin grid-calc($property, $attr, $margin: false, $query: false) {
+@mixin grid-calc($property, $attr, $margin: false, $query: false, $loop: 0) {
 
   // Width property needs flex attributes
   @if $property == width {
-    @if $attr == auto {
-      flex: 1 1 0%;
+    $prev: if($loop > 1, nth(map-values($query), $loop - 1), null);
 
-    } @else {
-      flex: 0 0 auto;
+    @if type-of($prev) != type-of($attr){
+      @if $attr == auto {
+        flex: 1 1 0%;
+
+      } @else {
+        flex: 0 0 auto;
+      }
     }
-
     @if $attr == 0 {
       $attr: auto;
     }
@@ -48,13 +51,8 @@
 
   // (N of X) syntax
   @if length($attr) == 3 and nth($attr, 2) == 'of' {
-    @if $query and $use-dry {
-      @error "You can't use n of N syntax with query parameter. Use mediaquery mixin instead!";
-
-    } @else {
-      @include responsive-gutter {
-        #{$property}: sg-dimension(nth($attr, 1), nth($attr, 3), $margin);
-      }
+    @include responsive-gutter {
+      #{$property}: sg-dimension(nth($attr, 1), nth($attr, 3), $margin);
     }
 
   // Standard syntax
@@ -85,20 +83,22 @@
 
   } @else {
 
+    $counter: 0;
     @each $query, $value in $attr {
       $set: #{$query}#{$value}#{$eq-grid}-#{$margin};
+      $counter: $counter + 1;
 
       @if $inmedia != false{
-        @include dry-it('#{$property}-#{$set}') {
-          @include grid-calc($property, $value, $margin);
+        @include dry-it('#{$property}-#{$set}-#{$attr}-#{$counter}') {
+          @include grid-calc($property, $value, $margin, $attr, $counter);
         }
 
       } @else {
 
         @include media-query($query, $eq-grid: $eq-grid) {
 
-          @include dry-it('#{$property}-#{$set}-#{$margin}') {
-            @include grid-calc($property, $value, $margin);
+          @include dry-it('#{$property}-#{$set}-#{$margin}-#{$attr}-#{$counter}') {
+            @include grid-calc($property, $value, $margin, $attr, $counter);
           }
 
         }
@@ -123,9 +123,7 @@
   }
 
   @include dry-it('row#{$nested}') {
-    @if $sg-include-box-sizing {
-      box-sizing: border-box;
-    }
+    box-sizing: border-box;
 
     @if $grid-start != left and $use-flex {
       flex-direction: row-reverse;
@@ -134,8 +132,8 @@
     @if $nested {
       @if not $sg-collapse {
         @include responsive-gutter {
-          margin-left: (-$column-gutter / 2);
-          margin-right: (-$column-gutter / 2);
+          margin-left: calc(-#{$column-gutter} / 2);
+          margin-right: calc(-#{$column-gutter} / 2);
           width: calc(100% + #{$column-gutter});
         }
       } @else {
@@ -210,9 +208,7 @@
   // Global -------------
   @if $global {
     @include dry-it('colGlob') {
-      @if $sg-include-box-sizing {
-        box-sizing: border-box;
-      }
+      box-sizing: border-box;
 
       @if $use-table {
         display: table-cell;
@@ -249,8 +245,8 @@
     @if $global == true {
       @include dry-it('paddingGlob') {
         @include responsive-gutter {
-          padding-left: ($column-gutter / 2);
-          padding-right: ($column-gutter / 2);
+          padding-left: calc(#{$column-gutter} / 2);
+          padding-right: calc(#{$column-gutter} / 2);
         }
       }
     }
@@ -267,8 +263,8 @@
   @if $margin {
     @include dry-it('marginGlob') {
       @include responsive-gutter{
-        margin-left: ($column-gutter / 2);
-        margin-right: ($column-gutter / 2);
+        margin-left: calc(#{$column-gutter} / 2);
+        margin-right: calc(#{$column-gutter} / 2);
       }
     }
   }
@@ -285,20 +281,16 @@
 
   // Push -------------
   @if $push != null {
-    @include dry-it('colPush') {
-      position: relative;
-      #{$grid-end}: auto;
-    }
+    position: relative;
+    #{$grid-end}: auto;
 
     @include grid-space($grid-start, $push, $eq-grid);
   }
 
   // Pull -------------
   @if $pull != null {
-    @include dry-it('colPull') {
-      position: relative;
-      #{$grid-start}: auto;
-    }
+    position: relative;
+    #{$grid-start}: auto;
 
     @include grid-space($grid-end, $pull, $eq-grid);
   }

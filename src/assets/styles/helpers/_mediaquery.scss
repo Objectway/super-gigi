@@ -22,6 +22,13 @@
 @if not variable-exists(min-unit) {
   $unit: unit(nth(map-values($breakpoints), 1));
 
+  @each $breakpoint in map-values($breakpoints) {
+    @if $unit != unit($breakpoint) {
+      @warn 'All breakpoints must have the same unit!';
+      $unit: unit($breakpoint);
+    }
+  }
+
   $min-unit: em-calc(1, $rem-base) !global;
 
   @if $unit == "rem" {
@@ -128,7 +135,11 @@ $query-end: nth($query-direction, 2);
         @content;
       }
     } @else {
-      @media #{$screen} and (#{$query-start}: #{$cur-bp}) {
+      @if index(map-keys($breakpoints), $query) != 1 {
+        @media #{$screen} and (#{$query-start}: #{$cur-bp}) {
+          @content;
+        }
+      } @else {
         @content;
       }
     }

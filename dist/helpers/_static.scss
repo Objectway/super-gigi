@@ -187,7 +187,7 @@ $type: if($use-classes, '.', '%');
 
     #{$type}#{$row-name},
     &#{grid-class-name(nested)} {
-      margin: 0 (-$column-gutter / 2);
+      margin: 0 calc(-#{$column-gutter} / 2);
       width: auto;
     }
 
