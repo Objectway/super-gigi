@@ -65,9 +65,6 @@
             <div class="MarkDownGenerated__content"><h2 id="options">Options</h2>
 <p>If you are using the Sass version you can personalize <strong>Super GiGi</strong> by
 simply changing the value of its variables before importing <code>main.scss</code>. </p>
-<p>For the size variables, you would like to have the <a href="#rem-calc"><code>rem/em-calc()</code></a>
-functions available. To achieve that remember to import the <code>_functions.scss</code> partial
-before.</p>
 <h3 id="-rem-base">$rem-base</h3>
 <p>If you want to use rem on your site, set the font-size of your <code>html</code> tag to <code>rem-base</code>. </p>
 <h3 id="-design-base">$design-base</h3>
@@ -160,7 +157,8 @@ useful when we inspect the elements.</p>
     .fooColumn {
       left: 8.33333%;
       right: 8.33333%;
-      padding: 0 0.9375rem;
+      padding-left: calc(1.875rem / 2);
+      padding-right: calc(1.875rem / 2);
       order: 0;
 
       content: &quot;COLUMN: width : (xxsmall: 6, large: 6) | push : 1 | pull : 1 | order : 0 | global : true&quot;; 
@@ -174,6 +172,9 @@ useful when we inspect the elements.</p>
 <h3 id="-sg-use-margin-experimental-">$sg-use-margin <code>EXPERIMENTAL</code></h3>
 <p>default: <code>false</code> - type: <code>boolean</code> </p>
 <p>It is possible to use margins as additional column-gutter between columns. This <em>is not mutual esclusive</em> to the padding -to do that, see the <code>$collapse</code> option inside the <a href="#grid-column"><code>grid-column</code></a> mixin or the <a href="#sg-collapse"><code>$sg-collapse</code></a> option-, but it will <em>add</em> another column-gutter to your column. This is the general option for all your columns. You can set this option to a single column by the <a href="#gridcolumnmargin"><code>$margin</code></a> option of the <code>grid-column</code> mixin.</p>
+<h3 id="-sg-include-box-sizing">$sg-include-box-sizing</h3>
+<p>default: <code>true</code> - type: <code>boolean</code></p>
+<p>By default, <strong>Super GiGi</strong> columns and rows have a <code>box-sizing: border-box</code> applied to them. If you have already globally defined <code>box-sizing: border-box</code> within your project and want to remove the redundancy, set this option to <code>false</code>.</p>
 <h3 id="-eq-grid">$eq-grid</h3>
 <p>default: <code>false</code> - type: <code>boolean</code> </p>
 <p><strong>Super GiGi</strong> supports <a href="https://github.com/Snugug/eq.js">EQJS</a>. Turn this option to
@@ -182,13 +183,13 @@ useful when we inspect the elements.</p>
 
 <h3 id="-breakpoints">$breakpoints</h3>
 <p>default: <code>(
-  xxsmall: 0em, 
-  xsmall: em-calc(480), 
-  small: em-calc(640), 
-  medium: em-calc(720), 
-  large: em-calc(1024), 
-  xlarge: em-calc(1280), 
-  xxlarge: em-calc(1440)
+  xxsmall: 0, 
+  xsmall: 480, 
+  small: 640, 
+  medium: 720, 
+  large: 1024, 
+  xlarge: 1280, 
+  xxlarge: 1440
   )</code></p>
 <ul>
 <li>type: <code>map</code></li>
@@ -228,6 +229,69 @@ to our classes generator or to our mixins. </p>
     }
   }
 </code></pre>
+<h3 id="-note-"><em>Note</em></h3>
+<p>As values you can pass unitless values (like in the default setting), those will
+be converted in em. If you want you can pass the <em>unit too</em> like:</p>
+<pre><code class="lang-scss">$breakpoints: (
+  small: 300px,
+  large: 900px
+);
+
+@import &#39;main&#39;;
+
+.example {
+  @include media-query(small, only) {
+    content: &#39;yeah&#39;;
+  }
+}
+
+// Will generate
+// @media only screen and (min-width: 300px) and (max-width: 899px) {
+//     .example {
+//         content: &#39;yeah&#39;
+//     }
+// }
+</code></pre>
+<pre><code class="lang-scss">$breakpoints: (
+  small: 20rem,
+  large: 40rem
+);
+
+@import &#39;main&#39;;
+
+.example {
+  @include media-query(small, only) {
+    content: &#39;yeah&#39;;
+  }
+}
+
+// Will generate
+// @media only screen and (min-width: 20rem) and (max-width: 39.9375rem) {
+//     .example {
+//         content: &#39;yeah&#39;
+//     }
+// }
+</code></pre>
+<pre><code class="lang-scss">$breakpoints: (
+  small: 300,
+  large: 900
+);
+
+@import &#39;main&#39;;
+
+.example {
+  @include media-query(small, only) {
+    content: &#39;yeah&#39;;
+  }
+}
+
+// Will generate
+// @media only screen and (min-width: 18.75em) and (max-width: 56.1875em) {
+//     .example {
+//         content: &#39;yeah&#39;
+//     }
+// }
+</code></pre>
 <h3 id="-use-flex">$use-flex</h3>
 <p>default: <code>true</code> - type: <code>boolean</code> </p>
 <p><strong>Super GiGi</strong> is developed with CSS3 Flexbox, but there are fallback options with <code>float</code> and <code>display: table</code>. 
@@ -251,11 +315,10 @@ and all the queries will go from the largest query to the smallest one.</p>
       </div>
     </div>
     <div class="KitchenSinkFooter">
-      <p class="KitchenSinkFooter__paragraph"><a href="http://www.objectway.it/">Objectway Financial Software S.p.a.</a></p>
+      <p class="KitchenSinkFooter__paragraph"></p>
       <div class="KitchenSinkFooter__versions">
         <img src="https://badge.fury.io/gh/objectway%2Fsuper-gigi.svg" alt="git v" />
         <img src="https://badge.fury.io/js/super-gigi.svg" alt="npm version" />
-        <img src="https://badge.fury.io/bo/super-gigi.svg" alt="bower version" />
         
         
       </div>
