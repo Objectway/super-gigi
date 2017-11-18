@@ -3,7 +3,6 @@
 <br />
 <img src="https://badge.fury.io/gh/objectway%2Fsuper-gigi.svg" alt="git v" />
 <img src="https://badge.fury.io/js/super-gigi.svg" alt="npm version" />
-<img src="https://badge.fury.io/bo/super-gigi.svg" alt="bower version" />
 </p>
 
 **Super GiGi** is a customizable Sass Grid Generator based on CSS3 Flex-box. 
@@ -20,7 +19,6 @@ You can choose different ways to install **Super GiGi**:
 
 - [Download the latest release](https://github.com/Objectway/super-gigi/zipball/master).
 - Clone the repo: `https://github.com/Objectway/super-gigi.git`.
-- Install with [Bower](http://bower.io): `bower install super-gigi -S`.
 - Install with [npm](https://www.npmjs.com): `npm install super-gigi -D`.
 
 After the download you can use the CSS compiled version by importing `[path to super-gigi]/dist/supergigi.css`.
@@ -32,10 +30,6 @@ in your sass file `[path to super-gigi]/dist/_main.scss`.
 ## Options
 If you are using the Sass version you can personalize **Super GiGi** by
 simply changing the value of its variables before importing `main.scss`. 
-
-For the size variables, you would like to have the [`rem/em-calc()`](#rem-calc)
-functions available. To achieve that remember to import the `_functions.scss` partial
-before.
 
 ### $rem-base
 If you want to use rem on your site, set the font-size of your `html` tag to `rem-base`. 
@@ -173,7 +167,8 @@ useful when we inspect the elements.
     .fooColumn {
       left: 8.33333%;
       right: 8.33333%;
-      padding: 0 0.9375rem;
+      padding-left: calc(1.875rem / 2);
+      padding-right: calc(1.875rem / 2);
       order: 0;
       
       content: "COLUMN: width : (xxsmall: 6, large: 6) | push : 1 | pull : 1 | order : 0 | global : true"; 
@@ -191,7 +186,12 @@ By default, **Super GiGi** columns have a [`$column-gutter`](#column-gutter) mad
 default: `false` - type: `boolean` 
 
 It is possible to use margins as additional column-gutter between columns. This *is not mutual esclusive* to the padding -to do that, see the `$collapse` option inside the [`grid-column`](#grid-column) mixin or the [`$sg-collapse`](#sg-collapse) option-, but it will *add* another column-gutter to your column. This is the general option for all your columns. You can set this option to a single column by the [`$margin`](#gridcolumnmargin) option of the `grid-column` mixin.
-  
+
+### $sg-include-box-sizing
+default: `true` - type: `boolean`
+
+By default, **Super GiGi** columns and rows have a `box-sizing: border-box` applied to them. If you have already globally defined `box-sizing: border-box` within your project and want to remove the redundancy, set this option to `false`.
+
   
 ### $eq-grid
 default: `false` - type: `boolean` 
@@ -203,13 +203,13 @@ default: `false` - type: `boolean`
 
 ### $breakpoints
 default: ```(
-  xxsmall: 0em, 
-  xsmall: em-calc(480), 
-  small: em-calc(640), 
-  medium: em-calc(720), 
-  large: em-calc(1024), 
-  xlarge: em-calc(1280), 
-  xxlarge: em-calc(1440)
+  xxsmall: 0, 
+  xsmall: 480, 
+  small: 640, 
+  medium: 720, 
+  large: 1024, 
+  xlarge: 1280, 
+  xxlarge: 1440
   )```
   - type: `map`
 
@@ -259,6 +259,74 @@ If you decide to change class names like in the example above, then just in the 
     }
   }
   
+```
+
+### *Note*
+As values you can pass unitless values (like in the default setting), those will
+be converted in em. If you want you can pass the *unit too* like:
+
+```scss
+$breakpoints: (
+  small: 300px,
+  large: 900px
+);
+
+@import 'main';
+
+.example {
+  @include media-query(small, only) {
+    content: 'yeah';
+  }
+}
+
+// Will generate
+// @media only screen and (min-width: 300px) and (max-width: 899px) {
+//     .example {
+//         content: 'yeah'
+//     }
+// }
+```
+```scss
+$breakpoints: (
+  small: 20rem,
+  large: 40rem
+);
+
+@import 'main';
+
+.example {
+  @include media-query(small, only) {
+    content: 'yeah';
+  }
+}
+
+// Will generate
+// @media only screen and (min-width: 20rem) and (max-width: 39.9375rem) {
+//     .example {
+//         content: 'yeah'
+//     }
+// }
+```
+```scss
+$breakpoints: (
+  small: 300,
+  large: 900
+);
+
+@import 'main';
+
+.example {
+  @include media-query(small, only) {
+    content: 'yeah';
+  }
+}
+
+// Will generate
+// @media only screen and (min-width: 18.75em) and (max-width: 56.1875em) {
+//     .example {
+//         content: 'yeah'
+//     }
+// }
 ```
 
   
@@ -470,7 +538,8 @@ will generate:
 ```css
 .foo {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -478,7 +547,8 @@ will generate:
   position: relative;
   left: auto;
   right: 8.33333%;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   order: 0;
 }
 @media only screen and (min-width: 0em) {
@@ -512,7 +582,8 @@ will return:
 ```css
 .foo {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
   width: 8.33333%;
@@ -533,7 +604,8 @@ will return:
 ```css
 .foo {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
   width: 33.33333%;
@@ -555,7 +627,8 @@ will generate:
 ```css
 .foo {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
 }
@@ -616,7 +689,8 @@ will compile in:
 ```css
  .foo {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
   width: auto;
@@ -625,7 +699,8 @@ will compile in:
 
 .bar {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
   width: auto;
@@ -650,7 +725,8 @@ will compile in:
 
 ### `$collapse` and `$global`
 **$collapse** and **$global** are very simple. The first one if `false` will 
-generate the padding of our columns `padding: 0 0.9375rem;`, the second one 
+generate the padding of our columns `padding-left: calc(1.875rem / 2);`, the second one 
+generate the padding of our columns `padding-right: calc(1.875rem / 2);`, the second one 
 will generate this css:
 ```css
   box-sizing: border-box;
@@ -893,7 +969,8 @@ will generate this css:
 ```css
 .foo {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
 }
@@ -906,7 +983,8 @@ will generate this css:
 
 .bar {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column;
 }
@@ -940,7 +1018,8 @@ will generate this css:
 ```css
 *.foo, *.bar {
   box-sizing: border-box;
-  padding: 0 0.9375rem;
+  padding-left: calc(1.875rem / 2);
+  padding-right: calc(1.875rem / 2);
   display: flex;
   flex-direction: column; 
 }

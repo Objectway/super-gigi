@@ -18,52 +18,43 @@
 $rem-base: 16px !default;
 $design-base: $rem-base !default;
 
-@function rem-calc($values, $base-value: $design-base) {
+
+@function unit-calc($values, $base-value, $unit) {
   @if length($values) == 1 {
-    @return remove-unit($values) / remove-unit($base-value) * 1rem;
+    @if $unit != 1px {
+      @return remove-unit($values) / remove-unit($base-value) * $unit;
+    } @else {
+      @return remove-unit($values) * remove-unit($base-value) * $unit;
+    }
   } @else {
     // empty array that we will return
-    $rem-values: ();
+    $unit-values: ();
 
     @each $value in $values {
-      $rem-values: append($rem-values, remove-unit($value) / remove-unit($base-value) * 1rem);
+      @if $unit != 1px {
+        $unit-values: append($unit-values, remove-unit($value) / remove-unit($base-value) * $unit);
+      } @else {
+        $unit-values: append($unit-values, remove-unit($value) * remove-unit($base-value) * $unit);
+      }
     }
 
-    @return $rem-values;
+    @return $unit-values;
   }
+}
+
+@function rem-calc($values, $base-value: $design-base) {
+  @return unit-calc($values, $base-value, 1rem);
 }
 
 // - TRANSFORM AN ARRAY OF PX VALUES (with or without px value) in em unit - //
 
 @function em-calc($values, $base-value: $design-base) {
-  @if length($values) == 1 {
-    @return remove-unit($values) / remove-unit($base-value) * 1em;
-  } @else {
-    // empty array that we will return
-    $em-values: ();
-
-    @each $value in $values {
-      $em-values: append($em-values, remove-unit($value) / remove-unit($base-value) * 1em);
-    }
-
-    @return $em-values;
-  }
+  @return unit-calc($values, $base-value, 1em);
 }
 
 // - TRANSFORM AN ARRAY OF EM VALUES (with or without em value) in px unit - //
 @function px-calc($values, $base-value: $design-base) {
-  @if length($values) == 1 {
-    @return remove-unit($values) * remove-unit($base-value) * 1px;
-  } @else {
-    // empty array that we will return
-    $px-values: ();
-
-    @each $value in $values {
-      $px-values: append($px-values, remove-unit($value) * remove-unit($base-value) * 1px);
-    }
-
-    @return $px-values;
-  }
+  @return unit-calc($values, $base-value, 1px);
 }
 
 /// An equivalent of `zip` function but for maps.

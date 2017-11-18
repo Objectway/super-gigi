@@ -290,9 +290,9 @@
 
       @include expect {
         box-sizing: border-box;
-        margin-left: (-$column-gutter / 2);
-        margin-right: (-$column-gutter / 2);
-        width: calc(100% + #{$column-gutter});
+        margin-left: calc(-1.875rem / 2);
+        margin-right: calc(-1.875rem / 2);
+        width: calc(100% + 1.875rem);
         flex: 1 0 auto;
         display: flex;
         flex-wrap: wrap;
@@ -349,8 +349,8 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        padding-left: 0.9375rem;
-        padding-right: 0.9375rem;
+        padding-left: calc(1.875rem / 2);
+        padding-right: calc(1.875rem / 2);
         margin-left: 41.66667%;
         position: relative;
         right: auto;
@@ -377,9 +377,9 @@
         flex-direction: column;
         padding-left: 0;
         padding-right: 0;
-        margin-left: 0.9375rem;
-        margin-right: 0.9375rem;
-        margin-left: calc(41.66667% + 0.9375rem);
+        margin-left: calc(1.875rem / 2);
+        margin-right: calc(1.875rem / 2);
+        margin-left: calc(41.66667% + (1.875rem / 2));
       }
     }
 
@@ -393,8 +393,8 @@
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        padding-left: 0.9375rem;
-        padding-right: 0.9375rem;
+        padding-left: calc(1.875rem / 2);
+        padding-right: calc(1.875rem / 2);
         order: 5;
       }
     }
