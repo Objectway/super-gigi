@@ -14,7 +14,7 @@
   }
 
   @if $margin == 'margin-#{$grid-start}' {
-    @return calc(#{($dividend / $divisor * 100%)} + #{$column-gutter / 2});
+    @return calc(#{($dividend / $divisor * 100%)} + (#{$column-gutter} / 2));
   }
 
   @return $dividend / $divisor * 100%;
@@ -123,9 +123,7 @@
   }
 
   @include dry-it('row#{$nested}') {
-    @if $sg-include-box-sizing {
-      box-sizing: border-box;
-    }
+    box-sizing: border-box;
 
     @if $grid-start != left and $use-flex {
       flex-direction: row-reverse;
@@ -134,8 +132,8 @@
     @if $nested {
       @if not $sg-collapse {
         @include responsive-gutter {
-          margin-left: (-$column-gutter / 2);
-          margin-right: (-$column-gutter / 2);
+          margin-left: calc(-#{$column-gutter} / 2);
+          margin-right: calc(-#{$column-gutter} / 2);
           width: calc(100% + #{$column-gutter});
         }
       } @else {
@@ -210,9 +208,7 @@
   // Global -------------
   @if $global {
     @include dry-it('colGlob') {
-      @if $sg-include-box-sizing {
-        box-sizing: border-box;
-      }
+      box-sizing: border-box;
 
       @if $use-table {
         display: table-cell;
@@ -249,8 +245,8 @@
     @if $global == true {
       @include dry-it('paddingGlob') {
         @include responsive-gutter {
-          padding-left: ($column-gutter / 2);
-          padding-right: ($column-gutter / 2);
+          padding-left: calc(#{$column-gutter} / 2);
+          padding-right: calc(#{$column-gutter} / 2);
         }
       }
     }
@@ -267,8 +263,8 @@
   @if $margin {
     @include dry-it('marginGlob') {
       @include responsive-gutter{
-        margin-left: ($column-gutter / 2);
-        margin-right: ($column-gutter / 2);
+        margin-left: calc(#{$column-gutter} / 2);
+        margin-right: calc(#{$column-gutter} / 2);
       }
     }
   }
