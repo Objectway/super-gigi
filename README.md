@@ -9,7 +9,10 @@
 
 It has been developed with modern web applications in mind and its first purpose is 
 to make it easier to manage responsive layouts.
-It is developed in Sass, but a compiled Css version is available.
+It is developed in Sass, but a compiled CSS version is available.
+
+Nowadays I suggest to use CSS [Grids](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)
+But if you wanna go to use Flex, I really suggest to use some tool like that 😎
 
 ## Visual Doc `WIP`
 http://objectway.github.io/super-gigi/
