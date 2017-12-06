@@ -16,8 +16,6 @@
 //  width: 1rem
 
 $rem-base: 16px !default;
-$design-base: $rem-base !default;
-
 
 @function unit-calc($values, $base-value, $unit) {
   @if length($values) == 1 {
@@ -32,9 +30,15 @@ $design-base: $rem-base !default;
 
     @each $value in $values {
       @if $unit != 1px {
-        $unit-values: append($unit-values, remove-unit($value) / remove-unit($base-value) * $unit);
+        $unit-values: append(
+          $unit-values,
+          remove-unit($value) / remove-unit($base-value) * $unit
+        );
       } @else {
-        $unit-values: append($unit-values, remove-unit($value) * remove-unit($base-value) * $unit);
+        $unit-values: append(
+          $unit-values,
+          remove-unit($value) * remove-unit($base-value) * $unit
+        );
       }
     }
 
@@ -42,18 +46,18 @@ $design-base: $rem-base !default;
   }
 }
 
-@function rem-calc($values, $base-value: $design-base) {
+@function rem-calc($values, $base-value: $rem-base) {
   @return unit-calc($values, $base-value, 1rem);
 }
 
 // - TRANSFORM AN ARRAY OF PX VALUES (with or without px value) in em unit - //
 
-@function em-calc($values, $base-value: $design-base) {
+@function em-calc($values, $base-value: $rem-base) {
   @return unit-calc($values, $base-value, 1em);
 }
 
 // - TRANSFORM AN ARRAY OF EM VALUES (with or without em value) in px unit - //
-@function px-calc($values, $base-value: $design-base) {
+@function px-calc($values, $base-value: $rem-base) {
   @return unit-calc($values, $base-value, 1px);
 }
 
@@ -71,8 +75,7 @@ $design-base: $rem-base !default;
   $map: ();
 
   @if $l-keys != $l-values {
-    @warn "There are #{$l-keys} key(s) for #{$l-values} value(s) in the map for `map-zip`. "
-        + "Resulting map will only have #{$min} pairs.";
+    @warn "There are #{$l-keys} key(s) for #{$l-values} value(s) in the map for `map-zip`. " + "Resulting map will only have #{$min} pairs.";
   }
 
   @if $min == 0 {
@@ -80,7 +83,7 @@ $design-base: $rem-base !default;
   }
 
   @for $i from 1 through $min {
-    $map: map-merge($map, (nth($keys, $i): nth($values, $i)));
+    $map: map-merge($map,  (nth($keys, $i): nth($values, $i)));
   }
 
   @return $map;
@@ -90,10 +93,10 @@ $design-base: $rem-base !default;
 @function map-sort-by-value($map, $asc: true) {
   $keys: map-keys($map);
   $values: map-values($map);
-  $k-less:  ();
+  $k-less: ();
   $k-equal: ();
   $k-more: ();
-  $v-less:  ();
+  $v-less: ();
   $v-equal: ();
   $v-more: ();
 
@@ -105,7 +108,7 @@ $design-base: $rem-base !default;
         $k-equal: append($k-equal, $key);
         $v-equal: append($v-equal, $value);
       } @else if ($value < $seed) {
-        @if($asc) {
+        @if ($asc) {
           $k-less: append($k-less, $key);
           $v-less: append($v-less, $value);
         } @else {
@@ -113,7 +116,7 @@ $design-base: $rem-base !default;
           $v-more: append($v-more, $value);
         }
       } @else if ($value > $seed) {
-        @if($asc) {
+        @if ($asc) {
           $k-more: append($k-more, $key);
           $v-more: append($v-more, $value);
         } @else {
