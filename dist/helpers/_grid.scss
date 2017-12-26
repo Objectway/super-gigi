@@ -132,8 +132,8 @@
     @if $nested {
       @if not $sg-collapse {
         @include responsive-gutter {
-          margin-left: calc(-#{$column-gutter} / 2);
-          margin-right: calc(-#{$column-gutter} / 2);
+          margin-left: calc(#{$column-gutter} / -2);
+          margin-right: calc(#{$column-gutter} / -2);
           width: calc(100% + #{$column-gutter});
         }
       } @else {

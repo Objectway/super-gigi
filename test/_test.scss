@@ -290,8 +290,8 @@
 
       @include expect {
         box-sizing: border-box;
-        margin-left: calc(-1.875rem / 2);
-        margin-right: calc(-1.875rem / 2);
+        margin-left: calc(1.875rem / -2);
+        margin-right: calc(1.875rem / -2);
         width: calc(100% + 1.875rem);
         flex: 1 0 auto;
         display: flex;
