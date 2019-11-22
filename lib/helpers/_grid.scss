@@ -89,7 +89,7 @@
       $counter: $counter + 1;
 
       @if $inmedia != false{
-        @include dry-it('#{$property}-#{$set}-#{$attr}-#{$counter}') {
+        @include dry-it('#{$property}-#{$set}-#{$query}-#{$value}-#{$counter}') {
           @include grid-calc($property, $value, $margin, $attr, $counter);
         }
 

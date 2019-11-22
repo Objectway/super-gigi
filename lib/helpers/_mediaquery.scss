@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------------
 //
 //------------------------------------------------------------------------------
-@if not variable-exists(min-unit) {
+@function set-min-unit() {
   $unit: unit(nth(map-values($breakpoints), 1));
 
   @each $breakpoint in map-values($breakpoints) {
@@ -29,14 +29,14 @@
     }
   }
 
-  $min-unit: em-calc(1, $rem-base) !global;
+  $min-unit: em-calc(1, $rem-base);
 
   @if $unit == "rem" {
-    $min-unit: rem-calc(1) !global;
+    $min-unit: rem-calc(1);
   }
 
   @if $unit == "px" {
-    $min-unit: 1px !global;
+    $min-unit: 1px;
   }
 
   @if $unit == "" {
@@ -44,7 +44,10 @@
       $breakpoints: map-merge($breakpoints , ($breakpoint: em-calc($value)));
     }
   }
+  @return $min-unit
 }
+
+$min-unit: set-min-unit() !default;
 
 // Global
 $inmedia: false !default;

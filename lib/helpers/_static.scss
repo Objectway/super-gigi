@@ -12,7 +12,7 @@
 $type: if($use-classes, '.', '%');
 
 
-@function grid-class-name($prop, $query: '', $parent: '') {
+@function grid-class-name($class-prefix, $prop, $query: '', $parent: '') {
   $name: #{$class-prefix}#{$prop};
 
   @if $use-bem {
@@ -25,72 +25,71 @@ $type: if($use-classes, '.', '%');
   @return $name;
 }
 
-
 // Row classes generator
 @mixin row-generate-classes($query, $separator: '-') {
-  $class-prefix: #{$type}#{$query}#{$separator} !global;
+  $class-prefix: #{$type}#{$query}#{$separator};
 
   @if $use-flex {
     // row modificators
-    &#{grid-class-name(top, $query, &)} {
+    &#{grid-class-name($class-prefix, top, $query, &)} {
       align-items: flex-start;
     }
 
-    &#{grid-class-name(middle, $query, &)} {
+    &#{grid-class-name($class-prefix, middle, $query, &)} {
       align-items: center;
     }
 
-    &#{grid-class-name(bottom, $query, &)} {
+    &#{grid-class-name($class-prefix, bottom, $query, &)} {
       align-items: flex-end;
     }
 
-    &#{grid-class-name(baseline, $query, &)} {
+    &#{grid-class-name($class-prefix, baseline, $query, &)} {
       align-items: baseline;
     }
 
-    &#{grid-class-name(stretch, $query, &)} {
+    &#{grid-class-name($class-prefix, stretch, $query, &)} {
       align-items: stretch;
     }
 
-    &#{grid-class-name(start, $query, &)} {
+    &#{grid-class-name($class-prefix, start, $query, &)} {
       justify-content: flex-start;
     }
 
-    &#{grid-class-name(center, $query, &)} {
+    &#{grid-class-name($class-prefix, center, $query, &)} {
       justify-content: center;
     }
 
-    &#{grid-class-name(end, $query, &)} {
+    &#{grid-class-name($class-prefix, end, $query, &)} {
       justify-content: flex-end;
     }
 
-    &#{grid-class-name(around, $query, &)} {
+    &#{grid-class-name($class-prefix, around, $query, &)} {
       justify-content: space-around;
     }
 
-    &#{grid-class-name(between, $query, &)} {
+    &#{grid-class-name($class-prefix, between, $query, &)} {
       justify-content: space-between;
     }
 
-    &#{grid-class-name(horizontal, $query, &)} {
+    &#{grid-class-name($class-prefix, horizontal, $query, &)} {
       flex-direction: if($grid-start == left, row, row-reverse);
     }
 
-    &#{grid-class-name(horizontal-reverse, $query, &)} {
+    &#{grid-class-name($class-prefix, horizontal-reverse, $query, &)} {
       flex-direction: if($grid-start == left, row-reverse, row);
     }
 
-    &#{grid-class-name(vertical, $query, &)} {
+    &#{grid-class-name($class-prefix, vertical, $query, &)} {
       flex: 1;
       flex-direction: column;
     }
 
-    &#{grid-class-name(vertical-reverse, $query, &)} {
+    &#{grid-class-name($class-prefix, vertical-reverse, $query, &)} {
       flex: 1;
       flex-direction: column-reverse;
     }
 
-    &#{grid-class-name(single-line, $query, &)} {
+    &#{grid-class-name($class-prefix, single-line, $query, &)} {
       flex-flow: nowrap;
     }
   }
@@ -98,48 +97,48 @@ $type: if($use-classes, '.', '%');
 
 // Column classes generator
 @mixin column-generate-classes($query, $separator: '-') {
-  $class-prefix: #{$type}#{$query}#{$separator} !global;
+  $class-prefix: #{$type}#{$query}#{$separator};
 
   //column modificators
   @if $use-flex and $use-classes {
-    &#{grid-class-name(collapse, $query, &)} {
+    &#{grid-class-name($class-prefix, collapse, $query, &)} {
       padding-left: 0;
       padding-right: 0;
     }
 
-    &#{grid-class-name(top, $query, &)} {
+    &#{grid-class-name($class-prefix, top, $query, &)} {
       align-self: flex-start;
     }
 
-    &#{grid-class-name(middle, $query, &)} {
+    &#{grid-class-name($class-prefix, middle, $query, &)} {
       align-self: center;
     }
 
-    &#{grid-class-name(bottom, $query, &)} {
+    &#{grid-class-name($class-prefix, bottom, $query, &)} {
       align-self: flex-end;
     }
 
-    &#{grid-class-name(baseline, $query, &)} {
+    &#{grid-class-name($class-prefix, baseline, $query, &)} {
       align-self: baseline;
     }
 
-    &#{grid-class-name(stretch, $query, &)} {
+    &#{grid-class-name($class-prefix, stretch, $query, &)} {
       align-self: stretch;
     }
 
-    &#{grid-class-name(auto, $query, &)} {
+    &#{grid-class-name($class-prefix, auto, $query, &)} {
       flex: 1 1 0%;
       width: auto;
     }
 
-    &#{grid-class-name(auto-reset, $query, &)} {
+    &#{grid-class-name($class-prefix, auto-reset, $query, &)} {
       flex: 0 0 auto;
     }
   }
 
   $q: if($query != '', ($query: 'auto'), 'auto');
 
-  &#{grid-class-name(auto, $query, &)} {
+  &#{grid-class-name($class-prefix, auto, $query, &)} {
     @include grid-column($width: $q, $collapse: true, $global: null);
   }
 
@@ -150,24 +149,24 @@ $type: if($use-classes, '.', '%');
     @for $i from 0 through $grid-columns {
       $q: if($query != '', ($query: $i), $i);
 
-      &#{grid-class-name(if($use-bem, span#{$i}, #{$i}), $query)} {
+      &#{grid-class-name($class-prefix, if($use-bem, span#{$i}, #{$i}), $query)} {
         @include grid-column($width: $q, $collapse: true, $global: null);
       }
 
-      &#{grid-class-name(offset#{$divider}#{$i}, $query)} {
+      &#{grid-class-name($class-prefix, offset#{$divider}#{$i}, $query)} {
         @include grid-column($offset: $q, $width: null, $collapse: true, $global: null);
       }
 
-      &#{grid-class-name(push#{$divider}#{$i}, $query)} {
+      &#{grid-class-name($class-prefix, push#{$divider}#{$i}, $query)} {
         @include grid-column($push: $q, $width: null, $collapse: true, $global: null);
       }
 
-      &#{grid-class-name(pull#{$divider}#{$i}, $query)} {
+      &#{grid-class-name($class-prefix, pull#{$divider}#{$i}, $query)} {
         @include grid-column($pull: $q, $width: null, $collapse: true, $global: null);
       }
 
       @if $use-flex {
-        &#{grid-class-name(order#{$divider}#{$i}, $query)} {
+        &#{grid-class-name($class-prefix, order#{$divider}#{$i}, $query)} {
           @include grid-column($order: $i, $width: null, $collapse: true, $global: null);
         }
       }
@@ -186,7 +185,7 @@ $type: if($use-classes, '.', '%');
     @include row-generate-classes('', '');
 
     #{$type}#{$row-name},
-    &#{grid-class-name(nested)} {
+    &#{grid-class-name('', '.nested')} {
       margin: 0 calc(-#{$column-gutter} / 2);
       width: auto;
     }
