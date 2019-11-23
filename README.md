@@ -511,6 +511,11 @@ will return
 
 For infos about `$margin` option, see the [`margin`](#gridcolumnmargin) section.
 
+### grid-container
+
+an alias for `grid-row(false)` (see above)
+Simiply a row not nested, usefull for the first row of your page, or for row not nested in a column
+
 ### grid-row()
 
 arguments: `$nested`, `$vertical`
@@ -840,7 +845,6 @@ and magically:
   } 
 }
 ```
-
 
 ### hide-from()
 
