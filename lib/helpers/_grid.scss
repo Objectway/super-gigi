@@ -97,7 +97,7 @@
 
         @include media-query($query, $eq-grid: $eq-grid) {
 
-          @include dry-it('#{$property}-#{$set}-#{$margin}-#{$attr}-#{$counter}') {
+          @include dry-it('#{$property}-#{$set}-#{$margin}-#{$query}-#{$value}-#{$counter}') {
             @include grid-calc($property, $value, $margin, $attr, $counter);
           }
 
