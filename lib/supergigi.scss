@@ -2,3 +2,9 @@ $use-classes: true;
 $use-dry: true;
 
 @import "main";
+
+// Or with modules
+// @use "main" with (
+//   $use-classes: true,
+//   $use-dry: true,
+// );
