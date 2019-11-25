@@ -14,6 +14,15 @@ It is developed in Sass, but a compiled CSS version is available.
 Nowadays I suggest to use CSS [Grids](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)
 But if you wanna go to use Flex, I really suggest to use some tool like that 😎
 
+## V2 Breaking Change
+
+The only thing to do is to refer to this file: `[path to super-gigi]/lib/_main.scss` instead of [path to super-gigi]/dist/\_main.scss
+It's the only breaking change 🙂
+
+## V2 What's new
+
+It works on Dart-Sass now, fully [Sass modules](https://sass-lang.com/documentation/at-rules/use) support and easier to mantain 😁
+
 ## Playground
 
 [Codepen](https://codepen.io/MakhBeth/pen/VjPOdZ)
