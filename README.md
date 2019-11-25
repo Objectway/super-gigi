@@ -55,7 +55,7 @@ Or with [Sass modules](https://sass-lang.com/documentation/at-rules/use)
 
 ```scss
 @use "[path to super-gigi]/lib/main" with (
-  $grid-column: 12
+  $grid-column: 10
 );
 ```
 
