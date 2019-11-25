@@ -16,7 +16,7 @@ But if you wanna go to use Flex, I really suggest to use some tool like that ðŸ˜
 
 ## V2 Breaking Change
 
-The only thing to do is to refer to this file: `[path to super-gigi]/lib/_main.scss` instead of `[path to super-gigi]/dist/\_main.scss`
+The only thing to do is to refer to this file: `[path to super-gigi]/lib/main` instead of `[path to super-gigi]/dist/\_main.scss`
 <br />
 It's the only breaking change ðŸ™‚
 
@@ -45,6 +45,19 @@ in your sass file `[path to super-gigi]/lib/_main.scss`.
 
 If you are using the Sass version you can personalize **Super GiGi** by
 simply changing the value of its variables before importing `main.scss`.
+
+```scss
+$grid-columns: 10;
+@import "[path to super-gigi]/lib/main";
+```
+
+Or with [Sass modules](https://sass-lang.com/documentation/at-rules/use)
+
+```scss
+@use "[path to super-gigi]/lib/main" with (
+  $grid-column: 12
+);
+```
 
 ### \$rem-base
 
