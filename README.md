@@ -14,9 +14,9 @@ It is developed in Sass, but a compiled CSS version is available.
 Nowadays I suggest to use CSS [Grids](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)
 But if you wanna go to use Flex, I really suggest to use some tool like that 😎
 
-## Visual Doc `WIP`
+## Playground
 
-http://objectway.github.io/super-gigi/
+[Codepen](https://codepen.io/MakhBeth/pen/VjPOdZ)
 
 ## Installation
 
@@ -739,8 +739,6 @@ If you have one column, it will take 100% of the space, if you have two then the
 
 Another important option is to set `$width` to `0`. **This will not set `width` to 0%** (a column must have a minimun width). But the width will be `auto`.
 In this way you can have a column with the width decided from the content.
-
-**Note** we are preparing a visual example. Stay tuned.
 
 <div id="gcorder"></div>
 ###`$order`
