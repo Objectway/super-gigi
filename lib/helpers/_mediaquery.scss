@@ -39,15 +39,24 @@
     $min-unit: 1px;
   }
 
+  @return $min-unit;
+}
+
+@function set-breakpoints($breakpoints) {
+  $transformedBP: $breakpoints;
+  $unit: unit(nth(map-values($breakpoints), 1));
+
   @if $unit == "" {
     @each $breakpoint, $value in $breakpoints {
-      $breakpoints: map-merge($breakpoints , ($breakpoint: em-calc($value)));
+      $transformedBP: map-merge($transformedBP , ($breakpoint: em-calc($value)));
     }
   }
-  @return $min-unit
+
+  @return $transformedBP;
 }
 
 $min-unit: set-min-unit() !default;
+$breakpoints: set-breakpoints($breakpoints);
 
 // Global
 $inmedia: false !default;
