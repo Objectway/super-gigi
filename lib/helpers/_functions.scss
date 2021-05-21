@@ -1,6 +1,8 @@
+@use "sass:math";
+
 // - REMOVE THE UNIT FROM A VALUE. BASED ON ZURB FOUNDATION
 @function remove-unit($value) {
-  @return $value / ($value * 0 + 1);
+  @return math.div($value, ($value * 0 + 1));
 }
 
 // - TRANSFORM AN ARRAY OF PX VALUES (with or without px value) in rem unit - //
@@ -20,7 +22,7 @@ $rem-base: 16px !default;
 @function unit-calc($values, $base-value, $unit) {
   @if length($values) == 1 {
     @if $unit != 1px {
-      @return remove-unit($values) / remove-unit($base-value) * $unit;
+      @return math.div(remove-unit($values), remove-unit($base-value)) * $unit;
     } @else {
       @return remove-unit($values) * remove-unit($base-value) * $unit;
     }
@@ -32,7 +34,7 @@ $rem-base: 16px !default;
       @if $unit != 1px {
         $unit-values: append(
           $unit-values,
-          remove-unit($value) / remove-unit($base-value) * $unit
+          math.div(remove-unit($value), remove-unit($base-value)) * $unit
         );
       } @else {
         $unit-values: append(
@@ -101,7 +103,7 @@ $rem-base: 16px !default;
   $v-more: ();
 
   @if length($values) > 1 {
-    $seed: nth($values, ceil(length($values) / 2));
+    $seed: nth($values, ceil(math.div(length($values), 2)));
 
     @each $key, $value in $map {
       @if ($value == $seed) {

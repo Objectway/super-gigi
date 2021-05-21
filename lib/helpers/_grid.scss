@@ -1,3 +1,5 @@
+@use "sass:math";
+
 // -----------------------------------------------------------------------------
 // Simply math here. If the value is auto we will return auto, otherwise this
 // function will do the simple calc. Here you can also set te exception
@@ -10,14 +12,14 @@
   }
 
   @if $margin == 'width' {
-    @return calc(#{($dividend / $divisor * 100%)} - #{$column-gutter});
+    @return calc(#{(math.div($dividend, $divisor) * 100%)} - #{$column-gutter});
   }
 
   @if $margin == 'margin-#{$grid-start}' {
-    @return calc(#{($dividend / $divisor * 100%)} + (#{$column-gutter} / 2));
+    @return calc(#{(math.div($dividend, $divisor) * 100%)} + (#{$column-gutter} / 2));
   }
 
-  @return $dividend / $divisor * 100%;
+  @return math.div($dividend, $divisor) * 100%;
 
 }
 

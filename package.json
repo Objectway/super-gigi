@@ -19,6 +19,6 @@
   },
   "homepage": "http://objectway.github.io/super-gigi/",
   "devDependencies": {
-    "sass": "1.23.7"
+    "sass": "^1.33.0"
   }
 }
