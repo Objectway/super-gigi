@@ -1,6 +1,6 @@
 {
   "name": "super-gigi",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A customizable Sass Grid Generator based on CSS3 Flex-box",
   "main": "dist/_main.scss",
   "scripts": {
@@ -20,9 +20,8 @@
   "homepage": "http://objectway.github.io/super-gigi/",
   "devDependencies": {
     "sass": "^1.33.0"
-  }
-
-,"_resolved": "https://registry.npmjs.org/super-gigi/-/super-gigi-2.1.0.tgz"
-,"_integrity": "sha512-AIOKc6RwUKsBpAvoLGt7EylIleoT/fpoHMQ660ygiF/zE5Xwm2ja+sklskw7FKPAh/z0GDEtc8PsyACWEh3AcA=="
-,"_from": "super-gigi@2.1.0"
+  },
+  "_resolved": "https://registry.npmjs.org/super-gigi/-/super-gigi-2.1.0.tgz",
+  "_integrity": "sha512-AIOKc6RwUKsBpAvoLGt7EylIleoT/fpoHMQ660ygiF/zE5Xwm2ja+sklskw7FKPAh/z0GDEtc8PsyACWEh3AcA==",
+  "_from": "super-gigi@2.1.0"
 }
