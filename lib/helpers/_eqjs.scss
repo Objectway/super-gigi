@@ -21,14 +21,14 @@ $eq-elements-string: ();
 @mixin eq-element {
   $eq-elements-string: append($eq-elements-string, #{&}, comma) !global;
   &::before {
-    content: quote(inspect($eq-queries-string));
+    content: quote(#{$eq-queries-string});
     display: none;
   }
 }
 
 @mixin eq-html {
   html::before {
-    content: quote(inspect($eq-elements-string));
+    content: quote(#{$eq-elements-string});
     display: none;
   }
 }
